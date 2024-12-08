@@ -6,10 +6,10 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "Features",
-        plugin = {"html:target/cucumber-report/report.html"},
-        monochrome = true,
-        glue = "acceptance"
+		 features = "Features",
+		 glue = "com.Software.FitnessSystem",
+	     plugin = {"pretty", "html:target/cucumber-report/report.html"},
+	     monochrome = true
 )
 
 public class AcceptanceTest {
