@@ -5,7 +5,17 @@ public class App {
         System.out.println("Hello World!");
     }
     
-	public void login(String userName, String password, String accountType) {
-		
+	public String login(String userName, String password, String role) {
+        switch (role) {
+        case "Admin":
+            //this.admin.add(new Admin(userName, password));
+        	return "AdminLoggedIn";
+        case "Instructor":
+        	return "InstructorLoggedIn";
+        case "Client":
+        	return "ClientLoggedIn";
+        default:
+        	return "NoOneLoggedIn";
+        }
 	}
 }

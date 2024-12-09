@@ -1,5 +1,7 @@
 package com.Software.FitnessSystem;
 
+import static org.junit.Assert.assertTrue;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -15,18 +17,21 @@ class UserManagementTest {
      */
     public UserManagementTest() {
         this.app = new App();
+        this.adminProcedures = new AdminControllers();
     }
     
     @Given("I am logged in as an admin")
     public void i_am_logged_in_as_an_admin() {
-    	app.login("AdminUser", "AdminPassword", "Admin");
-        System.out.println("Logged in as admin.");
+    	String expected = "AdminLoggedIn";
+    	String actual = app.login("AdminUser", "AdminPassword", "Admin");
+        assertTrue(expected.equals(actual));
     }
     
     @When("I navigate to the {string} page")
     public void i_navigate_to_the_page(String page) {
-        adminProcedures.navigateToPage(page);
-        System.out.println("Navigated to the " + page + " page.");
+    	boolean exp = true;
+        boolean real = adminProcedures.navigateToManagementPage();
+        assertTrue(exp == real);
     }
     
     @When("I fill in the details for a new user")
@@ -49,7 +54,7 @@ class UserManagementTest {
     }
     
     @Given("I am on the {string} page")
-    public void i_am_on_the_page(String page) {
+    public void i_am_on_the_page(int page) {
         adminProcedures.navigateToPage(page);
         System.out.println("On the " + page + " page.");
     }
