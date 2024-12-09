@@ -36,7 +36,7 @@ class UserManagementTest {
     
     @When("I fill in the details for a new user")
     public void i_fill_in_the_details_for_a_new_user() {
-        adminProcedures.fillUserDetails("JohnDoe", "johndoe@example.com", "password123", "Instructor");
+        adminProcedures.fillUserDetails("John", "Doe", "johndoe@example.com", "JohnDoe", "password123", "Instructor");
         System.out.println("Filled in details for a new user.");
     }
     

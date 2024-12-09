@@ -1,4 +1,6 @@
 package com.Software.FitnessSystem;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 import com.Software.FitnessSystem.AdminPageNavigation.ApprovalsPage;
@@ -54,20 +56,32 @@ public class AdminControllers {
         System.out.print("\nEnter your choice: ");
     }
 	
-	public void fillUserDetails(String string, String string2, String string3, String string4) {
+	public void fillUserDetails(String fName, String lName, String email, String userName, String password, String role) {
+		Map<String, String> newAccount = new HashMap<>();
 		
+		switch(role) {
+		case "Instructor":
+			newInstructor = new Instructor(fName, lName, email, userName, password);
+			App.InstructorsMap.put(userName, newInstructor);
+			break;
+		case "Client":
+			newClient = new Client(fName, lName, email, userName, password);
+			App.ClientsMap.put(userName, newClient);
+			break;
+		}
+		
+		newAccount.put(userName, password);
+		App.AccountsMap.put(role, newAccount);
 	}
-
+	
 	public void selectUser(String string) {
-		// TODO Auto-generated method stub
 		
 	}
-
+	
 	public void editUserDetails(String string, String string2, String string3) {
-		// TODO Auto-generated method stub
 		
 	}
-
+	
 	public boolean verifyUserUpdate(String string) {
 		// TODO Auto-generated method stub
 		return false;
