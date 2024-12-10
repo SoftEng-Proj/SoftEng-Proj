@@ -1,18 +1,18 @@
 package com.Software.FitnessSystem.AdminPageNavigation;
 
-import com.Software.FitnessSystem.AdminControllers;
+import com.Software.FitnessSystem.AdminControllers.AdminPagesController;
 import com.Software.FitnessSystem.InfrastructureForPages.BasePage;
 
-public class StatisticsPage extends BasePage {
-	private AdminControllers adminController;
+public class ProgramMonitoringPage extends BasePage {
+	private AdminPagesController adminController;
 	
-	public StatisticsPage(AdminControllers adminController) {
+	public ProgramMonitoringPage(AdminPagesController adminController) {
 		this.adminController = adminController;
 	}
 	
     @Override
     public void display() {
-        System.out.println("\nStatistics Menu:");
+        System.out.println("\nProgram Monitoring Menu:");
         System.out.println("1. View user activity statistics.");
         System.out.println("2. View engagement statistics.");
         System.out.println("3. Go Back.");

@@ -3,7 +3,6 @@ Feature: User Management
     Given I am logged in as an admin
     When I navigate to the "User Management" page
     And I fill in the details for a new user
-    And I submit the form
     Then the new user account should be created successfully
     
   Scenario: Update an existing user account

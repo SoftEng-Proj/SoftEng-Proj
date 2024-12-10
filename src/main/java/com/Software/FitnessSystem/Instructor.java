@@ -49,5 +49,5 @@ public class Instructor {
 	}
 	public void setPassword(String password) {
 		this.password = password;
-	}	
+	}
 }
