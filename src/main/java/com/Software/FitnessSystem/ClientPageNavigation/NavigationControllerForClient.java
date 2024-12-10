@@ -2,7 +2,7 @@ package com.Software.FitnessSystem.ClientPageNavigation;
 
 import java.util.Scanner;
 
-import com.Software.FitnessSystem.ClientControllers;
+import com.Software.FitnessSystem.ClientControllers.ClientControllers;
 import com.Software.FitnessSystem.InfrastructureForPages.Page;
 
 public class NavigationControllerForClient {

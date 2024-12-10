@@ -13,7 +13,7 @@ public class App {
     public static Client Client;
     
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        System.out.println("Welcome to FitX");
     }
     
 	public String login(String userName, String password, String role) {
