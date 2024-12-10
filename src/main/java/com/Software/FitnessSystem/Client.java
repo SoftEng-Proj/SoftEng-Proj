@@ -7,6 +7,9 @@ public class Client {
 	private String username;
 	private String password;
 	
+	private int logins = 0;
+    private String lastLogin = "";
+	
 	public Client(String fName, String lName, String email, String username, String password) {
 		super();
 		this.fName = fName;
@@ -15,6 +18,9 @@ public class Client {
 		this.username = username;
 		this.password = password;
 	}
+	
+	public Client() {
+    }
 	
 	public String getFirstName() {
 		return fName;
@@ -49,5 +55,30 @@ public class Client {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public int getLogins() {
+        return logins;
+    }
+    public void setLogins(int logins) {
+        this.logins = logins;
+    }
+    
+    public String getLastLogin() {
+        return lastLogin;
+    }
+    public void setLastLogin(String lastLogin) {
+        this.lastLogin = lastLogin;
+    }
+    
+	@Override
+	public String toString() {
+	    return "Client {" +
+	           "First Name='" + fName + '\'' +
+	           ", Last Name='" + lName + '\'' +
+	           ", Email='" + email + '\'' +
+	           ", Username='" + username + '\'' +
+	           ", Password='" + password + '\'' +
+	           '}';
 	}
 }

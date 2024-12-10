@@ -1,7 +1,7 @@
 package com.Software.FitnessSystem.AdminPageNavigation;
 
-import com.Software.FitnessSystem.AdminControllers.AdminPagesController;
 import com.Software.FitnessSystem.InfrastructureForPages.BasePage;
+import com.Software.FitnessSystem.LoginPage.AdminPagesController;
 
 public class ContentManagementPage extends BasePage {
     private AdminPagesController adminController;

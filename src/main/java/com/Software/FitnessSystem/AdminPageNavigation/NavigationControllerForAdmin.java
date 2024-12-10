@@ -1,8 +1,8 @@
 package com.Software.FitnessSystem.AdminPageNavigation;
 import java.util.Scanner;
 
-import com.Software.FitnessSystem.AdminControllers.AdminPagesController;
 import com.Software.FitnessSystem.InfrastructureForPages.Page;
+import com.Software.FitnessSystem.LoginPage.AdminPagesController;
 
 public class NavigationControllerForAdmin {
     private Page currentPage;
@@ -15,7 +15,7 @@ public class NavigationControllerForAdmin {
             System.out.print(">> Enter your choice: ");
             int choice = new Scanner(System.in).nextInt();
             
-            if (choice == 7) {
+            if (choice == 9) {
                 System.out.println("\nReturning to the main menu...");
                 controller.navigateToManagementPage();
                 break;

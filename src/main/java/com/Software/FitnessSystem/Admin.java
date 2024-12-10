@@ -10,6 +10,9 @@ public class Admin {
 		this.password = password;
 	}
 	
+	public Admin() {
+    }
+	
 	public String getUsername() {
 		return username;
 	}
@@ -22,5 +25,13 @@ public class Admin {
 	}
 	public void setPassword(String password) {
 		this.password = password;
-	}	
+	}
+	
+	@Override
+	public String toString() {
+	    return "Admin {" +
+	           "\nUsername: '" + username + "'" +
+	           "\nPassword: '" + password + "'" +
+	           "}\n";
+	}
 }

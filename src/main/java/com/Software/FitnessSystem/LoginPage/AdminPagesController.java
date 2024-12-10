@@ -1,4 +1,4 @@
-package com.Software.FitnessSystem.AdminControllers;
+package com.Software.FitnessSystem.LoginPage;
 import com.Software.FitnessSystem.AdminPageNavigation.ContentManagementPage;
 import com.Software.FitnessSystem.AdminPageNavigation.UserManagementPage;
 import com.Software.FitnessSystem.AdminPageNavigation.NavigationControllerForAdmin;
@@ -40,6 +40,10 @@ public class AdminPagesController {
             case 3 -> navigationController.navigateTo(monitoringPage, this);
             case 4 -> navigationController.navigateTo(subscriptionPage, this);
             case 5 -> {
+            	System.out.print("\n");
+            	new LoginPageController();
+            }
+            case 6 -> {
                 System.out.println("\n\nExiting program. Goodbye!");
                 System.exit(0);
             }
@@ -54,7 +58,8 @@ public class AdminPagesController {
         System.out.println("2. Approve or reject content submissions.");
         System.out.println("3. Monitor user activity and engagement statistics.");
         System.out.println("4. Manage subscription plans.");
-        System.out.println("5. Exit.");
+        System.out.println("5. Logout.");
+        System.out.println("6. Exit.");
         System.out.print(">> Enter your choice: ");
     }
 }

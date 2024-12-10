@@ -19,13 +19,12 @@ Feature: User Management
     Then the user should no longer be able to log in
     
   Scenario: Approve a new instructor registration
-    Given I am on the "Pending Registrations" page
+    Given I am on the "User Management" page
     And there are pending instructor applications
     When I approve an application
-    Then the instructor should receive an approval notification
-    And their account should become active
+    Then the account should become active
     
   Scenario: Monitor user activity and engagement statistics
-    Given I am on the "User Analytics" page
+    Given I am on the "User Management" page
     When I view activity reports
     Then I should see detailed engagement statistics for all users

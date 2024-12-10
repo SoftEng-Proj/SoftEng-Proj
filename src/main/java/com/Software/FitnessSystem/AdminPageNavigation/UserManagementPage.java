@@ -57,7 +57,9 @@ public class UserManagementPage extends BasePage {
         System.out.println("4. Update client account.");
         System.out.println("5. Deactivate instructor account.");
         System.out.println("6. Deactivate client account.");
-        System.out.println("7. Go Back.");
+        System.out.println("7. Approve new instructor registrations.");
+        System.out.println("8. Monitor user activity and engagement statistics.");
+        System.out.println("9. Go Back.");
     }
     
     @Override
@@ -71,22 +73,34 @@ public class UserManagementPage extends BasePage {
                 break;
             case 3:
             	booleanResolution = UserManagementControls.selectUser(username, role);
+            	UserManagementControls.editUserDetails(username, role);
                 break;
             case 4:
             	booleanResolution = UserManagementControls.selectUser(username, role);
+            	UserManagementControls.editUserDetails(username, role);
                 break;
             case 5:
-                System.out.println("Deactivating instructor account...");
+            	booleanResolution = UserManagementControls.selectUser(username, role);
+            	UserManagementControls.deactivateUser(username, role);
                 break;
             case 6:
-                System.out.println("Deactivating client account...");
+            	booleanResolution = UserManagementControls.selectUser(username, role);
+            	UserManagementControls.deactivateUser(username, role);
                 break;
             case 7:
+            	UserManagementControls.checkAndApproveInstructors();
+                break;
+            case 8:
+            	UserManagementControls.viewAndVerifyReportsActivity();
+                break;
+            case 9:
                 goBack();
                 break;
             default:
                 System.out.println("Invalid choice. Please try again.");
         }
+        
+        UserManagementControls.saveChanges();
     }
     
     public String getStringResolution() {
