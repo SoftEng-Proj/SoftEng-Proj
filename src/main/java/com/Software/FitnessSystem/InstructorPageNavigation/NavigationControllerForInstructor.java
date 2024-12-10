@@ -18,7 +18,6 @@ public class NavigationControllerForInstructor {
             
             if (choice == 7) {
                 System.out.println("\nReturning to the main menu...");
-                controller.navigateToManagementPage();
                 break;
             }
             currentPage.executeOption(choice);
