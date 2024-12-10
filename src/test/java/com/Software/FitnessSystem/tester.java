@@ -1,6 +1,5 @@
 package com.Software.FitnessSystem;
 import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 public class tester {
