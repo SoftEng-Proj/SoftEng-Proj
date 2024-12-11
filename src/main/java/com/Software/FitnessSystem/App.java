@@ -7,10 +7,10 @@ import java.util.Map;
 import com.Software.FitnessSystem.LoginPage.LoginPageController;
 
 public class App {
-	public static final String ADMIN_ACCOUNTS_FILENAME = "Files/Admins_File.json";
-	public static final String INSTRUCTOR_ACCOUNTS_FILENAME = "Files/Instructors_File.json";
-	public static final String PENDING_INSTRUCTOR_ACCOUNTS_FILENAME = "Files/PendingInstructors.json";
-	public static final String CLIENT_ACCOUNTS_FILENAME = "Files/Clients_File.json";
+	public static final String ADMIN_ACCOUNTS_FILENAME = "src/main/resources/Files/Admins_File.json";
+	public static final String INSTRUCTOR_ACCOUNTS_FILENAME = "src/main/resources/Files/Instructors_File.json";
+	public static final String PENDING_INSTRUCTOR_ACCOUNTS_FILENAME = "src/main/resources/Files/PendingInstructors.json";
+	public static final String CLIENT_ACCOUNTS_FILENAME = "src/main/resources/Files/Clients_File.json";
 	
     private static Map<String, Map<String, String>> AccountsMap = new HashMap<>();
     private static Map<String, Admin> AdminsMap = new HashMap<>();
