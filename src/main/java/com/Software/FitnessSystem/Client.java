@@ -1,6 +1,6 @@
 package com.Software.FitnessSystem;
 
-public class Client {
+public class Client implements User{
 	private String fName;
 	private String lName;
 	private String email;
@@ -22,51 +22,65 @@ public class Client {
 	public Client() {
     }
 	
+	@Override
 	public String getFirstName() {
 		return fName;
 	}
+	@Override
 	public void setFirstName(String fName) {
 		this.fName = fName;
 	}
 	
+	@Override
 	public String getLastName() {
 		return lName;
 	}
+	@Override
 	public void setLastName(String lName) {
 		this.lName = lName;
 	}
 	
+	@Override
 	public String getEmail() {
 		return email;
 	}
+	@Override
 	public void setEmail(String email) {
 		this.email = email;
 	}
 	
+	@Override
 	public String getUsername() {
 		return username;
 	}
+	@Override
 	public void setUsername(String username) {
 		this.username = username;
 	}
 	
+	@Override
 	public String getPassword() {
 		return password;
 	}
+	@Override
 	public void setPassword(String password) {
 		this.password = password;
 	}
 	
+	@Override
 	public int getLogins() {
         return logins;
     }
+	@Override
     public void setLogins(int logins) {
         this.logins = logins;
     }
     
+	@Override
     public String getLastLogin() {
         return lastLogin;
     }
+	@Override
     public void setLastLogin(String lastLogin) {
         this.lastLogin = lastLogin;
     }

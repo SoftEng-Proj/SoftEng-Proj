@@ -42,8 +42,23 @@ public class LoginPageController {
             		return false;
             	}
             }
-            //case 2 -> break;
-            //case 3 -> break;
+            case 2 ->  {
+            	if(loginData(1)) {
+                	adminPagesController.navigateToManagementPage();
+            	} else {
+            		navigateToLoginPage();
+            		return false;
+            	}
+            }
+            case 3 -> {
+	        	if(loginData(1)) {
+	            	adminPagesController.navigateToManagementPage();
+	        	} else {
+	        		navigateToLoginPage();
+	        		return false;
+	        	}
+	        }
+            
             case 4 -> {
                 System.out.println("\n\nExiting program. Goodbye!");
                 System.exit(0);

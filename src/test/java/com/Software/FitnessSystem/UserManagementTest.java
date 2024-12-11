@@ -22,6 +22,7 @@ class UserManagementTest {
     
     @Given("I am logged in as an admin")
     public void i_am_logged_in_as_an_admin() {
+    	
     	String expected = "AdminLoggedIn";
     	String actual = App.login("AdminUser", "AdminPassword", "Admin");
         assertTrue(expected.equals(actual));

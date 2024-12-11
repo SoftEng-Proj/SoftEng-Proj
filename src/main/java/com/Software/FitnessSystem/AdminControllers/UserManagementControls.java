@@ -3,6 +3,7 @@ import com.Software.FitnessSystem.App;
 import com.Software.FitnessSystem.Client;
 import com.Software.FitnessSystem.Instructor;
 import com.Software.FitnessSystem.LoadAndSaveEntities;
+import com.Software.FitnessSystem.User;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -104,6 +105,8 @@ public class UserManagementControls {
 			    }
 			    
 			    editInstructorDetails(editInstructor);
+			    printingAMessageOfSsuccess(editInstructor);
+			    LoadAndSaveEntities.saveInstructorsToFile(App.getInstructorsMap(), App.INSTRUCTOR_ACCOUNTS_FILENAME);
 			    return true;
 			} catch (Exception e) {
 			    System.err.println("An error occurred while editing the instructor: " + e.getMessage());
@@ -119,6 +122,8 @@ public class UserManagementControls {
 			    }
 			    
 			    editClientDetails(editClient);
+			    printingAMessageOfSsuccess(editClient);
+				LoadAndSaveEntities.saveClientsToFile(App.getClientsMap(), App.CLIENT_ACCOUNTS_FILENAME);
 			    return true;
 			} catch (Exception e) {
 			    System.err.println("An error occurred while editing the instructor: " + e.getMessage());
@@ -170,14 +175,6 @@ public class UserManagementControls {
 	    if (!newPassword.trim().isEmpty()) {
 	    	editInstructor.setPassword(newPassword);
 	    }
-	    
-	    System.out.println("\nUser details updated successfully!");
-	    System.out.println("First Name: " + editInstructor.getFirstName());
-	    System.out.println("Last Name: " + editInstructor.getLastName());
-	    System.out.println("Email: " + editInstructor.getEmail());
-	    System.out.println("Username: " + editInstructor.getUsername());
-	    System.out.println("Password: " + editInstructor.getPassword());
-	    LoadAndSaveEntities.saveInstructorsToFile(App.getInstructorsMap(), App.INSTRUCTOR_ACCOUNTS_FILENAME);
 	}
 	
 	@SuppressWarnings("resource")
@@ -220,14 +217,15 @@ public class UserManagementControls {
 	    if (!newPassword.trim().isEmpty()) {
 	    	editClient.setPassword(newPassword);
 	    }
-	    
-	    System.out.println("\nUser details updated successfully!");
-	    System.out.println("First Name: " + editClient.getFirstName());
-	    System.out.println("Last Name: " + editClient.getLastName());
-	    System.out.println("Email: " + editClient.getEmail());
-	    System.out.println("Username: " + editClient.getUsername());
-	    System.out.println("Password: " + editClient.getPassword());
-		LoadAndSaveEntities.saveClientsToFile(App.getClientsMap(), App.CLIENT_ACCOUNTS_FILENAME);
+	}
+	
+	private static <T extends User> void printingAMessageOfSsuccess(T editUser) {
+		System.out.println("\nUser details updated successfully!");
+	    System.out.println("First Name: " + editUser.getFirstName());
+	    System.out.println("Last Name: " + editUser.getLastName());
+	    System.out.println("Email: " + editUser.getEmail());
+	    System.out.println("Username: " + editUser.getUsername());
+	    System.out.println("Password: " + editUser.getPassword());
 	}
 	
 	public boolean verifyUserUpdate(String username, String role) {

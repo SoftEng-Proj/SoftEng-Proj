@@ -24,11 +24,14 @@ public class App {
     
     public static void main(String[] args) {
         new App();
-        
-    	System.out.println("==============================================");
-        System.out.println("     Welcome to Fitness Management System     ");
-        System.out.println("==============================================\n");
+        printWelcomeMessage();
         new LoginPageController();
+    }
+    
+    public static void printWelcomeMessage() {
+    	System.err.println("============================================================");
+        System.err.println("            Welcome to Fitness Management System            ");
+        System.err.println("============================================================\n");
     }
     
     public App() {

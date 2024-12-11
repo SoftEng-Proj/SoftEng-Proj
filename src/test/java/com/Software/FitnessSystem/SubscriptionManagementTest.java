@@ -3,7 +3,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-class subscriptionManagementTest {
+class SubscriptionManagementTest {
 	@Given("I am on the {string} page")
 	public void i_am_on_the_page(String string) {
 		System.out.println("Reviewing wellness article");
