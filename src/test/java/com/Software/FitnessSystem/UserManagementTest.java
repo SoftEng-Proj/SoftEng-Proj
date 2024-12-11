@@ -14,11 +14,6 @@ class UserManagementTest {
     AdminPagesController adminControllers;
     App app;
     
-    /**
-     * @author DELL
-     * @param no parameters
-     * 
-     */
     public UserManagementTest() {
         this.app = new App();
         this.adminControllers = new AdminPagesController();
