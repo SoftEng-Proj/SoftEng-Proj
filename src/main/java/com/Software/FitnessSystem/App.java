@@ -1,12 +1,15 @@
 package com.Software.FitnessSystem;
+import com.Software.FitnessSystem.AdminControllers.ProgramEnrollment;
+import com.Software.FitnessSystem.InstructorControllers.Program;
+import com.Software.FitnessSystem.LoginPage.LoginPageController;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.Software.FitnessSystem.LoginPage.LoginPageController;
-
 public class App {
+	public static final String USERS_SUBSCRIPTION_PLAN_FILENAME = "src/main/resources/Files/UsersSubscriptionPlan.json";
 	public static final String ADMIN_ACCOUNTS_FILENAME = "src/main/resources/Files/Admins_File.json";
 	public static final String INSTRUCTOR_ACCOUNTS_FILENAME = "src/main/resources/Files/Instructors_File.json";
 	public static final String PENDING_INSTRUCTOR_ACCOUNTS_FILENAME = "src/main/resources/Files/Pending_Instructors.json";
@@ -19,12 +22,13 @@ public class App {
 	public static final String USER_FEEDBACK_FILENAME = "src/main/resources/Files/User_Feedback.json";
 	public static final String USER_FEEDBACK_HANDLE_FILENAME = "src/main/resources/Files/User_Feedback_Handle.json";
 	
-    private static Map<String, Map<String, String>> AccountsMap = new HashMap<>();
+    private static Map<String, User> UserSubscriptionPlan = new HashMap<>();
     private static Map<String, Admin> AdminsMap = new HashMap<>();
     private static Map<String, Instructor> InstructorsMap = new HashMap<>();
     private static Map<String, Instructor> PendingInstructorsMap = new HashMap<>();
     private static Map<String, Client> ClientsMap = new HashMap<>();
-    private static Map<String, FitnessPrograms> FitnessProgramsMap = new HashMap<>();
+    private static Map<String, Program> FitnessProgramsMap = new HashMap<>();
+    private static Map<String, ProgramEnrollment> ProgramEnrollmentMap = new HashMap<>();
     private static Map<String, Content> InstructorTipsMap = new HashMap<>();
     private static Map<String, Content> PendingInstructorTipsMap = new HashMap<>();
     private static Map<String, Content> HealthTipsMap = new HashMap<>();
@@ -54,6 +58,8 @@ public class App {
     	LoadAndSaveEntities.loadContentsFromFile(PendingHealthTipsMap, PENDING_HEALTH_TIPS_FILENAME);
     	LoadAndSaveEntities.loadContentsFromFile(UserFeedbackMap, USER_FEEDBACK_FILENAME);
     	LoadAndSaveEntities.loadHandledFeedbackFromFile(HandledFeedbackMap, USER_FEEDBACK_HANDLE_FILENAME);
+    	
+    	ProgramEnrollmentMap = ProgramEnrollment.enrolmentStatistics(FitnessProgramsMap);
     }
     
     public static void printWelcomeMessage() {
@@ -73,21 +79,35 @@ public class App {
         	return "AdminLoggedIn";
         case "Instructor":
         	Instructor = InstructorsMap.get(userName);
-        	Instructor.setLastLogin(formattedDateTime);
-        	Instructor.setLogins(Instructor.getLogins() + 1);
-        	LoadAndSaveEntities.saveInstructorsToFile(InstructorsMap, INSTRUCTOR_ACCOUNTS_FILENAME);
-        	
-        	return "InstructorLoggedIn";
+        	if(UserSubscriptionPlan.get(userName).getLogins() >= Instructor.getLogins()) {
+        		return instructorLogIn(formattedDateTime);
+        	} else {
+        		return "InvalidLogIn";
+        	}
         case "Client":
         	Client = ClientsMap.get(userName);
-        	Client.setLastLogin(formattedDateTime);
-        	Client.setLogins(Client.getLogins() + 1);
-        	LoadAndSaveEntities.saveClientsToFile(ClientsMap, ADMIN_ACCOUNTS_FILENAME);
-        	
-        	return "ClientLoggedIn";
+        	if(UserSubscriptionPlan.get(userName).getLogins() >= Client.getLogins()) {
+        		return clientLogIn(formattedDateTime);
+        	} else {
+        		return "InvalidLogIn";
+        	}
         default:
         	return "NoOneLoggedIn";
         }
+	}
+	
+	public static String instructorLogIn(String formattedDateTime) {
+		Instructor.setLastLogin(formattedDateTime);
+		Instructor.setLogins(Instructor.getLogins() + 1);
+    	LoadAndSaveEntities.saveInstructorsToFile(InstructorsMap, INSTRUCTOR_ACCOUNTS_FILENAME);
+    	return "InstructorLoggedIn";
+	}
+	
+	public static String clientLogIn(String formattedDateTime) {
+		Client.setLastLogin(formattedDateTime);
+    	Client.setLogins(Client.getLogins() + 1);
+    	LoadAndSaveEntities.saveClientsToFile(ClientsMap, ADMIN_ACCOUNTS_FILENAME);
+    	return "ClientLoggedIn";
 	}
 	
 	public static boolean saveAccountChanges() {
@@ -126,11 +146,8 @@ public class App {
 		return true;
 	}
 	
-	public static void putNewAccount(String role, Map<String, String> user) {
-		AccountsMap.put(role, user);
-	}
-	public static Map<String, Map<String, String>> getAccountsMap() {
-		return AccountsMap;
+	public static Map<String, User> getUserSubscriptionPlanMap() {
+		return UserSubscriptionPlan;
 	}
 	
 	public static void putNewAdmin(String username, Admin adminAccount) {
@@ -161,11 +178,14 @@ public class App {
 		return ClientsMap;
 	}
 	
-	public static void putNewFitnessPrograms(String programName, FitnessPrograms fitnessProgram) {
+	public static void putNewFitnessPrograms(String programName, Program fitnessProgram) {
 		FitnessProgramsMap.put(programName, fitnessProgram);
 	}
-	public static Map<String, FitnessPrograms> getFitnessProgramsMap() {
+	public static Map<String, Program> getFitnessProgramsMap() {
 		return FitnessProgramsMap;
+	}
+	public static Map<String, ProgramEnrollment> getProgramEnrollmentMap() {
+		return ProgramEnrollmentMap;
 	}
 	
 	public static Map<String, Content> getInstructorTipsMap() {

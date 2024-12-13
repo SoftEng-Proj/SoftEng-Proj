@@ -1,5 +1,8 @@
 package com.Software.FitnessSystem;
 
+import com.Software.FitnessSystem.AdminControllers.SubscriptionManagementControls;
+import com.Software.FitnessSystem.AdminControllers.SubscriptionPlan;
+
 public class Client implements User{
 	private String fName;
 	private String lName;
@@ -9,6 +12,7 @@ public class Client implements User{
 	
 	private int logins = 0;
     private String lastLogin = "";
+    private SubscriptionPlan subscriptionPlan;
 	
 	public Client(String fName, String lName, String email, String username, String password) {
 		super();
@@ -84,6 +88,20 @@ public class Client implements User{
     public void setLastLogin(String lastLogin) {
         this.lastLogin = lastLogin;
     }
+	
+	@Override
+	public SubscriptionPlan getSubscriptionPlan() {
+        return subscriptionPlan;
+    }
+	@Override
+    public void setSubscriptionPlan(SubscriptionPlan subscriptionPlan) {
+        this.subscriptionPlan = subscriptionPlan;
+    }
+	
+	public void updateSubscriptionPlanForClient(Client client) {
+		SubscriptionManagementControls.giveTheUserNewSubscriptionOpportunity(subscriptionPlan, client);
+		App.saveAccountChanges();
+	}
     
 	@Override
 	public String toString() {

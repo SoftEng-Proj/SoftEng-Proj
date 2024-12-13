@@ -1,17 +1,34 @@
 package com.Software.FitnessSystem;
+import com.Software.FitnessSystem.AdminControllers.SubscriptionManagementControls;
+import com.Software.FitnessSystem.LoginPage.AdminPagesController;
+
+import static org.junit.Assert.assertTrue;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 class SubscriptionManagementTest {
+	SubscriptionManagementControls subscriptionManagement;
+    AdminPagesController adminControllers;
+    App app;
+    
+    public SubscriptionManagementTest() {
+        this.app = new App();
+        this.adminControllers = new AdminPagesController();
+        this.subscriptionManagement = new SubscriptionManagementControls();
+    }
+    
 	@Given("I am on the {string} page")
 	public void i_am_on_the_page(String string) {
-		System.out.println("Reviewing wellness article");
+		boolean expected = true;
+        boolean actual = adminControllers.navigateToPage(4);
+        assertTrue(expected == actual);
 	}
 	
 	@When("I edit a subscription plan")
 	public void i_edit_a_subscription_plan() {
-		System.out.println("Reviewing wellness article");
+		
 	}
 	
 	@Then("the changes should be saved successfully")

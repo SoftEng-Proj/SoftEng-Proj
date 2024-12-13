@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 
+import com.Software.FitnessSystem.InstructorControllers.Program;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -97,7 +98,7 @@ public class LoadAndSaveEntities {
         }
     }
     
-    public static void saveFitnessProgramsToFile(Map<String, FitnessPrograms> fitnessProgramsMap, String fitnessProgramsFile) {
+    public static void saveFitnessProgramsToFile(Map<String, Program> fitnessProgramsMap, String fitnessProgramsFile) {
         File file = new File(fitnessProgramsFile);
         if (!file.exists()) {
             System.err.println("The file does not exist. A new file will be created.");
@@ -111,7 +112,7 @@ public class LoadAndSaveEntities {
         }
     }
     
-    public static void loadFitnessProgramsFromFile(Map<String, FitnessPrograms> fitnessProgramsMap, String fitnessProgramsFile) {
+    public static void loadFitnessProgramsFromFile(Map<String, Program> fitnessProgramsMap, String fitnessProgramsFile) {
         File file = new File(fitnessProgramsFile);
         if (!file.exists()) {
             System.err.println("File does not exist. Cannot load data.");
@@ -120,7 +121,7 @@ public class LoadAndSaveEntities {
         
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            Map<String, FitnessPrograms> loadedFitnessPrograms = objectMapper.readValue(file, new TypeReference<Map<String, FitnessPrograms>>() {});
+            Map<String, Program> loadedFitnessPrograms = objectMapper.readValue(file, new TypeReference<Map<String, Program>>() {});
             fitnessProgramsMap.putAll(loadedFitnessPrograms);
         } catch (IOException e) {
             System.err.println("Error loading Fitness Programs data: " + e.getMessage());

@@ -35,7 +35,7 @@ public class ProgramMonitoringPage extends BasePage {
             	ProgramMonitoringControls.chooseReportGenerationOption();
                 break;
             case 4:
-            	ProgramMonitoringControls.trackActiveAndCompletedPrograms(App.getFitnessProgramsMap());
+            	ProgramMonitoringControls.trackActiveAndCompletedPrograms(App.getProgramEnrollmentMap());
                 break;
             case 5:
             	System.out.println("\nReturning to the main menu...");

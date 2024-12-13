@@ -1,6 +1,5 @@
 package com.Software.FitnessSystem.AdminControllers;
 import com.Software.FitnessSystem.App;
-import com.Software.FitnessSystem.FitnessPrograms;
 
 import java.util.AbstractMap;
 import java.util.Map;
@@ -14,7 +13,7 @@ public class ProgramMonitoringControls {
 	
 	public static boolean viewAllPrograms() {
 		areProgramsDisplayed = true;
-		Map<String, FitnessPrograms> programs = App.getFitnessProgramsMap();
+		Map<String, ProgramEnrollment> programs = App.getProgramEnrollmentMap();
         
         if (programs.isEmpty()) {
             System.out.println("No programs available to display.");
@@ -34,7 +33,7 @@ public class ProgramMonitoringControls {
 	
 	public static boolean viewTheEnrollmentStatistics() {
 		hasItBeenDisplayed = true;
-        Map<String, FitnessPrograms> programs = App.getFitnessProgramsMap();
+        Map<String, ProgramEnrollment> programs = App.getProgramEnrollmentMap();
         
         if (programs.isEmpty()) {
             System.out.println("No programs available to display.");
@@ -52,7 +51,7 @@ public class ProgramMonitoringControls {
 		return hasItBeenDisplayed;
 	}
 	
-	private static void printPrograms(Map<String, FitnessPrograms> programs, boolean isLimited) {
+	private static void printPrograms(Map<String, ProgramEnrollment> programs, boolean isLimited) {
 		int counter = isLimited ? 6 : programs.size();
 		
 		programs.entrySet().stream()
@@ -71,7 +70,7 @@ public class ProgramMonitoringControls {
             ));
 	}
 	
-	public static void accessToPrintPrograms(Map<String, FitnessPrograms> programs, boolean isLimited) {
+	public static void accessToPrintPrograms(Map<String, ProgramEnrollment> programs, boolean isLimited) {
 		printPrograms(programs, isLimited);
 	}
 	
@@ -102,13 +101,13 @@ public class ProgramMonitoringControls {
         switch(choice) {
         case 1:
         	System.out.println("Generating report for all programs...");
-        	return generateReportsOption(App.getFitnessProgramsMap(), "Null", false);
+        	return generateReportsOption(App.getProgramEnrollmentMap(), "Null", false);
         case 2:
         	System.out.print("\n");
-        	printPrograms(App.getFitnessProgramsMap(), false);
+        	printPrograms(App.getProgramEnrollmentMap(), false);
         	String programName = askTheNameOfTheProgram();
         	System.out.println("\nReport generation in progress for the program: \"" + programName + "\".");
-        	return generateReportsOption(App.getFitnessProgramsMap(), programName, true);
+        	return generateReportsOption(App.getProgramEnrollmentMap(), programName, true);
         }
 		return false;
 	}
@@ -128,21 +127,21 @@ public class ProgramMonitoringControls {
         return programName;
     }
 	
-	public static boolean generateReportsOption(Map<String, FitnessPrograms> programs, String specifiedProgramName, boolean isSpecified) {
+	public static boolean generateReportsOption(Map<String, ProgramEnrollment> programs, String specifiedProgramName, boolean isSpecified) {
         isReportsPrinted = false;
         
         if(!isSpecified) {
             System.out.println("--- Reports on Revenue, Attendance, and Client Progress ---");
-            for (Map.Entry<String, FitnessPrograms> entry : programs.entrySet()) {
+            for (Map.Entry<String, ProgramEnrollment> entry : programs.entrySet()) {
             	printTheReport(entry);
                 isReportsPrinted = true;
             }
         } else if(isSpecified) {
             System.out.println("--- Report on Revenue, Attendance, and Client Progress ---");
-        	FitnessPrograms specifiedProgram = programs.get(specifiedProgramName);
+        	ProgramEnrollment specifiedProgram = programs.get(specifiedProgramName);
         	
             if (specifiedProgram != null) {
-                Map.Entry<String, FitnessPrograms> entry = new AbstractMap.SimpleEntry<>(specifiedProgramName, specifiedProgram);
+                Map.Entry<String, ProgramEnrollment> entry = new AbstractMap.SimpleEntry<>(specifiedProgramName, specifiedProgram);
                 printTheReport(entry);
                 isReportsPrinted = true;
             }
@@ -151,9 +150,9 @@ public class ProgramMonitoringControls {
         return isReportsPrinted;
     }
 	
-	private static void printTheReport(Map.Entry<String, FitnessPrograms> entry) {
+	private static void printTheReport(Map.Entry<String, ProgramEnrollment> entry) {
         String programName = entry.getKey();
-        FitnessPrograms program = entry.getValue();
+        ProgramEnrollment program = entry.getValue();
         
         double revenue = program.getEnrollments() * 20.0;
         int attendance = program.getEnrollments();
@@ -167,7 +166,7 @@ public class ProgramMonitoringControls {
 		return isReportsPrinted;
 	}
 	
-	public static boolean trackActiveAndCompletedPrograms(Map<String, FitnessPrograms> programs) {
+	public static boolean trackActiveAndCompletedPrograms(Map<String, ProgramEnrollment> programs) {
 		isProgramStatusPrinted = false;
         System.out.println("\n--- Active Programs ---");
         trackActivePrograms(programs);
@@ -177,7 +176,7 @@ public class ProgramMonitoringControls {
         return isProgramStatusPrinted;
     }
 	
-	private static void trackActivePrograms(Map<String, FitnessPrograms> programs) {
+	private static void trackActivePrograms(Map<String, ProgramEnrollment> programs) {
 		programs.entrySet().stream()
         .filter(entry -> entry.getValue().getStatus().equalsIgnoreCase("Active"))
         .forEach(entry ->
@@ -187,7 +186,7 @@ public class ProgramMonitoringControls {
         		));
 	}
 	
-	private static void trackCompletedPrograms(Map<String, FitnessPrograms> programs) {
+	private static void trackCompletedPrograms(Map<String, ProgramEnrollment> programs) {
 		programs.entrySet().stream()
         .filter(entry -> entry.getValue().getStatus().equalsIgnoreCase("Completed"))
         .forEach(entry -> 

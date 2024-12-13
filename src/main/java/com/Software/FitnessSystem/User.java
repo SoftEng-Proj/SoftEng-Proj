@@ -1,4 +1,5 @@
 package com.Software.FitnessSystem;
+import com.Software.FitnessSystem.AdminControllers.SubscriptionPlan;
 
 public interface User {
     String getFirstName();
@@ -21,4 +22,7 @@ public interface User {
     
     String getLastLogin();
     void setLastLogin(String lastLogin);
+    
+    SubscriptionPlan getSubscriptionPlan();
+    void setSubscriptionPlan(SubscriptionPlan subscriptionPlan);
 }

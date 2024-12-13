@@ -57,7 +57,7 @@ class ProgramMonitoringTest {
 	@When("I generate a reports")
 	public void i_generate_a_reports() {
 		boolean expected = true;
-        boolean actual = ProgramMonitoringControls.generateReportsOption(App.getFitnessProgramsMap(), "", false);
+        boolean actual = ProgramMonitoringControls.generateReportsOption(App.getProgramEnrollmentMap(), "", false);
         assertTrue(expected == actual);
 	}
 	
@@ -71,9 +71,9 @@ class ProgramMonitoringTest {
 	@When("I generate a report for a specific program")
 	public void i_generate_a_report_for_a_specific_program() {
 		boolean expected = true;
-		ProgramMonitoringControls.accessToPrintPrograms(App.getFitnessProgramsMap(), false);
+		ProgramMonitoringControls.accessToPrintPrograms(App.getProgramEnrollmentMap(), false);
 		String programName = ProgramMonitoringControls.askTheNameOfTheProgram();
-        boolean actual = ProgramMonitoringControls.generateReportsOption(App.getFitnessProgramsMap(), programName, true);
+        boolean actual = ProgramMonitoringControls.generateReportsOption(App.getProgramEnrollmentMap(), programName, true);
         assertTrue(expected == actual);
 	}
 	
@@ -87,7 +87,7 @@ class ProgramMonitoringTest {
 	@When("I view the program status")
 	public void i_view_the_program_status() {
 		boolean expected = true;
-        boolean actual = ProgramMonitoringControls.trackActiveAndCompletedPrograms(App.getFitnessProgramsMap());
+        boolean actual = ProgramMonitoringControls.trackActiveAndCompletedPrograms(App.getProgramEnrollmentMap());
         assertTrue(expected == actual);
 	}
 	

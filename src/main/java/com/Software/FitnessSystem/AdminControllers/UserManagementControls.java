@@ -26,36 +26,37 @@ public class UserManagementControls {
     private static Client returnedClient;
     private static boolean thereAreActivations = false;
     
+    private static LocalDateTime currentDateTime = LocalDateTime.now();
+    private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    private static String formattedDateTime = currentDateTime.format(formatter);
+    
 	public static String fillUserDetails(String fName, String lName, String email, String userName, String password, String role) {
-		Map<String, String> newAccount = new HashMap<>();
-		LocalDateTime currentDateTime = LocalDateTime.now();
-    	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-        String formattedDateTime = currentDateTime.format(formatter);
-        
 		switch(role) {
 		case "Instructor":
-			newInstructor = new Instructor(fName, lName, email, userName, password);
-	        newInstructor.setLastLogin(formattedDateTime);
-	        newInstructor.setLogins(1);
-	        
-			App.putNewInstructor(userName, newInstructor);
-			
-			newAccount.put(userName, password);
-			App.putNewAccount(role, newAccount);
+			instructorNewAccount(fName, lName, email, userName, password);
 			return role + "_Added";
 		case "Client":
-			newClient = new Client(fName, lName, email, userName, password);
-			newClient.setLastLogin(formattedDateTime);
-			newClient.setLogins(1);
-	        
-			App.putNewClient(userName, newClient);
-			
-			newAccount.put(userName, password);
-			App.putNewAccount(role, newAccount);
+			clientNewAccount(fName, lName, email, userName, password);
 			return role + "_Added";
 		default:
 			return "Fail";
 		}
+	}
+	
+	private static void instructorNewAccount(String fName, String lName, String email, String userName, String password) {
+		newInstructor = new Instructor(fName, lName, email, userName, password);
+        newInstructor.setLastLogin(formattedDateTime);
+        newInstructor.setLogins(1);
+        newInstructor.setSubscriptionPlan(new SubscriptionPlan(SubscriptionPlan.PlanType.BASIC));
+		App.putNewInstructor(userName, newInstructor);
+	}
+	
+	private static void clientNewAccount(String fName, String lName, String email, String userName, String password) {
+		newClient = new Client(fName, lName, email, userName, password);
+		newClient.setLastLogin(formattedDateTime);
+		newClient.setLogins(1);
+		newClient.setSubscriptionPlan(new SubscriptionPlan(SubscriptionPlan.PlanType.BASIC));
+		App.putNewClient(userName, newClient);
 	}
 	
 	public static boolean verifyUserCreation(String userName, String role) {
