@@ -1,5 +1,4 @@
 package com.Software.FitnessSystem.AdminControllers;
-
 import com.Software.FitnessSystem.User;
 
 public class SubscriptionManagementControls {

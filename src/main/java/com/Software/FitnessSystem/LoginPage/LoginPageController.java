@@ -5,6 +5,8 @@ import com.Software.FitnessSystem.App;
 
 public class LoginPageController {
     public AdminPagesController adminPagesController = new AdminPagesController();
+    public InstructorPageControllers instructorPagesController = new InstructorPageControllers();
+    public ClientPageControllers clientPagesController = new ClientPageControllers();
     
     @SuppressWarnings("unused")
 	private int mainListNumber = 0;
@@ -44,7 +46,7 @@ public class LoginPageController {
             }
             case 2 ->  {
             	if(loginData(1)) {
-                	adminPagesController.navigateToManagementPage();
+            		//instructorPagesController.navigateToManagementPage();
             	} else {
             		navigateToLoginPage();
             		return false;
@@ -52,7 +54,7 @@ public class LoginPageController {
             }
             case 3 -> {
 	        	if(loginData(1)) {
-	            	adminPagesController.navigateToManagementPage();
+	        		clientPagesController.navigateToManagementPage();
 	        	} else {
 	        		navigateToLoginPage();
 	        		return false;

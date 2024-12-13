@@ -33,17 +33,17 @@ class SubscriptionManagementTest {
 	
 	@Then("the changes should be saved successfully")
 	public void the_changes_should_be_saved_successfully() {
-		System.out.println("Reviewing wellness article");
+		
 	}
 	
 	@When("I add or update a plan \\(e.g., Basic or Premium)")
 	public void i_add_or_update_a_plan_e_g_basic_or_premium() {
-		System.out.println("Reviewing wellness article");
+		
 	}
 	
 	@Then("the plan should be available for clients and instructors.")
 	public void the_plan_should_be_available_for_clients_and_instructors() {
-		System.out.println("Reviewing wellness article");
+		
 	}
 	
 	@When("I view subscription details")
