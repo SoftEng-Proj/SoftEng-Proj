@@ -8,6 +8,9 @@ import com.Software.FitnessSystem.Client;
 public class AccountManagementPage extends BasePage {
 	private ClientPageControllers clientController;
     private AccountManagementControls accountManagementControls;
+    private static boolean onDietaryRestrictionsPage = false;
+    private static boolean onCreateProfilePage = false;
+    private static boolean onUpdatePersonalDetailsPage = false;
 
     public AccountManagementPage(ClientPageControllers clientController) {
         this.clientController = clientController;
@@ -32,27 +35,36 @@ public class AccountManagementPage extends BasePage {
 
         switch (choice) {
             case 1:
+            	onCreateProfilePage = true;
                 System.out.print("Enter Age: ");
                 String age = scanner.nextLine();
                 System.out.print("Enter Fitness Goals: ");
                 String fitnessGoals = scanner.nextLine();
-                accountManagementControls.createProfile(client, age, fitnessGoals);
+                AccountManagementControls.createProfile(client, age, fitnessGoals);
+                App.saveClientProfileChanges();
+                onCreateProfilePage = false;
                 break;
 
             case 2:
+            	onUpdatePersonalDetailsPage = true;
                 System.out.print("Enter New Age: ");
                 String newAge = scanner.nextLine();
                 System.out.print("Enter New Fitness Goals: ");
                 String newFitnessGoals = scanner.nextLine();
-                accountManagementControls.updatePersonalDetails(client, newAge, newFitnessGoals);
+                AccountManagementControls.updatePersonalDetails(client, newAge, newFitnessGoals);
+                App.saveClientProfileChanges();
+                onUpdatePersonalDetailsPage = false;
                 break;
 
             case 3:
+            	onDietaryRestrictionsPage = true;
                 System.out.print("Enter Dietary Preference: ");
                 String dietaryPreference = scanner.nextLine();
                 System.out.print("Enter Dietary Restrictions (comma-separated): ");
                 String restrictions = scanner.nextLine();
-                accountManagementControls.setDietaryPreferences(client, dietaryPreference, restrictions);
+                AccountManagementControls.setDietaryPreferences(client, dietaryPreference, restrictions);
+                App.saveClientProfileChanges();
+                onDietaryRestrictionsPage = false;
                 break;
 
             case 4:
@@ -67,5 +79,14 @@ public class AccountManagementPage extends BasePage {
             default:
                 System.out.println("Invalid choice. Please try again.");
         }
+    }
+    public static boolean isOnDietaryRestrictionsPage() {
+        return onDietaryRestrictionsPage;
+    }
+    public static boolean isOnCreateProfilePage() {
+        return onCreateProfilePage;
+    }
+    public static boolean isOnUpdatePersonalDetailsPage() {
+        return onUpdatePersonalDetailsPage;
     }
 }

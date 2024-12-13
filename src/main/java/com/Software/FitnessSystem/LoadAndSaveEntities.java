@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 
+import com.Software.FitnessSystem.ClientControllers.Profile;
 import com.Software.FitnessSystem.InstructorControllers.Program;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -187,4 +188,37 @@ public class LoadAndSaveEntities {
             System.err.println("Error loading handled feedback data: " + e.getMessage());
         }
     }
+
+	public static void saveClientProfileToFile(Map<String, Profile> clientProfileMap,
+			String fitnessProgramsFilename) {
+		File file = new File(fitnessProgramsFilename);
+        if (!file.exists()) {
+            System.err.println("The file does not exist. A new file will be created.");
+        }
+        
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.writeValue(file, fitnessProgramsFilename);
+        } catch (IOException e) {
+            System.err.println("Error saving handled feedback Tips data: " + e.getMessage());
+        }
+		
+	}
+
+	public static void loadClientProfilesFromFile(Map<String, String> clientProfileMap,
+			String fitnessProgramsFilename) {
+		File file = new File(fitnessProgramsFilename);
+        if (!file.exists()) {
+            System.err.println("File does not exist. Cannot load data.");
+            return;
+        }
+        
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            Map<String, String> loadedInstructorTips = objectMapper.readValue(file, new TypeReference<Map<String, String>>() {});
+            clientProfileMap.putAll(loadedInstructorTips);
+        } catch (IOException e) {
+            System.err.println("Error loading handled feedback data: " + e.getMessage());
+        }
+	}
 }

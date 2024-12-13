@@ -1,5 +1,6 @@
 package com.Software.FitnessSystem;
 import com.Software.FitnessSystem.AdminControllers.ProgramEnrollment;
+import com.Software.FitnessSystem.ClientControllers.Profile;
 import com.Software.FitnessSystem.InstructorControllers.Program;
 import com.Software.FitnessSystem.LoginPage.LoginPageController;
 
@@ -21,6 +22,7 @@ public class App {
 	public static final String PENDING_HEALTH_TIPS_FILENAME = "src/main/resources/Files/Pending_Health_Tips.json";
 	public static final String USER_FEEDBACK_FILENAME = "src/main/resources/Files/User_Feedback.json";
 	public static final String USER_FEEDBACK_HANDLE_FILENAME = "src/main/resources/Files/User_Feedback_Handle.json";
+	public static final String Client_Profiles_FILENAME = "src/main/resources/Files/Client_Profiles.json";
 	
     private static Map<String, User> UserSubscriptionPlan = new HashMap<>();
     private static Map<String, Admin> AdminsMap = new HashMap<>();
@@ -35,6 +37,7 @@ public class App {
     private static Map<String, Content> PendingHealthTipsMap = new HashMap<>();
     private static Map<String, Content> UserFeedbackMap = new HashMap<>();
     private static Map<String, String> HandledFeedbackMap = new HashMap<>();
+    private static Map<String, Profile> ClientProfileMap = new HashMap<>();
     
     private static Admin Admin;
     private static Instructor Instructor;
@@ -58,6 +61,7 @@ public class App {
     	LoadAndSaveEntities.loadContentsFromFile(PendingHealthTipsMap, PENDING_HEALTH_TIPS_FILENAME);
     	LoadAndSaveEntities.loadContentsFromFile(UserFeedbackMap, USER_FEEDBACK_FILENAME);
     	LoadAndSaveEntities.loadHandledFeedbackFromFile(HandledFeedbackMap, USER_FEEDBACK_HANDLE_FILENAME);
+    	LoadAndSaveEntities.loadClientProfilesFromFile(HandledFeedbackMap, USER_FEEDBACK_HANDLE_FILENAME);
     	
     	ProgramEnrollmentMap = ProgramEnrollment.enrolmentStatistics(FitnessProgramsMap);
     }
@@ -145,6 +149,9 @@ public class App {
 		
 		return true;
 	}
+    public static void saveClientProfileChanges() {
+    	LoadAndSaveEntities.saveClientProfileToFile(ClientProfileMap, Client_Profiles_FILENAME);
+	}
 	
 	public static Map<String, User> getUserSubscriptionPlanMap() {
 		return UserSubscriptionPlan;
@@ -220,4 +227,13 @@ public class App {
 	public static Client getClientAccount() {
 		return Client;
 	}
+
+	public static Map<String, Profile> getClientProfileMap() {
+		return ClientProfileMap;
+	}
+
+	public static void setClientProfileMap(Map<String, Profile> clientProfileMap) {
+		ClientProfileMap = clientProfileMap;
+	}
+
 }
