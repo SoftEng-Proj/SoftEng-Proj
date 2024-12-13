@@ -67,36 +67,6 @@ public class LoadAndSaveEntities {
         }
     }
     
-    public static void savePendingInstructorsToFile(Map<String, Instructor> pendingInstructorsMap, String pendingInstructorsAccountsFile) {
-        File file = new File(pendingInstructorsAccountsFile);
-        if (!file.exists()) {
-            System.err.println("The file does not exist. A new file will be created.");
-        }
-        
-        try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            objectMapper.writeValue(file, pendingInstructorsMap);
-        } catch (IOException e) {
-            System.err.println("Error saving Instructors data: " + e.getMessage());
-        }
-    }
-    
-    public static void loadPendingInstructorsFromFile(Map<String, Instructor> pendingInstructorsMap, String pendingInstructorsAccountsFile) {
-        File file = new File(pendingInstructorsAccountsFile);
-        if (!file.exists()) {
-            System.err.println("File does not exist. Cannot load data.");
-            return;
-        }
-        
-        try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            Map<String, Instructor> loadedInstructors = objectMapper.readValue(file, new TypeReference<Map<String, Instructor>>() {});
-            pendingInstructorsMap.putAll(loadedInstructors);
-        } catch (IOException e) {
-            System.err.println("Error loading Instructors data: " + e.getMessage());
-        }
-    }
-    
     public static void saveClientsToFile(Map<String, Client> clientsMap, String clientsAccountsFile) {
         File file = new File(clientsAccountsFile);
         if (!file.exists()) {
@@ -124,6 +94,96 @@ public class LoadAndSaveEntities {
             clientsMap.putAll(loadedClients);
         } catch (IOException e) {
             System.err.println("Error loading Clients data: " + e.getMessage());
+        }
+    }
+    
+    public static void saveFitnessProgramsToFile(Map<String, FitnessPrograms> fitnessProgramsMap, String fitnessProgramsFile) {
+        File file = new File(fitnessProgramsFile);
+        if (!file.exists()) {
+            System.err.println("The file does not exist. A new file will be created.");
+        }
+        
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.writeValue(file, fitnessProgramsMap);
+        } catch (IOException e) {
+            System.err.println("Error saving Fitness Programs data: " + e.getMessage());
+        }
+    }
+    
+    public static void loadFitnessProgramsFromFile(Map<String, FitnessPrograms> fitnessProgramsMap, String fitnessProgramsFile) {
+        File file = new File(fitnessProgramsFile);
+        if (!file.exists()) {
+            System.err.println("File does not exist. Cannot load data.");
+            return;
+        }
+        
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            Map<String, FitnessPrograms> loadedFitnessPrograms = objectMapper.readValue(file, new TypeReference<Map<String, FitnessPrograms>>() {});
+            fitnessProgramsMap.putAll(loadedFitnessPrograms);
+        } catch (IOException e) {
+            System.err.println("Error loading Fitness Programs data: " + e.getMessage());
+        }
+    }
+    
+    public static void saveContentsToFile(Map<String, Content> instructorTipsMap, String InstructorTipsFile) {
+        File file = new File(InstructorTipsFile);
+        if (!file.exists()) {
+            System.err.println("The file does not exist. A new file will be created.");
+        }
+        
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.writeValue(file, instructorTipsMap);
+        } catch (IOException e) {
+            System.err.println("Error saving Tips data: " + e.getMessage());
+        }
+    }
+    
+    public static void loadContentsFromFile(Map<String, Content> instructorTipsMap, String InstructorTipsFile) {
+        File file = new File(InstructorTipsFile);
+        if (!file.exists()) {
+            System.err.println("File does not exist. Cannot load data.");
+            return;
+        }
+        
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            Map<String, Content> loadedInstructorTips = objectMapper.readValue(file, new TypeReference<Map<String, Content>>() {});
+            instructorTipsMap.putAll(loadedInstructorTips);
+        } catch (IOException e) {
+            System.err.println("Error loading Tips data: " + e.getMessage());
+        }
+    }
+    
+    public static void saveHandledFeedbackToFile(Map<String, String> handledFeedbackMap, String HandledFeedbackFile) {
+        File file = new File(HandledFeedbackFile);
+        if (!file.exists()) {
+            System.err.println("The file does not exist. A new file will be created.");
+        }
+        
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.writeValue(file, handledFeedbackMap);
+        } catch (IOException e) {
+            System.err.println("Error saving handled feedback Tips data: " + e.getMessage());
+        }
+    }
+    
+    public static void loadHandledFeedbackFromFile(Map<String, String> handledFeedbackMap, String HandledFeedbackFile) {
+        File file = new File(HandledFeedbackFile);
+        if (!file.exists()) {
+            System.err.println("File does not exist. Cannot load data.");
+            return;
+        }
+        
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            Map<String, String> loadedInstructorTips = objectMapper.readValue(file, new TypeReference<Map<String, String>>() {});
+            handledFeedbackMap.putAll(loadedInstructorTips);
+        } catch (IOException e) {
+            System.err.println("Error loading handled feedback data: " + e.getMessage());
         }
     }
 }

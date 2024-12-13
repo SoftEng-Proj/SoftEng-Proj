@@ -123,7 +123,7 @@ public class UserManagementPage extends BasePage {
                 System.out.println("Invalid choice. Please try again.");
         }
         
-        UserManagementControls.saveChanges();
+        App.saveAccountChanges();
     }
     
     @SuppressWarnings("resource")

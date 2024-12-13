@@ -60,7 +60,7 @@ public class LoginPageController {
 	        }
             
             case 4 -> {
-                System.out.println("\n\nExiting program. Goodbye!");
+                System.err.println("\n\nExiting program. Goodbye!");
                 System.exit(0);
             }
             default -> {

@@ -1,5 +1,7 @@
 package com.Software.FitnessSystem.AdminPageNavigation;
 
+import com.Software.FitnessSystem.App;
+import com.Software.FitnessSystem.AdminControllers.ProgramMonitoringControls;
 import com.Software.FitnessSystem.InfrastructureForPages.BasePage;
 import com.Software.FitnessSystem.LoginPage.AdminPagesController;
 
@@ -10,24 +12,32 @@ public class ProgramMonitoringPage extends BasePage {
 		this.adminController = adminController;
 	}
 	
-    @Override
-    public void display() {
-        System.out.println("\nProgram Monitoring Menu:");
-        System.out.println("1. View user activity statistics.");
-        System.out.println("2. View engagement statistics.");
-        System.out.println("3. Go Back.");
-    }
+	@Override
+	public void display() {
+	    System.out.println("\nProgram Monitoring Menu:");
+	    System.out.println("1. View all programs.");
+	    System.out.println("2. View statistics on the most popular programs by enrollment.");
+	    System.out.println("3. Generate reports on revenue, attendance, and client progress.");
+	    System.out.println("4. Track active and completed programs.");
+	    System.out.println("5. Go Back.");
+	}
     
     @Override
     public void executeOption(int choice) {
         switch (choice) {
             case 1:
-                System.out.println("Displaying user activity statistics...");
+            	ProgramMonitoringControls.viewAllPrograms();
                 break;
             case 2:
-                System.out.println("Displaying engagement statistics...");
+            	ProgramMonitoringControls.viewTheEnrollmentStatistics();
                 break;
             case 3:
+            	ProgramMonitoringControls.chooseReportGenerationOption();
+                break;
+            case 4:
+            	ProgramMonitoringControls.trackActiveAndCompletedPrograms(App.getFitnessProgramsMap());
+                break;
+            case 5:
             	System.out.println("\nReturning to the main menu...");
             	adminController.navigateToManagementPage();
                 break;

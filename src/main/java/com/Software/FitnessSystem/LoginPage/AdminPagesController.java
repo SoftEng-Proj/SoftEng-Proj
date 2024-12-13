@@ -36,15 +36,15 @@ public class AdminPagesController {
     public boolean navigateToPage(int page) {
         switch (page) {
             case 1 -> navigationController.navigateTo(managementPage, this);
-            case 2 -> navigationController.navigateTo(contentPage, this);
-            case 3 -> navigationController.navigateTo(monitoringPage, this);
+            case 2 -> navigationController.navigateTo(monitoringPage, this);
+            case 3 -> navigationController.navigateTo(contentPage, this);
             case 4 -> navigationController.navigateTo(subscriptionPage, this);
             case 5 -> {
             	System.out.print("\n");
             	new LoginPageController();
             }
             case 6 -> {
-                System.out.println("\n\nExiting program. Goodbye!");
+                System.err.println("\n\nExiting program. Goodbye!");
                 System.exit(0);
             }
             default -> System.out.println("Invalid selection. Please try again.");
@@ -55,8 +55,8 @@ public class AdminPagesController {
     private void displayMainMenu() {
         System.out.println("Select an option from the list below:");
         System.out.println("1. Manage accounts for instructors and clients.");
-        System.out.println("2. Approve or reject content submissions.");
-        System.out.println("3. Monitor user activity and engagement statistics.");
+        System.out.println("2. Monitor user activity and engagement statistics.");
+        System.out.println("3. Approve or reject content submissions.");
         System.out.println("4. Manage subscription plans.");
         System.out.println("5. Logout.");
         System.out.println("6. Exit.");

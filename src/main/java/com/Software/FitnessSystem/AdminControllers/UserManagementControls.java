@@ -405,13 +405,4 @@ public class UserManagementControls {
 	public static boolean verifyActivityReports() {
 	    return thereAreActivations;
 	}
-	
-	public static boolean saveChanges() {
-		LoadAndSaveEntities.saveAdminsToFile(App.getAdminsMap(), App.ADMIN_ACCOUNTS_FILENAME);
-		LoadAndSaveEntities.saveInstructorsToFile(App.getInstructorsMap(), App.INSTRUCTOR_ACCOUNTS_FILENAME);
-		LoadAndSaveEntities.savePendingInstructorsToFile(App.getPendingInstructorsMap(), App.PENDING_INSTRUCTOR_ACCOUNTS_FILENAME);
-		LoadAndSaveEntities.saveClientsToFile(App.getClientsMap(), App.CLIENT_ACCOUNTS_FILENAME);
-		
-		return true;
-	}
 }
