@@ -1,5 +1,4 @@
 package com.Software.FitnessSystem.AdminPageNavigation;
-
 import com.Software.FitnessSystem.App;
 import com.Software.FitnessSystem.AdminControllers.ContentManagementControls;
 import com.Software.FitnessSystem.InfrastructureForPages.BasePage;

@@ -1,16 +1,16 @@
 package com.Software.FitnessSystem.InstructorPageNavigation;
 
 import com.Software.FitnessSystem.InfrastructureForPages.BasePage;
-import com.Software.FitnessSystem.InstructorControllers.InstructorControllers;
 import com.Software.FitnessSystem.InstructorControllers.ProgramManagementControls;
+import com.Software.FitnessSystem.LoginPage.InstructorPageControllers;
 
 public class ProgramManagementPage extends BasePage {
 	
-	private InstructorControllers instructorController;
+	private InstructorPageControllers instructorController;
 	private ProgramManagementControls programManagementControls ;
 	
 	
-	public ProgramManagementPage (InstructorControllers instructorController) {
+	public ProgramManagementPage (InstructorPageControllers instructorController) {
 		this.instructorController=instructorController;
 		this.programManagementControls=new ProgramManagementControls();
 		

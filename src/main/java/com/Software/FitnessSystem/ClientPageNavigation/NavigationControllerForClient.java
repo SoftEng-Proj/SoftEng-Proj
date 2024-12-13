@@ -1,15 +1,15 @@
-package com.Software.FitnessSystem.InstructorPageNavigation;
+package com.Software.FitnessSystem.ClientPageNavigation;
 
 import java.util.Scanner;
 
 import com.Software.FitnessSystem.InfrastructureForPages.Page;
-import com.Software.FitnessSystem.LoginPage.InstructorPageControllers;
+import com.Software.FitnessSystem.LoginPage.ClientPageControllers;
 
-public class NavigationControllerForInstructor {
+public class NavigationControllerForClient {
     private Page currentPage;
     
     @SuppressWarnings("resource")
-	public void navigateTo(Page page, InstructorPageControllers controller) {
+	public void navigateTo(Page page, ClientPageControllers controller) {
         this.currentPage = page;
         while (true) {
             currentPage.display();
@@ -18,6 +18,7 @@ public class NavigationControllerForInstructor {
             
             if (choice == 7) {
                 System.out.println("\nReturning to the main menu...");
+               // controller.navigateToManagementPage();
                 break;
             }
             currentPage.executeOption(choice);
