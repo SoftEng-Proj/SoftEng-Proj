@@ -7,6 +7,9 @@ import com.Software.FitnessSystem.InfrastructureForPages.BasePage;
 public class ProgressTrackingPage extends BasePage {
 	private ClientControllers clientController;
 	private ProgressTrackingControls progressTrackingControls;
+	private String type;
+	private String value;
+	private String date;
 	
 	public ProgressTrackingPage(ClientControllers clientController) {
 		this.clientController = clientController;
@@ -25,12 +28,7 @@ public class ProgressTrackingPage extends BasePage {
     public void executeOption(int choice) {
         switch (choice) {
             case 1:
-            	System.out.print("Enter milestone type (e.g., Weight, BMI, Attendance): ");
-                String type = scanner.nextLine();
-                System.out.print("Enter milestone value: ");
-                String value = scanner.nextLine();
-                System.out.print("Enter milestone date (Year-Month-Day): ");
-                String date = scanner.nextLine();
+            	getMilestoneInfo();
                 progressTrackingControls.addMilestone(type, value, date);
                 break;
             case 2:
@@ -43,5 +41,13 @@ public class ProgressTrackingPage extends BasePage {
             default:
                 System.out.println("Invalid choice. Please try again.");
         }
+    }
+    public void getMilestoneInfo() {
+    	System.out.print("Enter milestone type (e.g., Weight, BMI, Attendance): ");
+        type = scanner.nextLine();
+        System.out.print("Enter milestone value: ");
+        value = scanner.nextLine();
+        System.out.print("Enter milestone date (Year-Month-Day): ");
+        date = scanner.nextLine();
     }
 }

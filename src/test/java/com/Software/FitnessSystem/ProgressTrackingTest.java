@@ -4,7 +4,11 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+import static org.junit.Assert.assertTrue;
+
+import com.Software.FitnessSystem.ClientControllers.ProgressTrackingControls;
 public class ProgressTrackingTest {
+	ProgressTrackingControls pg = new ProgressTrackingControls();
 	@Given("I am logged into my account")
 	public void i_am_logged_into_my_account() {
 	    // Write code here that turns the phrase above into concrete actions
@@ -26,7 +30,10 @@ public class ProgressTrackingTest {
 	@Then("my milestone should be recorded")
 	public void my_milestone_should_be_recorded() {
 	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	    //throw new io.cucumber.java.PendingException();
+		String expected = "milestone added successfully";
+		String actual = ProgressTrackingControls.addMilestone("0",  "0",  "0");
+		assertTrue(expected.equals(actual));
 	}
 
 	@Then("I should see a confirmation message saying {string}")

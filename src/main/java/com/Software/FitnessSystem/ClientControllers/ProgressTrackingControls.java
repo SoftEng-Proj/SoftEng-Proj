@@ -4,19 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProgressTrackingControls {
-	private List<FitnessMilestone> milestones;
+	private static List<FitnessMilestone> milestones;
 
     public ProgressTrackingControls() {
-        this.milestones = new ArrayList<>();
+        ProgressTrackingControls.milestones = new ArrayList<>();
     }
 
-    public void addMilestone(String type, String value, String date) {
+    public static String addMilestone(String type, String value, String date) {
         FitnessMilestone milestone = new FitnessMilestone(type, value, date);
         milestones.add(milestone);
         System.out.println("Milestone added: " + milestone);
+        return "milestone added successfully";
     }
 
-    public void showProgress() {
+    public  void showProgress() {
         if (milestones.isEmpty()) {
             System.out.println("No milestones recorded yet.");
             return;
