@@ -52,7 +52,6 @@ public class Client implements User{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
 	@Override
 	public String getUsername() {
 		return username;

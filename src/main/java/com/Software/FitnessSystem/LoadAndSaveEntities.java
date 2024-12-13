@@ -1,8 +1,10 @@
 package com.Software.FitnessSystem;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
+import com.Software.FitnessSystem.ClientControllers.FitnessMilestone;
 import com.Software.FitnessSystem.ClientControllers.Profile;
 import com.Software.FitnessSystem.InstructorControllers.Program;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -190,24 +192,24 @@ public class LoadAndSaveEntities {
     }
 
 	public static void saveClientProfileToFile(Map<String, Profile> clientProfileMap,
-			String fitnessProgramsFilename) {
-		File file = new File(fitnessProgramsFilename);
+			String clientProfilesFilename) {
+		File file = new File(clientProfilesFilename);
         if (!file.exists()) {
             System.err.println("The file does not exist. A new file will be created.");
         }
         
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            objectMapper.writeValue(file, fitnessProgramsFilename);
+            objectMapper.writeValue(file, clientProfileMap);
         } catch (IOException e) {
             System.err.println("Error saving handled feedback Tips data: " + e.getMessage());
         }
 		
 	}
 
-	public static void loadClientProfilesFromFile(Map<String, String> clientProfileMap,
-			String fitnessProgramsFilename) {
-		File file = new File(fitnessProgramsFilename);
+	public static void loadClientProfilesFromFile(Map<String, Profile> clientProfileMap,
+			String clientProfilesFilename) {
+		File file = new File(clientProfilesFilename);
         if (!file.exists()) {
             System.err.println("File does not exist. Cannot load data.");
             return;
@@ -215,10 +217,39 @@ public class LoadAndSaveEntities {
         
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            Map<String, String> loadedInstructorTips = objectMapper.readValue(file, new TypeReference<Map<String, String>>() {});
-            clientProfileMap.putAll(loadedInstructorTips);
+            Map<String, Profile> loadedClientProfiles = objectMapper.readValue(file, new TypeReference<Map<String, Profile>>() {});
+            clientProfileMap.putAll(loadedClientProfiles);
         } catch (IOException e) {
             System.err.println("Error loading handled feedback data: " + e.getMessage());
         }
+	}
+
+	public static void saveMilestonesToFile(List<FitnessMilestone> MilestonesList, String milestonesFilename) {
+		File file = new File(milestonesFilename);
+        if (!file.exists()) {
+            System.err.println("The file does not exist. A new file will be created.");
+        }
+
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.writeValue(file, MilestonesList);
+        } catch (IOException e) {
+            System.err.println("Error saving milestones data: " + e.getMessage());
+        }
+	}
+	public static void loadMilestonesFromFile(List<FitnessMilestone> MilestonesList, String milestonesFilename) {
+	    File file = new File(milestonesFilename);
+	    if (!file.exists()) {
+	        System.err.println("File does not exist. Cannot load data.");
+	        return;
+	    }
+
+	    try {
+	        ObjectMapper objectMapper = new ObjectMapper();
+	        List<FitnessMilestone> loadedMilestones = objectMapper.readValue(file, new TypeReference<List<FitnessMilestone>>() {});
+	        MilestonesList.addAll(loadedMilestones);
+	    } catch (IOException e) {
+	        System.err.println("Error loading milestones data: " + e.getMessage());
+	    }
 	}
 }

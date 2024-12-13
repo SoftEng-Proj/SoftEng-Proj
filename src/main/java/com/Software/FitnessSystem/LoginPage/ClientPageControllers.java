@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 import com.Software.FitnessSystem.ClientPageNavigation.NavigationControllerForClient;
 import com.Software.FitnessSystem.ClientPageNavigation.ProgressTrackingPage;
+import com.Software.FitnessSystem.Client;
 import com.Software.FitnessSystem.ClientPageNavigation.AccountManagementPage;
 //import com.Software.FitnessSystem.ClientPageNavigation.ProgramExplorationPage;
 import com.Software.FitnessSystem.ClientPageNavigation.FeedbackReviewsPage;
@@ -14,11 +15,13 @@ public class ClientPageControllers {
     private ProgressTrackingPage progressTrackingPage;
     private FeedbackReviewsPage feedbackAndReviewsPage;
     //private int mainListNumber = 0;
+    private Client currentClient;
     
-    public ClientPageControllers() {
+    public ClientPageControllers(Client currentClient) {
+    	this.currentClient = currentClient;
     	accountManagementPage = new AccountManagementPage(this);
         //programExplorationPage = new ProgramExplorationPage(this);
-        progressTrackingPage = new ProgressTrackingPage(this);
+        progressTrackingPage = new ProgressTrackingPage(this, currentClient);
         feedbackAndReviewsPage = new FeedbackReviewsPage(this);
     }
     

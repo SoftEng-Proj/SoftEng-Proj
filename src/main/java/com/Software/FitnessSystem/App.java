@@ -1,12 +1,15 @@
 package com.Software.FitnessSystem;
 import com.Software.FitnessSystem.AdminControllers.ProgramEnrollment;
+import com.Software.FitnessSystem.ClientControllers.FitnessMilestone;
 import com.Software.FitnessSystem.ClientControllers.Profile;
 import com.Software.FitnessSystem.InstructorControllers.Program;
 import com.Software.FitnessSystem.LoginPage.LoginPageController;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class App {
@@ -22,8 +25,9 @@ public class App {
 	public static final String PENDING_HEALTH_TIPS_FILENAME = "src/main/resources/Files/Pending_Health_Tips.json";
 	public static final String USER_FEEDBACK_FILENAME = "src/main/resources/Files/User_Feedback.json";
 	public static final String USER_FEEDBACK_HANDLE_FILENAME = "src/main/resources/Files/User_Feedback_Handle.json";
-	public static final String Client_Profiles_FILENAME = "src/main/resources/Files/Client_Profiles.json";
-	
+	public static final String CLIENT_PROFILES_FILENAME = "src/main/resources/Files/Client_Profiles.json";
+	public static final String MILESTONES_FILENAME = "src/main/resources/Files/Milestones.json";
+
     private static Map<String, User> UserSubscriptionPlan = new HashMap<>();
     private static Map<String, Admin> AdminsMap = new HashMap<>();
     private static Map<String, Instructor> InstructorsMap = new HashMap<>();
@@ -38,6 +42,7 @@ public class App {
     private static Map<String, Content> UserFeedbackMap = new HashMap<>();
     private static Map<String, String> HandledFeedbackMap = new HashMap<>();
     private static Map<String, Profile> ClientProfileMap = new HashMap<>();
+    private static List<FitnessMilestone> MilestonesList = new ArrayList<>();
     
     private static Admin Admin;
     private static Instructor Instructor;
@@ -61,7 +66,8 @@ public class App {
     	LoadAndSaveEntities.loadContentsFromFile(PendingHealthTipsMap, PENDING_HEALTH_TIPS_FILENAME);
     	LoadAndSaveEntities.loadContentsFromFile(UserFeedbackMap, USER_FEEDBACK_FILENAME);
     	LoadAndSaveEntities.loadHandledFeedbackFromFile(HandledFeedbackMap, USER_FEEDBACK_HANDLE_FILENAME);
-    	LoadAndSaveEntities.loadClientProfilesFromFile(HandledFeedbackMap, USER_FEEDBACK_HANDLE_FILENAME);
+    	LoadAndSaveEntities.loadClientProfilesFromFile(ClientProfileMap, CLIENT_PROFILES_FILENAME);
+    	LoadAndSaveEntities.loadMilestonesFromFile(MilestonesList, MILESTONES_FILENAME);
     	
     	ProgramEnrollmentMap = ProgramEnrollment.enrolmentStatistics(FitnessProgramsMap);
     }
@@ -150,7 +156,10 @@ public class App {
 		return true;
 	}
     public static void saveClientProfileChanges() {
-    	LoadAndSaveEntities.saveClientProfileToFile(ClientProfileMap, Client_Profiles_FILENAME);
+    	LoadAndSaveEntities.saveClientProfileToFile(ClientProfileMap, CLIENT_PROFILES_FILENAME);
+	}
+    public static void saveMilestoneChanges() {
+    	LoadAndSaveEntities.saveMilestonesToFile(getMilestonesList(), MILESTONES_FILENAME);
 	}
 	
 	public static Map<String, User> getUserSubscriptionPlanMap() {
@@ -235,5 +244,14 @@ public class App {
 	public static void setClientProfileMap(Map<String, Profile> clientProfileMap) {
 		ClientProfileMap = clientProfileMap;
 	}
+
+	public static List<FitnessMilestone> getMilestonesList() {
+		return MilestonesList;
+	}
+
+	public static void setMilestonesMap(List<FitnessMilestone> milestonesList) {
+		MilestonesList = milestonesList;
+	}
+
 
 }

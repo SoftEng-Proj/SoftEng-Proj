@@ -1,5 +1,7 @@
 package com.Software.FitnessSystem.ClientPageNavigation;
 
+import com.Software.FitnessSystem.App;
+import com.Software.FitnessSystem.Client;
 import com.Software.FitnessSystem.ClientControllers.ProgressTrackingControls;
 import com.Software.FitnessSystem.InfrastructureForPages.BasePage;
 import com.Software.FitnessSystem.LoginPage.ClientPageControllers;
@@ -10,10 +12,14 @@ public class ProgressTrackingPage extends BasePage {
 	private String type;
 	private String value;
 	private String date;
+	private Client currentClient;
+	private static  boolean isAddMilestonePage = false;
+	 private static boolean isShowProgressPage = false;
 	
-	public ProgressTrackingPage(ClientPageControllers clientController) {
+	public ProgressTrackingPage(ClientPageControllers clientController, Client client) {
 		this.clientController = clientController;
-		this.progressTrackingControls = progressTrackingControls;
+		this.progressTrackingControls = new ProgressTrackingControls();
+        this.currentClient = client;
 	}
 	
     @Override
@@ -28,11 +34,16 @@ public class ProgressTrackingPage extends BasePage {
     public void executeOption(int choice) {
         switch (choice) {
             case 1:
+            	isAddMilestonePage = true;
             	getMilestoneInfo();
-                progressTrackingControls.addMilestone(type, value, date);
+                ProgressTrackingControls.addMilestone(type, value, date, currentClient);
+                App.saveMilestoneChanges();
+                isAddMilestonePage = false;
                 break;
             case 2:
+            	isShowProgressPage = true;
             	progressTrackingControls.showProgress();
+            	isShowProgressPage = false;
                 break;
             case 3:
             	System.out.println("\nReturning to the main menu...");
@@ -49,5 +60,11 @@ public class ProgressTrackingPage extends BasePage {
         value = scanner.nextLine();
         System.out.print("Enter milestone date (Year-Month-Day): ");
         date = scanner.nextLine();
+    }
+    public static boolean isAddMilestonePage() {
+        return isAddMilestonePage;
+    }
+    public static boolean isShowProgressPage() {
+        return isShowProgressPage;
     }
 }
