@@ -21,6 +21,10 @@ public class App {
 	public static final String PENDING_HEALTH_TIPS_FILENAME = "src/main/resources/Files/Pending_Health_Tips.json";
 	public static final String USER_FEEDBACK_FILENAME = "src/main/resources/Files/User_Feedback.json";
 	public static final String USER_FEEDBACK_HANDLE_FILENAME = "src/main/resources/Files/User_Feedback_Handle.json";
+	public static final String INSTRUCTOR_MSGS_FOR_CLIENTS = "src/main/resources/Files/Instructor_Msgs_For_Clients.json";
+	public static final String PROGRAM_FORUM_MSGS = "src/main/resources/Files/Program_Forum_Msgs.json";
+	public static final String FEEDBACK_TOCLIENT = "src/main/resources/Files/Feedback_ToClient.json";
+
 	
     private static Map<String, User> UserSubscriptionPlan = new HashMap<>();
     private static Map<String, Admin> AdminsMap = new HashMap<>();
@@ -35,6 +39,9 @@ public class App {
     private static Map<String, Content> PendingHealthTipsMap = new HashMap<>();
     private static Map<String, Content> UserFeedbackMap = new HashMap<>();
     private static Map<String, String> HandledFeedbackMap = new HashMap<>();
+    private static Map<String, String> InstructorMessagesForClientsMap= new HashMap<>();
+    private static Map<String, String> ProgramForumMsgsMap= new HashMap<>();
+    private static Map<String, String> FeedbackToClientMap= new HashMap<>();
     
     private static Admin Admin;
     private static Instructor Instructor;
@@ -58,7 +65,9 @@ public class App {
     	LoadAndSaveEntities.loadContentsFromFile(PendingHealthTipsMap, PENDING_HEALTH_TIPS_FILENAME);
     	LoadAndSaveEntities.loadContentsFromFile(UserFeedbackMap, USER_FEEDBACK_FILENAME);
     	LoadAndSaveEntities.loadHandledFeedbackFromFile(HandledFeedbackMap, USER_FEEDBACK_HANDLE_FILENAME);
-    	
+    	LoadAndSaveEntities.loadInstructorMsgsToClientsFromFile(InstructorMessagesForClientsMap, INSTRUCTOR_MSGS_FOR_CLIENTS);
+        LoadAndSaveEntities.loadProgramForumMsgsFromFile(ProgramForumMsgsMap, PROGRAM_FORUM_MSGS);
+        LoadAndSaveEntities.loadFeedbackToClientFromFile(FeedbackToClientMap, FEEDBACK_TOCLIENT);
     	ProgramEnrollmentMap = ProgramEnrollment.enrolmentStatistics(FitnessProgramsMap);
     }
     
@@ -121,6 +130,22 @@ public class App {
 	
 	public static boolean saveFitnessProgramsChanges() {
 		LoadAndSaveEntities.saveFitnessProgramsToFile(FitnessProgramsMap, FITNESS_PROGRAMS_FILENAME);
+		
+		return true;
+	}
+	
+	public static boolean saveFeedbackToClientChanges() {
+		LoadAndSaveEntities.saveFeedbackToClientToFile(FeedbackToClientMap, FEEDBACK_TOCLIENT);
+		
+		return true;
+	}
+	
+	public static void saveInstructorMSGSForClientsChanges() {
+    	LoadAndSaveEntities.saveInstructorMsgsToClientsToFile(InstructorMessagesForClientsMap, INSTRUCTOR_MSGS_FOR_CLIENTS);
+	}
+	
+	public static boolean saveProgramForumMsgsChanges() {
+		LoadAndSaveEntities.saveProgramForumMsgsToFile(ProgramForumMsgsMap, PROGRAM_FORUM_MSGS);
 		
 		return true;
 	}
@@ -208,6 +233,33 @@ public class App {
 	public static Map<String, String> getHandledFeedbackMap() {
 		return HandledFeedbackMap;
 	}
+	
+	public static Map<String, String> getInstructorMessagesForClientMap() {
+		return InstructorMessagesForClientsMap;
+	}
+	
+	public static void setInstructorMessagesForClientMap (Map<String, String> instructorMessageMap) {
+		InstructorMessagesForClientsMap=instructorMessageMap;
+	}
+	
+	
+	public static Map<String, String> getProgramForumMsgsMap() {
+		return ProgramForumMsgsMap;
+	}
+	
+	public static void setProgramForumMsgsMap (Map<String, String> programForumMsgsMap) {
+		ProgramForumMsgsMap=programForumMsgsMap;
+	}
+	
+	public static Map<String, String> getFeedbackToClientMap() {
+		return FeedbackToClientMap;
+	}
+	
+	public static void setFeedbackToClientMap (Map<String, String> feedbackMap) {
+		ProgramForumMsgsMap=feedbackMap;
+	}
+	
+	
 	
 	public static Admin getAdminAccount() {
 		return Admin;

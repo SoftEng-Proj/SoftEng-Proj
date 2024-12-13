@@ -1,5 +1,6 @@
 package com.Software.FitnessSystem.InstructorPageNavigation;
 
+import com.Software.FitnessSystem.App;
 import com.Software.FitnessSystem.InfrastructureForPages.BasePage;
 import com.Software.FitnessSystem.InstructorControllers.ProgramManagementControls;
 import com.Software.FitnessSystem.LoginPage.InstructorPageControllers;
@@ -8,6 +9,19 @@ public class ProgramManagementPage extends BasePage {
 	
 	private InstructorPageControllers instructorController;
 	private ProgramManagementControls programManagementControls ;
+	private String progName;
+	private String progDuration;
+	private String progLevel;
+	private String progGoal;
+	private String progLinks;
+	private String progPrice;
+	private String UpdateProgName;
+	private String newProgDuration;
+	private String newProgLevel;
+	private String newProgGoal;
+	private String newProgLinks;
+	private String newProgPrice;
+	
 	
 	
 	public ProgramManagementPage (InstructorPageControllers instructorController) {
@@ -33,41 +47,20 @@ public class ProgramManagementPage extends BasePage {
     public void executeOption(int choice) {
         switch (choice) {
             case 1:
-                System.out.println("Enter the name of the new program:");
-                String progName = scanner.nextLine();
-                System.out.println("Enter the duration of the program:");
-                String progDuration = scanner.nextLine();
-                System.out.println("Enter the difficulty level:");
-                String progLevel = scanner.nextLine();
-                System.out.println("Enter the goal of the program:");
-                String progGoal = scanner.nextLine();
-                System.out.println("Enter the video tutorial or images related to Program:");
-                String progLinks = scanner.nextLine();
-                System.out.println("Enter the price of the new program:");
-                String progPrice = scanner.nextLine();
+                EnterProgramInfo();
                 programManagementControls.createProgram(progName, progDuration, progLevel, progGoal, progLinks, progPrice);
                 
                 break;
             case 2:
-            	System.out.println("Enter the name of the program to be updated:");
-                String updateProgName = scanner.nextLine();
-                System.out.println("Enter the new duration:");
-                String newProgDuration = scanner.nextLine();
-                System.out.println("Enter the new difficulty level:");
-                String newProgLevel = scanner.nextLine();
-                System.out.println("Enter the new goal:");
-                String newProgGoal = scanner.nextLine();
-                System.out.println("Enter the new tutorial or images related to Program:");
-                String newProgLinks = scanner.nextLine();
-                System.out.println("Enter the new price of the program:");
-                String newProgPrice = scanner.nextLine();
-
-                programManagementControls.updateProgram(updateProgName, newProgDuration, newProgLevel, newProgGoal, newProgLinks, newProgPrice);
+            	EnterUpdatedProgramInfo();
+                programManagementControls.updateProgram(UpdateProgName, newProgDuration, newProgLevel, newProgGoal, newProgLinks, newProgPrice);
+                
                 break;
             case 3:
             	System.out.println("Enter the name of the program to be deleted:");
                 String deleteProgName = scanner.nextLine();
                 programManagementControls.deleteProgram(deleteProgName);
+                
                 break;
             case 4:
             	System.out.println("Enter the name of the program to set the schedule for:");
@@ -81,7 +74,53 @@ public class ProgramManagementPage extends BasePage {
              goBack();
                 break;
             default:
-              //  System.out.println("Invalid choice. Please try again.");
+                System.out.println("Invalid choice. Please try again.");
         }
+        App.saveFitnessProgramsChanges();
     }
+    
+    
+    public void EnterProgramInfo() {
+    	System.out.println("Enter the name of the new program:");
+        progName = scanner.nextLine();
+        System.out.println("Enter the duration of the program:");
+         progDuration = scanner.nextLine();
+        System.out.println("Enter the difficulty level:");
+         progLevel = scanner.nextLine();
+        System.out.println("Enter the goal of the program:");
+        progGoal = scanner.nextLine();
+        System.out.println("Enter the video tutorial or images related to Program:");
+         progLinks = scanner.nextLine();
+        System.out.println("Enter the price of the new program:");
+        progPrice = scanner.nextLine();
+    }
+    
+    public void EnterUpdatedProgramInfo() {
+    	System.out.println("Enter the name of the program to be updated:");
+    	UpdateProgName = scanner.nextLine();
+        System.out.println("Enter the new duration:");
+         newProgDuration = scanner.nextLine();
+        System.out.println("Enter the new difficulty level:");
+         newProgLevel = scanner.nextLine();
+        System.out.println("Enter the new goal:");
+         newProgGoal = scanner.nextLine();
+        System.out.println("Enter the new tutorial or images related to Program:");
+         newProgLinks = scanner.nextLine();
+        System.out.println("Enter the new price of the program:");
+         newProgPrice = scanner.nextLine();
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

@@ -187,4 +187,113 @@ public class LoadAndSaveEntities {
             System.err.println("Error loading handled feedback data: " + e.getMessage());
         }
     }
+    
+    
+    public static void saveInstructorMsgsToClientsToFile(Map<String, String> InstructorMSGSToClientsMap, String InstructorMSGsFile) {
+        File file = new File(InstructorMSGsFile);
+        if (!file.exists()) {
+            System.err.println("The file does not exist. A new file will be created.");
+        }
+        
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.writeValue(file, InstructorMSGSToClientsMap);
+        } catch (IOException e) {
+            System.err.println("Error saving handled feedback Tips data: " + e.getMessage());
+        }
+    }
+    
+    
+    public static void loadInstructorMsgsToClientsFromFile(Map<String, String> InstructorMSGSToClientsMap, String InstructorMSGsFile) {
+        File file = new File(InstructorMSGsFile);
+        if (!file.exists()) {
+            System.err.println("File does not exist. Cannot load data.");
+            return;
+        }
+        
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            Map<String, String> loadedInstructorTips = objectMapper.readValue(file, new TypeReference<Map<String, String>>() {});
+            InstructorMSGSToClientsMap.putAll(loadedInstructorTips);
+        } catch (IOException e) {
+            System.err.println("Error loading Tips data: " + e.getMessage());
+        }
+    }
+    
+    
+    
+    public static void saveProgramForumMsgsToFile(Map<String, String> ProgramForumMsgsMap, String ProgramForumMsgsFile) {
+        File file = new File(ProgramForumMsgsFile);
+        if (!file.exists()) {
+            System.err.println("The file does not exist. A new file will be created.");
+        }
+        
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.writeValue(file, ProgramForumMsgsMap);
+        } catch (IOException e) {
+            System.err.println("Error saving program forums msgs data: " + e.getMessage());
+        }
+    }
+    
+    
+    public static void loadProgramForumMsgsFromFile(Map<String, String> ProgramForumMsgsMap, String ProgramForumMsgsFile) {
+        File file = new File(ProgramForumMsgsFile);
+        if (!file.exists()) {
+            System.err.println("File does not exist. Cannot load data.");
+            return;
+        }
+        
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            Map<String, String> loadedInstructorTips = objectMapper.readValue(file, new TypeReference<Map<String, String>>() {});
+            ProgramForumMsgsMap.putAll(loadedInstructorTips);
+        } catch (IOException e) {
+            System.err.println("Error loading Tips data: " + e.getMessage());
+        }
+    }
+    
+    public static void saveFeedbackToClientToFile(Map<String, String> FeedbackToClientMap, String FeedbackToClientFile) {
+        File file = new File(FeedbackToClientFile);
+        if (!file.exists()) {
+            System.err.println("The file does not exist. A new file will be created.");
+        }
+        
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.writeValue(file, FeedbackToClientMap);
+        } catch (IOException e) {
+            System.err.println("Error saving program forums msgs data: " + e.getMessage());
+        }
+    }
+    
+    
+    
+    public static void loadFeedbackToClientFromFile(Map<String, String> FeedbackToClientMap, String FeedbackToClientFile) {
+        File file = new File(FeedbackToClientFile);
+        if (!file.exists()) {
+            System.err.println("File does not exist. Cannot load data.");
+            return;
+        }
+        
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            Map<String, String> loadedInstructorTips = objectMapper.readValue(file, new TypeReference<Map<String, String>>() {});
+            FeedbackToClientMap.putAll(loadedInstructorTips);
+        } catch (IOException e) {
+            System.err.println("Error loading Tips data: " + e.getMessage());
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
