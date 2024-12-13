@@ -108,15 +108,18 @@ public class ProgramMonitoringControls {
         	String programName = askTheNameOfTheProgram();
         	System.out.println("\nReport generation in progress for the program: \"" + programName + "\".");
         	return generateReportsOption(App.getProgramEnrollmentMap(), programName, true);
+        case 3:
+        	return true;
         }
 		return false;
 	}
 	
 	private static void printTheGenerateQuestion() {
-		System.out.println("\nDo you want to generate a report for all programs or a specific program?");
-        System.out.println("1. All programs");
-        System.out.println("2. Specific program");
-        System.out.println(">> Enter your choice: ");
+		System.err.println("\nDo you want to generate a report for all programs or a specific program?");
+        System.err.println("1. All programs");
+        System.err.println("2. Specific program");
+        System.err.println("3. Go Back.");
+        System.err.println(">> Enter your choice: ");
 	}
 	
 	@SuppressWarnings("resource")

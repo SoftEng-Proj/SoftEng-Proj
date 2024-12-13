@@ -47,7 +47,7 @@ public class UserManagementControls {
 		newInstructor = new Instructor(fName, lName, email, userName, password);
         newInstructor.setLastLogin(formattedDateTime);
         newInstructor.setLogins(1);
-        newInstructor.setSubscriptionPlan(new SubscriptionPlan(SubscriptionPlan.PlanType.BASIC));
+        newInstructor.setSubscriptionPlan(new SubscriptionPlan(App.getSubscriptionPlanMap().get("BASIC")));
 		App.putNewInstructor(userName, newInstructor);
 	}
 	
@@ -55,7 +55,7 @@ public class UserManagementControls {
 		newClient = new Client(fName, lName, email, userName, password);
 		newClient.setLastLogin(formattedDateTime);
 		newClient.setLogins(1);
-		newClient.setSubscriptionPlan(new SubscriptionPlan(SubscriptionPlan.PlanType.BASIC));
+		newClient.setSubscriptionPlan(new SubscriptionPlan(App.getSubscriptionPlanMap().get("BASIC")));
 		App.putNewClient(userName, newClient);
 	}
 	

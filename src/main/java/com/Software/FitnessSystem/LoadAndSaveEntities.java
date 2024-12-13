@@ -1,13 +1,46 @@
 package com.Software.FitnessSystem;
-import java.io.File;
-import java.io.IOException;
-import java.util.Map;
-
+import com.Software.FitnessSystem.AdminControllers.CustomPlan;
 import com.Software.FitnessSystem.InstructorControllers.Program;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Map;
+
 public class LoadAndSaveEntities {
+	public static boolean saveCustomSubscriptionPlanToFile(Map<String, CustomPlan> CustomSubscriptionPlanMap, String CustomSubscriptionPlanFile) {
+        File file = new File(CustomSubscriptionPlanFile);
+        if (!file.exists()) {
+            System.err.println("The file does not exist. A new file will be created.");
+        }
+        
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.writeValue(file, CustomSubscriptionPlanMap);
+            return true;
+        } catch (IOException e) {
+            System.err.println("Error saving Admins data: " + e.getMessage());
+            return false;
+        }
+    }
+    
+    public static void loadCustomSubscriptionPlanFromFile(Map<String, CustomPlan> CustomSubscriptionPlanMap, String CustomSubscriptionPlanFile) {
+        File file = new File(CustomSubscriptionPlanFile);
+        if (!file.exists()) {
+            System.err.println("File does not exist. Cannot load data.");
+            return;
+        }
+        
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            Map<String, CustomPlan> loadedCustomSubscriptionPlan = objectMapper.readValue(file, new TypeReference<Map<String, CustomPlan>>() {});
+            CustomSubscriptionPlanMap.putAll(loadedCustomSubscriptionPlan);
+        } catch (IOException e) {
+            System.err.println("Error loading Admins data: " + e.getMessage());
+        }
+    }
+    
     public static void saveAdminsToFile(Map<String, Admin> adminsMap, String AdminAccountsFile) {
         File file = new File(AdminAccountsFile);
         if (!file.exists()) {
@@ -151,8 +184,8 @@ public class LoadAndSaveEntities {
         
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            Map<String, Content> loadedInstructorTips = objectMapper.readValue(file, new TypeReference<Map<String, Content>>() {});
-            instructorTipsMap.putAll(loadedInstructorTips);
+            Map<String, Content> loadedContent = objectMapper.readValue(file, new TypeReference<Map<String, Content>>() {});
+            instructorTipsMap.putAll(loadedContent);
         } catch (IOException e) {
             System.err.println("Error loading Tips data: " + e.getMessage());
         }
@@ -181,8 +214,8 @@ public class LoadAndSaveEntities {
         
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            Map<String, String> loadedInstructorTips = objectMapper.readValue(file, new TypeReference<Map<String, String>>() {});
-            handledFeedbackMap.putAll(loadedInstructorTips);
+            Map<String, String> loadedFeedbacks = objectMapper.readValue(file, new TypeReference<Map<String, String>>() {});
+            handledFeedbackMap.putAll(loadedFeedbacks);
         } catch (IOException e) {
             System.err.println("Error loading handled feedback data: " + e.getMessage());
         }

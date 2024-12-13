@@ -1,5 +1,7 @@
 package com.Software.FitnessSystem;
+import com.Software.FitnessSystem.AdminControllers.CustomPlan;
 import com.Software.FitnessSystem.AdminControllers.ProgramEnrollment;
+import com.Software.FitnessSystem.AdminControllers.SubscriptionPlan;
 import com.Software.FitnessSystem.InstructorControllers.Program;
 import com.Software.FitnessSystem.LoginPage.LoginPageController;
 
@@ -9,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class App {
-	public static final String USERS_SUBSCRIPTION_PLAN_FILENAME = "src/main/resources/Files/UsersSubscriptionPlan.json";
+	public static final String SUBSCRIPTION_PLAN_FILENAME = "src/main/resources/Files/SubscriptionPlan.json";
 	public static final String ADMIN_ACCOUNTS_FILENAME = "src/main/resources/Files/Admins_File.json";
 	public static final String INSTRUCTOR_ACCOUNTS_FILENAME = "src/main/resources/Files/Instructors_File.json";
 	public static final String PENDING_INSTRUCTOR_ACCOUNTS_FILENAME = "src/main/resources/Files/Pending_Instructors.json";
@@ -23,6 +25,7 @@ public class App {
 	public static final String USER_FEEDBACK_HANDLE_FILENAME = "src/main/resources/Files/User_Feedback_Handle.json";
 	
     private static Map<String, User> UserSubscriptionPlan = new HashMap<>();
+    private static Map<String, CustomPlan> CustomSubscriptionPlan = new HashMap<>();
     private static Map<String, Admin> AdminsMap = new HashMap<>();
     private static Map<String, Instructor> InstructorsMap = new HashMap<>();
     private static Map<String, Instructor> PendingInstructorsMap = new HashMap<>();
@@ -47,6 +50,7 @@ public class App {
     }
     
     public App() {
+    	LoadAndSaveEntities.loadCustomSubscriptionPlanFromFile(CustomSubscriptionPlan, SUBSCRIPTION_PLAN_FILENAME);
     	LoadAndSaveEntities.loadAdminsFromFile(AdminsMap, ADMIN_ACCOUNTS_FILENAME);
     	LoadAndSaveEntities.loadInstructorsFromFile(InstructorsMap, INSTRUCTOR_ACCOUNTS_FILENAME);
     	LoadAndSaveEntities.loadInstructorsFromFile(PendingInstructorsMap, PENDING_INSTRUCTOR_ACCOUNTS_FILENAME);
@@ -59,6 +63,8 @@ public class App {
     	LoadAndSaveEntities.loadContentsFromFile(UserFeedbackMap, USER_FEEDBACK_FILENAME);
     	LoadAndSaveEntities.loadHandledFeedbackFromFile(HandledFeedbackMap, USER_FEEDBACK_HANDLE_FILENAME);
     	
+    	SubscriptionPlan.convertFromPlanTypeToCustomPlan();
+    	fillUserSubscriptionPlanMap();
     	ProgramEnrollmentMap = ProgramEnrollment.enrolmentStatistics(FitnessProgramsMap);
     }
     
@@ -110,6 +116,12 @@ public class App {
     	return "ClientLoggedIn";
 	}
 	
+	public static boolean saveCustomSubscriptionPlanChanges() {
+		LoadAndSaveEntities.saveCustomSubscriptionPlanToFile(CustomSubscriptionPlan, SUBSCRIPTION_PLAN_FILENAME);
+		
+		return true;
+	}
+	
 	public static boolean saveAccountChanges() {
 		LoadAndSaveEntities.saveAdminsToFile(AdminsMap, ADMIN_ACCOUNTS_FILENAME);
 		LoadAndSaveEntities.saveInstructorsToFile(InstructorsMap, INSTRUCTOR_ACCOUNTS_FILENAME);
@@ -146,8 +158,25 @@ public class App {
 		return true;
 	}
 	
+	private static void fillUserSubscriptionPlanMap() {
+	    if (ClientsMap != null && !ClientsMap.isEmpty()) {
+	        for (Client client : ClientsMap.values()) {
+	            UserSubscriptionPlan.put(client.getUsername(), client);
+	        }
+	    }
+	    
+	    if (InstructorsMap != null && !InstructorsMap.isEmpty()) {
+	        for (Instructor instructor : InstructorsMap.values()) {
+	            UserSubscriptionPlan.put(instructor.getUsername(), instructor);
+	        }
+	    }
+	}
+	
 	public static Map<String, User> getUserSubscriptionPlanMap() {
 		return UserSubscriptionPlan;
+	}
+	public static Map<String, CustomPlan> getSubscriptionPlanMap() {
+		return CustomSubscriptionPlan;
 	}
 	
 	public static void putNewAdmin(String username, Admin adminAccount) {

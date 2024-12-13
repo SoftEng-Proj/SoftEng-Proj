@@ -1,5 +1,6 @@
 package com.Software.FitnessSystem;
 import com.Software.FitnessSystem.AdminControllers.SubscriptionManagementControls;
+import com.Software.FitnessSystem.AdminControllers.SubscriptionPlan;
 import com.Software.FitnessSystem.LoginPage.AdminPagesController;
 
 import static org.junit.Assert.assertTrue;
@@ -28,31 +29,45 @@ class SubscriptionManagementTest {
 	
 	@When("I edit a subscription plan")
 	public void i_edit_a_subscription_plan() {
-		
+		boolean expected = true;
+		Client user = App.getClientsMap().get("John29Doe");
+        boolean actual = SubscriptionManagementControls.updateUserSubscriptionPlan(
+        		new SubscriptionPlan(App.getSubscriptionPlanMap().get("BASIC")), user, "no", true, false);
+        assertTrue(expected == actual);
 	}
 	
 	@Then("the changes should be saved successfully")
 	public void the_changes_should_be_saved_successfully() {
-		
+		boolean expected = true;
+        boolean actual = LoadAndSaveEntities.saveCustomSubscriptionPlanToFile(App.getSubscriptionPlanMap(), App.SUBSCRIPTION_PLAN_FILENAME);
+        assertTrue(expected == actual);
 	}
 	
 	@When("I add or update a plan \\(e.g., Basic or Premium)")
 	public void i_add_or_update_a_plan_e_g_basic_or_premium() {
-		
+		boolean expected = true;
+        boolean actual = SubscriptionManagementControls.dealWithSubscriptionPlan();
+        assertTrue(expected == actual);
 	}
 	
 	@Then("the plan should be available for clients and instructors.")
 	public void the_plan_should_be_available_for_clients_and_instructors() {
-		
+		boolean expected = true;
+        boolean actual = LoadAndSaveEntities.saveCustomSubscriptionPlanToFile(App.getSubscriptionPlanMap(), App.SUBSCRIPTION_PLAN_FILENAME);
+        assertTrue(expected == actual);
 	}
 	
 	@When("I view subscription details")
 	public void i_view_subscription_details() {
-		System.out.println("Reviewing wellness article");
+		boolean expected = true;
+        boolean actual = SubscriptionManagementControls.printSubscriptionPlan();
+        assertTrue(expected == actual);
 	}
 	
 	@Then("I should see the details for clients and instructors")
 	public void i_should_see_the_details_for_clients_and_instructors() {
-		System.out.println("Reviewing wellness article");
+		boolean expected = true;
+        boolean actual = SubscriptionManagementControls.returnIsPrinted();
+        assertTrue(expected == actual);
 	}
 }
