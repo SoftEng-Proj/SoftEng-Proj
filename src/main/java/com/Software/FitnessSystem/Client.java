@@ -2,6 +2,7 @@ package com.Software.FitnessSystem;
 
 import com.Software.FitnessSystem.AdminControllers.SubscriptionManagementControls;
 import com.Software.FitnessSystem.AdminControllers.SubscriptionPlan;
+import com.Software.FitnessSystem.InstructorControllers.Program;
 
 public class Client implements User{
 	private String fName;
@@ -9,6 +10,7 @@ public class Client implements User{
 	private String email;
 	private String username;
 	private String password;
+	private Program enrolledProgram;
 	
 	private int logins = 0;
     private String lastLogin = "";
@@ -101,6 +103,13 @@ public class Client implements User{
 		SubscriptionManagementControls.giveTheUserNewSubscriptionOpportunity(subscriptionPlan, client);
 		App.saveAccountChanges();
 	}
+	public Program getEnrolledProgram() {
+        return enrolledProgram;
+    }
+
+    public void setEnrolledProgram(Program enrolledProgram) {
+        this.enrolledProgram = enrolledProgram;
+    }
     
 	@Override
 	public String toString() {
