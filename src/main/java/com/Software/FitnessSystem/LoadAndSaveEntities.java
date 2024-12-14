@@ -252,4 +252,103 @@ public class LoadAndSaveEntities {
 	        System.err.println("Error loading milestones data: " + e.getMessage());
 	    }
 	}
+
+	public static void loadProgramRatingsFromFile(Map<String, Map<String, Integer>> programRatings,
+			String programRatingsFilename) {
+		File file = new File(programRatingsFilename);
+	    if (!file.exists()) {
+	        System.err.println("File does not exist. Cannot load data.");
+	        return;
+	    }
+
+	    try {
+	        ObjectMapper objectMapper = new ObjectMapper();
+	        Map<String, Map<String, Integer>> loadedRatings = objectMapper.readValue(
+	            file, new TypeReference<Map<String, Map<String, Integer>>>() {});
+	        programRatings.putAll(loadedRatings);
+	    } catch (IOException e) {
+	        System.err.println("Error loading program ratings data: " + e.getMessage());
+	    }		
+	}
+
+	public static void loadProgramReviewsFromFile(Map<String, Map<String, String>> programReviews,
+			String programReviewsFilename) {
+		File file = new File(programReviewsFilename);
+	    if (!file.exists()) {
+	        System.err.println("File does not exist. Cannot load data.");
+	        return;
+	    }
+
+	    try {
+	        ObjectMapper objectMapper = new ObjectMapper();
+	        Map<String, Map<String, String>> loadedReviews = objectMapper.readValue(
+	            file, new TypeReference<Map<String, Map<String, String>>>() {});
+	        programReviews.putAll(loadedReviews);
+	    } catch (IOException e) {
+	        System.err.println("Error loading program reviews data: " + e.getMessage());
+	    }		
+	}
+
+	public static void loadProgramSuggestionsFromFile(Map<String, Map<String, String>> programSuggestions,
+			String programSuggestionsFilename) {
+		File file = new File(programSuggestionsFilename);
+	    if (!file.exists()) {
+	        System.err.println("File does not exist. Cannot load data.");
+	        return;
+	    }
+
+	    try {
+	        ObjectMapper objectMapper = new ObjectMapper();
+	        Map<String, Map<String, String>> loadedSuggestions = objectMapper.readValue(
+	            file, new TypeReference<Map<String, Map<String, String>>>() {});
+	        programSuggestions.putAll(loadedSuggestions);
+	    } catch (IOException e) {
+	        System.err.println("Error loading program suggestions data: " + e.getMessage());
+	    }		
+	}
+
+	public static void saveProgramRatingsToFile(Map<String, Map<String, Integer>> programRatings,
+			String programRatingsFilename) {
+		File file = new File(programRatingsFilename);
+	    if (!file.exists()) {
+	        System.err.println("The file does not exist. A new file will be created.");
+	    }
+
+	    try {
+	        ObjectMapper objectMapper = new ObjectMapper();
+	        objectMapper.writeValue(file, programRatings);
+	    } catch (IOException e) {
+	        System.err.println("Error saving program ratings data: " + e.getMessage());
+	    }		
+	}
+
+	public static void saveProgramReviewsToFile(Map<String, Map<String, String>> programReviews,
+			String programReviewsFilename) {
+		File file = new File(programReviewsFilename);
+	    if (!file.exists()) {
+	        System.err.println("The file does not exist. A new file will be created.");
+	    }
+
+	    try {
+	        ObjectMapper objectMapper = new ObjectMapper();
+	        objectMapper.writeValue(file, programReviews);
+	    } catch (IOException e) {
+	        System.err.println("Error saving program reviews data: " + e.getMessage());
+	    }		
+	}
+
+	public static void saveProgramSuggestionsToFile(Map<String, Map<String, String>> programSuggestions,
+			String programSuggestionsFilename) {
+		File file = new File(programSuggestionsFilename);
+	    if (!file.exists()) {
+	        System.err.println("The file does not exist. A new file will be created.");
+	    }
+
+	    try {
+	        ObjectMapper objectMapper = new ObjectMapper();
+	        objectMapper.writeValue(file, programSuggestions);
+	    } catch (IOException e) {
+	        System.err.println("Error saving program suggestions data: " + e.getMessage());
+	    }		
+	}
 }

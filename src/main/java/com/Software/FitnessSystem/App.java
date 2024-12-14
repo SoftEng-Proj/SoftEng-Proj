@@ -27,6 +27,9 @@ public class App {
 	public static final String USER_FEEDBACK_HANDLE_FILENAME = "src/main/resources/Files/User_Feedback_Handle.json";
 	public static final String CLIENT_PROFILES_FILENAME = "src/main/resources/Files/Client_Profiles.json";
 	public static final String MILESTONES_FILENAME = "src/main/resources/Files/Milestones.json";
+	public static final String PROGRAM_RATINGS_FILENAME = "src/main/resources/Files/Program_Ratings.json";
+    public static final String PROGRAM_REVIEWS_FILENAME = "src/main/resources/Files/Program_Reviews.json";
+    public static final String PROGRAM_SUGGESTIONS_FILENAME = "src/main/resources/Files/Program_Suggestions.json";
 
     private static Map<String, User> UserSubscriptionPlan = new HashMap<>();
     private static Map<String, Admin> AdminsMap = new HashMap<>();
@@ -43,6 +46,9 @@ public class App {
     private static Map<String, String> HandledFeedbackMap = new HashMap<>();
     private static Map<String, Profile> ClientProfileMap = new HashMap<>();
     private static List<FitnessMilestone> MilestonesList = new ArrayList<>();
+    private static Map<String, Map<String, Integer>> ProgramRatings = new HashMap<>();
+    private static Map<String, Map<String, String>> ProgramReviews = new HashMap<>();
+    private static Map<String, Map<String, String>> ProgramSuggestions = new HashMap<>();
     
     private static Admin Admin;
     private static Instructor Instructor;
@@ -68,6 +74,9 @@ public class App {
     	LoadAndSaveEntities.loadHandledFeedbackFromFile(HandledFeedbackMap, USER_FEEDBACK_HANDLE_FILENAME);
     	LoadAndSaveEntities.loadClientProfilesFromFile(ClientProfileMap, CLIENT_PROFILES_FILENAME);
     	LoadAndSaveEntities.loadMilestonesFromFile(MilestonesList, MILESTONES_FILENAME);
+    	LoadAndSaveEntities.loadProgramRatingsFromFile(ProgramRatings, PROGRAM_RATINGS_FILENAME);
+        LoadAndSaveEntities.loadProgramReviewsFromFile(ProgramReviews, PROGRAM_REVIEWS_FILENAME);
+        LoadAndSaveEntities.loadProgramSuggestionsFromFile(ProgramSuggestions, PROGRAM_SUGGESTIONS_FILENAME);
     	
     	ProgramEnrollmentMap = ProgramEnrollment.enrolmentStatistics(FitnessProgramsMap);
     }
@@ -159,7 +168,21 @@ public class App {
     	LoadAndSaveEntities.saveClientProfileToFile(ClientProfileMap, CLIENT_PROFILES_FILENAME);
 	}
     public static void saveMilestoneChanges() {
-    	LoadAndSaveEntities.saveMilestonesToFile(getMilestonesList(), MILESTONES_FILENAME);
+    	LoadAndSaveEntities.saveMilestonesToFile(MilestonesList, MILESTONES_FILENAME);
+	}
+    public static void saveProgramRatingsChanges() {
+        LoadAndSaveEntities.saveProgramRatingsToFile(ProgramRatings, PROGRAM_RATINGS_FILENAME);
+		
+	}
+
+	public static void saveProgramReviewsChanges() {
+	    LoadAndSaveEntities.saveProgramReviewsToFile(ProgramReviews, PROGRAM_REVIEWS_FILENAME);
+		
+	}
+
+	public static void saveProgramSuggestionsChanges() {
+	    LoadAndSaveEntities.saveProgramSuggestionsToFile(ProgramSuggestions, PROGRAM_SUGGESTIONS_FILENAME);
+		
 	}
 	
 	public static Map<String, User> getUserSubscriptionPlanMap() {
@@ -252,6 +275,31 @@ public class App {
 	public static void setMilestonesMap(List<FitnessMilestone> milestonesList) {
 		MilestonesList = milestonesList;
 	}
+
+	public static Map<String, Map<String, Integer>> getProgramRatings() {
+		return ProgramRatings;
+	}
+
+	public static void setProgramRatings(Map<String, Map<String, Integer>> programRatings) {
+		ProgramRatings = programRatings;
+	}
+
+	public static Map<String, Map<String, String>> getProgramReviews() {
+		return ProgramReviews;
+	}
+
+	public static void setProgramReviews(Map<String, Map<String, String>> programReviews) {
+		ProgramReviews = programReviews;
+	}
+
+	public static Map<String, Map<String, String>> getProgramSuggestions() {
+		return ProgramSuggestions;
+	}
+
+	public static void setProgramSuggestions(Map<String, Map<String, String>> programSuggestions) {
+		ProgramSuggestions = programSuggestions;
+	}
+
 
 
 }
