@@ -11,7 +11,7 @@ public class InteractForInstructorPage extends BasePage {
 	private InstructorPageControllers instructorController;
 	private InteractForInstructorControls interactForInstructorControls ;
 	
-	
+	private static boolean isForumPage=false;
 	
 	
 	public InteractForInstructorPage (InstructorPageControllers instructorController) {
@@ -49,6 +49,7 @@ public class InteractForInstructorPage extends BasePage {
               
                
             case 2:
+            	isForumPage = true;
             	System.out.println("Enter the name of the program");
             	String progname = scanner.nextLine();
             	System.out.println("Enter the message on the forum:");
@@ -56,6 +57,7 @@ public class InteractForInstructorPage extends BasePage {
             	 
              interactForInstructorControls.sendMessageToClient(progname, msg);
              App.saveProgramForumMsgsChanges();
+             isForumPage = false;
                 break;
             case 3:
             	
@@ -69,11 +71,14 @@ public class InteractForInstructorPage extends BasePage {
                           	
                 break;
             case 4:
+            	System.out.println("Enter the name of the client");
+            	String clienttt = scanner.nextLine();
             	
+            	System.out.println("Enter the progress message:");
+            	String MSG = scanner.nextLine();
             	
-            	//to be created later.
-            	
-            	
+            	InteractForInstructorControls.sendProgressToClient(clienttt, MSG);
+            	    	
                 break;
             case 5:
              goBack();
@@ -81,6 +86,10 @@ public class InteractForInstructorPage extends BasePage {
             default:
                 System.out.println("Invalid choice. Please try again.");
         }
+    }
+    
+    public static boolean isForumPage() {
+        return isForumPage;
     }
 
 }

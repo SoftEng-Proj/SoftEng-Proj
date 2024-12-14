@@ -48,18 +48,18 @@ public class ProgramManagementPage extends BasePage {
         switch (choice) {
             case 1:
                 EnterProgramInfo();
-                programManagementControls.createProgram(progName, progDuration, progLevel, progGoal, progLinks, progPrice);
+                ProgramManagementControls.createProgram(progName, progDuration, progLevel, progGoal, progLinks, progPrice);
                 
                 break;
             case 2:
             	EnterUpdatedProgramInfo();
-                programManagementControls.updateProgram(UpdateProgName, newProgDuration, newProgLevel, newProgGoal, newProgLinks, newProgPrice);
+                ProgramManagementControls.updateProgram(UpdateProgName, newProgDuration, newProgLevel, newProgGoal, newProgLinks, newProgPrice);
                 
                 break;
             case 3:
             	System.out.println("Enter the name of the program to be deleted:");
                 String deleteProgName = scanner.nextLine();
-                programManagementControls.deleteProgram(deleteProgName);
+                ProgramManagementControls.deleteProgram(deleteProgName);
                 
                 break;
             case 4:
@@ -68,7 +68,7 @@ public class ProgramManagementPage extends BasePage {
                 System.out.println("Choose the schedule type: (1) Online, (2) In-person");
                 String scheduleChoice = scanner.nextLine();
                 String scheduleType = scheduleChoice.equals("1") ? "Online" : "In-person";
-                programManagementControls.setSchedule(programName, scheduleType);
+                ProgramManagementControls.setSchedule(programName, scheduleType);
                 break;
             case 5:
              goBack();

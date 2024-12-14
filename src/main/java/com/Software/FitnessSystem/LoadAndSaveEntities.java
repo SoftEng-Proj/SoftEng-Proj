@@ -1,8 +1,10 @@
 package com.Software.FitnessSystem;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
+import com.Software.FitnessSystem.ClientControllers.FitnessMilestone;
 import com.Software.FitnessSystem.InstructorControllers.Program;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -287,9 +289,196 @@ public class LoadAndSaveEntities {
     
     
     
+    public static void saveMilestonesToFile(List<FitnessMilestone> MilestonesList, String milestonesFilename) {
+		File file = new File(milestonesFilename);
+        if (!file.exists()) {
+            System.err.println("The file does not exist. A new file will be created.");
+        }
+
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.writeValue(file, MilestonesList);
+        } catch (IOException e) {
+            System.err.println("Error saving milestones data: " + e.getMessage());
+        }
+	}
+	public static void loadMilestonesFromFile(List<FitnessMilestone> MilestonesList, String milestonesFilename) {
+	    File file = new File(milestonesFilename);
+	    if (!file.exists()) {
+	        System.err.println("File does not exist. Cannot load data.");
+	        return;
+	    }
+
+	    try {
+	        ObjectMapper objectMapper = new ObjectMapper();
+	        List<FitnessMilestone> loadedMilestones = objectMapper.readValue(file, new TypeReference<List<FitnessMilestone>>() {});
+	        MilestonesList.addAll(loadedMilestones);
+	    } catch (IOException e) {
+	        System.err.println("Error loading milestones data: " + e.getMessage());
+	    }
+	}
     
     
+	public static void saveInstructorReminderToFile(Map<String, String> InstructorReminderMap, String InstructorReminderFile) {
+        File file = new File(InstructorReminderFile);
+        if (!file.exists()) {
+            System.err.println("The file does not exist. A new file will be created.");
+        }
+        
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.writeValue(file, InstructorReminderMap);
+        } catch (IOException e) {
+            System.err.println("Error saving reminders data: " + e.getMessage());
+        }
+    }
     
+    
+    public static void loadInstructorReminderFromFile(Map<String, String> InstructorReminderMap, String InstructorReminderFile) {
+        File file = new File(InstructorReminderFile);
+        if (!file.exists()) {
+            System.err.println("File does not exist. Cannot load data.");
+            return;
+        }
+        
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            Map<String, String> loadedInstructorTips = objectMapper.readValue(file, new TypeReference<Map<String, String>>() {});
+            InstructorReminderMap.putAll(loadedInstructorTips);
+        } catch (IOException e) {
+            System.err.println("Error loading Tips data: " + e.getMessage());
+        }
+    }
+    
+    
+    public static void saveInstructorRecommendationToFile(Map<String, String> InstructorRecommednationMap, String InstructorRecommednationFile) {
+        File file = new File(InstructorRecommednationFile);
+        if (!file.exists()) {
+            System.err.println("The file does not exist. A new file will be created.");
+        }
+        
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.writeValue(file, InstructorRecommednationMap);
+        } catch (IOException e) {
+            System.err.println("Error saving reminders data: " + e.getMessage());
+        }
+    }
+    
+    
+    public static void loadInstructorRecommednationFromFile(Map<String, String> InstructorRecommednationMap, String InstructorRecommednationFile) {
+        File file = new File(InstructorRecommednationFile);
+        if (!file.exists()) {
+            System.err.println("File does not exist. Cannot load data.");
+            return;
+        }
+        
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            Map<String, String> loadedInstructorTips = objectMapper.readValue(file, new TypeReference<Map<String, String>>() {});
+            InstructorRecommednationMap.putAll(loadedInstructorTips);
+        } catch (IOException e) {
+            System.err.println("Error loading Tips data: " + e.getMessage());
+        }
+    }
+	
+    
+    public static void saveInstructorAnnouncemntToFile(List<String> InstructorAnnouncementsMap, String InstructorAnnouncementsFile) {
+        File file = new File(InstructorAnnouncementsFile);
+        if (!file.exists()) {
+            System.err.println("The file does not exist. A new file will be created.");
+        }
+        
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.writeValue(file, InstructorAnnouncementsMap);
+        } catch (IOException e) {
+            System.err.println("Error saving reminders data: " + e.getMessage());
+        }
+    }
+    
+    
+    public static void loadInstructorAnnouncemntFromFile(List<String> InstructorAnnouncementsMap, String InstructorAnnouncementsFile) {
+        File file = new File(InstructorAnnouncementsFile);
+        if (!file.exists()) {
+            System.err.println("File does not exist. Cannot load data.");
+            return;
+        }
+        
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            List<String> loadedInstructorTips = objectMapper.readValue(file, new TypeReference<List<String>>() {});
+            InstructorAnnouncementsMap.addAll(loadedInstructorTips);
+        } catch (IOException e) {
+            System.err.println("Error loading Tips data: " + e.getMessage());
+        }
+    }
+	
+    
+    
+    public static void saveProgramScheduleChangeToFile(Map<String, String> ProgramScheduleChangeMap, String ProgramScheduleChangeFile) {
+        File file = new File(ProgramScheduleChangeFile);
+        if (!file.exists()) {
+            System.err.println("The file does not exist. A new file will be created.");
+        }
+        
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.writeValue(file, ProgramScheduleChangeMap);
+        } catch (IOException e) {
+            System.err.println("Error saving reminders data: " + e.getMessage());
+        }
+    }
+    
+    
+    public static void loadProgramScheduleChangeFromFile(Map<String, String> ProgramScheduleChangeMap, String ProgramScheduleChangeFile) {
+        File file = new File(ProgramScheduleChangeFile);
+        if (!file.exists()) {
+            System.err.println("File does not exist. Cannot load data.");
+            return;
+        }
+        
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            Map<String, String> loadedInstructorTips = objectMapper.readValue(file, new TypeReference<Map<String, String>>() {});
+            ProgramScheduleChangeMap.putAll(loadedInstructorTips);
+        } catch (IOException e) {
+            System.err.println("Error loading Tips data: " + e.getMessage());
+        }
+    }
+    
+    
+    public static void saveProgressListToFile(Map<String, String> ProgressListMap, String ProgressListFile) {
+        File file = new File(ProgressListFile);
+        if (!file.exists()) {
+            System.err.println("The file does not exist. A new file will be created.");
+        }
+        
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.writeValue(file, ProgressListMap);
+        } catch (IOException e) {
+            System.err.println("Error saving reminders data: " + e.getMessage());
+        }
+    }
+    
+    
+    public static void loadProgressListFromFile(Map<String, String> ProgressListMap, String ProgressListFile) {
+        File file = new File(ProgressListFile);
+        if (!file.exists()) {
+            System.err.println("File does not exist. Cannot load data.");
+            return;
+        }
+        
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            Map<String, String> loadedInstructorTips = objectMapper.readValue(file, new TypeReference<Map<String, String>>() {});
+            ProgressListMap.putAll(loadedInstructorTips);
+        } catch (IOException e) {
+            System.err.println("Error loading Tips data: " + e.getMessage());
+        }
+    }
+	
     
     
     

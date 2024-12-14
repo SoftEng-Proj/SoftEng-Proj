@@ -1,11 +1,14 @@
 package com.Software.FitnessSystem;
 import com.Software.FitnessSystem.AdminControllers.ProgramEnrollment;
+import com.Software.FitnessSystem.ClientControllers.FitnessMilestone;
 import com.Software.FitnessSystem.InstructorControllers.Program;
 import com.Software.FitnessSystem.LoginPage.LoginPageController;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class App {
@@ -24,6 +27,15 @@ public class App {
 	public static final String INSTRUCTOR_MSGS_FOR_CLIENTS = "src/main/resources/Files/Instructor_Msgs_For_Clients.json";
 	public static final String PROGRAM_FORUM_MSGS = "src/main/resources/Files/Program_Forum_Msgs.json";
 	public static final String FEEDBACK_TOCLIENT = "src/main/resources/Files/Feedback_ToClient.json";
+	public static final String MILESTONES_FILENAME = "src/main/resources/Files/Milestones.json";
+	public static final String INSTRUCTOR_REMINDER = "src/main/resources/Files/Instructor_Reminder.json";
+	public static final String INSTRUCTOR_RECCOMENDATION = "src/main/resources/Files/Instructor_Recommendation.json";
+	public static final String INSTRUCTOR_ANNOUNCEMENTS = "src/main/resources/Files/Instructor_Announcements.json";
+	public static final String PROGRAMSCHEDULE_CHANGE = "src/main/resources/Files/ProgramSchedule_Change.json";
+	public static final String PROGRESS_FILE = "src/main/resources/Files/Progress_File.json";
+
+	
+
 
 	
     private static Map<String, User> UserSubscriptionPlan = new HashMap<>();
@@ -42,6 +54,12 @@ public class App {
     private static Map<String, String> InstructorMessagesForClientsMap= new HashMap<>();
     private static Map<String, String> ProgramForumMsgsMap= new HashMap<>();
     private static Map<String, String> FeedbackToClientMap= new HashMap<>();
+    private static List<FitnessMilestone> MilestonesList = new ArrayList<>();
+    private static Map<String, String> InstructorReminderMap= new HashMap<>();
+    private static Map<String, String> InstructorRecommendationMap= new HashMap<>();
+    private static List<String> InstructorAnnouncementMap= new ArrayList<>();
+    private static Map<String, String> ProgramScheduleChangeMap= new HashMap<>();
+    private static Map<String, String> ProgressListMap= new HashMap<>();
     
     private static Admin Admin;
     private static Instructor Instructor;
@@ -68,6 +86,13 @@ public class App {
     	LoadAndSaveEntities.loadInstructorMsgsToClientsFromFile(InstructorMessagesForClientsMap, INSTRUCTOR_MSGS_FOR_CLIENTS);
         LoadAndSaveEntities.loadProgramForumMsgsFromFile(ProgramForumMsgsMap, PROGRAM_FORUM_MSGS);
         LoadAndSaveEntities.loadFeedbackToClientFromFile(FeedbackToClientMap, FEEDBACK_TOCLIENT);
+        LoadAndSaveEntities.loadMilestonesFromFile(MilestonesList, MILESTONES_FILENAME);
+        LoadAndSaveEntities.loadInstructorReminderFromFile(InstructorReminderMap, INSTRUCTOR_REMINDER);
+        LoadAndSaveEntities.loadInstructorRecommednationFromFile(InstructorRecommendationMap, INSTRUCTOR_RECCOMENDATION);
+        LoadAndSaveEntities.loadInstructorAnnouncemntFromFile(InstructorAnnouncementMap, INSTRUCTOR_ACCOUNTS_FILENAME);
+        LoadAndSaveEntities.loadProgramScheduleChangeFromFile(ProgramScheduleChangeMap, PROGRAMSCHEDULE_CHANGE);
+        LoadAndSaveEntities.loadProgressListFromFile(ProgressListMap, PROGRESS_FILE);
+        
     	ProgramEnrollmentMap = ProgramEnrollment.enrolmentStatistics(FitnessProgramsMap);
     }
     
@@ -134,6 +159,18 @@ public class App {
 		return true;
 	}
 	
+	public static boolean saveInstructorAnnouncementsChanges() {
+		LoadAndSaveEntities.saveInstructorAnnouncemntToFile(InstructorAnnouncementMap, INSTRUCTOR_ANNOUNCEMENTS);
+		
+		return true;
+	}
+	
+	public static boolean saveProgramScheduleChangeChanges() {
+		LoadAndSaveEntities.saveProgramScheduleChangeToFile(ProgramScheduleChangeMap, PROGRAMSCHEDULE_CHANGE);
+		
+		return true;
+	}
+	
 	public static boolean saveFeedbackToClientChanges() {
 		LoadAndSaveEntities.saveFeedbackToClientToFile(FeedbackToClientMap, FEEDBACK_TOCLIENT);
 		
@@ -150,12 +187,32 @@ public class App {
 		return true;
 	}
 	
+	public static void saveMilestoneChanges() {
+    	LoadAndSaveEntities.saveMilestonesToFile(getMilestonesList(), MILESTONES_FILENAME);
+	}
+	
+	public static void saveProgressListChanges() {
+    	LoadAndSaveEntities.saveProgressListToFile(ProgressListMap, PROGRESS_FILE);
+	}
+	
 	public static boolean saveInstructorTipsChanges() {
 		LoadAndSaveEntities.saveContentsToFile(InstructorTipsMap, TIPS_AND_ARTICLES_FILENAME);
 		LoadAndSaveEntities.saveContentsToFile(PendingInstructorTipsMap, PENDING_TIPS_AND_ARTICLES_FILENAME);
 		
 		return true;
 	}
+	public static boolean saveInstructorReminderChanges() {
+		LoadAndSaveEntities.saveInstructorReminderToFile(InstructorReminderMap, INSTRUCTOR_REMINDER);
+		
+		return true;
+	}
+	
+	public static boolean saveInstructorRcommendationChanges() {
+		LoadAndSaveEntities.saveInstructorRecommendationToFile(InstructorRecommendationMap, INSTRUCTOR_RECCOMENDATION);
+		
+		return true;
+	}
+	
 	
 	public static boolean saveHealthTipsChanges() {
 		LoadAndSaveEntities.saveContentsToFile(HealthTipsMap, HEALTH_TIPS_FILENAME);
@@ -272,4 +329,74 @@ public class App {
 	public static Client getClientAccount() {
 		return Client;
 	}
+	
+	
+	public static List<FitnessMilestone> getMilestonesList() {
+		return MilestonesList;
+	}
+
+	public static void setMilestonesMap(List<FitnessMilestone> milestonesList) {
+		MilestonesList = milestonesList;
+	}
+	
+	
+	public static Map<String, String> getInstructorReminderMap() {
+		return InstructorReminderMap;
+	}
+	
+	public static void setInstructorReminderMap (Map<String, String> reminderMap) {
+		InstructorReminderMap=reminderMap;
+	}
+	
+	
+	
+	public static Map<String, String> getInstructorRcommednationMap() {
+		return InstructorRecommendationMap;
+	}
+	
+	public static void setInstructorRecommendationMap (Map<String, String> recommendationMap) {
+		InstructorRecommendationMap=recommendationMap;
+	}
+	
+	public static List<String> getInstructorAnnouncementsMap() {
+		return InstructorAnnouncementMap;
+	}
+	
+	public static void setInstructorAnnouncementsMap (List<String> instructorAnnouncementsMap) {
+		InstructorAnnouncementMap=instructorAnnouncementsMap;
+	}
+	
+	
+	public static Map<String, String> getProgramScheduleChangeMap() {
+		return ProgramScheduleChangeMap;
+	}
+	
+	public static void setProgramScheduleChangeMap (Map<String, String> prorgamScheduleChangeMap) {
+		ProgramScheduleChangeMap=prorgamScheduleChangeMap;
+	}
+	
+	
+	public static Map<String, String> getProgressListMap() {
+		return ProgressListMap;
+	}
+	
+	public static void setProgressListMap (Map<String, String> progressListMap) {
+		ProgressListMap=progressListMap;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

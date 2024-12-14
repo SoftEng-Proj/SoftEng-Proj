@@ -3,9 +3,8 @@
   I want to create, update, and delete fitness programs
  Scenario Outline: Create a new fitness program
     Given I am logged in as an instructor
-    When I create a new program with Title '<Title>', Duration '<Duration>', Difficulty '<Difficulty>', and Goals '<Goals>'
+    When I create a new program with Title '<Title>', Duration '<Duration>', Difficulty '<Difficulty>',Goals '<Goals>', Price '<Price>' 
     And I add a video tutorial and images
-    And I set the Price to '<Price>'
     And I schedule group sessions for '<Session>'
     Then the program should be created with the provided details
     
