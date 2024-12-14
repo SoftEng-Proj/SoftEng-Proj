@@ -40,11 +40,10 @@ public class AccountManagementPage extends BasePage {
                 String age = scanner.nextLine();
                 System.out.print("Enter Fitness Goals: ");
                 String fitnessGoals = scanner.nextLine();
-                AccountManagementControls.createProfile(client, age, fitnessGoals);
+                AccountManagementControls.createProfile(username, client, age, fitnessGoals);
                 App.saveClientProfileChanges();
                 onCreateProfilePage = false;
                 break;
-
             case 2:
             	onUpdatePersonalDetailsPage = true;
                 System.out.print("Enter New Age: ");
@@ -55,7 +54,6 @@ public class AccountManagementPage extends BasePage {
                 App.saveClientProfileChanges();
                 onUpdatePersonalDetailsPage = false;
                 break;
-
             case 3:
             	onDietaryRestrictionsPage = true;
                 System.out.print("Enter Dietary Preference: ");
@@ -66,26 +64,26 @@ public class AccountManagementPage extends BasePage {
                 App.saveClientProfileChanges();
                 onDietaryRestrictionsPage = false;
                 break;
-
             case 4:
                 accountManagementControls.viewProfile(client);
                 break;
-
             case 5:
                 System.out.println("\nReturning to the main menu...");
                 clientController.navigateToManagementPage();
                 break;
-
             default:
                 System.out.println("Invalid choice. Please try again.");
         }
     }
+    
     public static boolean isOnDietaryRestrictionsPage() {
         return onDietaryRestrictionsPage;
     }
+    
     public static boolean isOnCreateProfilePage() {
         return onCreateProfilePage;
     }
+    
     public static boolean isOnUpdatePersonalDetailsPage() {
         return onUpdatePersonalDetailsPage;
     }

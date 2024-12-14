@@ -7,7 +7,12 @@ import com.Software.FitnessSystem.Client;
 public class AccountManagementControls {
 	private static Map<String, Profile> profilesMap = App.getClientProfileMap();
     
-	public static String createProfile(Client client, String age, String fitnessGoals) {
+	public static String createProfile(String username, Client client, String age, String fitnessGoals) {
+		if(!App.getClientsMap().containsKey(username)) {
+			System.out.println("There isn't any client with Username: " + username);
+			return "Empty";
+		}
+		
 		if (profilesMap.containsKey(client.getUsername())) {
             System.out.println("Profile already exists for " + client.getUsername());
             return fitnessGoals;

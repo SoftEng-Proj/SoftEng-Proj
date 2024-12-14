@@ -77,7 +77,7 @@ public class AccountManagementTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expcted = "Profile Created Successfully.";
-		String acutal = AccountManagementControls.createProfile(null, "", "");
+		String acutal = AccountManagementControls.createProfile("", null, "", "");
 		assertTrue(acutal.equals(expcted));
 	}
 
@@ -95,7 +95,7 @@ public class AccountManagementTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expcted = "Profile Created Successfully.";
-		String acutal = AccountManagementControls.createProfile(null, "", "");
+		String acutal = AccountManagementControls.createProfile("", null, "", "");
 		assertTrue(acutal.equals(expcted));
 	}
 
@@ -104,7 +104,7 @@ public class AccountManagementTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expcted = "Profile Created Successfully.";
-		String acutal = AccountManagementControls.createProfile(null, "", "");
+		String acutal = AccountManagementControls.createProfile("", null, "", "");
 		assertTrue(acutal.equals(expcted));
 	}
 
@@ -113,7 +113,7 @@ public class AccountManagementTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expcted = "Profile Created Successfully.";
-		String acutal = AccountManagementControls.createProfile(null, "", "");
+		String acutal = AccountManagementControls.createProfile("", null, "", "");
 		assertTrue(acutal.equals(expcted));
 	}
 

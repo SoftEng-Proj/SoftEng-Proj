@@ -13,6 +13,9 @@ public class Profile {
         this.dietaryRestrictions = "";
     }
     
+    public Profile() {
+    }
+    
     public String getAge() {
         return age;
     }

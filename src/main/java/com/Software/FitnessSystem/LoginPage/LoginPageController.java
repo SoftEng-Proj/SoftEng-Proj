@@ -46,7 +46,7 @@ public class LoginPageController {
             	}
             }
             case 2 ->  {
-            	if(loginData(1)) {
+            	if(loginData(2)) {
             		//instructorPagesController.navigateToManagementPage();
             	} else {
             		navigateToLoginPage();
@@ -54,7 +54,7 @@ public class LoginPageController {
             	}
             }
             case 3 -> {
-	        	if(loginData(1)) {
+	        	if(loginData(3)) {
 	        		clientPagesController.navigateToManagementPage();
 	        	} else {
 	        		navigateToLoginPage();

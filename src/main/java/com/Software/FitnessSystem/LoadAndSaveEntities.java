@@ -224,8 +224,7 @@ public class LoadAndSaveEntities {
         }
     }
 
-	public static void saveClientProfileToFile(Map<String, Profile> clientProfileMap,
-			String clientProfilesFilename) {
+	public static void saveClientProfileToFile(Map<String, Profile> clientProfileMap, String clientProfilesFilename) {
 		File file = new File(clientProfilesFilename);
         if (!file.exists()) {
             System.err.println("The file does not exist. A new file will be created.");
@@ -235,13 +234,11 @@ public class LoadAndSaveEntities {
             ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.writeValue(file, clientProfileMap);
         } catch (IOException e) {
-            System.err.println("Error saving handled feedback Tips data: " + e.getMessage());
+            System.err.println("Error saving client profiles: " + e.getMessage());
         }
-		
 	}
 
-	public static void loadClientProfilesFromFile(Map<String, Profile> clientProfileMap,
-			String clientProfilesFilename) {
+	public static void loadClientProfilesFromFile(Map<String, Profile> clientProfileMap, String clientProfilesFilename) {
 		File file = new File(clientProfilesFilename);
         if (!file.exists()) {
             System.err.println("File does not exist. Cannot load data.");
@@ -253,7 +250,7 @@ public class LoadAndSaveEntities {
             Map<String, Profile> loadedClientProfiles = objectMapper.readValue(file, new TypeReference<Map<String, Profile>>() {});
             clientProfileMap.putAll(loadedClientProfiles);
         } catch (IOException e) {
-            System.err.println("Error loading handled feedback data: " + e.getMessage());
+            System.err.println("Error loading client profiles: " + e.getMessage());
         }
 	}
 
@@ -262,7 +259,7 @@ public class LoadAndSaveEntities {
         if (!file.exists()) {
             System.err.println("The file does not exist. A new file will be created.");
         }
-
+        
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.writeValue(file, MilestonesList);
@@ -270,13 +267,14 @@ public class LoadAndSaveEntities {
             System.err.println("Error saving milestones data: " + e.getMessage());
         }
 	}
+	
 	public static void loadMilestonesFromFile(List<FitnessMilestone> MilestonesList, String milestonesFilename) {
 	    File file = new File(milestonesFilename);
 	    if (!file.exists()) {
 	        System.err.println("File does not exist. Cannot load data.");
 	        return;
 	    }
-
+	    
 	    try {
 	        ObjectMapper objectMapper = new ObjectMapper();
 	        List<FitnessMilestone> loadedMilestones = objectMapper.readValue(file, new TypeReference<List<FitnessMilestone>>() {});
@@ -285,15 +283,14 @@ public class LoadAndSaveEntities {
 	        System.err.println("Error loading milestones data: " + e.getMessage());
 	    }
 	}
-
-	public static void loadProgramRatingsFromFile(Map<String, Map<String, Integer>> programRatings,
-			String programRatingsFilename) {
+	
+	public static void loadProgramRatingsFromFile(Map<String, Map<String, Integer>> programRatings, String programRatingsFilename) {
 		File file = new File(programRatingsFilename);
 	    if (!file.exists()) {
 	        System.err.println("File does not exist. Cannot load data.");
 	        return;
 	    }
-
+	    
 	    try {
 	        ObjectMapper objectMapper = new ObjectMapper();
 	        Map<String, Map<String, Integer>> loadedRatings = objectMapper.readValue(
@@ -303,15 +300,14 @@ public class LoadAndSaveEntities {
 	        System.err.println("Error loading program ratings data: " + e.getMessage());
 	    }		
 	}
-
-	public static void loadProgramReviewsFromFile(Map<String, Map<String, String>> programReviews,
-			String programReviewsFilename) {
+	
+	public static void loadProgramReviewsFromFile(Map<String, Map<String, String>> programReviews, String programReviewsFilename) {
 		File file = new File(programReviewsFilename);
 	    if (!file.exists()) {
 	        System.err.println("File does not exist. Cannot load data.");
 	        return;
 	    }
-
+	    
 	    try {
 	        ObjectMapper objectMapper = new ObjectMapper();
 	        Map<String, Map<String, String>> loadedReviews = objectMapper.readValue(
@@ -321,32 +317,30 @@ public class LoadAndSaveEntities {
 	        System.err.println("Error loading program reviews data: " + e.getMessage());
 	    }		
 	}
-
-	public static void loadProgramSuggestionsFromFile(Map<String, Map<String, String>> programSuggestions,
-			String programSuggestionsFilename) {
+	
+	public static void loadProgramSuggestionsFromFile(Map<String, Map<String, String>> programSuggestions, String programSuggestionsFilename) {
 		File file = new File(programSuggestionsFilename);
 	    if (!file.exists()) {
 	        System.err.println("File does not exist. Cannot load data.");
 	        return;
 	    }
-
+	    
 	    try {
 	        ObjectMapper objectMapper = new ObjectMapper();
 	        Map<String, Map<String, String>> loadedSuggestions = objectMapper.readValue(
-	            file, new TypeReference<Map<String, Map<String, String>>>() {});
+	        		file, new TypeReference<Map<String, Map<String, String>>>() {});
 	        programSuggestions.putAll(loadedSuggestions);
 	    } catch (IOException e) {
 	        System.err.println("Error loading program suggestions data: " + e.getMessage());
 	    }		
 	}
-
-	public static void saveProgramRatingsToFile(Map<String, Map<String, Integer>> programRatings,
-			String programRatingsFilename) {
+	
+	public static void saveProgramRatingsToFile(Map<String, Map<String, Integer>> programRatings, String programRatingsFilename) {
 		File file = new File(programRatingsFilename);
 	    if (!file.exists()) {
 	        System.err.println("The file does not exist. A new file will be created.");
 	    }
-
+	    
 	    try {
 	        ObjectMapper objectMapper = new ObjectMapper();
 	        objectMapper.writeValue(file, programRatings);
@@ -354,14 +348,13 @@ public class LoadAndSaveEntities {
 	        System.err.println("Error saving program ratings data: " + e.getMessage());
 	    }		
 	}
-
-	public static void saveProgramReviewsToFile(Map<String, Map<String, String>> programReviews,
-			String programReviewsFilename) {
+	
+	public static void saveProgramReviewsToFile(Map<String, Map<String, String>> programReviews, String programReviewsFilename) {
 		File file = new File(programReviewsFilename);
 	    if (!file.exists()) {
 	        System.err.println("The file does not exist. A new file will be created.");
 	    }
-
+	    
 	    try {
 	        ObjectMapper objectMapper = new ObjectMapper();
 	        objectMapper.writeValue(file, programReviews);
@@ -369,14 +362,13 @@ public class LoadAndSaveEntities {
 	        System.err.println("Error saving program reviews data: " + e.getMessage());
 	    }		
 	}
-
-	public static void saveProgramSuggestionsToFile(Map<String, Map<String, String>> programSuggestions,
-			String programSuggestionsFilename) {
+	
+	public static void saveProgramSuggestionsToFile(Map<String, Map<String, String>> programSuggestions, String programSuggestionsFilename) {
 		File file = new File(programSuggestionsFilename);
 	    if (!file.exists()) {
 	        System.err.println("The file does not exist. A new file will be created.");
 	    }
-
+	    
 	    try {
 	        ObjectMapper objectMapper = new ObjectMapper();
 	        objectMapper.writeValue(file, programSuggestions);

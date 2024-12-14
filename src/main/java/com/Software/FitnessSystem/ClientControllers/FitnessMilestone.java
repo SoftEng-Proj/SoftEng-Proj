@@ -14,6 +14,9 @@ public class FitnessMilestone {
 	        this.value = value;
 	        this.date = date;
 	    }
+	    
+	    public FitnessMilestone() {
+	    }
 
 	    public String getType() {
 	        return type;
