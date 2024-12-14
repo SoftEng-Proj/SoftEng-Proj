@@ -1,22 +1,17 @@
 package com.Software.FitnessSystem.InstructorPageNavigation;
-
 import com.Software.FitnessSystem.InfrastructureForPages.BasePage;
 import com.Software.FitnessSystem.InstructorControllers.ProgramManagementControls;
 import com.Software.FitnessSystem.LoginPage.InstructorPageControllers;
 
 public class ProgramManagementPage extends BasePage {
-	
+	@SuppressWarnings("unused")
 	private InstructorPageControllers instructorController;
 	private ProgramManagementControls programManagementControls ;
-	
 	
 	public ProgramManagementPage (InstructorPageControllers instructorController) {
 		this.instructorController=instructorController;
 		this.programManagementControls=new ProgramManagementControls();
-		
 	}
-	
-	
 	
     @Override
     public void display() {
@@ -26,9 +21,8 @@ public class ProgramManagementPage extends BasePage {
         System.out.println("3. Delete a fitness program.");
         System.out.println("4. Set a schedule for group sessions.");
         System.out.println("5. Go back.");
-       
     }
-
+    
     @Override
     public void executeOption(int choice) {
         switch (choice) {
@@ -81,7 +75,7 @@ public class ProgramManagementPage extends BasePage {
              goBack();
                 break;
             default:
-              //  System.out.println("Invalid choice. Please try again.");
+                System.out.println("Invalid choice. Please try again.");
         }
     }
 }

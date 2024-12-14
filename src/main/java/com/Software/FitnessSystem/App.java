@@ -2,12 +2,16 @@ package com.Software.FitnessSystem;
 import com.Software.FitnessSystem.AdminControllers.CustomPlan;
 import com.Software.FitnessSystem.AdminControllers.ProgramEnrollment;
 import com.Software.FitnessSystem.AdminControllers.SubscriptionPlan;
+import com.Software.FitnessSystem.ClientControllers.FitnessMilestone;
+import com.Software.FitnessSystem.ClientControllers.Profile;
 import com.Software.FitnessSystem.InstructorControllers.Program;
 import com.Software.FitnessSystem.LoginPage.LoginPageController;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class App {
@@ -23,7 +27,12 @@ public class App {
 	public static final String PENDING_HEALTH_TIPS_FILENAME = "src/main/resources/Files/Pending_Health_Tips.json";
 	public static final String USER_FEEDBACK_FILENAME = "src/main/resources/Files/User_Feedback.json";
 	public static final String USER_FEEDBACK_HANDLE_FILENAME = "src/main/resources/Files/User_Feedback_Handle.json";
-	
+	public static final String CLIENT_PROFILES_FILENAME = "src/main/resources/Files/Client_Profiles.json";
+	public static final String MILESTONES_FILENAME = "src/main/resources/Files/Milestones.json";
+	public static final String PROGRAM_RATINGS_FILENAME = "src/main/resources/Files/Program_Ratings.json";
+    public static final String PROGRAM_REVIEWS_FILENAME = "src/main/resources/Files/Program_Reviews.json";
+    public static final String PROGRAM_SUGGESTIONS_FILENAME = "src/main/resources/Files/Program_Suggestions.json";
+    
     private static Map<String, User> UserSubscriptionPlan = new HashMap<>();
     private static Map<String, CustomPlan> CustomSubscriptionPlan = new HashMap<>();
     private static Map<String, Admin> AdminsMap = new HashMap<>();
@@ -38,6 +47,11 @@ public class App {
     private static Map<String, Content> PendingHealthTipsMap = new HashMap<>();
     private static Map<String, Content> UserFeedbackMap = new HashMap<>();
     private static Map<String, String> HandledFeedbackMap = new HashMap<>();
+    private static Map<String, Profile> ClientProfileMap = new HashMap<>();
+    private static List<FitnessMilestone> MilestonesList = new ArrayList<>();
+    private static Map<String, Map<String, Integer>> ProgramRatings = new HashMap<>();
+    private static Map<String, Map<String, String>> ProgramReviews = new HashMap<>();
+    private static Map<String, Map<String, String>> ProgramSuggestions = new HashMap<>();
     
     private static Admin Admin;
     private static Instructor Instructor;
@@ -62,6 +76,11 @@ public class App {
     	LoadAndSaveEntities.loadContentsFromFile(PendingHealthTipsMap, PENDING_HEALTH_TIPS_FILENAME);
     	LoadAndSaveEntities.loadContentsFromFile(UserFeedbackMap, USER_FEEDBACK_FILENAME);
     	LoadAndSaveEntities.loadHandledFeedbackFromFile(HandledFeedbackMap, USER_FEEDBACK_HANDLE_FILENAME);
+    	LoadAndSaveEntities.loadClientProfilesFromFile(ClientProfileMap, CLIENT_PROFILES_FILENAME);
+    	LoadAndSaveEntities.loadMilestonesFromFile(MilestonesList, MILESTONES_FILENAME);
+    	LoadAndSaveEntities.loadProgramRatingsFromFile(ProgramRatings, PROGRAM_RATINGS_FILENAME);
+        LoadAndSaveEntities.loadProgramReviewsFromFile(ProgramReviews, PROGRAM_REVIEWS_FILENAME);
+        LoadAndSaveEntities.loadProgramSuggestionsFromFile(ProgramSuggestions, PROGRAM_SUGGESTIONS_FILENAME);
     	
     	SubscriptionPlan.convertFromPlanTypeToCustomPlan();
     	fillUserSubscriptionPlanMap();
@@ -118,7 +137,6 @@ public class App {
 	
 	public static boolean saveCustomSubscriptionPlanChanges() {
 		LoadAndSaveEntities.saveCustomSubscriptionPlanToFile(CustomSubscriptionPlan, SUBSCRIPTION_PLAN_FILENAME);
-		
 		return true;
 	}
 	
@@ -127,35 +145,56 @@ public class App {
 		LoadAndSaveEntities.saveInstructorsToFile(InstructorsMap, INSTRUCTOR_ACCOUNTS_FILENAME);
 		LoadAndSaveEntities.saveInstructorsToFile(PendingInstructorsMap, PENDING_INSTRUCTOR_ACCOUNTS_FILENAME);
 		LoadAndSaveEntities.saveClientsToFile(ClientsMap, CLIENT_ACCOUNTS_FILENAME);
-		
 		return true;
 	}
 	
 	public static boolean saveFitnessProgramsChanges() {
 		LoadAndSaveEntities.saveFitnessProgramsToFile(FitnessProgramsMap, FITNESS_PROGRAMS_FILENAME);
-		
 		return true;
 	}
 	
 	public static boolean saveInstructorTipsChanges() {
 		LoadAndSaveEntities.saveContentsToFile(InstructorTipsMap, TIPS_AND_ARTICLES_FILENAME);
 		LoadAndSaveEntities.saveContentsToFile(PendingInstructorTipsMap, PENDING_TIPS_AND_ARTICLES_FILENAME);
-		
 		return true;
 	}
 	
 	public static boolean saveHealthTipsChanges() {
 		LoadAndSaveEntities.saveContentsToFile(HealthTipsMap, HEALTH_TIPS_FILENAME);
 		LoadAndSaveEntities.saveContentsToFile(PendingHealthTipsMap, PENDING_HEALTH_TIPS_FILENAME);
-		
 		return true;
 	}
 	
 	public static boolean saveUserFeedbackChanges() {
 		LoadAndSaveEntities.saveContentsToFile(UserFeedbackMap, USER_FEEDBACK_FILENAME);
 		LoadAndSaveEntities.saveHandledFeedbackToFile(HandledFeedbackMap, USER_FEEDBACK_HANDLE_FILENAME);
-		
 		return true;
+	}
+	
+    public static boolean saveClientProfileChanges() {
+    	LoadAndSaveEntities.saveClientProfileToFile(ClientProfileMap, CLIENT_PROFILES_FILENAME);
+    	return true;
+	}
+    
+    public static boolean saveMilestoneChanges() {
+    	LoadAndSaveEntities.saveMilestonesToFile(MilestonesList, MILESTONES_FILENAME);
+    	return true;
+	}
+    
+    public static boolean saveProgramRatingsChanges() {
+        LoadAndSaveEntities.saveProgramRatingsToFile(ProgramRatings, PROGRAM_RATINGS_FILENAME);
+        return true;
+        
+	}
+    
+	public static boolean saveProgramReviewsChanges() {
+	    LoadAndSaveEntities.saveProgramReviewsToFile(ProgramReviews, PROGRAM_REVIEWS_FILENAME);
+		return true;
+	}
+	
+	public static boolean saveProgramSuggestionsChanges() {
+	    LoadAndSaveEntities.saveProgramSuggestionsToFile(ProgramSuggestions, PROGRAM_SUGGESTIONS_FILENAME);
+	    return true;
 	}
 	
 	private static void fillUserSubscriptionPlanMap() {
@@ -236,6 +275,41 @@ public class App {
 	}
 	public static Map<String, String> getHandledFeedbackMap() {
 		return HandledFeedbackMap;
+	}
+	
+	public static Map<String, Profile> getClientProfileMap() {
+		return ClientProfileMap;
+	}
+	public static void setClientProfileMap(Map<String, Profile> clientProfileMap) {
+		ClientProfileMap = clientProfileMap;
+	}
+	
+	public static List<FitnessMilestone> getMilestonesList() {
+		return MilestonesList;
+	}
+	public static void setMilestonesMap(List<FitnessMilestone> milestonesList) {
+		MilestonesList = milestonesList;
+	}
+	
+	public static Map<String, Map<String, Integer>> getProgramRatings() {
+		return ProgramRatings;
+	}
+	public static void setProgramRatings(Map<String, Map<String, Integer>> programRatings) {
+		ProgramRatings = programRatings;
+	}
+	
+	public static Map<String, Map<String, String>> getProgramReviews() {
+		return ProgramReviews;
+	}
+	public static void setProgramReviews(Map<String, Map<String, String>> programReviews) {
+		ProgramReviews = programReviews;
+	}
+	
+	public static Map<String, Map<String, String>> getProgramSuggestions() {
+		return ProgramSuggestions;
+	}
+	public static void setProgramSuggestions(Map<String, Map<String, String>> programSuggestions) {
+		ProgramSuggestions = programSuggestions;
 	}
 	
 	public static Admin getAdminAccount() {

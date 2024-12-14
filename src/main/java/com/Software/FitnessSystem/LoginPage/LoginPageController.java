@@ -2,11 +2,12 @@ package com.Software.FitnessSystem.LoginPage;
 import java.util.Scanner;
 
 import com.Software.FitnessSystem.App;
+import com.Software.FitnessSystem.Client;
 
 public class LoginPageController {
     public AdminPagesController adminPagesController = new AdminPagesController();
     public InstructorPageControllers instructorPagesController = new InstructorPageControllers();
-    public ClientPageControllers clientPagesController = new ClientPageControllers();
+    public ClientPageControllers clientPagesController = new ClientPageControllers(new Client());
     
     @SuppressWarnings("unused")
 	private int mainListNumber = 0;

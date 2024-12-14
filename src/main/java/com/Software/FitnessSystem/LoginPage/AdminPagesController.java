@@ -14,9 +14,6 @@ public class AdminPagesController {
     public ProgramMonitoringPage monitoringPage;
     public SubscriptionManagementPage subscriptionPage;
     
-    @SuppressWarnings("unused")
-	private int mainListNumber = 0;
-    
     public AdminPagesController() {
     	contentPage = new ContentManagementPage(this);
     	monitoringPage = new ProgramMonitoringPage(this);
@@ -28,7 +25,6 @@ public class AdminPagesController {
         displayMainMenu();
         Scanner input = new Scanner(System.in);
         int choiceNumber = input.nextInt();
-        mainListNumber = choiceNumber;
         navigateToPage(choiceNumber);
         return true;
     }
