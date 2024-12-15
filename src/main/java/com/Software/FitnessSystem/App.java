@@ -32,7 +32,15 @@ public class App {
 	public static final String PROGRAM_RATINGS_FILENAME = "src/main/resources/Files/Program_Ratings.json";
     public static final String PROGRAM_REVIEWS_FILENAME = "src/main/resources/Files/Program_Reviews.json";
     public static final String PROGRAM_SUGGESTIONS_FILENAME = "src/main/resources/Files/Program_Suggestions.json";
-    
+	public static final String INSTRUCTOR_MSGS_FOR_CLIENTS = "src/main/resources/Files/Instructor_Msgs_For_Clients.json";
+	public static final String PROGRAM_FORUM_MSGS = "src/main/resources/Files/Program_Forum_Msgs.json";
+	public static final String FEEDBACK_TOCLIENT = "src/main/resources/Files/Feedback_ToClient.json";
+	public static final String INSTRUCTOR_REMINDER = "src/main/resources/Files/Instructor_Reminder.json";
+	public static final String INSTRUCTOR_RECCOMENDATION = "src/main/resources/Files/Instructor_Recommendation.json";
+	public static final String INSTRUCTOR_ANNOUNCEMENTS = "src/main/resources/Files/Instructor_Announcements.json";
+	public static final String PROGRAMSCHEDULE_CHANGE = "src/main/resources/Files/ProgramSchedule_Change.json";
+	public static final String PROGRESS_FILE = "src/main/resources/Files/Progress_File.json";
+	
     private static Map<String, User> UserSubscriptionPlan = new HashMap<>();
     private static Map<String, CustomPlan> CustomSubscriptionPlan = new HashMap<>();
     private static Map<String, Admin> AdminsMap = new HashMap<>();
@@ -48,10 +56,18 @@ public class App {
     private static Map<String, Content> UserFeedbackMap = new HashMap<>();
     private static Map<String, String> HandledFeedbackMap = new HashMap<>();
     private static Map<String, Profile> ClientProfileMap = new HashMap<>();
-    private static List<FitnessMilestone> MilestonesList = new ArrayList<>();
     private static Map<String, Map<String, Integer>> ProgramRatings = new HashMap<>();
     private static Map<String, Map<String, String>> ProgramReviews = new HashMap<>();
     private static Map<String, Map<String, String>> ProgramSuggestions = new HashMap<>();
+    private static Map<String, String> InstructorMessagesForClientsMap= new HashMap<>();
+    private static Map<String, String> ProgramForumMsgsMap= new HashMap<>();
+    private static Map<String, String> FeedbackToClientMap= new HashMap<>();
+    private static List<FitnessMilestone> MilestonesList = new ArrayList<>();
+    private static Map<String, String> InstructorReminderMap= new HashMap<>();
+    private static Map<String, String> InstructorRecommendationMap= new HashMap<>();
+    private static List<String> InstructorAnnouncementMap= new ArrayList<>();
+    private static Map<String, String> ProgramScheduleChangeMap= new HashMap<>();
+    private static Map<String, String> ProgressListMap= new HashMap<>();
     
     private static Admin Admin;
     private static Instructor Instructor;
@@ -59,6 +75,7 @@ public class App {
     
     public static void main(String[] args) {
         new App();
+        
         printWelcomeMessage();
         new LoginPageController();
     }
@@ -81,8 +98,15 @@ public class App {
     	LoadAndSaveEntities.loadProgramRatingsFromFile(ProgramRatings, PROGRAM_RATINGS_FILENAME);
         LoadAndSaveEntities.loadProgramReviewsFromFile(ProgramReviews, PROGRAM_REVIEWS_FILENAME);
         LoadAndSaveEntities.loadProgramSuggestionsFromFile(ProgramSuggestions, PROGRAM_SUGGESTIONS_FILENAME);
-    	
-    	SubscriptionPlan.convertFromPlanTypeToCustomPlan();
+    	LoadAndSaveEntities.loadInstructorMsgsToClientsFromFile(InstructorMessagesForClientsMap, INSTRUCTOR_MSGS_FOR_CLIENTS);
+        LoadAndSaveEntities.loadProgramForumMsgsFromFile(ProgramForumMsgsMap, PROGRAM_FORUM_MSGS);
+        LoadAndSaveEntities.loadFeedbackToClientFromFile(FeedbackToClientMap, FEEDBACK_TOCLIENT);
+        LoadAndSaveEntities.loadInstructorReminderFromFile(InstructorReminderMap, INSTRUCTOR_REMINDER);
+        LoadAndSaveEntities.loadInstructorRecommednationFromFile(InstructorRecommendationMap, INSTRUCTOR_RECCOMENDATION);
+        LoadAndSaveEntities.loadProgramScheduleChangeFromFile(ProgramScheduleChangeMap, PROGRAMSCHEDULE_CHANGE);
+        LoadAndSaveEntities.loadProgressListFromFile(ProgressListMap, PROGRESS_FILE);
+        
+        SubscriptionPlan.convertFromPlanTypeToCustomPlan();
     	fillUserSubscriptionPlanMap();
     	ProgramEnrollmentMap = ProgramEnrollment.enrolmentStatistics(FitnessProgramsMap);
     }
@@ -135,6 +159,18 @@ public class App {
     	return "ClientLoggedIn";
 	}
 	
+	public static Admin getAdminAccount() {
+		return Admin;
+	}
+	
+	public static Instructor getInstructorAccount() {
+		return Instructor;
+	}
+	
+	public static Client getClientAccount() {
+		return Client;
+	}
+	
 	public static boolean saveCustomSubscriptionPlanChanges() {
 		LoadAndSaveEntities.saveCustomSubscriptionPlanToFile(CustomSubscriptionPlan, SUBSCRIPTION_PLAN_FILENAME);
 		return true;
@@ -153,9 +189,51 @@ public class App {
 		return true;
 	}
 	
+	public static boolean saveInstructorAnnouncementsChanges() {
+		LoadAndSaveEntities.saveInstructorAnnouncementToFile(InstructorAnnouncementMap, INSTRUCTOR_ANNOUNCEMENTS);
+		return true;
+	}
+	
+	public static boolean saveProgramScheduleChangeChanges() {
+		LoadAndSaveEntities.saveProgramScheduleChangeToFile(ProgramScheduleChangeMap, PROGRAMSCHEDULE_CHANGE);
+		return true;
+	}
+	
+	public static boolean saveFeedbackToClientChanges() {
+		LoadAndSaveEntities.saveFeedbackToClientToFile(FeedbackToClientMap, FEEDBACK_TOCLIENT);
+		return true;
+	}
+	
+	public static boolean saveInstructorMSGSForClientsChanges() {
+    	LoadAndSaveEntities.saveInstructorMsgsToClientsToFile(InstructorMessagesForClientsMap, INSTRUCTOR_MSGS_FOR_CLIENTS);
+    	return true;
+	}
+	
+	public static boolean saveProgramForumMsgsChanges() {
+		LoadAndSaveEntities.saveProgramForumMsgsToFile(ProgramForumMsgsMap, PROGRAM_FORUM_MSGS);
+		return true;
+	}
+	
+	public static void saveMilestoneChanges() {
+    	LoadAndSaveEntities.saveMilestonesToFile(getMilestonesList(), MILESTONES_FILENAME);
+	}
+	
+	public static void saveProgressListChanges() {
+    	LoadAndSaveEntities.saveProgressListToFile(ProgressListMap, PROGRESS_FILE);
+	}
+	
 	public static boolean saveInstructorTipsChanges() {
 		LoadAndSaveEntities.saveContentsToFile(InstructorTipsMap, TIPS_AND_ARTICLES_FILENAME);
 		LoadAndSaveEntities.saveContentsToFile(PendingInstructorTipsMap, PENDING_TIPS_AND_ARTICLES_FILENAME);
+		return true;
+	}
+	public static boolean saveInstructorReminderChanges() {
+		LoadAndSaveEntities.saveInstructorReminderToFile(InstructorReminderMap, INSTRUCTOR_REMINDER);
+		return true;
+	}
+	
+	public static boolean saveInstructorRcommendationChanges() {
+		LoadAndSaveEntities.saveInstructorRecommendationToFile(InstructorRecommendationMap, INSTRUCTOR_RECCOMENDATION);
 		return true;
 	}
 	
@@ -176,15 +254,9 @@ public class App {
     	return true;
 	}
     
-    public static boolean saveMilestoneChanges() {
-    	LoadAndSaveEntities.saveMilestonesToFile(MilestonesList, MILESTONES_FILENAME);
-    	return true;
-	}
-    
     public static boolean saveProgramRatingsChanges() {
         LoadAndSaveEntities.saveProgramRatingsToFile(ProgramRatings, PROGRAM_RATINGS_FILENAME);
         return true;
-        
 	}
     
 	public static boolean saveProgramReviewsChanges() {
@@ -312,15 +384,59 @@ public class App {
 		ProgramSuggestions = programSuggestions;
 	}
 	
-	public static Admin getAdminAccount() {
-		return Admin;
+	public static Map<String, String> getInstructorMessagesForClientMap() {
+		return InstructorMessagesForClientsMap;
+	}
+	public static void setInstructorMessagesForClientMap (Map<String, String> instructorMessageMap) {
+		InstructorMessagesForClientsMap=instructorMessageMap;
 	}
 	
-	public static Instructor getInstructorAccount() {
-		return Instructor;
+	public static Map<String, String> getProgramForumMsgsMap() {
+		return ProgramForumMsgsMap;
+	}
+	public static void setProgramForumMsgsMap (Map<String, String> programForumMsgsMap) {
+		ProgramForumMsgsMap=programForumMsgsMap;
 	}
 	
-	public static Client getClientAccount() {
-		return Client;
+	public static Map<String, String> getFeedbackToClientMap() {
+		return FeedbackToClientMap;
+	}
+	public static void setFeedbackToClientMap (Map<String, String> feedbackMap) {
+		ProgramForumMsgsMap=feedbackMap;
+	}
+	
+	public static Map<String, String> getInstructorReminderMap() {
+		return InstructorReminderMap;
+	}
+	public static void setInstructorReminderMap (Map<String, String> reminderMap) {
+		InstructorReminderMap=reminderMap;
+	}
+	
+	public static Map<String, String> getInstructorRcommednationMap() {
+		return InstructorRecommendationMap;
+	}
+	public static void setInstructorRecommendationMap (Map<String, String> recommendationMap) {
+		InstructorRecommendationMap=recommendationMap;
+	}
+	
+	public static List<String> getInstructorAnnouncementsMap() {
+		return InstructorAnnouncementMap;
+	}
+	public static void setInstructorAnnouncementsMap (List<String> instructorAnnouncementsMap) {
+		InstructorAnnouncementMap=instructorAnnouncementsMap;
+	}
+	
+	public static Map<String, String> getProgramScheduleChangeMap() {
+		return ProgramScheduleChangeMap;
+	}
+	public static void setProgramScheduleChangeMap (Map<String, String> prorgamScheduleChangeMap) {
+		ProgramScheduleChangeMap=prorgamScheduleChangeMap;
+	}
+	
+	public static Map<String, String> getProgressListMap() {
+		return ProgressListMap;
+	}
+	public static void setProgressListMap (Map<String, String> progressListMap) {
+		ProgressListMap=progressListMap;
 	}
 }

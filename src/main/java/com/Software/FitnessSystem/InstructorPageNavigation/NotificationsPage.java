@@ -1,45 +1,51 @@
 package com.Software.FitnessSystem.InstructorPageNavigation;
 import com.Software.FitnessSystem.InfrastructureForPages.BasePage;
+import com.Software.FitnessSystem.InstructorControllers.NotificationControls;
+import com.Software.FitnessSystem.LoginPage.InstructorPageControllers;
 
 public class NotificationsPage extends BasePage {
+	private String Programname;
+	private String NewSchedule; 
+	private String announcement; 
+	
+	private InstructorPageControllers instructorController;
+	public NotificationsPage (InstructorPageControllers instructorController) {
+		this.instructorController=instructorController;
+	}
+	
     @Override
     public void display() {
-        System.out.println("\nManagement Menu:");
-        System.out.println("1. Add new instructor account.");
-        System.out.println("2. Add new client account.");
-        System.out.println("3. Update instructor account.");
-        System.out.println("4. Update client account.");
-        System.out.println("5. Deactivate instructor account.");
-        System.out.println("6. Deactivate client account.");
-        System.out.println("7. Go Back.");
+        System.out.println("\nNotifications Management Menu:");
+        System.out.println("1. Notify about program schedule change.");
+        System.out.println("2. Announce new programs or offers.");
+        System.out.println("3. Go back");
     }
-
+    
     @Override
     public void executeOption(int choice) {
         switch (choice) {
             case 1:
-                System.out.println("Adding new instructor account...");
+                ProgramInfo();
+            	System.out.println("Enter program's schedule change:");
+            	NewSchedule = scanner.nextLine();
+            	NotificationControls.addProgramScheduleChange(Programname, NewSchedule);
                 break;
             case 2:
-                System.out.println("Adding new client account...");
+                System.out.println("Enter the Announcement:");
+                announcement = scanner.nextLine();
+                NotificationControls.AddanAnnouncement(announcement);
                 break;
             case 3:
-                System.out.println("Updating instructor account...");
-                break;
-            case 4:
-                System.out.println("Updating client account...");
-                break;
-            case 5:
-                System.out.println("Deactivating instructor account...");
-                break;
-            case 6:
-                System.out.println("Deactivating client account...");
-                break;
-            case 7:
-                goBack();
+            	System.out.println("\nReturning to the main menu...");
+            	instructorController.navigateToManagementPage();
                 break;
             default:
                 System.out.println("Invalid choice. Please try again.");
         }
+    }
+    
+    public void ProgramInfo() {
+    	System.out.println("Enter name of program:");
+        Programname = scanner.nextLine();
     }
 }

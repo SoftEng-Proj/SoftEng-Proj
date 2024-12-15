@@ -16,10 +16,6 @@ public class NavigationControllerForInstructor {
             System.out.print("Enter your choice: ");
             int choice = new Scanner(System.in).nextInt();
             
-            if (choice == 7) {
-                System.out.println("\nReturning to the main menu...");
-                break;
-            }
             currentPage.executeOption(choice);
         }
     }

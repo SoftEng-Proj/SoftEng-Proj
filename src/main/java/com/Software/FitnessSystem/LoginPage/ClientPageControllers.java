@@ -42,7 +42,11 @@ public class ClientPageControllers {
         case 3 -> navigationController.navigateTo(progressTrackingPage, this);
         case 4 -> navigationController.navigateTo(feedbackAndReviewsPage, this);
         case 5 -> {
-            System.out.println("\n\nExiting program. Goodbye!");
+        	System.out.print("\n");
+        	new LoginPageController();
+        }
+        case 6 -> {
+            System.err.println("\n\nExiting program. Goodbye!");
             System.exit(0);
         }
         default -> System.out.println("Invalid selection. Please try again.");
@@ -56,7 +60,8 @@ public class ClientPageControllers {
         System.out.println("2. Program Exploration and Enrollment.");
         System.out.println("3. Progress Tracking.");
         System.out.println("4. Feedback and Reviews.");
-        System.out.println("5. Exit.");
+        System.out.println("5. Logout.");
+        System.out.println("6. Exit.");
         System.out.print("\nEnter your choice: ");
     }
     public static boolean isOnProgramExplorationPage() {

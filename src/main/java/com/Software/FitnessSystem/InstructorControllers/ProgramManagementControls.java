@@ -7,14 +7,15 @@ import com.Software.FitnessSystem.App;
 public class ProgramManagementControls {
 	private static Map<String, Program> ProgramsMap = App.getFitnessProgramsMap();
 	
-	public void createProgram(String name, String duration, String level, String goal, String links, String price) {
+	public static String createProgram(String name, String duration, String level, String goal, String links, String price) {
 		String endDate = calculateProgramEnd(name, duration);
 	    Program newProgram = new Program(name, duration, endDate, level, goal, links, price);
 	    ProgramsMap.put(name, newProgram);
-	    System.out.println("Program created successfully: " + newProgram);
+	   
+	    return "Program created successfully";
 	}
 	
-	private String calculateProgramEnd(String name, String duration) {
+	private static String calculateProgramEnd(String name, String duration) {
 	    int daysToAdd = 0;
 	    try {
 	        daysToAdd = Integer.parseInt(duration);
@@ -36,23 +37,25 @@ public class ProgramManagementControls {
 	    return endDate.toString();
 	}
 	
-	public void updateProgram(String name, String newDuration, String newLevel, String newGoal, String newLinks, String newPrice) {
+	public static String updateProgram(String name, String newDuration, String newLevel, String newGoal, String newLinks, String newPrice) {
 		 Program programToUpdate = ProgramsMap.get(name);
 		 programToUpdate.setDuration(newDuration);
 	     programToUpdate.setLevel(newLevel);
 	     programToUpdate.setGoal(newGoal);
 	     programToUpdate.setLinks(newLinks);
 	     programToUpdate.setPrice(newPrice);
+	     return "Program updated";
+	     
 	 }
 	 
-	public void deleteProgram(String name) {
+	public static String deleteProgram(String name) {
 		 ProgramsMap.remove(name);
-	     System.out.println("Program '" + name + "' deleted successfully.");
+	     return "Program Deleted";
 	 }
 	 
-	 public void setSchedule(String name, String scheduleType) {
+	 public static String setSchedule(String name, String scheduleType) {
 		 Program programToSchedule = ProgramsMap.get(name);
 	     programToSchedule.setSchedule(scheduleType);
-	     System.out.println("Schedule for program '" + name + "' set to: " + scheduleType);
+	     return "Schedule set";
 	 }
 }
