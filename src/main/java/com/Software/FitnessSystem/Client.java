@@ -1,124 +1,252 @@
+/**
+ * Client class implements the User interface and represents a client in the system.
+ * It contains personal details, login information, subscription plan, and enrolled program.
+ * @author Muath Hassoun
+ */
 package com.Software.FitnessSystem;
 import static com.Software.FitnessSystem.App.*;
 import static com.Software.FitnessSystem.AdminControllers.SubscriptionManagementControls.*;
 import com.Software.FitnessSystem.AdminControllers.SubscriptionPlan;
 import com.Software.FitnessSystem.InstructorControllers.Program;
 
-public class Client implements User{
-	private String fName;
-	private String lName;
-	private String email;
-	private String username;
-	private String password;
-	private Program enrolledProgram;
-	
-	private int logins = 0;
+public class Client implements User {
+    private String fName;
+    private String lName;
+    private String email;
+    private String username;
+    private String password;
+    private Program enrolledProgram;
+    
+    private int logins = 0;
     private String lastLogin = "";
     private SubscriptionPlan subscriptionPlan;
-	
-	public Client(String fName, String lName, String email, String username, String password) {
-		super();
-		this.fName = fName;
-		this.lName = lName;
-		this.email = email;
-		this.username = username;
-		this.password = password;
-	}
-	
-	public Client() {
+    
+    /**
+     * Constructor to initialize a new client with first name, last name, email, username, and password.
+     * @author Muath Hassoun
+     * @param fName the first name of the client
+     * @param lName the last name of the client
+     * @param email the email address of the client
+     * @param username the username of the client
+     * @param password the password of the client
+     */
+    public Client(String fName, String lName, String email, String username, String password) {
+        super();
+        this.fName = fName;
+        this.lName = lName;
+        this.email = email;
+        this.username = username;
+        this.password = password;
     }
-	
-	@Override
-	public String getFirstName() {
-		return fName;
-	}
-	@Override
-	public void setFirstName(String fName) {
-		this.fName = fName;
-	}
-	
-	@Override
-	public String getLastName() {
-		return lName;
-	}
-	@Override
-	public void setLastName(String lName) {
-		this.lName = lName;
-	}
-	
-	@Override
-	public String getEmail() {
-		return email;
-	}
-	@Override
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	@Override
-	public String getUsername() {
-		return username;
-	}
-	@Override
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	
-	@Override
-	public String getPassword() {
-		return password;
-	}
-	@Override
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	
-	@Override
-	public int getLogins() {
+    
+    /**
+     * Default constructor for the Client class.
+     * @author Muath Hassoun
+     */
+    public Client() {
+    }
+    
+    /**
+     * Returns the first name of the client.
+     * @author Muath Hassoun
+     * @return the first name of the client
+     */
+    @Override
+    public String getFirstName() {
+        return fName;
+    }
+    
+    /**
+     * Sets the first name of the client.
+     * @author Muath Hassoun
+     * @param fName the first name to set
+     */
+    @Override
+    public void setFirstName(String fName) {
+        this.fName = fName;
+    }
+    
+    /**
+     * Returns the last name of the client.
+     * @author Muath Hassoun
+     * @return the last name of the client
+     */
+    @Override
+    public String getLastName() {
+        return lName;
+    }
+    
+    /**
+     * Sets the last name of the client.
+     * @author Muath Hassoun
+     * @param lName the last name to set
+     */
+    @Override
+    public void setLastName(String lName) {
+        this.lName = lName;
+    }
+    
+    /**
+     * Returns the email of the client.
+     * @author Muath Hassoun
+     * @return the email of the client
+     */
+    @Override
+    public String getEmail() {
+        return email;
+    }
+    
+    /**
+     * Sets the email of the client.
+     * @author Muath Hassoun
+     * @param email the email to set
+     */
+    @Override
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
+    /**
+     * Returns the username of the client.
+     * @author Muath Hassoun
+     * @return the username of the client
+     */
+    @Override
+    public String getUsername() {
+        return username;
+    }
+    
+    /**
+     * Sets the username of the client.
+     * @author Muath Hassoun
+     * @param username the username to set
+     */
+    @Override
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    
+    /**
+     * Returns the password of the client.
+     * @author Muath Hassoun
+     * @return the password of the client
+     */
+    @Override
+    public String getPassword() {
+        return password;
+    }
+    
+    /**
+     * Sets the password of the client.
+     * @author Muath Hassoun
+     * @param password the password to set
+     */
+    @Override
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
+    /**
+     * Returns the number of logins for the client.
+     * @author Muath Hassoun
+     * @return the number of logins
+     */
+    @Override
+    public int getLogins() {
         return logins;
     }
-	@Override
+    
+    /**
+     * Sets the number of logins for the client.
+     * @author Muath Hassoun
+     * @param logins the number of logins to set
+     */
+    @Override
     public void setLogins(int logins) {
         this.logins = logins;
     }
     
-	@Override
+    /**
+     * Returns the last login timestamp of the client.
+     * @author Muath Hassoun
+     * @return the last login timestamp
+     */
+    @Override
     public String getLastLogin() {
         return lastLogin;
     }
-	@Override
+    
+    /**
+     * Sets the last login timestamp of the client.
+     * @author Muath Hassoun
+     * @param lastLogin the last login timestamp to set
+     */
+    @Override
     public void setLastLogin(String lastLogin) {
         this.lastLogin = lastLogin;
     }
-	
-	@Override
-	public SubscriptionPlan getSubscriptionPlan() {
+    
+    /**
+     * Returns the subscription plan of the client.
+     * @author Muath Hassoun
+     * @return the subscription plan
+     */
+    @Override
+    public SubscriptionPlan getSubscriptionPlan() {
         return subscriptionPlan;
     }
-	@Override
+    
+    /**
+     * Sets the subscription plan of the client.
+     * @author Muath Hassoun
+     * @param subscriptionPlan the subscription plan to set
+     */
+    @Override
     public void setSubscriptionPlan(SubscriptionPlan subscriptionPlan) {
         this.subscriptionPlan = subscriptionPlan;
     }
-	
-	public void updateSubscriptionPlanForClient(Client client) {
-		giveTheUserNewSubscriptionOpportunity(subscriptionPlan, client);
-		saveAccountChanges();
-	}
-	public Program getEnrolledProgram() {
+    
+    /**
+     * Updates the subscription plan for the client by calling external methods.
+     * @author Muath Hassoun
+     * @param client the client to update the subscription plan for
+     */
+    public void updateSubscriptionPlanForClient(Client client) {
+        giveTheUserNewSubscriptionOpportunity(subscriptionPlan, client);
+        saveAccountChanges();
+    }
+    
+    /**
+     * Returns the enrolled program for the client.
+     * @author Muath Hassoun
+     * @return the enrolled program
+     */
+    public Program getEnrolledProgram() {
         return enrolledProgram;
     }
-
+    
+    /**
+     * Sets the enrolled program for the client.
+     * @author Muath Hassoun
+     * @param enrolledProgram the program to set
+     */
     public void setEnrolledProgram(Program enrolledProgram) {
         this.enrolledProgram = enrolledProgram;
     }
     
-	@Override
-	public String toString() {
-	    return "Client {" +
-	           "First Name='" + fName + '\'' +
-	           ", Last Name='" + lName + '\'' +
-	           ", Email='" + email + '\'' +
-	           ", Username='" + username + '\'' +
-	           ", Password='" + password + '\'' +
-	           '}';
-	}
+    /**
+     * Returns a string representation of the client, including their first name, last name, email, username, and password.
+     * @author Muath Hassoun
+     * @return a string representation of the client
+     */
+    @Override
+    public String toString() {
+        return "Client {" +
+               "First Name='" + fName + '\'' +
+               ", Last Name='" + lName + '\'' +
+               ", Email='" + email + '\'' +
+               ", Username='" + username + '\'' +
+               ", Password='" + password + '\'' +
+               '}';
+    }
 }

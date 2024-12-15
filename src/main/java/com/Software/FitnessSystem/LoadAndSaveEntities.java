@@ -13,7 +13,22 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+/**
+ * Utility class for handling the loading and saving of various entities
+ * in the Fitness Management System. This class provides methods to
+ * read data from persistent storage and save updated data back to files.
+ * 
+ * @author Muath Hassoun
+ */
 public class LoadAndSaveEntities {
+	/**
+	 * Saves the custom subscription plan map to a file.
+	 * If the file doesn't exist, a new file will be created.
+	 * @author Muath Hassoun
+	 * @param CustomSubscriptionPlanMap the map of custom subscription plans to save
+	 * @param CustomSubscriptionPlanFile the path to the file where the data will be saved
+	 * @return true if the data was saved successfully, false otherwise
+	 */
 	public static boolean saveCustomSubscriptionPlanToFile(Map<String, CustomPlan> CustomSubscriptionPlanMap, String CustomSubscriptionPlanFile) {
         File file = new File(CustomSubscriptionPlanFile);
         if (!file.exists()) {
@@ -30,6 +45,13 @@ public class LoadAndSaveEntities {
         }
     }
     
+	/**
+	 * Loads the custom subscription plan data from a file into the provided map.
+	 * If the file doesn't exist, an error message will be printed.
+	 * @author Muath Hassoun
+	 * @param CustomSubscriptionPlanMap the map to load the custom subscription plans into
+	 * @param CustomSubscriptionPlanFile the path to the file from which to load the data
+	 */
     public static void loadCustomSubscriptionPlanFromFile(Map<String, CustomPlan> CustomSubscriptionPlanMap, String CustomSubscriptionPlanFile) {
         File file = new File(CustomSubscriptionPlanFile);
         if (!file.exists()) {
@@ -46,6 +68,13 @@ public class LoadAndSaveEntities {
         }
     }
     
+    /**
+     * Saves the admin data to a file.
+     * If the file doesn't exist, a new file will be created.
+     * @author Muath Hassoun
+     * @param adminsMap the map of admin data to save
+     * @param AdminAccountsFile the path to the file where the data will be saved
+     */
     public static void saveAdminsToFile(Map<String, Admin> adminsMap, String AdminAccountsFile) {
         File file = new File(AdminAccountsFile);
         if (!file.exists()) {
@@ -60,6 +89,13 @@ public class LoadAndSaveEntities {
         }
     }
     
+    /**
+     * Loads the admin data from a file into the provided map.
+     * If the file doesn't exist, an error message will be printed.
+     * @author Muath Hassoun
+     * @param adminsMap the map to load the admin data into
+     * @param AdminAccountsFile the path to the file from which to load the data
+     */
     public static void loadAdminsFromFile(Map<String, Admin> adminsMap, String AdminAccountsFile) {
         File file = new File(AdminAccountsFile);
         if (!file.exists()) {
@@ -76,6 +112,13 @@ public class LoadAndSaveEntities {
         }
     }
     
+    /**
+     * Saves the instructor data to a file.
+     * If the file doesn't exist, a new file will be created.
+     * @author Muath Hassoun
+     * @param instructorsMap the map of instructor data to save
+     * @param InstructorsAccountsFile the path to the file where the data will be saved
+     */
     public static void saveInstructorsToFile(Map<String, Instructor> instructorsMap, String InstructorsAccountsFile) {
         File file = new File(InstructorsAccountsFile);
         if (!file.exists()) {
@@ -90,6 +133,13 @@ public class LoadAndSaveEntities {
         }
     }
     
+    /**
+     * Loads the instructor data from a file into the provided map.
+     * If the file doesn't exist, an error message will be printed.
+     * @author Muath Hassoun
+     * @param instructorsMap the map to load the instructor data into
+     * @param InstructorsAccountsFile the path to the file from which to load the data
+     */
     public static void loadInstructorsFromFile(Map<String, Instructor> instructorsMap, String InstructorsAccountsFile) {
         File file = new File(InstructorsAccountsFile);
         if (!file.exists()) {
@@ -106,6 +156,13 @@ public class LoadAndSaveEntities {
         }
     }
     
+    /**
+     * Saves the client data to a file.
+     * If the file doesn't exist, a new file will be created.
+     * @author Muath Hassoun
+     * @param clientsMap the map of client data to save
+     * @param clientsAccountsFile the path to the file where the data will be saved
+     */
     public static void saveClientsToFile(Map<String, Client> clientsMap, String clientsAccountsFile) {
         File file = new File(clientsAccountsFile);
         if (!file.exists()) {
@@ -120,6 +177,13 @@ public class LoadAndSaveEntities {
         }
     }
     
+    /**
+     * Loads the client data from a file into the provided map.
+     * If the file doesn't exist, an error message will be printed.
+     * @author Muath Hassoun
+     * @param clientsMap the map to load the client data into
+     * @param clientsAccountsFile the path to the file from which to load the data
+     */
     public static void loadClientsFromFile(Map<String, Client> clientsMap, String clientsAccountsFile) {
         File file = new File(clientsAccountsFile);
         if (!file.exists()) {
@@ -136,6 +200,13 @@ public class LoadAndSaveEntities {
         }
     }
     
+    /**
+     * Saves the fitness program data to a file.
+     * If the file doesn't exist, a new file will be created.
+     * @author Muath Hassoun
+     * @param fitnessProgramsMap the map of fitness programs to save
+     * @param fitnessProgramsFile the path to the file where the data will be saved
+     */
     public static void saveFitnessProgramsToFile(Map<String, Program> fitnessProgramsMap, String fitnessProgramsFile) {
         File file = new File(fitnessProgramsFile);
         if (!file.exists()) {
@@ -150,6 +221,13 @@ public class LoadAndSaveEntities {
         }
     }
     
+    /**
+     * Loads the fitness program data from a file into the provided map.
+     * If the file doesn't exist, an error message will be printed.
+     * @author Muath Hassoun
+     * @param fitnessProgramsMap the map to load the fitness program data into
+     * @param fitnessProgramsFile the path to the file from which to load the data
+     */
     public static void loadFitnessProgramsFromFile(Map<String, Program> fitnessProgramsMap, String fitnessProgramsFile) {
         File file = new File(fitnessProgramsFile);
         if (!file.exists()) {
@@ -166,6 +244,13 @@ public class LoadAndSaveEntities {
         }
     }
     
+    /**
+     * Saves the instructor tips content data to a file.
+     * If the file doesn't exist, a new file will be created.
+     * @author Muath Hassoun
+     * @param instructorTipsMap the map of instructor tips content to save
+     * @param InstructorTipsFile the path to the file where the data will be saved
+     */
     public static void saveContentsToFile(Map<String, Content> instructorTipsMap, String InstructorTipsFile) {
         File file = new File(InstructorTipsFile);
         if (!file.exists()) {
@@ -180,6 +265,13 @@ public class LoadAndSaveEntities {
         }
     }
     
+    /**
+     * Loads the instructor tips content data from a file into the provided map.
+     * If the file doesn't exist, an error message will be printed.
+     * @author Muath Hassoun
+     * @param instructorTipsMap the map to load the instructor tips content into
+     * @param InstructorTipsFile the path to the file from which to load the data
+     */
     public static void loadContentsFromFile(Map<String, Content> instructorTipsMap, String InstructorTipsFile) {
         File file = new File(InstructorTipsFile);
         if (!file.exists()) {
@@ -196,6 +288,13 @@ public class LoadAndSaveEntities {
         }
     }
     
+    /**
+     * Saves the handled feedback data to a file.
+     * If the file doesn't exist, a new file will be created.
+     * @author Muath Hassoun
+     * @param handledFeedbackMap the map of handled feedback to save
+     * @param HandledFeedbackFile the path to the file where the data will be saved
+     */
     public static void saveHandledFeedbackToFile(Map<String, String> handledFeedbackMap, String HandledFeedbackFile) {
         File file = new File(HandledFeedbackFile);
         if (!file.exists()) {
@@ -210,6 +309,13 @@ public class LoadAndSaveEntities {
         }
     }
     
+    /**
+     * Loads the handled feedback data from a file into the provided map.
+     * If the file doesn't exist, an error message will be printed.
+     * @author Muath Hassoun
+     * @param handledFeedbackMap the map to load the handled feedback data into
+     * @param HandledFeedbackFile the path to the file from which to load the data
+     */
     public static void loadHandledFeedbackFromFile(Map<String, String> handledFeedbackMap, String HandledFeedbackFile) {
         File file = new File(HandledFeedbackFile);
         if (!file.exists()) {
@@ -226,6 +332,13 @@ public class LoadAndSaveEntities {
         }
     }
     
+    /**
+     * Saves the client profile data to a file.
+     * If the file doesn't exist, a new file will be created.
+     * @author Alaa Alawneh
+     * @param clientProfileMap the map of client profiles to save
+     * @param clientProfilesFilename the path to the file where the data will be saved
+     */
 	public static void saveClientProfileToFile(Map<String, Profile> clientProfileMap, String clientProfilesFilename) {
 		File file = new File(clientProfilesFilename);
         if (!file.exists()) {
@@ -240,6 +353,13 @@ public class LoadAndSaveEntities {
         }
 	}
 	
+	/**
+	 * Loads the client profile data from a file into the provided map.
+	 * If the file doesn't exist, an error message will be printed.
+	 * @author Alaa Alawneh
+	 * @param clientProfileMap the map to load the client profile data into
+	 * @param clientProfilesFilename the path to the file from which to load the data
+	 */
 	public static void loadClientProfilesFromFile(Map<String, Profile> clientProfileMap, String clientProfilesFilename) {
 		File file = new File(clientProfilesFilename);
         if (!file.exists()) {
@@ -256,6 +376,13 @@ public class LoadAndSaveEntities {
         }
 	}
 	
+	/**
+	 * Saves the fitness milestone data to a file.
+	 * If the file doesn't exist, a new file will be created.
+	 * @author Alaa Alawneh
+	 * @param MilestonesList the list of fitness milestones to save
+	 * @param milestonesFilename the path to the file where the data will be saved
+	 */
 	public static void saveMilestonesToFile(List<FitnessMilestone> MilestonesList, String milestonesFilename) {
 		File file = new File(milestonesFilename);
         if (!file.exists()) {
@@ -270,6 +397,13 @@ public class LoadAndSaveEntities {
         }
 	}
 	
+	/**
+	 * Loads the fitness milestone data from a file into the provided list.
+	 * If the file doesn't exist, an error message will be printed.
+	 * @author Alaa Alawneh
+	 * @param MilestonesList the list to load the fitness milestones into
+	 * @param milestonesFilename the path to the file from which to load the data
+	 */
 	public static void loadMilestonesFromFile(List<FitnessMilestone> MilestonesList, String milestonesFilename) {
 	    File file = new File(milestonesFilename);
 	    if (!file.exists()) {
@@ -286,6 +420,13 @@ public class LoadAndSaveEntities {
 	    }
 	}
 	
+	/**
+	 * Saves the program ratings data to a file.
+	 * If the file doesn't exist, a new file will be created.
+	 * @author Alaa Alawneh
+	 * @param programRatings the map of program ratings to save
+	 * @param programRatingsFilename the path to the file where the data will be saved
+	 */
 	public static void saveProgramRatingsToFile(Map<String, Map<String, Integer>> programRatings, String programRatingsFilename) {
 		File file = new File(programRatingsFilename);
 	    if (!file.exists()) {
@@ -300,6 +441,13 @@ public class LoadAndSaveEntities {
 	    }		
 	}
 	
+	/**
+	 * Loads the program ratings data from a file into the provided map.
+	 * If the file doesn't exist, an error message will be printed.
+	 * @author Alaa Alawneh
+	 * @param programRatings the map to load the program ratings data into
+	 * @param programRatingsFilename the path to the file from which to load the data
+	 */
 	public static void loadProgramRatingsFromFile(Map<String, Map<String, Integer>> programRatings, String programRatingsFilename) {
 		File file = new File(programRatingsFilename);
 	    if (!file.exists()) {
@@ -317,6 +465,13 @@ public class LoadAndSaveEntities {
 	    }		
 	}
 	
+	/**
+	 * Saves the program reviews data to a file.
+	 * If the file doesn't exist, a new file will be created.
+	 * @author Alaa Alawneh
+	 * @param programReviews the map of program reviews to save
+	 * @param programReviewsFilename the path to the file where the data will be saved
+	 */
 	public static void saveProgramReviewsToFile(Map<String, Map<String, String>> programReviews, String programReviewsFilename) {
 		File file = new File(programReviewsFilename);
 	    if (!file.exists()) {
@@ -331,6 +486,13 @@ public class LoadAndSaveEntities {
 	    }		
 	}
 	
+	/**
+	 * Loads the program reviews data from a file into the provided map.
+	 * If the file doesn't exist, an error message will be printed.
+	 * @author Alaa Alawneh
+	 * @param programReviews the map to load the program reviews into
+	 * @param programReviewsFilename the path to the file from which to load the data
+	 */
 	public static void loadProgramReviewsFromFile(Map<String, Map<String, String>> programReviews, String programReviewsFilename) {
 		File file = new File(programReviewsFilename);
 	    if (!file.exists()) {
@@ -348,6 +510,13 @@ public class LoadAndSaveEntities {
 	    }		
 	}
 	
+	/**
+	 * Saves the program suggestions data to a file.
+	 * If the file doesn't exist, a new file will be created.
+	 * @author Alaa Alawneh
+	 * @param programSuggestions the map of program suggestions to save
+	 * @param programSuggestionsFilename the path to the file where the data will be saved
+	 */
 	public static void saveProgramSuggestionsToFile(Map<String, Map<String, String>> programSuggestions, String programSuggestionsFilename) {
 		File file = new File(programSuggestionsFilename);
 	    if (!file.exists()) {
@@ -362,6 +531,13 @@ public class LoadAndSaveEntities {
 	    }		
 	}
 	
+	/**
+	 * Loads the program suggestions data from a file into the provided map.
+	 * If the file doesn't exist, an error message will be printed.
+	 * @author Alaa Alawneh
+	 * @param programSuggestions the map to load the program suggestions into
+	 * @param programSuggestionsFilename the path to the file from which to load the data
+	 */
 	public static void loadProgramSuggestionsFromFile(Map<String, Map<String, String>> programSuggestions, String programSuggestionsFilename) {
 		File file = new File(programSuggestionsFilename);
 	    if (!file.exists()) {
@@ -379,6 +555,13 @@ public class LoadAndSaveEntities {
 	    }		
 	}
     
+	/**
+	 * Saves the instructor messages to clients data to a file.
+	 * If the file doesn't exist, a new file will be created.
+	 * @author Ammar Khaled
+	 * @param InstructorMSGSToClientsMap the map of instructor messages to save
+	 * @param InstructorMSGsFile the path to the file where the data will be saved
+	 */
     public static void saveInstructorMsgsToClientsToFile(Map<String, String> InstructorMSGSToClientsMap, String InstructorMSGsFile) {
         File file = new File(InstructorMSGsFile);
         if (!file.exists()) {
@@ -393,6 +576,13 @@ public class LoadAndSaveEntities {
         }
     }
     
+    /**
+     * Loads the instructor messages to clients data from a file into the provided map.
+     * If the file doesn't exist, an error message will be printed.
+     * @author Ammar Khaled
+     * @param InstructorMSGSToClientsMap the map to load the instructor messages to clients into
+     * @param InstructorMSGsFile the path to the file from which to load the data
+     */
     public static void loadInstructorMsgsToClientsFromFile(Map<String, String> InstructorMSGSToClientsMap, String InstructorMSGsFile) {
         File file = new File(InstructorMSGsFile);
         if (!file.exists()) {
@@ -409,6 +599,13 @@ public class LoadAndSaveEntities {
         }
     }
     
+    /**
+     * Saves the program forum messages to a file.
+     * If the file doesn't exist, a new file will be created.
+     * @author Ammar Khaled
+     * @param ProgramForumMsgsMap the map of program forum messages to save
+     * @param ProgramForumMsgsFile the path to the file where the data will be saved
+     */
     public static void saveProgramForumMsgsToFile(Map<String, String> ProgramForumMsgsMap, String ProgramForumMsgsFile) {
         File file = new File(ProgramForumMsgsFile);
         if (!file.exists()) {
@@ -423,6 +620,13 @@ public class LoadAndSaveEntities {
         }
     }
     
+    /**
+     * Loads the program forum messages data from a file into the provided map.
+     * If the file doesn't exist, an error message will be printed.
+     * @author Ammar Khaled
+     * @param ProgramForumMsgsMap the map to load the program forum messages into
+     * @param ProgramForumMsgsFile the path to the file from which to load the data
+     */
     public static void loadProgramForumMsgsFromFile(Map<String, String> ProgramForumMsgsMap, String ProgramForumMsgsFile) {
         File file = new File(ProgramForumMsgsFile);
         if (!file.exists()) {
@@ -439,6 +643,13 @@ public class LoadAndSaveEntities {
         }
     }
     
+    /**
+     * Saves the feedback data to clients to a file.
+     * If the file doesn't exist, a new file will be created.
+     * @author Ammar Khaled
+     * @param FeedbackToClientMap the map of feedback to save
+     * @param FeedbackToClientFile the path to the file where the data will be saved
+     */
     public static void saveFeedbackToClientToFile(Map<String, String> FeedbackToClientMap, String FeedbackToClientFile) {
         File file = new File(FeedbackToClientFile);
         if (!file.exists()) {
@@ -453,6 +664,13 @@ public class LoadAndSaveEntities {
         }
     }
     
+    /**
+     * Loads the feedback data to clients from a file into the provided map.
+     * If the file doesn't exist, an error message will be printed.
+     * @author Ammar Khaled
+     * @param FeedbackToClientMap the map to load the feedback to clients into
+     * @param FeedbackToClientFile the path to the file from which to load the data
+     */
     public static void loadFeedbackToClientFromFile(Map<String, String> FeedbackToClientMap, String FeedbackToClientFile) {
         File file = new File(FeedbackToClientFile);
         if (!file.exists()) {
@@ -469,6 +687,13 @@ public class LoadAndSaveEntities {
         }
     }
     
+    /**
+     * Saves the instructor reminder data to a file.
+     * If the file doesn't exist, a new file will be created.
+     * @author Ammar Khaled
+     * @param InstructorReminderMap the map of instructor reminders to save
+     * @param InstructorReminderFile the path to the file where the data will be saved
+     */
 	public static void saveInstructorReminderToFile(Map<String, String> InstructorReminderMap, String InstructorReminderFile) {
         File file = new File(InstructorReminderFile);
         if (!file.exists()) {
@@ -483,6 +708,13 @@ public class LoadAndSaveEntities {
         }
     }
     
+	/**
+	 * Loads the instructor reminder data from a file into the provided map.
+	 * If the file doesn't exist, an error message will be printed.
+	 * @author Ammar Khaled
+	 * @param InstructorReminderMap the map to load the instructor reminders into
+	 * @param InstructorReminderFile the path to the file from which to load the data
+	 */
     public static void loadInstructorReminderFromFile(Map<String, String> InstructorReminderMap, String InstructorReminderFile) {
         File file = new File(InstructorReminderFile);
         if (!file.exists()) {
@@ -499,6 +731,13 @@ public class LoadAndSaveEntities {
         }
     }
     
+    /**
+     * Saves the instructor recommendation data to a file.
+     * If the file doesn't exist, a new file will be created.
+     * @author Ammar Khaled
+     * @param InstructorRecommednationMap the map of instructor recommendations to save
+     * @param InstructorRecommednationFile the path to the file where the data will be saved
+     */
     public static void saveInstructorRecommendationToFile(Map<String, String> InstructorRecommednationMap, String InstructorRecommednationFile) {
         File file = new File(InstructorRecommednationFile);
         if (!file.exists()) {
@@ -513,6 +752,13 @@ public class LoadAndSaveEntities {
         }
     }
     
+    /**
+     * Loads the instructor recommendation data from a file into the provided map.
+     * If the file doesn't exist, an error message will be printed.
+     * @author Ammar Khaled
+     * @param InstructorRecommednationMap the map to load the instructor recommendations into
+     * @param InstructorRecommednationFile the path to the file from which to load the data
+     */
     public static void loadInstructorRecommednationFromFile(Map<String, String> InstructorRecommednationMap, String InstructorRecommednationFile) {
         File file = new File(InstructorRecommednationFile);
         if (!file.exists()) {
@@ -529,6 +775,13 @@ public class LoadAndSaveEntities {
         }
     }
     
+    /**
+     * Saves the instructor announcements data to a file.
+     * If the file doesn't exist, a new file will be created.
+     * @author Ammar Khaled
+     * @param instructorAnnouncements the list of instructor announcements to save
+     * @param instructorAnnouncementsFile the path to the file where the data will be saved
+     */
     public static void saveInstructorAnnouncementToFile(List<String> instructorAnnouncements, String instructorAnnouncementsFile) {
         File file = new File(instructorAnnouncementsFile);
         if (!file.exists()) {
@@ -544,6 +797,13 @@ public class LoadAndSaveEntities {
         }
     }
     
+    /**
+     * Loads the instructor announcements data from a file into the provided list.
+     * If the file doesn't exist, an error message will be printed.
+     * @author Ammar Khaled
+     * @param instructorAnnouncements the list to load the instructor announcements into
+     * @param instructorAnnouncementsFile the path to the file from which to load the data
+     */
     public static void loadInstructorAnnouncementFromFile(List<String> instructorAnnouncements, String instructorAnnouncementsFile) {
         File file = new File(instructorAnnouncementsFile);
         if (!file.exists()) {
@@ -576,6 +836,13 @@ public class LoadAndSaveEntities {
         }
     }
 	
+    /**
+     * Saves the program schedule change data to a file.
+     * If the file doesn't exist, a new file will be created.
+     * @author Ammar Khaled
+     * @param ProgramScheduleChangeMap the map of program schedule changes to save
+     * @param ProgramScheduleChangeFile the path to the file where the data will be saved
+     */
     public static void saveProgramScheduleChangeToFile(Map<String, String> ProgramScheduleChangeMap, String ProgramScheduleChangeFile) {
         File file = new File(ProgramScheduleChangeFile);
         if (!file.exists()) {
@@ -590,6 +857,13 @@ public class LoadAndSaveEntities {
         }
     }
     
+    /**
+     * Loads the program schedule change data from a file into the provided map.
+     * If the file doesn't exist, an error message will be printed.
+     * @author Ammar Khaled
+     * @param ProgramScheduleChangeMap the map to load the program schedule changes into
+     * @param ProgramScheduleChangeFile the path to the file from which to load the data
+     */
     public static void loadProgramScheduleChangeFromFile(Map<String, String> ProgramScheduleChangeMap, String ProgramScheduleChangeFile) {
         File file = new File(ProgramScheduleChangeFile);
         if (!file.exists()) {
@@ -606,6 +880,13 @@ public class LoadAndSaveEntities {
         }
     }
     
+    /**
+     * Saves the progress list data to a file.
+     * If the file doesn't exist, a new file will be created.
+     * @author Ammar Khaled
+     * @param ProgressListMap the map of progress list to save
+     * @param ProgressListFile the path to the file where the data will be saved
+     */
     public static void saveProgressListToFile(Map<String, String> ProgressListMap, String ProgressListFile) {
         File file = new File(ProgressListFile);
         if (!file.exists()) {
@@ -620,6 +901,13 @@ public class LoadAndSaveEntities {
         }
     }
     
+    /**
+     * Loads the progress list data from a file into the provided map.
+     * If the file doesn't exist, an error message will be printed.
+     * @author Ammar Khaled
+     * @param ProgressListMap the map to load the progress list into
+     * @param ProgressListFile the path to the file from which to load the data
+     */
     public static void loadProgressListFromFile(Map<String, String> ProgressListMap, String ProgressListFile) {
         File file = new File(ProgressListFile);
         if (!file.exists()) {

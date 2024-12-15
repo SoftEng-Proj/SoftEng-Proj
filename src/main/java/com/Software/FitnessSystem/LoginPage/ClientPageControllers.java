@@ -9,6 +9,20 @@ import com.Software.FitnessSystem.ClientPageNavigation.AccountManagementPage;
 //import com.Software.FitnessSystem.ClientPageNavigation.ProgramExplorationPage;
 import com.Software.FitnessSystem.ClientPageNavigation.FeedbackReviewsPage;
 
+/**
+ * Controls the navigation and management of pages for clients in the fitness system.
+ * 
+ * This controller provides access to the following pages:
+ * - Account Management
+ * - Program Exploration and Enrollment
+ * - Progress Tracking
+ * - Feedback and Reviews
+ * 
+ * The class facilitates seamless navigation between these pages and handles 
+ * user input from the main menu.
+ * 
+ * @author Alaa Alawneh
+ */
 public class ClientPageControllers {
     private NavigationControllerForClient navigationController = new NavigationControllerForClient();
     private AccountManagementPage accountManagementPage;
@@ -17,6 +31,11 @@ public class ClientPageControllers {
     private FeedbackReviewsPage feedbackAndReviewsPage;
     private static boolean i_am_on_the_program_exploration_page = false;
     
+    /**
+     * Constructs a new {@code ClientPageControllers} instance for the specified client.
+     * 
+     * @param currentClient The client object associated with the current session.
+     */
     public ClientPageControllers(Client currentClient) {
     	accountManagementPage = new AccountManagementPage(this);
         programExplorationPage = new ProgramExplorationEnrollmentPage(this, currentClient);
@@ -24,16 +43,34 @@ public class ClientPageControllers {
         feedbackAndReviewsPage = new FeedbackReviewsPage(this);
     }
     
+    /**
+     * Displays the main menu for the client and prompts them to select an option.
+     * Based on the user's selection, it navigates to the appropriate page.
+     * 
+     * @return {@code true} if navigation is successful.
+     */
     @SuppressWarnings("resource")
 	public boolean navigateToManagementPage() {
         displayMainMenu();
         Scanner input = new Scanner(System.in);
         int choiceNumber = input.nextInt();
-       // mainListNumber = choiceNumber;
         navigateToPage(choiceNumber);
         return true;
     }
     
+    /**
+     * Navigates to a specific page based on the user's input.
+     * 
+     * @param page The number representing the user's choice.
+     *             1 - Account Management
+     *             2 - Program Exploration and Enrollment
+     *             3 - Progress Tracking
+     *             4 - Feedback and Reviews
+     *             5 - Logout (returns to the Login Page)
+     *             6 - Exit (closes the program)
+     * 
+     * @return {@code true} if navigation is successful.
+     */
     public boolean navigateToPage(int page) {
     	i_am_on_the_program_exploration_page = (page == 2);
         switch (page) {
@@ -54,6 +91,10 @@ public class ClientPageControllers {
     return true;
     }
     
+    /**
+     * Displays the main menu options for the client.
+     * The menu provides six options, allowing the client to choose a page to navigate to.
+     */
     private void displayMainMenu() {
         System.out.println("Select an option from the list below:");
         System.out.println("1. Account Management.");
@@ -64,6 +105,12 @@ public class ClientPageControllers {
         System.out.println("6. Exit.");
         System.out.print("\nEnter your choice: ");
     }
+    
+    /**
+     * Checks if the client is currently on the Program Exploration and Enrollment page.
+     * 
+     * @return {@code true} if the client is on the Program Exploration page, otherwise {@code false}.
+     */
     public static boolean isOnProgramExplorationPage() {
         return i_am_on_the_program_exploration_page;
     }

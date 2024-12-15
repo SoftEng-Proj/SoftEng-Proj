@@ -84,7 +84,7 @@ class ProgramMonitoringTest {
         boolean actual = getIsReportsPrinted();
         assertTrue(expected == actual);
 	}
-	
+
 	@When("I view the program status")
 	public void i_view_the_program_status() {
 		boolean expected = true;

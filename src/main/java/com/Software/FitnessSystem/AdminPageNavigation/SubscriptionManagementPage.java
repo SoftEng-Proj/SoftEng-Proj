@@ -4,13 +4,32 @@ import static com.Software.FitnessSystem.AdminControllers.SubscriptionManagement
 import com.Software.FitnessSystem.InfrastructureForPages.BasePage;
 import com.Software.FitnessSystem.LoginPage.AdminPagesController;
 
+/**
+ * Represents the Subscription Management page for the admin in the fitness system.
+ * This page allows the admin to manage subscription plans, modify or remove them,
+ * and handle subscription details for both clients and instructors.
+ * It also provides the ability to view subscription details and navigate back to the main menu.
+ * 
+ * @author Muath Hassoun
+ */
 public class SubscriptionManagementPage extends BasePage {
     private AdminPagesController adminController;
     
+    /**
+     * Constructor to initialize the SubscriptionManagementPage with the provided AdminPagesController.
+     * 
+     * @param adminController The controller responsible for managing admin page navigation and actions.
+     */
 	public SubscriptionManagementPage(AdminPagesController adminController) {
         this.adminController = adminController;
     }
     
+	/**
+     * Displays the Subscription Management menu with available options for the admin.
+     * The menu includes options for creating, modifying, or removing subscription plans,
+     * managing subscription plans for clients and instructors, viewing subscription details,
+     * and returning to the main menu.
+     */
     @Override
     public void display() {
         System.out.println("\nSubscription Management Menu:");
@@ -20,6 +39,13 @@ public class SubscriptionManagementPage extends BasePage {
         System.out.println("4. Go Back.");
     }
     
+    /**
+     * Executes the selected option based on the user's choice.
+     * The method handles the creation, modification, or removal of subscription plans,
+     * managing user subscriptions, viewing subscription details, and navigation back to the management page.
+     * 
+     * @param choice The option selected by the admin.
+     */
     @Override
     public void executeOption(int choice) {
         switch (choice) {

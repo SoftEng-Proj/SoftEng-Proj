@@ -3,6 +3,17 @@ import static com.Software.FitnessSystem.App.*;
 import com.Software.FitnessSystem.Client;
 import java.util.Scanner;
 
+/**
+ * Controls the login process for admin, instructor, and client users.
+ * This class provides a login menu and handles user authentication 
+ * for different user roles. Upon successful login, the user is redirected 
+ * to the appropriate page controller (Admin, Instructor, or Client).
+ * 
+ * The controller supports navigation between login, admin, instructor, and 
+ * client pages. It also verifies user credentials using stored user data.
+ * 
+ * @author Muath Hassoun
+ */
 public class LoginPageController {
     public AdminPagesController adminPagesController = new AdminPagesController();
     public InstructorPageControllers instructorPagesController = new InstructorPageControllers();
@@ -11,10 +22,18 @@ public class LoginPageController {
     @SuppressWarnings("unused")
 	private int mainListNumber = 0;
     
+    /**
+     * Constructs an instance of the {@code LoginPageController} and immediately navigates 
+     * the user to the login menu.
+     */
     public LoginPageController() {
     	navigateToLoginPage();
     }
     
+    /**
+     * Displays the login menu and prompts the user to select one of the available options.
+     * Options include logging in as Admin, Instructor, Client, or exiting the program.
+     */
     private void displayLoginMenu() {
         System.out.println("Select an option from the list below:");
         System.out.println("1. Login as Admin.");
@@ -24,6 +43,12 @@ public class LoginPageController {
         System.out.print(">> Enter your choice: ");
     }
     
+    /**
+     * Navigates to the login page, displays the menu, and waits for the user's selection.
+     * Based on the user's input, it calls {@link #navigateToPage(int)}.
+     * 
+     * @return {@code true} if navigation is successful.
+     */
     @SuppressWarnings("resource")
 	public boolean navigateToLoginPage() {
     	displayLoginMenu();
@@ -34,6 +59,17 @@ public class LoginPageController {
         return true;
     }
     
+    /**
+     * Navigates to a specific page based on the user's choice from the login menu.
+     * 
+     * @param page The number representing the user's choice.
+     *             1 - Admin login
+     *             2 - Instructor login
+     *             3 - Client login
+     *             4 - Exit the program
+     * 
+     * @return {@code true} if navigation is successful.
+     */
     public boolean navigateToPage(int page) {
         switch (page) {
             case 1 -> {
@@ -72,6 +108,17 @@ public class LoginPageController {
         return true;
     }
     
+    /**
+     * Handles login attempts for Admin, Instructor, or Client.
+     * Determines which type of user is logging in and calls {@link #interData(int)}.
+     * 
+     * @param from The type of user attempting to log in:
+     *             1 - Admin
+     *             2 - Instructor
+     *             3 - Client
+     * 
+     * @return {@code true} if login is successful, otherwise {@code false}.
+     */
     private boolean loginData(int from) {
     	switch(from) {
     	case 1:
@@ -85,6 +132,16 @@ public class LoginPageController {
     	}
     }
     
+    /**
+     * Prompts the user to enter login credentials (username and password) and verifies them.
+     * 
+     * @param from The type of user attempting to log in:
+     *             1 - Admin
+     *             2 - Instructor
+     *             3 - Client
+     * 
+     * @return {@code true} if the login credentials are valid, otherwise {@code false}.
+     */
     @SuppressWarnings("resource")
 	private boolean interData(int from) {
     	Scanner scanner = new Scanner(System.in);
@@ -110,6 +167,18 @@ public class LoginPageController {
         return false;
     }
     
+    /**
+     * Verifies the user's credentials (username and password) for the given user type.
+     * 
+     * @param username The username entered by the user.
+     * @param password The password entered by the user.
+     * @param from The type of user attempting to log in:
+     *             1 - Admin
+     *             2 - Instructor
+     *             3 - Client
+     * 
+     * @return {@code true} if the credentials are valid, otherwise {@code false}.
+     */
     private static boolean verifyCredentials(String username, String password, int from) {
     	switch(from) {
     	case 1:

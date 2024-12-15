@@ -5,11 +5,24 @@ import com.Software.FitnessSystem.User;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * Provides controls for managing subscription plans and user subscriptions.
+ * Includes functionality for adding, editing, deleting, and viewing subscription plans,
+ * as well as updating user subscription details.
+ * 
+ * @author Muath Hassoun
+ */
 public class SubscriptionManagementControls {
 	private static boolean isPrinted = false;
 	private static String userTupe = "";
 	private static User user;
 	
+	/**
+     * Displays the main menu for managing subscription plans and handles user interaction.
+     * Users can add, edit, delete, or exit the subscription plan management menu.
+     * 
+     * @return true if an operation was completed successfully, or the user chooses to go back; false otherwise.
+     */
 	@SuppressWarnings("resource")
 	public static boolean dealWithSubscriptionPlan() {
 		showMainMenu();
@@ -41,6 +54,9 @@ public class SubscriptionManagementControls {
 		return isDone;
 	}
 	
+	/**
+     * Displays the main menu options for subscription plan management.
+     */
 	private static void showMainMenu() {
         System.err.println("\nChoose an option:");
         System.err.println("1. Add a new Subscription Plan");
@@ -50,6 +66,11 @@ public class SubscriptionManagementControls {
         System.err.println(">> Enter your choice: ");
     }
 	
+	/**
+     * Prints the details of all subscription plans currently available.
+     * 
+     * @return true if subscription plans are printed successfully; false if no plans exist.
+     */
 	public static boolean printSubscriptionPlan() {
 		isPrinted = false;
 		
@@ -64,10 +85,20 @@ public class SubscriptionManagementControls {
 		return isPrinted;
 	}
 	
+	/**
+     * Returns the current status of the `isPrinted` flag, indicating whether subscription plans were printed.
+     * 
+     * @return true if plans have been printed; false otherwise.
+     */
 	public static boolean returnIsPrinted() {
 		return isPrinted;
 	}
 	
+	/**
+     * Adds a new subscription plan by collecting details from the user through the console.
+     * 
+     * @return true if the subscription plan is added successfully; false otherwise.
+     */
 	@SuppressWarnings("resource")
 	private static boolean addSubscriptionPlan() {
 		Scanner scanner = new Scanner(System.in);
@@ -101,6 +132,12 @@ public class SubscriptionManagementControls {
         return true;
     }
 	
+	/**
+     * Allows the user to edit an existing subscription plan by selecting a plan and modifying its properties.
+     * Users can edit the price, duration, and description of a plan.
+     * 
+     * @return true if the plan is updated successfully; false otherwise.
+     */
 	@SuppressWarnings("resource")
 	private static boolean editSubscriptionPlan() {
 		Scanner scanner = new Scanner(System.in);
@@ -161,6 +198,9 @@ public class SubscriptionManagementControls {
         return isUpdated;
 	}
 	
+	/**
+     * Displays the menu for modifying subscription plan properties.
+     */
 	private static void printModifyMenu() {
 		System.err.println("\nWhat do you want to edit?");
         System.err.println("1. Price");
@@ -170,6 +210,11 @@ public class SubscriptionManagementControls {
         System.err.println(">> Enter your choice: ");
 	}
 	
+	/**
+     * Prints the updated details of a subscription plan after editing.
+     * 
+     * @param plan The subscription plan that was updated.
+     */
 	private static void amendedPlanPrinting(CustomPlan plan) {
 		System.err.println("\nSubscription Plan:");
         System.err.println("Plan: " + plan.getName());
@@ -178,6 +223,11 @@ public class SubscriptionManagementControls {
         System.err.println("3. Description: " + plan.getDescription());
 	}
 	
+	/**
+     * Removes an existing subscription plan by its name.
+     * 
+     * @return true if the subscription plan was removed successfully; false otherwise.
+     */
 	@SuppressWarnings("resource")
 	private static boolean removeSubscriptionPlan() {
 		Scanner scanner = new Scanner(System.in);
@@ -187,6 +237,11 @@ public class SubscriptionManagementControls {
         return true;
 	}
 	
+	/**
+	 * Deals with a user's subscription plan by performing various operations such as updating,
+	 * renewing, or applying free trials to the subscription plan.
+	 * This method interacts with the user to determine the desired action and executes accordingly.
+	 */
 	@SuppressWarnings("resource")
 	public static void dealWithUsersSubscriptionPlan() {
 		CustomPlan planType = askAboutPlanType();
@@ -225,6 +280,10 @@ public class SubscriptionManagementControls {
         }
     }
 	
+	/**
+	 * Prints a choice menu for subscription-related actions.
+	 * Options include updating the plan type, renewing the plan, or giving a free trial.
+	 */
 	private static void printChoiceMenu() {
 		System.err.println("\nWhat would you like to do?");
         System.err.println("1. Update the subscription plan type");
@@ -234,6 +293,11 @@ public class SubscriptionManagementControls {
         System.err.println(">> Enter your choice: ");
 	}
 	
+	/**
+	 * Prompts the user to input their current subscription plan type.
+	 * 
+	 * @return The selected {@link CustomPlan} object.
+	 */
 	@SuppressWarnings("resource")
 	private static CustomPlan askAboutPlanType() {
 		Scanner scanner = new Scanner(System.in);
@@ -251,6 +315,11 @@ public class SubscriptionManagementControls {
         return planType;
 	}
 	
+	/**
+	 * Prompts the user to input a new subscription plan type.
+	 * 
+	 * @return The new subscription plan type as a String.
+	 */
 	@SuppressWarnings("resource")
 	private static String askAboutTheNewPlanType() {
 		Scanner scanner = new Scanner(System.in);
@@ -259,6 +328,12 @@ public class SubscriptionManagementControls {
         return planTypeInput;
 	}
 	
+	/**
+	 * Prints the list of users (clients or instructors) who have the specified subscription plan.
+	 * 
+	 * @param planType The subscription plan type to filter users by.
+	 * @return True if users with the specified plan are found; false otherwise.
+	 */
 	@SuppressWarnings("resource")
 	private static boolean printUsersWithThisPlanType(CustomPlan planType) {
 	    Scanner scanner = new Scanner(System.in);
@@ -289,6 +364,11 @@ public class SubscriptionManagementControls {
 	    return true;
 	}
 	
+	/**
+	 * Prompts the user to select a specific user (client or instructor) to update their subscription plan.
+	 * 
+	 * @return True if the user is found; false otherwise.
+	 */
 	@SuppressWarnings("resource")
 	private static boolean selectUserToUpdateHisSubscriptionPlan() {
         boolean isFound = false;
@@ -316,6 +396,17 @@ public class SubscriptionManagementControls {
         return isFound;
 	}
 	
+	/**
+	 * Updates the subscription plan of a user.
+	 * 
+	 * @param subscriptionPlan             The {@link SubscriptionPlan} object associated with the user.
+	 * @param user                         The user whose subscription plan is being updated.
+	 * @param newPlanType                  The new subscription plan type.
+	 * @param justRenew                    Flag indicating if the plan is only being renewed.
+	 * @param renewAndReverseSubscription  Flag indicating if the plan type should be reversed and renewed.
+	 * @param <T>                          A type parameter extending {@link User}.
+	 * @return True if the subscription plan is updated successfully; false otherwise.
+	 */
 	public static <T extends User> boolean updateUserSubscriptionPlan(SubscriptionPlan subscriptionPlan, T user,
 			String newPlanType, boolean justRenew, boolean renewAndReverseSubscription) {
 		
@@ -336,6 +427,13 @@ public class SubscriptionManagementControls {
         return isUpdated;
 	}
 	
+	/**
+	 * Provides the user with a free subscription trial based on the subscription plan.
+	 * 
+	 * @param subscriptionPlan The {@link SubscriptionPlan} object associated with the user.
+	 * @param user             The user receiving the free trial.
+	 * @param <T>              A type parameter extending {@link User}.
+	 */
 	public static <T extends User> void giveTheUserNewSubscriptionOpportunity(SubscriptionPlan subscriptionPlan, T user) {
     	int login = user.getLogins();
         if (subscriptionPlan != null) {
@@ -349,6 +447,12 @@ public class SubscriptionManagementControls {
         }
     }
 	
+	/**
+	 * Calculates the number of free trial days based on the subscription plan's price.
+	 * 
+	 * @param price The price of the subscription plan.
+	 * @return The calculated number of free trial days.
+	 */
 	private static int calculateFreeOpportunity(double price) {
 	    int baseFreeDays = 3;
 	    int multiplier = (int) (price / 30);

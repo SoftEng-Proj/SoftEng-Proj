@@ -7,6 +7,17 @@ import com.Software.FitnessSystem.AdminPageNavigation.SubscriptionManagementPage
 
 import java.util.Scanner;
 
+/**
+ * Controls navigation between admin-related pages in the fitness system.
+ * This class serves as the central controller for managing admin page navigation, 
+ * allowing seamless movement between pages for user management, content management, 
+ * program monitoring, and subscription management.
+ * 
+ * The controller provides a main menu where the admin can select different options 
+ * to navigate to specific pages or log out of the system.
+ * 
+ * @author Muath Hassoun
+ */
 public class AdminPagesController {
     public NavigationControllerForAdmin navigationController = new NavigationControllerForAdmin();
     public UserManagementPage managementPage;
@@ -14,6 +25,10 @@ public class AdminPagesController {
     public ProgramMonitoringPage monitoringPage;
     public SubscriptionManagementPage subscriptionPage;
     
+    /**
+     * Constructs an instance of the {@code AdminPagesController} and initializes 
+     * all the admin pages, passing the current instance to each page for reference.
+     */
     public AdminPagesController() {
     	managementPage = new UserManagementPage(this);
     	contentPage = new ContentManagementPage(this);
@@ -21,6 +36,12 @@ public class AdminPagesController {
     	subscriptionPage = new SubscriptionManagementPage(this);
     }
     
+    /**
+     * Displays the main menu for the admin and waits for the user to select an option.
+     * Based on the user's input, the appropriate page is displayed.
+     * 
+     * @return {@code true} if the navigation is successful.
+     */
     @SuppressWarnings("resource")
 	public boolean navigateToManagementPage() {
         displayMainMenu();
@@ -30,6 +51,19 @@ public class AdminPagesController {
         return true;
     }
     
+    /**
+     * Navigates to a specific page based on the user's choice.
+     * 
+     * @param page The number representing the page to navigate to.
+     *             1 - User Management Page
+     *             2 - Program Monitoring Page
+     *             3 - Content Management Page
+     *             4 - Subscription Management Page
+     *             5 - Log out and return to the login page
+     *             6 - Exit the program
+     * 
+     * @return {@code true} if the navigation is successful.
+     */
     public boolean navigateToPage(int page) {
         switch (page) {
             case 1 -> navigationController.navigateTo(managementPage, this);
@@ -49,6 +83,10 @@ public class AdminPagesController {
         return true;
     }
     
+    /**
+     * Displays the main menu options for the admin.
+     * The admin can select one of the available options to navigate to a specific page.
+     */
     private void displayMainMenu() {
         System.out.println("Select an option from the list below:");
         System.out.println("1. Manage accounts for instructors and clients.");

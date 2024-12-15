@@ -13,6 +13,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+/**
+ * This class provides various administrative controls for managing user accounts, including instructors and clients.
+ * It allows creating, editing, deactivating users, approving pending instructors, and viewing activity reports.
+ * 
+ * @author Muath Hassoun
+ */
 public class UserManagementControls {
 	private static Map<String, Instructor> ApprovedInstructorsMap = new HashMap<>();
 	private static List<String> deactivateInstructor = new ArrayList<>();
@@ -30,6 +36,17 @@ public class UserManagementControls {
     private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     private static String formattedDateTime = currentDateTime.format(formatter);
     
+    /**
+     * Creates a new user account based on the provided details.
+     *
+     * @param fName    The first name of the user.
+     * @param lName    The last name of the user.
+     * @param email    The email address of the user.
+     * @param userName The username for the account.
+     * @param password The password for the account.
+     * @param role     The role of the user ("Instructor" or "Client").
+     * @return A string indicating the status of the operation ("Instructor_Added", "Client_Added", or "Fail").
+     */
 	public static String fillUserDetails(String fName, String lName, String email, String userName, String password, String role) {
 		switch(role) {
 		case "Instructor":
@@ -59,6 +76,13 @@ public class UserManagementControls {
 		putNewClient(userName, newClient);
 	}
 	
+	/**
+     * Verifies if a user account has been successfully created.
+     *
+     * @param userName The username of the account.
+     * @param role     The role of the user ("Instructor" or "Client").
+     * @return True if the account was successfully created; otherwise, false.
+     */
 	public static boolean verifyUserCreation(String userName, String role) {
 		switch(role) {
 		case "Instructor":
@@ -74,6 +98,13 @@ public class UserManagementControls {
 		}
 	}
 	
+	/**
+     * Selects a user account for subsequent operations.
+     *
+     * @param username The username of the account.
+     * @param role     The role of the user ("Instructor" or "Client").
+     * @return True if the user exists; otherwise, false.
+     */
 	public static boolean selectUser(String username, String role) {
 		switch(role) {
 		case "Instructor":
@@ -87,14 +118,31 @@ public class UserManagementControls {
 		}
 	}
 	
+	/**
+     * Retrieves the currently selected instructor.
+     *
+     * @return The selected instructor.
+     */
 	public static Instructor getReturnedInstructor() {
 		return returnedInstructor;
 	}
 	
+	/**
+     * Retrieves the currently selected client.
+     *
+     * @return The selected client.
+     */
 	public static Client getReturnedClient() {
 		return returnedClient;
 	}
 	
+	/**
+     * Edits the details of a user account.
+     *
+     * @param username The username of the account to edit.
+     * @param role     The role of the user ("Instructor" or "Client").
+     * @return True if the details were successfully updated; otherwise, false.
+     */
 	public static boolean editUserDetails(String username, String role) {
 		switch(role) {
 		case "Instructor":
@@ -229,6 +277,13 @@ public class UserManagementControls {
 	    System.out.println("Password: " + editUser.getPassword());
 	}
 	
+	/**
+     * Verifies if a user account's details have been updated successfully.
+     *
+     * @param username The username of the updated account.
+     * @param role     The role of the user ("Instructor" or "Client").
+     * @return True if the update was successful; otherwise, false.
+     */
 	public boolean verifyUserUpdate(String username, String role) {
 		switch(role) {
 		case "Instructor":
@@ -240,6 +295,13 @@ public class UserManagementControls {
 		}
 	}
 	
+	/**
+     * Deactivates a user account.
+     *
+     * @param username The username of the account to deactivate.
+     * @param role     The role of the user ("Instructor" or "Client").
+     * @return True if the account was successfully deactivated; otherwise, false.
+     */
 	public static boolean deactivateUser(String username, String role) {
 		switch(role) {
 		case "Instructor":
@@ -256,7 +318,14 @@ public class UserManagementControls {
 			return false;
 		}
 	}
-
+	
+	/**
+     * Verifies if a user account has been deactivated successfully.
+     *
+     * @param username The username of the deactivated account.
+     * @param role     The role of the user ("Instructor" or "Client").
+     * @return True if the deactivation was successful; otherwise, false.
+     */
 	public boolean verifyUserDeactivation(String username, String role) {
 		switch(role) {
 		case "Instructor":
@@ -268,6 +337,11 @@ public class UserManagementControls {
 		}
 	}
 	
+	/**
+     * Checks and approves pending instructor applications.
+     *
+     * @return True if pending applications were approved; otherwise, false.
+     */
 	public static boolean checkAndApproveInstructors() {
 		if(!checkPendingApplications()) {
 			return false;
@@ -277,6 +351,11 @@ public class UserManagementControls {
 		}
 	}
 	
+	/**
+     * Checks for pending instructor applications.
+     *
+     * @return True if there are pending applications; otherwise, false.
+     */
 	public static boolean checkPendingApplications() {
 	    Map<String, Instructor> pendingInstructors = getPendingInstructorsMap();
 	    
@@ -300,6 +379,11 @@ public class UserManagementControls {
 	    }
 	}
 	
+	/**
+     * Approves pending instructor applications.
+     *
+     * @return True if any instructors were approved; otherwise, false.
+     */
 	@SuppressWarnings("resource")
 	public static boolean approveInstructors() {
 	    Map<String, Instructor> pendingInstructors = getPendingInstructorsMap();
@@ -337,6 +421,11 @@ public class UserManagementControls {
 	    return true;
 	}
 	
+	/**
+     * Verifies if any instructor accounts were successfully approved.
+     *
+     * @return True if there are approved instructor accounts; otherwise, false.
+     */
 	public static boolean verifyAccountActivation() {
 	    if (ApprovedInstructorsMap.isEmpty()) {
 	        System.out.println("No approved instructor accounts found.");
@@ -359,6 +448,11 @@ public class UserManagementControls {
 	    return true;
 	}
 	
+	/**
+     * Displays and verifies activity reports for instructors and clients.
+     *
+     * @return True if activity reports were successfully viewed and verified; otherwise, false.
+     */
 	public static boolean viewAndVerifyReportsActivity() {
 		if(!viewActivityReports()) {
 			return false;
@@ -367,6 +461,11 @@ public class UserManagementControls {
 		}
 	}
 	
+	/**
+     * Displays activity reports for instructors and clients.
+     *
+     * @return True if activity reports were displayed successfully; otherwise, false.
+     */
 	public static boolean viewActivityReports() {
 		if (getClientsMap().isEmpty() && getInstructorsMap().isEmpty()) {
             System.out.println("No activity reports available.");
@@ -403,6 +502,11 @@ public class UserManagementControls {
         return true;
 	}
 	
+	/**
+     * Verifies if there are any activity reports.
+     *
+     * @return True if activity reports exist; otherwise, false.
+     */
 	public static boolean verifyActivityReports() {
 	    return thereAreActivations;
 	}
