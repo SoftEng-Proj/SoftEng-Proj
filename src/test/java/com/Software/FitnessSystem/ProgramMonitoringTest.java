@@ -26,14 +26,14 @@ class ProgramMonitoringTest {
 	}
 	
 	@When("I select the option to view all programs")
-    public void i_select_the_option_to_view_all_programs() {
+	public void i_select_the_option_to_view_all_programs() {
         boolean expected = true;
         boolean actual = ProgramMonitoringControls.viewAllPrograms();
         assertTrue(expected == actual);
     }
 	
-    @Then("I should see a list of all programs")
-    public void i_should_see_a_list_of_all_programs() {
+	@Then("I should see a list of all programs")
+	public void i_should_see_a_list_of_all_programs() {
     	boolean expected = true;
         boolean actual = ProgramMonitoringControls.areAllProgramsVisible();
         assertTrue(expected == actual);

@@ -1,7 +1,7 @@
 @program_exploration_and_enrollment
 Feature: Program Exploration and Enrollment
   I want to browse fitness programs using filters and enroll in programs to view schedules.
-
+  
   @browse_programs_by_filters
   Scenario Outline: Browse programs using filters
     Given I am on the program exploration page
