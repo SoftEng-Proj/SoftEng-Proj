@@ -1,13 +1,9 @@
-
-package acceptance;
+package com.Software.FitnessSystem;
+import com.Software.FitnessSystem.AdminControllers.ContentManagementControls;
+import com.Software.FitnessSystem.LoginPage.AdminPagesController;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Map;
-
-import com.Software.FitnessSystem.App;
-import com.Software.FitnessSystem.Content;
-import com.Software.FitnessSystem.AdminControllers.ContentManagementControls;
-import com.Software.FitnessSystem.LoginPage.AdminPagesController;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

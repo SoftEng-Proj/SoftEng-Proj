@@ -1,8 +1,6 @@
-package acceptance;
-import com.Software.FitnessSystem.App;
+package com.Software.FitnessSystem;
 import com.Software.FitnessSystem.AdminControllers.ProgramMonitoringControls;
 import com.Software.FitnessSystem.LoginPage.AdminPagesController;
-
 import static org.junit.Assert.assertTrue;
 
 import io.cucumber.java.en.Given;

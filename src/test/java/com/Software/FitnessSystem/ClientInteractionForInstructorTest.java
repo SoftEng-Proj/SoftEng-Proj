@@ -1,10 +1,6 @@
-package acceptance;
-
+package com.Software.FitnessSystem;
 import static org.junit.Assert.*;
 
-import org.junit.Test;
-
-import com.Software.FitnessSystem.App;
 import com.Software.FitnessSystem.InstructorControllers.InteractForInstructorControls;
 import com.Software.FitnessSystem.InstructorPageNavigation.InteractForInstructorPage;
 
@@ -149,12 +145,4 @@ public class ClientInteractionForInstructorTest {
 		assertTrue(expected==actual);
 		
 	}
-
-	//@When("I provide a progress report to {string} with the content {string}")
-	//public void i_provide_a_progress_report_to_with_the_content(String string, String string2) {
-	    // Write code here that turns the phrase above into concrete actions
-	  //  throw new io.cucumber.java.PendingException();
-	//}
-
-
 }

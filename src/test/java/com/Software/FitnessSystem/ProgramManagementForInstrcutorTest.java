@@ -1,10 +1,6 @@
-package acceptance;
-
-import static org.junit.Assert.*;
-
-import org.junit.Test;
-
+package com.Software.FitnessSystem;
 import com.Software.FitnessSystem.InstructorControllers.ProgramManagementControls;
+import static org.junit.Assert.*;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

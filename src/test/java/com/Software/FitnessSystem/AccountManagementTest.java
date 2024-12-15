@@ -1,8 +1,5 @@
-package acceptance;
-
+package com.Software.FitnessSystem;
 import static org.junit.Assert.assertTrue;
-
-import com.Software.FitnessSystem.App;
 import com.Software.FitnessSystem.ClientControllers.AccountManagementControls;
 import com.Software.FitnessSystem.ClientPageNavigation.AccountManagementPage;
 

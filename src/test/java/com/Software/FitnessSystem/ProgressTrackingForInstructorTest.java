@@ -1,11 +1,7 @@
-package acceptance;
-
-import static org.junit.Assert.*;
-
-import org.junit.Test;
-
+package com.Software.FitnessSystem;
 import com.Software.FitnessSystem.InstructorControllers.ProgressTrackingInstructorControls;
 import com.Software.FitnessSystem.InstructorPageNavigation.ProgressTrackingInstructorPage;
+import static org.junit.Assert.*;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

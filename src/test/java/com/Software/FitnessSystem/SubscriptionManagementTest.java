@@ -1,7 +1,4 @@
-package acceptance;
-import com.Software.FitnessSystem.App;
-import com.Software.FitnessSystem.Client;
-import com.Software.FitnessSystem.LoadAndSaveEntities;
+package com.Software.FitnessSystem;
 import com.Software.FitnessSystem.AdminControllers.SubscriptionManagementControls;
 import com.Software.FitnessSystem.AdminControllers.SubscriptionPlan;
 import com.Software.FitnessSystem.LoginPage.AdminPagesController;

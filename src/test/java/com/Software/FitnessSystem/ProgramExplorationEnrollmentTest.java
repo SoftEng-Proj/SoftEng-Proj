@@ -1,11 +1,7 @@
-package acceptance;
-
-import static org.junit.Assert.assertTrue;
-
-import com.Software.FitnessSystem.ClientControllers.AccountManagementControls;
+package com.Software.FitnessSystem;
 import com.Software.FitnessSystem.ClientControllers.ProgramExplorationEnrollmentControls;
-import com.Software.FitnessSystem.ClientPageNavigation.AccountManagementPage;
 import com.Software.FitnessSystem.LoginPage.ClientPageControllers;
+import static org.junit.Assert.assertTrue;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
