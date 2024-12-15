@@ -1,4 +1,4 @@
-package com.Software.FitnessSystem;
+package acceptance;
 import org.junit.runner.RunWith;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
@@ -8,7 +8,7 @@ import io.cucumber.junit.CucumberOptions;
 	    features = "src/test/resources/Features",
 	    plugin = {"html:target/cucumber-report/report.html"},
 	    monochrome = true,
-	    glue = "com.Software.FitnessSystem"
+	    glue = "acceptance"
 	)
 
 public class AcceptanceTest {

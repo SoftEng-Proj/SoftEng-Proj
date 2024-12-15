@@ -1,9 +1,10 @@
-package com.Software.FitnessSystem;
+package acceptance;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import com.Software.FitnessSystem.App;
 import com.Software.FitnessSystem.InstructorControllers.InteractForInstructorControls;
 import com.Software.FitnessSystem.InstructorPageNavigation.InteractForInstructorPage;
 

@@ -1,4 +1,5 @@
-package com.Software.FitnessSystem;
+package acceptance;
+import com.Software.FitnessSystem.App;
 import com.Software.FitnessSystem.AdminControllers.ProgramMonitoringControls;
 import com.Software.FitnessSystem.LoginPage.AdminPagesController;
 

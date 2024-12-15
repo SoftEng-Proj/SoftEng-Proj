@@ -1,4 +1,4 @@
-package com.Software.FitnessSystem;
+package acceptance;
 
 import static org.junit.Assert.assertTrue;
 

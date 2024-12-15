@@ -1,4 +1,4 @@
-package com.Software.FitnessSystem;
+package acceptance;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -6,6 +6,7 @@ import io.cucumber.java.en.When;
 
 import static org.junit.Assert.assertTrue;
 
+import com.Software.FitnessSystem.App;
 import com.Software.FitnessSystem.AdminControllers.ProgramEnrollment;
 import com.Software.FitnessSystem.ClientControllers.ProgressTrackingControls;
 import com.Software.FitnessSystem.ClientPageNavigation.ProgressTrackingPage;

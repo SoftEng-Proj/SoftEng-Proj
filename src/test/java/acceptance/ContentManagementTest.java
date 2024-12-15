@@ -1,9 +1,11 @@
 
-package com.Software.FitnessSystem;
+package acceptance;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Map;
 
+import com.Software.FitnessSystem.App;
+import com.Software.FitnessSystem.Content;
 import com.Software.FitnessSystem.AdminControllers.ContentManagementControls;
 import com.Software.FitnessSystem.LoginPage.AdminPagesController;
 
