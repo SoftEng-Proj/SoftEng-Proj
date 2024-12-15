@@ -9,12 +9,13 @@ import java.util.Scanner;
 
 public class AdminPagesController {
     public NavigationControllerForAdmin navigationController = new NavigationControllerForAdmin();
-    public UserManagementPage managementPage = new UserManagementPage();
+    public UserManagementPage managementPage;
     public ContentManagementPage contentPage;
     public ProgramMonitoringPage monitoringPage;
     public SubscriptionManagementPage subscriptionPage;
     
     public AdminPagesController() {
+    	managementPage = new UserManagementPage(this);
     	contentPage = new ContentManagementPage(this);
     	monitoringPage = new ProgramMonitoringPage(this);
     	subscriptionPage = new SubscriptionManagementPage(this);

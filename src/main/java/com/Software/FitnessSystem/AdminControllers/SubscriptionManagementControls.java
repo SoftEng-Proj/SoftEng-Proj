@@ -1,5 +1,5 @@
 package com.Software.FitnessSystem.AdminControllers;
-import com.Software.FitnessSystem.App;
+import static com.Software.FitnessSystem.App.*;
 import com.Software.FitnessSystem.User;
 
 import java.util.InputMismatchException;
@@ -53,7 +53,7 @@ public class SubscriptionManagementControls {
 	public static boolean printSubscriptionPlan() {
 		isPrinted = false;
 		
-		for (CustomPlan plan : App.getSubscriptionPlanMap().values()) {
+		for (CustomPlan plan : getSubscriptionPlanMap().values()) {
             System.out.println("\nPlan: " + plan.getName());
             System.out.println("1. Price: " + plan.getPrice());
             System.out.println("2. Duration: " + plan.getDuration() + " days");
@@ -95,7 +95,7 @@ public class SubscriptionManagementControls {
         String description = scanner.nextLine();
         
         CustomPlan newCustomPlan = new CustomPlan(planName.toUpperCase(), price, duration, description);
-        App.getSubscriptionPlanMap().put(planName, newCustomPlan);
+        getSubscriptionPlanMap().put(planName, newCustomPlan);
         
         System.out.println("Subscription Plan added successfully.");
         return true;
@@ -112,7 +112,7 @@ public class SubscriptionManagementControls {
             String planName = scanner.nextLine().toUpperCase();
             
             try {
-                CustomPlan plan = App.getSubscriptionPlanMap().get(planName);
+                CustomPlan plan = getSubscriptionPlanMap().get(planName);
                 
                 boolean isStoped = false;
                 while(!isStoped) {
@@ -183,7 +183,7 @@ public class SubscriptionManagementControls {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Enter the plan name to edit (e.g., BASIC, PREMIUM, ...):");
         String planName = scanner.nextLine().toUpperCase();
-        App.getSubscriptionPlanMap().remove(planName);
+        getSubscriptionPlanMap().remove(planName);
         return true;
 	}
 	
@@ -242,10 +242,10 @@ public class SubscriptionManagementControls {
         
         CustomPlan planType;
         try {
-            planType = App.getSubscriptionPlanMap().get(planTypeInput);
+            planType = getSubscriptionPlanMap().get(planTypeInput);
         } catch (IllegalArgumentException e) {
             System.out.println("Invalid subscription plan type.");
-            return App.getSubscriptionPlanMap().get("BASIC");
+            return getSubscriptionPlanMap().get("BASIC");
         }
         
         return planType;
@@ -270,13 +270,13 @@ public class SubscriptionManagementControls {
 	    
 	    if (choice.equals("C")) {
 	        userTupe = "C";
-	        App.getClientsMap().values().stream()
+	        getClientsMap().values().stream()
 	                .filter(client -> client.getSubscriptionPlan() != null && client.getSubscriptionPlan().getPlanType() != null
 	                        && client.getSubscriptionPlan().getPlanType().getName().equals(planType.getName()))
 	                .forEach(client -> System.out.println("Client: " + client.getUsername() + " - Logins: " + client.getLogins()));
 	    } else if (choice.equals("I")) {
 	        userTupe = "I";
-	        App.getInstructorsMap().values().stream()
+	        getInstructorsMap().values().stream()
 	                .filter(instructor -> instructor.getSubscriptionPlan() != null && instructor.getSubscriptionPlan().getPlanType() != null
 	                        && instructor.getSubscriptionPlan().getPlanType().getName().equals(planType.getName()))
 	                .forEach(instructor -> System.out.println("Instructor: " + instructor.getUsername() + " - Logins: " + instructor.getLogins()));
@@ -298,9 +298,9 @@ public class SubscriptionManagementControls {
         
         User user = null;
         if(userTupe.equals("C")) {
-        	user = App.getClientsMap().get(username);
+        	user = getClientsMap().get(username);
         } else if (userTupe.equals("I")) {
-        	user = App.getInstructorsMap().get(username);
+        	user = getInstructorsMap().get(username);
         }
         
         if (user != null) {
@@ -322,7 +322,7 @@ public class SubscriptionManagementControls {
 		boolean isUpdated = false;
         if (subscriptionPlan != null) {
         	if(renewAndReverseSubscription && !justRenew) {
-            	subscriptionPlan.setPlanType(App.getSubscriptionPlanMap().get(newPlanType));
+            	subscriptionPlan.setPlanType(getSubscriptionPlanMap().get(newPlanType));
             	user.setSubscriptionPlan(subscriptionPlan);
             	user.setLogins(0);
             	isUpdated = true;

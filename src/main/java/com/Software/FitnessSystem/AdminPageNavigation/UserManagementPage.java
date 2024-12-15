@@ -1,14 +1,15 @@
 package com.Software.FitnessSystem.AdminPageNavigation;
+import static com.Software.FitnessSystem.App.*;
+import static com.Software.FitnessSystem.AdminControllers.UserManagementControls.*;
+import com.Software.FitnessSystem.User;
+import com.Software.FitnessSystem.LoginPage.AdminPagesController;
+import com.Software.FitnessSystem.InfrastructureForPages.BasePage;
 
 import java.util.Map;
 import java.util.Scanner;
 
-import com.Software.FitnessSystem.App;
-import com.Software.FitnessSystem.User;
-import com.Software.FitnessSystem.AdminControllers.UserManagementControls;
-import com.Software.FitnessSystem.InfrastructureForPages.BasePage;
-
 public class UserManagementPage extends BasePage {
+	private static AdminPagesController AdminPagesController;
 	private static String fName;
 	private static String lName;
 	private static String email;
@@ -53,6 +54,10 @@ public class UserManagementPage extends BasePage {
 		UserManagementPage.role = role;
 	}
 	
+	public UserManagementPage(AdminPagesController AdminPagesController) {
+		UserManagementPage.AdminPagesController = AdminPagesController;
+	}
+	
     @Override
     public void display() {
         System.out.println("\nUser Management Menu:");
@@ -73,57 +78,58 @@ public class UserManagementPage extends BasePage {
             case 1:
             	promptUserForDetails();
             	UserManagementPage.role = "Instructor";
-            	stringResolution = UserManagementControls.fillUserDetails(fName, lName, email, username, password, role);
+            	stringResolution = fillUserDetails(fName, lName, email, username, password, role);
             	printingAMessageOfSsuccess();
                 break;
             case 2:
             	promptUserForDetails();
             	UserManagementPage.role = "Client";
-            	stringResolution = UserManagementControls.fillUserDetails(fName, lName, email, username, password, role);
+            	stringResolution = fillUserDetails(fName, lName, email, username, password, role);
             	printingAMessageOfSsuccess();
                 break;
             case 3:
-            	printUserDetails(App.getInstructorsMap());
+            	printUserDetails(getInstructorsMap());
             	selecteAUser();
             	UserManagementPage.role = "Instructor";
-            	booleanResolution = UserManagementControls.selectUser(username, role);
-            	UserManagementControls.editUserDetails(username, role);
+            	booleanResolution = selectUser(username, role);
+            	editUserDetails(username, role);
                 break;
             case 4:
-            	printUserDetails(App.getClientsMap());
+            	printUserDetails(getClientsMap());
             	selecteAUser();
             	UserManagementPage.role = "Client";
-            	booleanResolution = UserManagementControls.selectUser(username, role);
-            	UserManagementControls.editUserDetails(username, role);
+            	booleanResolution = selectUser(username, role);
+            	editUserDetails(username, role);
                 break;
             case 5:
-            	printUserDetails(App.getInstructorsMap());
+            	printUserDetails(getInstructorsMap());
             	selecteAUser();
             	UserManagementPage.role = "Instructor";
-            	booleanResolution = UserManagementControls.selectUser(username, role);
-            	UserManagementControls.deactivateUser(username, role);
+            	booleanResolution = selectUser(username, role);
+            	deactivateUser(username, role);
                 break;
             case 6:
-            	printUserDetails(App.getClientsMap());
+            	printUserDetails(getClientsMap());
             	selecteAUser();
             	UserManagementPage.role = "Client";
-            	booleanResolution = UserManagementControls.selectUser(username, role);
-            	UserManagementControls.deactivateUser(username, role);
+            	booleanResolution = selectUser(username, role);
+            	deactivateUser(username, role);
                 break;
             case 7:
-            	UserManagementControls.checkAndApproveInstructors();
+            	checkAndApproveInstructors();
                 break;
             case 8:
-            	UserManagementControls.viewAndVerifyReportsActivity();
+            	viewAndVerifyReportsActivity();
                 break;
             case 9:
-                goBack();
+            	System.out.println("\nReturning to the main menu...");
+            	AdminPagesController.navigateToManagementPage();
                 break;
             default:
                 System.out.println("Invalid choice. Please try again.");
         }
         
-        App.saveAccountChanges();
+        saveAccountChanges();
     }
     
     @SuppressWarnings("resource")

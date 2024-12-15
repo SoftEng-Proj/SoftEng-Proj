@@ -1,9 +1,9 @@
 package com.Software.FitnessSystem.AdminControllers;
+import com.Software.FitnessSystem.Content;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-
-import com.Software.FitnessSystem.Content;
 
 public class ContentManagementControls {
 	private static boolean thereIsPendingTip = false;

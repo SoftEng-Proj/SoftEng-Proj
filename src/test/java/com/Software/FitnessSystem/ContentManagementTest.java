@@ -1,4 +1,6 @@
 package com.Software.FitnessSystem;
+import static com.Software.FitnessSystem.App.*;
+import static com.Software.FitnessSystem.AdminControllers.ContentManagementControls.*;
 import com.Software.FitnessSystem.AdminControllers.ContentManagementControls;
 import com.Software.FitnessSystem.LoginPage.AdminPagesController;
 import static org.junit.Assert.assertTrue;
@@ -23,7 +25,7 @@ class ContentManagementTest {
 	@Given("I am logged in as an admin")
 	public void i_am_logged_in_as_an_admin() {
 		String expected = "AdminLoggedIn";
-    	String actual = App.login("AdminUser", "AdminPassword", "Admin");
+    	String actual = login("AdminUser", "AdminPassword", "Admin");
         assertTrue(expected.equals(actual));
 	}
 	
@@ -37,46 +39,46 @@ class ContentManagementTest {
 	@When("I review a wellness article, tip, or recipe")
 	public void i_review_a_wellness_article_tip_or_recipe() {
 		boolean expected = true;
-		Map<String, Content> tips = App.getPendingInstructorTipsMap();
-		ContentManagementControls.setApprovedTipsMap(tips);
-        boolean actual = ContentManagementControls.reviewArticleAndTips(tips);
+		Map<String, Content> tips = getPendingInstructorTipsMap();
+		setApprovedTipsMap(tips);
+        boolean actual = reviewArticleAndTips(tips);
         assertTrue(expected == actual);
 	}
 	
 	@Then("I can approve or reject the submission")
 	public void i_can_approve_or_reject_the_submission() {
 		boolean expected = true;
-		Map<String, Content> tips = App.getPendingInstructorTipsMap();
-		ContentManagementControls.setApprovedTipsMap(tips);
-		ContentManagementControls.accessToPrinter(tips);
-        boolean actual = ContentManagementControls.approveOrRejectTheTips(App.getInstructorTipsMap());
+		Map<String, Content> tips = getPendingInstructorTipsMap();
+		setApprovedTipsMap(tips);
+		accessToPrinter(tips);
+        boolean actual = approveOrRejectTheTips(getInstructorTipsMap());
         assertTrue(expected == actual);
 	}
 	
 	@When("I review an article or tip on health and wellness")
 	public void i_review_an_article_or_tip_on_health_and_wellness() {
 		boolean expected = true;
-		Map<String, Content> tips = App.getPendingInstructorTipsMap();
-		ContentManagementControls.setApprovedTipsMap(tips);
-        boolean actual = ContentManagementControls.reviewArticleAndTips(tips);
+		Map<String, Content> tips = getPendingInstructorTipsMap();
+		setApprovedTipsMap(tips);
+        boolean actual = reviewArticleAndTips(tips);
         assertTrue(expected == actual);
 	}
 	
 	@When("I review user feedback or complaints")
 	public void i_review_user_feedback_or_complaints() {
 		boolean expected = true;
-		ContentManagementControls.setHandledFeedbackMap(App.getHandledFeedbackMap());
-        boolean actual = ContentManagementControls.reviewArticleAndTips(App.getUserFeedbackMap());
+		setHandledFeedbackMap(getHandledFeedbackMap());
+        boolean actual = reviewArticleAndTips(getUserFeedbackMap());
         assertTrue(expected == actual);
 	}
 	
 	@Then("I should be able to handle them appropriately")
 	public void i_should_be_able_to_handle_them_appropriately() {
 		boolean expected = true;
-		ContentManagementControls.setHandledFeedbackMap(App.getHandledFeedbackMap());
-		Map<String, Content> feedback = App.getUserFeedbackMap();
-		ContentManagementControls.accessToPrinter(feedback);
-        boolean actual = ContentManagementControls.respondToFeedback(feedback);
+		setHandledFeedbackMap(getHandledFeedbackMap());
+		Map<String, Content> feedback = getUserFeedbackMap();
+		accessToPrinter(feedback);
+        boolean actual = respondToFeedback(feedback);
         assertTrue(expected == actual);
 	}
 }

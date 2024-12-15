@@ -1,12 +1,12 @@
 package com.Software.FitnessSystem.AdminControllers;
+import com.Software.FitnessSystem.InstructorControllers.Program;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-
-import com.Software.FitnessSystem.InstructorControllers.Program;
 
 public class ProgramEnrollment {
 	private String programName;

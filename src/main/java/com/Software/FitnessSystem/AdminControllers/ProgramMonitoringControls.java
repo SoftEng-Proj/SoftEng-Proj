@@ -1,5 +1,5 @@
 package com.Software.FitnessSystem.AdminControllers;
-import com.Software.FitnessSystem.App;
+import static com.Software.FitnessSystem.App.*;
 
 import java.util.AbstractMap;
 import java.util.Map;
@@ -13,7 +13,7 @@ public class ProgramMonitoringControls {
 	
 	public static boolean viewAllPrograms() {
 		areProgramsDisplayed = true;
-		Map<String, ProgramEnrollment> programs = App.getProgramEnrollmentMap();
+		Map<String, ProgramEnrollment> programs = getProgramEnrollmentMap();
         
         if (programs.isEmpty()) {
             System.out.println("No programs available to display.");
@@ -33,7 +33,7 @@ public class ProgramMonitoringControls {
 	
 	public static boolean viewTheEnrollmentStatistics() {
 		hasItBeenDisplayed = true;
-        Map<String, ProgramEnrollment> programs = App.getProgramEnrollmentMap();
+        Map<String, ProgramEnrollment> programs = getProgramEnrollmentMap();
         
         if (programs.isEmpty()) {
             System.out.println("No programs available to display.");
@@ -101,13 +101,13 @@ public class ProgramMonitoringControls {
         switch(choice) {
         case 1:
         	System.out.println("Generating report for all programs...");
-        	return generateReportsOption(App.getProgramEnrollmentMap(), "Null", false);
+        	return generateReportsOption(getProgramEnrollmentMap(), "Null", false);
         case 2:
         	System.out.print("\n");
-        	printPrograms(App.getProgramEnrollmentMap(), false);
+        	printPrograms(getProgramEnrollmentMap(), false);
         	String programName = askTheNameOfTheProgram();
         	System.out.println("\nReport generation in progress for the program: \"" + programName + "\".");
-        	return generateReportsOption(App.getProgramEnrollmentMap(), programName, true);
+        	return generateReportsOption(getProgramEnrollmentMap(), programName, true);
         case 3:
         	return true;
         }

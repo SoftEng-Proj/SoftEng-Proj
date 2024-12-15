@@ -1,6 +1,6 @@
 package com.Software.FitnessSystem.AdminPageNavigation;
-import com.Software.FitnessSystem.App;
-import com.Software.FitnessSystem.AdminControllers.SubscriptionManagementControls;
+import static com.Software.FitnessSystem.App.*;
+import static com.Software.FitnessSystem.AdminControllers.SubscriptionManagementControls.*;
 import com.Software.FitnessSystem.InfrastructureForPages.BasePage;
 import com.Software.FitnessSystem.LoginPage.AdminPagesController;
 
@@ -24,15 +24,15 @@ public class SubscriptionManagementPage extends BasePage {
     public void executeOption(int choice) {
         switch (choice) {
             case 1:
-            	SubscriptionManagementControls.dealWithSubscriptionPlan();
-            	App.saveCustomSubscriptionPlanChanges();
+            	dealWithSubscriptionPlan();
+            	saveCustomSubscriptionPlanChanges();
                 break;
             case 2:
-            	SubscriptionManagementControls.dealWithUsersSubscriptionPlan();
-            	App.saveAccountChanges();
+            	dealWithUsersSubscriptionPlan();
+            	saveAccountChanges();
                 break;
             case 3:
-            	SubscriptionManagementControls.printSubscriptionPlan();
+            	printSubscriptionPlan();
                 break;
             case 4:
                 System.out.println("\nReturning to the main menu...");

@@ -1,4 +1,5 @@
 package com.Software.FitnessSystem;
+import static com.Software.FitnessSystem.LoadAndSaveEntities.*;
 import com.Software.FitnessSystem.AdminControllers.CustomPlan;
 import com.Software.FitnessSystem.AdminControllers.ProgramEnrollment;
 import com.Software.FitnessSystem.AdminControllers.SubscriptionPlan;
@@ -80,30 +81,30 @@ public class App {
     }
     
     public App() {
-    	LoadAndSaveEntities.loadCustomSubscriptionPlanFromFile(CustomSubscriptionPlan, SUBSCRIPTION_PLAN_FILENAME);
-    	LoadAndSaveEntities.loadAdminsFromFile(AdminsMap, ADMIN_ACCOUNTS_FILENAME);
-    	LoadAndSaveEntities.loadInstructorsFromFile(InstructorsMap, INSTRUCTOR_ACCOUNTS_FILENAME);
-    	LoadAndSaveEntities.loadInstructorsFromFile(PendingInstructorsMap, PENDING_INSTRUCTOR_ACCOUNTS_FILENAME);
-    	LoadAndSaveEntities.loadClientsFromFile(ClientsMap, CLIENT_ACCOUNTS_FILENAME);
-    	LoadAndSaveEntities.loadFitnessProgramsFromFile(FitnessProgramsMap, FITNESS_PROGRAMS_FILENAME);
-    	LoadAndSaveEntities.loadContentsFromFile(InstructorTipsMap, TIPS_AND_ARTICLES_FILENAME);
-    	LoadAndSaveEntities.loadContentsFromFile(PendingInstructorTipsMap, PENDING_TIPS_AND_ARTICLES_FILENAME);
-    	LoadAndSaveEntities.loadContentsFromFile(HealthTipsMap, HEALTH_TIPS_FILENAME);
-    	LoadAndSaveEntities.loadContentsFromFile(PendingHealthTipsMap, PENDING_HEALTH_TIPS_FILENAME);
-    	LoadAndSaveEntities.loadContentsFromFile(UserFeedbackMap, USER_FEEDBACK_FILENAME);
-    	LoadAndSaveEntities.loadHandledFeedbackFromFile(HandledFeedbackMap, USER_FEEDBACK_HANDLE_FILENAME);
-    	LoadAndSaveEntities.loadClientProfilesFromFile(ClientProfileMap, CLIENT_PROFILES_FILENAME);
-    	LoadAndSaveEntities.loadMilestonesFromFile(MilestonesList, MILESTONES_FILENAME);
-    	LoadAndSaveEntities.loadProgramRatingsFromFile(ProgramRatings, PROGRAM_RATINGS_FILENAME);
-        LoadAndSaveEntities.loadProgramReviewsFromFile(ProgramReviews, PROGRAM_REVIEWS_FILENAME);
-        LoadAndSaveEntities.loadProgramSuggestionsFromFile(ProgramSuggestions, PROGRAM_SUGGESTIONS_FILENAME);
-    	LoadAndSaveEntities.loadInstructorMsgsToClientsFromFile(InstructorMessagesForClientsMap, INSTRUCTOR_MSGS_FOR_CLIENTS);
-        LoadAndSaveEntities.loadProgramForumMsgsFromFile(ProgramForumMsgsMap, PROGRAM_FORUM_MSGS);
-        LoadAndSaveEntities.loadFeedbackToClientFromFile(FeedbackToClientMap, FEEDBACK_TOCLIENT);
-        LoadAndSaveEntities.loadInstructorReminderFromFile(InstructorReminderMap, INSTRUCTOR_REMINDER);
-        LoadAndSaveEntities.loadInstructorRecommednationFromFile(InstructorRecommendationMap, INSTRUCTOR_RECCOMENDATION);
-        LoadAndSaveEntities.loadProgramScheduleChangeFromFile(ProgramScheduleChangeMap, PROGRAMSCHEDULE_CHANGE);
-        LoadAndSaveEntities.loadProgressListFromFile(ProgressListMap, PROGRESS_FILE);
+    	loadCustomSubscriptionPlanFromFile(CustomSubscriptionPlan, SUBSCRIPTION_PLAN_FILENAME);
+    	loadAdminsFromFile(AdminsMap, ADMIN_ACCOUNTS_FILENAME);
+    	loadInstructorsFromFile(InstructorsMap, INSTRUCTOR_ACCOUNTS_FILENAME);
+    	loadInstructorsFromFile(PendingInstructorsMap, PENDING_INSTRUCTOR_ACCOUNTS_FILENAME);
+    	loadClientsFromFile(ClientsMap, CLIENT_ACCOUNTS_FILENAME);
+    	loadFitnessProgramsFromFile(FitnessProgramsMap, FITNESS_PROGRAMS_FILENAME);
+    	loadContentsFromFile(InstructorTipsMap, TIPS_AND_ARTICLES_FILENAME);
+    	loadContentsFromFile(PendingInstructorTipsMap, PENDING_TIPS_AND_ARTICLES_FILENAME);
+    	loadContentsFromFile(HealthTipsMap, HEALTH_TIPS_FILENAME);
+    	loadContentsFromFile(PendingHealthTipsMap, PENDING_HEALTH_TIPS_FILENAME);
+    	loadContentsFromFile(UserFeedbackMap, USER_FEEDBACK_FILENAME);
+    	loadHandledFeedbackFromFile(HandledFeedbackMap, USER_FEEDBACK_HANDLE_FILENAME);
+    	loadClientProfilesFromFile(ClientProfileMap, CLIENT_PROFILES_FILENAME);
+    	loadMilestonesFromFile(MilestonesList, MILESTONES_FILENAME);
+    	loadProgramRatingsFromFile(ProgramRatings, PROGRAM_RATINGS_FILENAME);
+        loadProgramReviewsFromFile(ProgramReviews, PROGRAM_REVIEWS_FILENAME);
+        loadProgramSuggestionsFromFile(ProgramSuggestions, PROGRAM_SUGGESTIONS_FILENAME);
+    	loadInstructorMsgsToClientsFromFile(InstructorMessagesForClientsMap, INSTRUCTOR_MSGS_FOR_CLIENTS);
+        loadProgramForumMsgsFromFile(ProgramForumMsgsMap, PROGRAM_FORUM_MSGS);
+        loadFeedbackToClientFromFile(FeedbackToClientMap, FEEDBACK_TOCLIENT);
+        loadInstructorReminderFromFile(InstructorReminderMap, INSTRUCTOR_REMINDER);
+        loadInstructorRecommednationFromFile(InstructorRecommendationMap, INSTRUCTOR_RECCOMENDATION);
+        loadProgramScheduleChangeFromFile(ProgramScheduleChangeMap, PROGRAMSCHEDULE_CHANGE);
+        loadProgressListFromFile(ProgressListMap, PROGRESS_FILE);
         
         SubscriptionPlan.convertFromPlanTypeToCustomPlan();
     	fillUserSubscriptionPlanMap();
@@ -147,14 +148,14 @@ public class App {
 	public static String instructorLogIn(String formattedDateTime) {
 		Instructor.setLastLogin(formattedDateTime);
 		Instructor.setLogins(Instructor.getLogins() + 1);
-    	LoadAndSaveEntities.saveInstructorsToFile(InstructorsMap, INSTRUCTOR_ACCOUNTS_FILENAME);
+    	saveInstructorsToFile(InstructorsMap, INSTRUCTOR_ACCOUNTS_FILENAME);
     	return "InstructorLoggedIn";
 	}
 	
 	public static String clientLogIn(String formattedDateTime) {
 		Client.setLastLogin(formattedDateTime);
     	Client.setLogins(Client.getLogins() + 1);
-    	LoadAndSaveEntities.saveClientsToFile(ClientsMap, ADMIN_ACCOUNTS_FILENAME);
+    	saveClientsToFile(ClientsMap, ADMIN_ACCOUNTS_FILENAME);
     	return "ClientLoggedIn";
 	}
 	
@@ -171,100 +172,102 @@ public class App {
 	}
 	
 	public static boolean saveCustomSubscriptionPlanChanges() {
-		LoadAndSaveEntities.saveCustomSubscriptionPlanToFile(CustomSubscriptionPlan, SUBSCRIPTION_PLAN_FILENAME);
+		saveCustomSubscriptionPlanToFile(CustomSubscriptionPlan, SUBSCRIPTION_PLAN_FILENAME);
 		return true;
 	}
 	
 	public static boolean saveAccountChanges() {
-		LoadAndSaveEntities.saveAdminsToFile(AdminsMap, ADMIN_ACCOUNTS_FILENAME);
-		LoadAndSaveEntities.saveInstructorsToFile(InstructorsMap, INSTRUCTOR_ACCOUNTS_FILENAME);
-		LoadAndSaveEntities.saveInstructorsToFile(PendingInstructorsMap, PENDING_INSTRUCTOR_ACCOUNTS_FILENAME);
-		LoadAndSaveEntities.saveClientsToFile(ClientsMap, CLIENT_ACCOUNTS_FILENAME);
+		saveAdminsToFile(AdminsMap, ADMIN_ACCOUNTS_FILENAME);
+		saveInstructorsToFile(InstructorsMap, INSTRUCTOR_ACCOUNTS_FILENAME);
+		saveInstructorsToFile(PendingInstructorsMap, PENDING_INSTRUCTOR_ACCOUNTS_FILENAME);
+		saveClientsToFile(ClientsMap, CLIENT_ACCOUNTS_FILENAME);
 		return true;
 	}
 	
 	public static boolean saveFitnessProgramsChanges() {
-		LoadAndSaveEntities.saveFitnessProgramsToFile(FitnessProgramsMap, FITNESS_PROGRAMS_FILENAME);
+		saveFitnessProgramsToFile(FitnessProgramsMap, FITNESS_PROGRAMS_FILENAME);
 		return true;
 	}
 	
 	public static boolean saveInstructorAnnouncementsChanges() {
-		LoadAndSaveEntities.saveInstructorAnnouncementToFile(InstructorAnnouncementMap, INSTRUCTOR_ANNOUNCEMENTS);
+		saveInstructorAnnouncementToFile(InstructorAnnouncementMap, INSTRUCTOR_ANNOUNCEMENTS);
 		return true;
 	}
 	
 	public static boolean saveProgramScheduleChangeChanges() {
-		LoadAndSaveEntities.saveProgramScheduleChangeToFile(ProgramScheduleChangeMap, PROGRAMSCHEDULE_CHANGE);
+		saveProgramScheduleChangeToFile(ProgramScheduleChangeMap, PROGRAMSCHEDULE_CHANGE);
 		return true;
 	}
 	
 	public static boolean saveFeedbackToClientChanges() {
-		LoadAndSaveEntities.saveFeedbackToClientToFile(FeedbackToClientMap, FEEDBACK_TOCLIENT);
+		saveFeedbackToClientToFile(FeedbackToClientMap, FEEDBACK_TOCLIENT);
 		return true;
 	}
 	
 	public static boolean saveInstructorMSGSForClientsChanges() {
-    	LoadAndSaveEntities.saveInstructorMsgsToClientsToFile(InstructorMessagesForClientsMap, INSTRUCTOR_MSGS_FOR_CLIENTS);
+    	saveInstructorMsgsToClientsToFile(InstructorMessagesForClientsMap, INSTRUCTOR_MSGS_FOR_CLIENTS);
     	return true;
 	}
 	
 	public static boolean saveProgramForumMsgsChanges() {
-		LoadAndSaveEntities.saveProgramForumMsgsToFile(ProgramForumMsgsMap, PROGRAM_FORUM_MSGS);
+		saveProgramForumMsgsToFile(ProgramForumMsgsMap, PROGRAM_FORUM_MSGS);
 		return true;
 	}
 	
-	public static void saveMilestoneChanges() {
-    	LoadAndSaveEntities.saveMilestonesToFile(getMilestonesList(), MILESTONES_FILENAME);
+	public static boolean saveMilestoneChanges() {
+    	saveMilestonesToFile(getMilestonesList(), MILESTONES_FILENAME);
+    	return true;
 	}
 	
-	public static void saveProgressListChanges() {
-    	LoadAndSaveEntities.saveProgressListToFile(ProgressListMap, PROGRESS_FILE);
+	public static boolean saveProgressListChanges() {
+    	saveProgressListToFile(ProgressListMap, PROGRESS_FILE);
+    	return true;
 	}
 	
 	public static boolean saveInstructorTipsChanges() {
-		LoadAndSaveEntities.saveContentsToFile(InstructorTipsMap, TIPS_AND_ARTICLES_FILENAME);
-		LoadAndSaveEntities.saveContentsToFile(PendingInstructorTipsMap, PENDING_TIPS_AND_ARTICLES_FILENAME);
+		saveContentsToFile(InstructorTipsMap, TIPS_AND_ARTICLES_FILENAME);
+		saveContentsToFile(PendingInstructorTipsMap, PENDING_TIPS_AND_ARTICLES_FILENAME);
 		return true;
 	}
 	public static boolean saveInstructorReminderChanges() {
-		LoadAndSaveEntities.saveInstructorReminderToFile(InstructorReminderMap, INSTRUCTOR_REMINDER);
+		saveInstructorReminderToFile(InstructorReminderMap, INSTRUCTOR_REMINDER);
 		return true;
 	}
 	
 	public static boolean saveInstructorRcommendationChanges() {
-		LoadAndSaveEntities.saveInstructorRecommendationToFile(InstructorRecommendationMap, INSTRUCTOR_RECCOMENDATION);
+		saveInstructorRecommendationToFile(InstructorRecommendationMap, INSTRUCTOR_RECCOMENDATION);
 		return true;
 	}
 	
 	public static boolean saveHealthTipsChanges() {
-		LoadAndSaveEntities.saveContentsToFile(HealthTipsMap, HEALTH_TIPS_FILENAME);
-		LoadAndSaveEntities.saveContentsToFile(PendingHealthTipsMap, PENDING_HEALTH_TIPS_FILENAME);
+		saveContentsToFile(HealthTipsMap, HEALTH_TIPS_FILENAME);
+		saveContentsToFile(PendingHealthTipsMap, PENDING_HEALTH_TIPS_FILENAME);
 		return true;
 	}
 	
 	public static boolean saveUserFeedbackChanges() {
-		LoadAndSaveEntities.saveContentsToFile(UserFeedbackMap, USER_FEEDBACK_FILENAME);
-		LoadAndSaveEntities.saveHandledFeedbackToFile(HandledFeedbackMap, USER_FEEDBACK_HANDLE_FILENAME);
+		saveContentsToFile(UserFeedbackMap, USER_FEEDBACK_FILENAME);
+		saveHandledFeedbackToFile(HandledFeedbackMap, USER_FEEDBACK_HANDLE_FILENAME);
 		return true;
 	}
 	
     public static boolean saveClientProfileChanges() {
-    	LoadAndSaveEntities.saveClientProfileToFile(ClientProfileMap, CLIENT_PROFILES_FILENAME);
+    	saveClientProfileToFile(ClientProfileMap, CLIENT_PROFILES_FILENAME);
     	return true;
 	}
     
     public static boolean saveProgramRatingsChanges() {
-        LoadAndSaveEntities.saveProgramRatingsToFile(ProgramRatings, PROGRAM_RATINGS_FILENAME);
+        saveProgramRatingsToFile(ProgramRatings, PROGRAM_RATINGS_FILENAME);
         return true;
 	}
     
 	public static boolean saveProgramReviewsChanges() {
-	    LoadAndSaveEntities.saveProgramReviewsToFile(ProgramReviews, PROGRAM_REVIEWS_FILENAME);
+	    saveProgramReviewsToFile(ProgramReviews, PROGRAM_REVIEWS_FILENAME);
 		return true;
 	}
 	
 	public static boolean saveProgramSuggestionsChanges() {
-	    LoadAndSaveEntities.saveProgramSuggestionsToFile(ProgramSuggestions, PROGRAM_SUGGESTIONS_FILENAME);
+	    saveProgramSuggestionsToFile(ProgramSuggestions, PROGRAM_SUGGESTIONS_FILENAME);
 	    return true;
 	}
 	

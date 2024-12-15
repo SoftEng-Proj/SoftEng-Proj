@@ -1,5 +1,6 @@
 package com.Software.FitnessSystem;
-import com.Software.FitnessSystem.AdminControllers.SubscriptionManagementControls;
+import static com.Software.FitnessSystem.App.*;
+import static com.Software.FitnessSystem.AdminControllers.SubscriptionManagementControls.*;
 import com.Software.FitnessSystem.AdminControllers.SubscriptionPlan;
 
 public class Instructor implements User{
@@ -98,8 +99,8 @@ public class Instructor implements User{
     }
 	
 	public void updateSubscriptionPlanForInstructor(Instructor instructor) {
-		SubscriptionManagementControls.giveTheUserNewSubscriptionOpportunity(subscriptionPlan, instructor);
-		App.saveAccountChanges();
+		giveTheUserNewSubscriptionOpportunity(subscriptionPlan, instructor);
+		saveAccountChanges();
 	}
 	
 	@Override

@@ -1,6 +1,6 @@
 package com.Software.FitnessSystem;
-
-import com.Software.FitnessSystem.AdminControllers.SubscriptionManagementControls;
+import static com.Software.FitnessSystem.App.*;
+import static com.Software.FitnessSystem.AdminControllers.SubscriptionManagementControls.*;
 import com.Software.FitnessSystem.AdminControllers.SubscriptionPlan;
 import com.Software.FitnessSystem.InstructorControllers.Program;
 
@@ -100,8 +100,8 @@ public class Client implements User{
     }
 	
 	public void updateSubscriptionPlanForClient(Client client) {
-		SubscriptionManagementControls.giveTheUserNewSubscriptionOpportunity(subscriptionPlan, client);
-		App.saveAccountChanges();
+		giveTheUserNewSubscriptionOpportunity(subscriptionPlan, client);
+		saveAccountChanges();
 	}
 	public Program getEnrolledProgram() {
         return enrolledProgram;

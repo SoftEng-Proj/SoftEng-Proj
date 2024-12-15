@@ -1,8 +1,7 @@
 package com.Software.FitnessSystem.LoginPage;
-import java.util.Scanner;
-
-import com.Software.FitnessSystem.App;
+import static com.Software.FitnessSystem.App.*;
 import com.Software.FitnessSystem.Client;
+import java.util.Scanner;
 
 public class LoginPageController {
     public AdminPagesController adminPagesController = new AdminPagesController();
@@ -114,20 +113,20 @@ public class LoginPageController {
     private static boolean verifyCredentials(String username, String password, int from) {
     	switch(from) {
     	case 1:
-        	if(App.getAdminsMap().containsKey(username) && 
-        			App.getAdminsMap().get(username).getPassword().equals(password)) {
+        	if(getAdminsMap().containsKey(username) && 
+        			getAdminsMap().get(username).getPassword().equals(password)) {
         		return true;
         	}
     		return false;
     	case 2:
-        	if(App.getInstructorsMap().containsKey(username) && 
-        			App.getInstructorsMap().get(username).getPassword().equals(password)) {
+        	if(getInstructorsMap().containsKey(username) && 
+        			getInstructorsMap().get(username).getPassword().equals(password)) {
         		return true;
         	}
     		return false;
     	case 3:
-        	if(App.getClientsMap().containsKey(username) && 
-        			App.getClientsMap().get(username).getPassword().equals(password)) {
+        	if(getClientsMap().containsKey(username) && 
+        			getClientsMap().get(username).getPassword().equals(password)) {
         		return true;
         	}
     		return false;

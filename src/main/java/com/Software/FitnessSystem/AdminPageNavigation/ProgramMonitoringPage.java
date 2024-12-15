@@ -1,7 +1,6 @@
 package com.Software.FitnessSystem.AdminPageNavigation;
-
-import com.Software.FitnessSystem.App;
-import com.Software.FitnessSystem.AdminControllers.ProgramMonitoringControls;
+import static com.Software.FitnessSystem.App.*;
+import static com.Software.FitnessSystem.AdminControllers.ProgramMonitoringControls.*;
 import com.Software.FitnessSystem.InfrastructureForPages.BasePage;
 import com.Software.FitnessSystem.LoginPage.AdminPagesController;
 
@@ -26,16 +25,16 @@ public class ProgramMonitoringPage extends BasePage {
     public void executeOption(int choice) {
         switch (choice) {
             case 1:
-            	ProgramMonitoringControls.viewAllPrograms();
+            	viewAllPrograms();
                 break;
             case 2:
-            	ProgramMonitoringControls.viewTheEnrollmentStatistics();
+            	viewTheEnrollmentStatistics();
                 break;
             case 3:
-            	ProgramMonitoringControls.chooseReportGenerationOption();
+            	chooseReportGenerationOption();
                 break;
             case 4:
-            	ProgramMonitoringControls.trackActiveAndCompletedPrograms(App.getProgramEnrollmentMap());
+            	trackActiveAndCompletedPrograms(getProgramEnrollmentMap());
                 break;
             case 5:
             	System.out.println("\nReturning to the main menu...");

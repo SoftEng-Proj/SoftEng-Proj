@@ -1,8 +1,8 @@
 package com.Software.FitnessSystem.AdminControllers;
-import com.Software.FitnessSystem.App;
+import static com.Software.FitnessSystem.App.*;
+import static com.Software.FitnessSystem.LoadAndSaveEntities.*;
 import com.Software.FitnessSystem.Client;
 import com.Software.FitnessSystem.Instructor;
-import com.Software.FitnessSystem.LoadAndSaveEntities;
 import com.Software.FitnessSystem.User;
 
 import java.time.LocalDateTime;
@@ -47,27 +47,27 @@ public class UserManagementControls {
 		newInstructor = new Instructor(fName, lName, email, userName, password);
         newInstructor.setLastLogin(formattedDateTime);
         newInstructor.setLogins(1);
-        newInstructor.setSubscriptionPlan(new SubscriptionPlan(App.getSubscriptionPlanMap().get("BASIC")));
-		App.putNewInstructor(userName, newInstructor);
+        newInstructor.setSubscriptionPlan(new SubscriptionPlan(getSubscriptionPlanMap().get("BASIC")));
+		putNewInstructor(userName, newInstructor);
 	}
 	
 	private static void clientNewAccount(String fName, String lName, String email, String userName, String password) {
 		newClient = new Client(fName, lName, email, userName, password);
 		newClient.setLastLogin(formattedDateTime);
 		newClient.setLogins(1);
-		newClient.setSubscriptionPlan(new SubscriptionPlan(App.getSubscriptionPlanMap().get("BASIC")));
-		App.putNewClient(userName, newClient);
+		newClient.setSubscriptionPlan(new SubscriptionPlan(getSubscriptionPlanMap().get("BASIC")));
+		putNewClient(userName, newClient);
 	}
 	
 	public static boolean verifyUserCreation(String userName, String role) {
 		switch(role) {
 		case "Instructor":
-			App.putNewInstructor(userName, newInstructor);
-			boolean isInstructorCreated = App.getInstructorsMap().containsKey(userName) ? true : false;
+			putNewInstructor(userName, newInstructor);
+			boolean isInstructorCreated = getInstructorsMap().containsKey(userName) ? true : false;
 			return isInstructorCreated;
 		case "Client":
-			App.putNewClient(userName, newClient);
-			boolean isClientCreated = App.getClientsMap().containsKey(userName) ? true : false;
+			putNewClient(userName, newClient);
+			boolean isClientCreated = getClientsMap().containsKey(userName) ? true : false;
 			return isClientCreated;
 		default:
 			return false;
@@ -77,10 +77,10 @@ public class UserManagementControls {
 	public static boolean selectUser(String username, String role) {
 		switch(role) {
 		case "Instructor":
-			returnedInstructor = App.getInstructorsMap().get(username);
+			returnedInstructor = getInstructorsMap().get(username);
 			return true;
 		case "Client":
-			returnedClient = App.getClientsMap().get(username);
+			returnedClient = getClientsMap().get(username);
 			return true;
 		default:
 			return false;
@@ -99,7 +99,7 @@ public class UserManagementControls {
 		switch(role) {
 		case "Instructor":
 			try {
-			    Instructor editInstructor = App.getInstructorsMap().get(username);
+			    Instructor editInstructor = getInstructorsMap().get(username);
 			    if (editInstructor == null) {
 			        System.out.println("Instructor with username '" + username + "' not found.");
 			        return false;
@@ -107,7 +107,7 @@ public class UserManagementControls {
 			    
 			    editInstructorDetails(editInstructor);
 			    printingAMessageOfSsuccess(editInstructor);
-			    LoadAndSaveEntities.saveInstructorsToFile(App.getInstructorsMap(), App.INSTRUCTOR_ACCOUNTS_FILENAME);
+			    saveInstructorsToFile(getInstructorsMap(), INSTRUCTOR_ACCOUNTS_FILENAME);
 			    return true;
 			} catch (Exception e) {
 			    System.err.println("An error occurred while editing the instructor: " + e.getMessage());
@@ -116,7 +116,7 @@ public class UserManagementControls {
 			}
 		case "Client":
 			try {
-				Client editClient = App.getClientsMap().get(username);
+				Client editClient = getClientsMap().get(username);
 			    if (editClient == null) {
 			        System.out.println("Client with username '" + username + "' not found.");
 			        return false;
@@ -124,7 +124,7 @@ public class UserManagementControls {
 			    
 			    editClientDetails(editClient);
 			    printingAMessageOfSsuccess(editClient);
-				LoadAndSaveEntities.saveClientsToFile(App.getClientsMap(), App.CLIENT_ACCOUNTS_FILENAME);
+				saveClientsToFile(getClientsMap(), CLIENT_ACCOUNTS_FILENAME);
 			    return true;
 			} catch (Exception e) {
 			    System.err.println("An error occurred while editing the instructor: " + e.getMessage());
@@ -243,15 +243,15 @@ public class UserManagementControls {
 	public static boolean deactivateUser(String username, String role) {
 		switch(role) {
 		case "Instructor":
-			App.getInstructorsMap().remove(username);
+			getInstructorsMap().remove(username);
 			deactivateInstructor.remove(username);
 			deactivateInstructor.add(username);
-			return !App.getInstructorsMap().containsKey(username);
+			return !getInstructorsMap().containsKey(username);
 		case "Client":
-			App.getClientsMap().remove(username);
+			getClientsMap().remove(username);
 			deactivateClient.remove(username);
 			deactivateClient.add(username);
-			return !App.getClientsMap().containsKey(username);
+			return !getClientsMap().containsKey(username);
 		default:
 			return false;
 		}
@@ -278,7 +278,7 @@ public class UserManagementControls {
 	}
 	
 	public static boolean checkPendingApplications() {
-	    Map<String, Instructor> pendingInstructors = App.getPendingInstructorsMap();
+	    Map<String, Instructor> pendingInstructors = getPendingInstructorsMap();
 	    
 	    if (pendingInstructors == null || pendingInstructors.isEmpty()) {
 	        return false;
@@ -302,8 +302,8 @@ public class UserManagementControls {
 	
 	@SuppressWarnings("resource")
 	public static boolean approveInstructors() {
-	    Map<String, Instructor> pendingInstructors = App.getPendingInstructorsMap();
-	    Map<String, Instructor> instructorsMap = App.getInstructorsMap();
+	    Map<String, Instructor> pendingInstructors = getPendingInstructorsMap();
+	    Map<String, Instructor> instructorsMap = getInstructorsMap();
 	    
 	    if (pendingInstructors == null || pendingInstructors.isEmpty()) {
 	        System.out.println("No pending applications to approve.");
@@ -348,7 +348,7 @@ public class UserManagementControls {
 	    System.out.println("-----------------------------------------------------------------------------");
 	    
 	    for (Instructor inst : ApprovedInstructorsMap.values()) {
-	    	if(App.getInstructorsMap().containsKey(inst.getUsername())) {
+	    	if(getInstructorsMap().containsKey(inst.getUsername())) {
 		        System.out.printf("%-15s %-15s %-25s %-20s\n",
                         inst.getFirstName(),
                         inst.getLastName(),
@@ -368,7 +368,7 @@ public class UserManagementControls {
 	}
 	
 	public static boolean viewActivityReports() {
-		if (App.getClientsMap().isEmpty() && App.getInstructorsMap().isEmpty()) {
+		if (getClientsMap().isEmpty() && getInstructorsMap().isEmpty()) {
             System.out.println("No activity reports available.");
             return false;
         }
@@ -377,8 +377,8 @@ public class UserManagementControls {
         System.out.printf("%-20s %-15s %-20s\n", "Username", "Logins", "Last Login");
         System.out.println("---------------------------------------------------------");
         
-        if(!App.getClientsMap().isEmpty()) {
-            for (Client entry : App.getClientsMap().values()) {
+        if(!getClientsMap().isEmpty()) {
+            for (Client entry : getClientsMap().values()) {
             	String username = entry.getFirstName() + " " + entry.getLastName();
                 int logins = entry.getLogins();
                 String lastLogin = entry.getLastLogin();
@@ -389,8 +389,8 @@ public class UserManagementControls {
             thereAreActivations = true;
         }
         
-        if(!App.getInstructorsMap().isEmpty()) {
-        	for (Instructor entry : App.getInstructorsMap().values()) {
+        if(!getInstructorsMap().isEmpty()) {
+        	for (Instructor entry : getInstructorsMap().values()) {
         		String username = entry.getFirstName() + " " + entry.getLastName();
                 int logins = entry.getLogins();
                 String lastLogin = entry.getLastLogin();

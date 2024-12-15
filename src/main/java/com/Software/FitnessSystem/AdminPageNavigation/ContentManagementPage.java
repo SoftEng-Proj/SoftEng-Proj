@@ -1,6 +1,7 @@
 package com.Software.FitnessSystem.AdminPageNavigation;
-import com.Software.FitnessSystem.App;
-import com.Software.FitnessSystem.AdminControllers.ContentManagementControls;
+import static com.Software.FitnessSystem.App.*;
+import static com.Software.FitnessSystem.AdminControllers.ContentManagementControls.*;
+
 import com.Software.FitnessSystem.InfrastructureForPages.BasePage;
 import com.Software.FitnessSystem.LoginPage.AdminPagesController;
 
@@ -25,19 +26,19 @@ public class ContentManagementPage extends BasePage {
     public void executeOption(int choice) {
         switch (choice) {
             case 1:
-            	ContentManagementControls.setApprovedTipsMap(App.getInstructorTipsMap());
-            	ContentManagementControls.dealWithContentTypes(App.getPendingInstructorTipsMap(), false);
-                App.saveInstructorTipsChanges();
+            	setApprovedTipsMap(getInstructorTipsMap());
+            	dealWithContentTypes(getPendingInstructorTipsMap(), false);
+                saveInstructorTipsChanges();
                 break;
             case 2:
-            	ContentManagementControls.setApprovedTipsMap(App.getHealthTipsMap());
-            	ContentManagementControls.dealWithContentTypes(App.getPendingHealthTipsMap(), false);
-                App.saveHealthTipsChanges();
+            	setApprovedTipsMap(getHealthTipsMap());
+            	dealWithContentTypes(getPendingHealthTipsMap(), false);
+                saveHealthTipsChanges();
                 break;
             case 3:
-            	ContentManagementControls.setHandledFeedbackMap(App.getHandledFeedbackMap());
-            	ContentManagementControls.dealWithContentTypes(App.getUserFeedbackMap(), true);
-                App.saveUserFeedbackChanges();
+            	setHandledFeedbackMap(getHandledFeedbackMap());
+            	dealWithContentTypes(getUserFeedbackMap(), true);
+                saveUserFeedbackChanges();
                 break;
             case 4:
                 System.out.println("\nReturning to the main menu...");
