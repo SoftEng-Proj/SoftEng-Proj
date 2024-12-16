@@ -46,27 +46,27 @@ public class App {
 	public static final String PROGRAMSCHEDULE_CHANGE = "src/main/resources/Files/ProgramSchedule_Change.json";
 	public static final String PROGRESS_FILE = "src/main/resources/Files/Progress_File.json";
 	
-    private static Map<String, User> UserSubscriptionPlan = new HashMap<>();
-    private static Map<String, CustomPlan> CustomSubscriptionPlan = new HashMap<>();
-    private static Map<String, Admin> AdminsMap = new HashMap<>();
-    private static Map<String, Instructor> InstructorsMap = new HashMap<>();
-    private static Map<String, Instructor> PendingInstructorsMap = new HashMap<>();
-    private static Map<String, Client> ClientsMap = new HashMap<>();
-    private static Map<String, Program> FitnessProgramsMap = new HashMap<>();
+    private static final Map<String, User> UserSubscriptionPlan = new HashMap<>();
+    private static final Map<String, CustomPlan> CustomSubscriptionPlan = new HashMap<>();
+    private static final Map<String, Admin> AdminsMap = new HashMap<>();
+    private static final Map<String, Instructor> InstructorsMap = new HashMap<>();
+    private static final Map<String, Instructor> PendingInstructorsMap = new HashMap<>();
+    private static final Map<String, Client> ClientsMap = new HashMap<>();
+    private static final Map<String, Program> FitnessProgramsMap = new HashMap<>();
     private static Map<String, ProgramEnrollment> ProgramEnrollmentMap = new HashMap<>();
-    private static Map<String, Content> InstructorTipsMap = new HashMap<>();
-    private static Map<String, Content> PendingInstructorTipsMap = new HashMap<>();
-    private static Map<String, Content> HealthTipsMap = new HashMap<>();
-    private static Map<String, Content> PendingHealthTipsMap = new HashMap<>();
-    private static Map<String, Content> UserFeedbackMap = new HashMap<>();
-    private static Map<String, String> HandledFeedbackMap = new HashMap<>();
+    private static final Map<String, Content> InstructorTipsMap = new HashMap<>();
+    private static final Map<String, Content> PendingInstructorTipsMap = new HashMap<>();
+    private static final Map<String, Content> HealthTipsMap = new HashMap<>();
+    private static final Map<String, Content> PendingHealthTipsMap = new HashMap<>();
+    private static final Map<String, Content> UserFeedbackMap = new HashMap<>();
+    private static final Map<String, String> HandledFeedbackMap = new HashMap<>();
     private static Map<String, Profile> ClientProfileMap = new HashMap<>();
     private static Map<String, Map<String, Integer>> ProgramRatings = new HashMap<>();
     private static Map<String, Map<String, String>> ProgramReviews = new HashMap<>();
     private static Map<String, Map<String, String>> ProgramSuggestions = new HashMap<>();
     private static Map<String, String> InstructorMessagesForClientsMap= new HashMap<>();
     private static Map<String, String> ProgramForumMsgsMap= new HashMap<>();
-    private static Map<String, String> FeedbackToClientMap= new HashMap<>();
+    private static final Map<String, String> FeedbackToClientMap= new HashMap<>();
     private static List<FitnessMilestone> MilestonesList = new ArrayList<>();
     private static Map<String, String> InstructorReminderMap= new HashMap<>();
     private static Map<String, String> InstructorRecommendationMap= new HashMap<>();
@@ -247,11 +247,9 @@ public class App {
 	/**
 	 * Saves the custom subscription plan changes to the corresponding file.
 	 * @author Muath Hassoun
-	 * @return A boolean indicating whether the changes were saved successfully.
 	 */
-	public static boolean saveCustomSubscriptionPlanChanges() {
+	public static void saveCustomSubscriptionPlanChanges() {
 	    saveCustomSubscriptionPlanToFile(CustomSubscriptionPlan, SUBSCRIPTION_PLAN_FILENAME);
-	    return true;
 	}
 	
 	/**
@@ -270,11 +268,9 @@ public class App {
 	/**
 	 * Saves changes to fitness programs.
 	 * @author Muath Hassoun
-	 * @return A boolean indicating whether the changes were saved successfully.
 	 */
-	public static boolean saveFitnessProgramsChanges() {
+	public static void saveFitnessProgramsChanges() {
 	    saveFitnessProgramsToFile(FitnessProgramsMap, FITNESS_PROGRAMS_FILENAME);
-	    return true;
 	}
 	
 	/**
@@ -300,41 +296,34 @@ public class App {
 	/**
 	 * Saves feedback to clients.
 	 * @author Ammar Khaled
-	 * @return A boolean indicating whether the changes were saved successfully.
 	 */
-	public static boolean saveFeedbackToClientChanges() {
+	public static void saveFeedbackToClientChanges() {
 	    saveFeedbackToClientToFile(FeedbackToClientMap, FEEDBACK_TOCLIENT);
-	    return true;
 	}
 	
 	/**
 	 * Saves instructor messages for clients.
 	 * @author Ammar Khaled
-	 * @return A boolean indicating whether the changes were saved successfully.
 	 */
-	public static boolean saveInstructorMSGSForClientsChanges() {
+	public static void saveInstructorMSGSForClientsChanges() {
 	    saveInstructorMsgsToClientsToFile(InstructorMessagesForClientsMap, INSTRUCTOR_MSGS_FOR_CLIENTS);
-	    return true;
 	}
 	
 	/**
 	 * Saves changes to program forum messages.
 	 * @author Ammar Khaled
-	 * @return A boolean indicating whether the changes were saved successfully.
 	 */
-	public static boolean saveProgramForumMsgsChanges() {
+	public static void saveProgramForumMsgsChanges() {
 	    saveProgramForumMsgsToFile(ProgramForumMsgsMap, PROGRAM_FORUM_MSGS);
-	    return true;
 	}
 	
 	/**
 	 * Saves changes to milestones.
+	 *
 	 * @author Alaa Alawneh
-	 * @return A boolean indicating whether the changes were saved successfully.
 	 */
-	public static boolean saveMilestoneChanges() {
+	public static void saveMilestoneChanges() {
 	    saveMilestonesToFile(getMilestonesList(), MILESTONES_FILENAME);
-	    return true;
 	}
 	
 	/**
@@ -349,13 +338,12 @@ public class App {
 	
 	/**
 	 * Saves changes to instructor tips and articles.
+	 *
 	 * @author Muath Hassoun
-	 * @return A boolean indicating whether the changes were saved successfully.
 	 */
-	public static boolean saveInstructorTipsChanges() {
+	public static void saveInstructorTipsChanges() {
 	    saveContentsToFile(InstructorTipsMap, TIPS_AND_ARTICLES_FILENAME);
 	    saveContentsToFile(PendingInstructorTipsMap, PENDING_TIPS_AND_ARTICLES_FILENAME);
-	    return true;
 	}
 	
 	/**
@@ -380,64 +368,58 @@ public class App {
 	
 	/**
 	 * Saves changes to health tips.
+	 *
 	 * @author Muath Hassoun
-	 * @return A boolean indicating whether the changes were saved successfully.
 	 */
-	public static boolean saveHealthTipsChanges() {
+	public static void saveHealthTipsChanges() {
 	    saveContentsToFile(HealthTipsMap, HEALTH_TIPS_FILENAME);
 	    saveContentsToFile(PendingHealthTipsMap, PENDING_HEALTH_TIPS_FILENAME);
-	    return true;
 	}
 	
 	/**
 	 * Saves user feedback changes.
+	 *
 	 * @author Muath Hassoun
-	 * @return A boolean indicating whether the changes were saved successfully.
 	 */
-	public static boolean saveUserFeedbackChanges() {
+	public static void saveUserFeedbackChanges() {
 	    saveContentsToFile(UserFeedbackMap, USER_FEEDBACK_FILENAME);
 	    saveHandledFeedbackToFile(HandledFeedbackMap, USER_FEEDBACK_HANDLE_FILENAME);
-	    return true;
 	}
 	
 	/**
 	 * Saves changes to client profiles.
+	 *
 	 * @author Alaa Alawneh
-	 * @return A boolean indicating whether the changes were saved successfully.
 	 */
-	public static boolean saveClientProfileChanges() {
+	public static void saveClientProfileChanges() {
 	    saveClientProfileToFile(ClientProfileMap, CLIENT_PROFILES_FILENAME);
-	    return true;
 	}
 	
 	/**
 	 * Saves changes to program ratings.
+	 *
 	 * @author Alaa Alawneh
-	 * @return A boolean indicating whether the changes were saved successfully.
 	 */
-	public static boolean saveProgramRatingsChanges() {
+	public static void saveProgramRatingsChanges() {
 	    saveProgramRatingsToFile(ProgramRatings, PROGRAM_RATINGS_FILENAME);
-	    return true;
 	}
 	
 	/**
 	 * Saves changes to program reviews.
+	 *
 	 * @author Alaa Alawneh
-	 * @return A boolean indicating whether the changes were saved successfully.
 	 */
-	public static boolean saveProgramReviewsChanges() {
+	public static void saveProgramReviewsChanges() {
 	    saveProgramReviewsToFile(ProgramReviews, PROGRAM_REVIEWS_FILENAME);
-	    return true;
 	}
 	
 	/**
 	 * Saves changes to program suggestions.
+	 *
 	 * @author Alaa Alawneh
-	 * @return A boolean indicating whether the changes were saved successfully.
 	 */
-	public static boolean saveProgramSuggestionsChanges() {
+	public static void saveProgramSuggestionsChanges() {
 	    saveProgramSuggestionsToFile(ProgramSuggestions, PROGRAM_SUGGESTIONS_FILENAME);
-	    return true;
 	}
 	
     /**

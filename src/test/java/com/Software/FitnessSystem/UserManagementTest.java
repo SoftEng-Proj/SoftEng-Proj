@@ -30,7 +30,7 @@ class UserManagementTest {
     }
     
     @When("I navigate to the {string} page")
-    public void i_navigate_to_the_page() {
+    public void i_navigate_to_the_page(String string) {
     	boolean expected = true;
         boolean actual = adminControllers.navigateToManagementPage();
         assertTrue(expected == actual);
@@ -83,7 +83,7 @@ class UserManagementTest {
     }
     
     @Given("I am on the {string} page")
-    public void i_am_on_the_page() {
+    public void i_am_on_the_page(String string) {
     	boolean expected = true;
         boolean actual = adminControllers.navigateToPage(1);
         assertTrue(expected == actual);

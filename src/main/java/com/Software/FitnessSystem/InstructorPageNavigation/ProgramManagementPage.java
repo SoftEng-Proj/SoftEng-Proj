@@ -5,7 +5,7 @@ import com.Software.FitnessSystem.InstructorControllers.ProgramManagementControl
 import com.Software.FitnessSystem.LoginPage.InstructorPageControllers;
 
 public class ProgramManagementPage extends BasePage {
-	private InstructorPageControllers instructorController;
+	private final InstructorPageControllers instructorController;
 	private String progName;
 	private String progDuration;
 	private String progLevel;

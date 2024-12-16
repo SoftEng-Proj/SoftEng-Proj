@@ -4,7 +4,12 @@ import com.Software.FitnessSystem.Client;
 import com.Software.FitnessSystem.ClientControllers.ProgressTrackingControls;
 import com.Software.FitnessSystem.InfrastructureForPages.BasePage;
 import com.Software.FitnessSystem.LoginPage.ClientPageControllers;
-
+/**
+ *  the Progress Tracking page for clients
+ * Allows clients to add and view milestones related to their fitness progress
+ * 
+ * @author Alaa Alawneh
+ */
 public class ProgressTrackingPage extends BasePage {
 	private ClientPageControllers clientController;
 	@SuppressWarnings("unused")
@@ -15,7 +20,12 @@ public class ProgressTrackingPage extends BasePage {
 	private Client currentClient;
 	private static  boolean isAddMilestonePage = false;
 	private static boolean isShowProgressPage = false;
-	
+	/**
+	 * Constructs a ProgressTrackingPage for the given client with the specified controller
+	 * 
+	 * @param clientController the controller managing client page navigation
+	 * @param client the client whose progress is being tracked
+	 */
 	public ProgressTrackingPage(ClientPageControllers clientController, Client client) {
 		this.clientController = clientController;
 		this.progressTrackingControls = new ProgressTrackingControls();
@@ -53,7 +63,9 @@ public class ProgressTrackingPage extends BasePage {
                 System.out.println("Invalid choice. Please try again.");
         }
     }
-    
+    /**
+     * asksthe user for milestone details and stores them
+     */
     public void getMilestoneInfo() {
     	System.out.print("Enter milestone type (e.g., Weight, BMI, Attendance): ");
         type = scanner.nextLine();
@@ -62,11 +74,19 @@ public class ProgressTrackingPage extends BasePage {
         System.out.print("Enter milestone date (Year-Month-Day): ");
         date = scanner.nextLine();
     }
-    
+    /**
+     * Returns whether the Add Milestone page is active
+     * 
+     * @return true if the Add Milestone page is active else false
+     */
     public static boolean isAddMilestonePage() {
         return isAddMilestonePage;
     }
-    
+    /**
+     * Returns whether the Show Progress page is active
+     * 
+     * @return true if the Show Progress page is active else false
+     */
     public static boolean isShowProgressPage() {
         return isShowProgressPage;
     }
