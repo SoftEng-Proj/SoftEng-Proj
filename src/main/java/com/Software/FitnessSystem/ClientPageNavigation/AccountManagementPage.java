@@ -4,19 +4,32 @@ import com.Software.FitnessSystem.InfrastructureForPages.BasePage;
 import com.Software.FitnessSystem.LoginPage.ClientPageControllers;
 import com.Software.FitnessSystem.App;
 import com.Software.FitnessSystem.Client;
-
+/**
+ * The AccountManagementPage class represents a user interface for managing
+ * client accounts including creating profiles and updating details and setting the
+ * dietary preferences
+ * This class also extend BasePage
+ * 
+ * @author Alaa Alawneh
+ */
 public class AccountManagementPage extends BasePage {
 	private ClientPageControllers clientController;
     private AccountManagementControls accountManagementControls;
     private static boolean onDietaryRestrictionsPage = false;
     private static boolean onCreateProfilePage = false;
     private static boolean onUpdatePersonalDetailsPage = false;
-
+    /**
+     * Constructs an AccountManagementPage with the specified client controller
+     *
+     * @param clientController the controller for managing client navigation
+     */
     public AccountManagementPage(ClientPageControllers clientController) {
         this.clientController = clientController;
         this.accountManagementControls = new AccountManagementControls();
     }
-
+    /**
+     * Display the account management menu option to chosee from
+     */
     @Override
     public void display() {
         System.out.println("\nAccount Management Menu:");
@@ -26,7 +39,11 @@ public class AccountManagementPage extends BasePage {
         System.out.println("4. View Profile.");
         System.out.println("5. Go Back.");
     }
-
+    /**
+     * Executes the menu option you pick
+     *
+     * @param choice   the option selected by the client
+     */
     @Override
     public void executeOption(int choice) {
         System.out.print("Enter your Username: ");
@@ -76,14 +93,29 @@ public class AccountManagementPage extends BasePage {
         }
     }
     
+    /**
+     * Check if the user is on the dietary restrictions page
+     *
+     * @return true if on the dietary restrictions page else false
+     */
     public static boolean isOnDietaryRestrictionsPage() {
         return onDietaryRestrictionsPage;
     }
-    
+
+    /**
+     * Checks if the user is on the create profile page
+     *
+     * @return true if on the create profile page esle false
+     */
     public static boolean isOnCreateProfilePage() {
         return onCreateProfilePage;
     }
-    
+
+    /**
+     * Check if the user is on the update personal details page
+     *
+     * @return true if on the update personal details page else false
+     */
     public static boolean isOnUpdatePersonalDetailsPage() {
         return onUpdatePersonalDetailsPage;
     }

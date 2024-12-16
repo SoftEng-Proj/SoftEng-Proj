@@ -3,17 +3,34 @@ import com.Software.FitnessSystem.Client;
 import com.Software.FitnessSystem.ClientControllers.ProgramExplorationEnrollmentControls;
 import com.Software.FitnessSystem.InfrastructureForPages.BasePage;
 import com.Software.FitnessSystem.LoginPage.ClientPageControllers;
-
+/**
+ * The ProgramExplorationEnrollmentPage class is the page where clients
+ * can explore and enroll in fitness programs and provide the client with options
+ * to filter programs, enroll in them, view schedules, and navigate back to the
+ * main menu
+ * 
+ * This class extends the BasePage 
+ * 
+ * @author Alaa Alawneh
+ */
 public class ProgramExplorationEnrollmentPage extends BasePage {
 	private ClientPageControllers clientController;
     @SuppressWarnings("unused")
 	private ProgramExplorationEnrollmentControls programExplorationEnrollmentControls;
-    
+    /**
+     * Constructs a ProgramExplorationEnrollmentPage with the given client controller
+     * and current client
+     *
+     * @param clientController the controller for managing client page navigation
+     * @param currentClient the current client exploring programs
+     */
     public ProgramExplorationEnrollmentPage(ClientPageControllers clientController, Client currentClient) {
         this.clientController = clientController;
         this.programExplorationEnrollmentControls = new ProgramExplorationEnrollmentControls(currentClient);
     }
-    
+    /**
+     * Displays the menu options for program exploration and enrollment
+     */
     @Override
     public void display() {
         System.out.println("\nProgram Exploration and Enrollment Menu:");
@@ -23,7 +40,11 @@ public class ProgramExplorationEnrollmentPage extends BasePage {
         System.out.println("4. View Program Schedule.");
         System.out.println("5. Go Back.");
     }
-    
+    /**
+     * Executes the selected option by client
+     *
+     * @param choice the option chosen by the client
+     */
     @Override
     public void executeOption(int choice) {
         switch (choice) {

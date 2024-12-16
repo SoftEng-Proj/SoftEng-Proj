@@ -4,14 +4,28 @@ import com.Software.FitnessSystem.App;
 import com.Software.FitnessSystem.ClientControllers.FeedbackReviewsControls;
 import com.Software.FitnessSystem.InfrastructureForPages.BasePage;
 import com.Software.FitnessSystem.LoginPage.ClientPageControllers;
-
+/**
+ * The FeedbackReviewsPage class represents the user interface for managing
+ * feedback and reviews related to programs
+ * It also provides options to rate
+ * review or suggest improvements for programs
+ * This class extends BasePage
+ * 
+ * @author Alaa Alawneh.
+ */
 public class FeedbackReviewsPage extends BasePage {
     private ClientPageControllers clientController;
-    
+    /**
+     * Construct a FeedbackReviewsPage with the client controller
+     *
+     * @param clientController  the controller for managing client navigation
+     */
     public FeedbackReviewsPage(ClientPageControllers clientController) {
         this.clientController = clientController;
     }
-    
+    /**
+     * Display the menu with options for the client to choose
+     */
     @Override
     public void display() {
         System.out.println("\nFeedback & Reviews Menu:");
@@ -20,7 +34,11 @@ public class FeedbackReviewsPage extends BasePage {
         System.out.println("3. Submit a Suggestion.");
         System.out.println("4. Go Back.");
     }
-    
+    /**
+     * Execute the menu option selected by client
+     *
+     * @param choice   the option selected by client
+     */
     @Override
     public void executeOption(int choice) {
         System.out.print("Enter your Username: ");
