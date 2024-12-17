@@ -43,7 +43,7 @@ public void i_send_a_motivational_reminder_to_which_says(String string, String s
     // Write code here that turns the phrase above into concrete actions
    // throw new io.cucumber.java.PendingException();
 	boolean expected = true;
-	boolean actual= ProgressTrackingInstructorControls.sendReminder("0","0");
+	boolean actual= ProgressTrackingInstructorControls.Reminderr("Ali","Eat");
 	assertTrue(expected==actual);
 	
 }
@@ -69,7 +69,7 @@ public void i_send_a_recommendation_to_which_says(String string, String string2)
     // Write code here that turns the phrase above into concrete actions
    // throw new io.cucumber.java.PendingException();
 	boolean expected = true;
-	boolean actual= ProgressTrackingInstructorControls.sendRecommendation("0", "0");
+	boolean actual= ProgressTrackingInstructorControls.Recommendationn("Ali", "More effort");
 	assertTrue(expected==actual);
 }
 

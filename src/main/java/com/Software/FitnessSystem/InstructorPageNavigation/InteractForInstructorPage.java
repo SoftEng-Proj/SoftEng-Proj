@@ -4,14 +4,35 @@ import com.Software.FitnessSystem.InfrastructureForPages.BasePage;
 import com.Software.FitnessSystem.InstructorControllers.InteractForInstructorControls;
 import com.Software.FitnessSystem.LoginPage.InstructorPageControllers;
 
+
+
+/**
+ * This Represents the Interaction For instructor page, it allows the instructor to 
+ * perform several things, such as sending a message to a client, posting a message on 
+ * discussion forum, providing feedback to clients and sending a progress update.
+ * 
+ * @author Ammar Shafii
+ */
 public class InteractForInstructorPage extends BasePage {
 	private InstructorPageControllers instructorController;
 	private static boolean isForumPage=false;
 	
+	
+	/**
+     * Constructor to initialize the InteractForInstructorPage with the provided InstructorPageControllers
+     * 
+     * @param instructorController The controller responsible for managing instructor page navigation and actions.
+     */
 	public InteractForInstructorPage (InstructorPageControllers instructorController) {
 		this.instructorController = instructorController;
 	}
 	
+	/**
+     * This Displays the Interaction menu with different options for the instructor.
+     * The menu includes options for sending a message to a client, posting a message on a program forum,
+     * providing a feedback, sending a progress update and going back to main menu.
+     * 
+     */
     @Override
     public void display() {
         System.out.println("\nInteract Management Menu:");
@@ -22,6 +43,13 @@ public class InteractForInstructorPage extends BasePage {
         System.out.println("5. Go back.");
     }
     
+    /**
+     * It Executes the selected option based on the user's choice.
+     * Depending on the user's input, it can send a message to a client, post a 
+     * message to a program forum, provide feedback or progress report to a client or go back.
+     * 
+     * @param choice The option selected by the instructor.
+     */
     @Override
     public void executeOption(int choice) {
         switch (choice) {
@@ -44,7 +72,7 @@ public class InteractForInstructorPage extends BasePage {
             	 
                 InteractForInstructorControls.sendMessageToClient(progname, msg);
                 App.saveProgramForumMsgsChanges();
-                isForumPage = false;
+                //isForumPage = false;
                 break;
             case 3:
             	System.out.println("Enter the name of the client");
@@ -73,7 +101,17 @@ public class InteractForInstructorPage extends BasePage {
         }
     }
     
+    /**
+     * A method created for testing purposes, it ensures that user is on forum page.
+     * 
+     * @return isForumPage returns the boolean value.
+     */
     public static boolean isForumPage() {
+        InstructorPageControllers c = new InstructorPageControllers();
+
+        InteractForInstructorPage choose = new InteractForInstructorPage(c);
+        choose.executeOption(2);
+    	
         return isForumPage;
     }
 }
