@@ -18,6 +18,8 @@ import java.util.Map;
 /**
  * Main application class to manage the fitness system, including loading data, handling login, and saving data.
  * @author Muath Hassoun
+ * @author Alaa Alawneh
+ * @author Ammar Shafii
  */
 public class App {
 	public static final String SUBSCRIPTION_PLAN_FILENAME = "src/main/resources/Files/SubscriptionPlan.json";

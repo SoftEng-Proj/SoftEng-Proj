@@ -19,6 +19,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * read data from persistent storage and save updated data back to files.
  * 
  * @author Muath Hassoun
+ * @author Alaa Alawneh
+ * @author Ammar Shafii
  */
 public class LoadAndSaveEntities {
 	/**
