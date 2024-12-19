@@ -275,7 +275,7 @@ public class App {
 	
 	/**
 	 * Saves changes to instructor announcements.
-	 * @author Ammar Khaled
+	 * @author Ammar Shafii
 	 * @return A boolean indicating whether the changes were saved successfully.
 	 */
 	public static boolean saveInstructorAnnouncementsChanges() {
@@ -285,7 +285,7 @@ public class App {
 	
 	/**
 	 * Saves changes to program schedule changes.
-	 * @author Ammar Khaled
+	 * @author Ammar Shafii
 	 * @return A boolean indicating whether the changes were saved successfully.
 	 */
 	public static boolean saveProgramScheduleChangeChanges() {
@@ -295,7 +295,7 @@ public class App {
 	
 	/**
 	 * Saves feedback to clients.
-	 * @author Ammar Khaled
+	 * @author Ammar Shafii
 	 */
 	public static void saveFeedbackToClientChanges() {
 	    saveFeedbackToClientToFile(FeedbackToClientMap, FEEDBACK_TOCLIENT);
@@ -303,7 +303,7 @@ public class App {
 	
 	/**
 	 * Saves instructor messages for clients.
-	 * @author Ammar Khaled
+	 * @author Ammar Shafii
 	 */
 	public static void saveInstructorMSGSForClientsChanges() {
 	    saveInstructorMsgsToClientsToFile(InstructorMessagesForClientsMap, INSTRUCTOR_MSGS_FOR_CLIENTS);
@@ -311,7 +311,7 @@ public class App {
 	
 	/**
 	 * Saves changes to program forum messages.
-	 * @author Ammar Khaled
+	 * @author Ammar Shafii
 	 */
 	public static void saveProgramForumMsgsChanges() {
 	    saveProgramForumMsgsToFile(ProgramForumMsgsMap, PROGRAM_FORUM_MSGS);
@@ -348,7 +348,7 @@ public class App {
 	
 	/**
 	 * Saves changes to instructor reminders.
-	 * @author Ammar Khaled
+	 * @author Ammar Shafii
 	 * @return A boolean indicating whether the changes were saved successfully.
 	 */
 	public static boolean saveInstructorReminderChanges() {
@@ -358,7 +358,7 @@ public class App {
 	
 	/**
 	 * Saves changes to instructor recommendations.
-	 * @author Ammar Khaled
+	 * @author Ammar Shafii
 	 * @return A boolean indicating whether the changes were saved successfully.
 	 */
 	public static boolean saveInstructorRcommendationChanges() {
@@ -690,7 +690,7 @@ public class App {
     
     /**
      * Returns the map containing instructor messages for clients.
-     * @author Ammar Khaled
+     * @author Ammar Shafii
      * @return a map of instructor messages for clients
      */
     public static Map<String, String> getInstructorMessagesForClientMap() {
@@ -699,7 +699,7 @@ public class App {
     
     /**
      * Sets the map containing instructor messages for clients.
-     * @author Ammar Khaled
+     * @author Ammar Shafii
      * @param instructorMessageMap the map of instructor messages for clients to set
      */
     public static void setInstructorMessagesForClientMap(Map<String, String> instructorMessageMap) {
@@ -708,7 +708,7 @@ public class App {
     
     /**
      * Returns the map containing program forum messages.
-     * @author Ammar Khaled
+     * @author Ammar Shafii
      * @return a map of program forum messages
      */
     public static Map<String, String> getProgramForumMsgsMap() {
@@ -717,7 +717,7 @@ public class App {
     
     /**
      * Sets the map containing program forum messages.
-     * @author Ammar Khaled
+     * @author Ammar Shafii
      * @param programForumMsgsMap the map of program forum messages to set
      */
     public static void setProgramForumMsgsMap(Map<String, String> programForumMsgsMap) {
@@ -726,7 +726,7 @@ public class App {
     
     /**
      * Returns the map containing feedback to clients.
-     * @author Ammar Khaled
+     * @author Ammar Shafii
      * @return a map of feedback to clients
      */
     public static Map<String, String> getFeedbackToClientMap() {
@@ -735,7 +735,7 @@ public class App {
     
     /**
      * Sets the map containing feedback to clients.
-     * @author Ammar Khaled
+     * @author Ammar Shafii
      * @param feedbackMap the map of feedback to clients to set
      */
     public static void setFeedbackToClientMap(Map<String, String> feedbackMap) {
@@ -744,7 +744,7 @@ public class App {
     
     /**
      * Returns the map containing instructor reminders.
-     * @author Ammar Khaled
+     * @author Ammar Shafii
      * @return a map of instructor reminders
      */
     public static Map<String, String> getInstructorReminderMap() {
@@ -753,7 +753,7 @@ public class App {
     
     /**
      * Sets the map containing instructor reminders.
-     * @author Ammar Khaled
+     * @author Ammar Shafii
      * @param reminderMap the map of instructor reminders to set
      */
     public static void setInstructorReminderMap(Map<String, String> reminderMap) {
@@ -762,7 +762,7 @@ public class App {
     
     /**
      * Returns the map containing instructor recommendations.
-     * @author Ammar Khaled
+     * @author Ammar Shafii
      * @return a map of instructor recommendations
      */
     public static Map<String, String> getInstructorRcommednationMap() {
@@ -771,7 +771,7 @@ public class App {
     
     /**
      * Sets the map containing instructor recommendations.
-     * @author Ammar Khaled
+     * @author Ammar Shafii
      * @param recommendationMap the map of instructor recommendations to set
      */
     public static void setInstructorRecommendationMap(Map<String, String> recommendationMap) {
@@ -780,7 +780,7 @@ public class App {
     
     /**
      * Returns the list containing instructor announcements.
-     * @author Ammar Khaled
+     * @author Ammar Shafii
      * @return a list of instructor announcements
      */
     public static List<String> getInstructorAnnouncementsMap() {
@@ -789,7 +789,7 @@ public class App {
     
     /**
      * Sets the list containing instructor announcements.
-     * @author Ammar Khaled
+     * @author Ammar Shafii
      * @param instructorAnnouncementsMap the list of instructor announcements to set
      */
     public static void setInstructorAnnouncementsMap(List<String> instructorAnnouncementsMap) {
@@ -798,7 +798,7 @@ public class App {
     
     /**
      * Returns the map containing program schedule changes.
-     * @author Ammar Khaled
+     * @author Ammar Shafii
      * @return a map of program schedule changes
      */
     public static Map<String, String> getProgramScheduleChangeMap() {
@@ -807,7 +807,7 @@ public class App {
     
     /**
      * Sets the map containing program schedule changes.
-     * @author Ammar Khaled
+     * @author Ammar Shafii
      * @param prorgamScheduleChangeMap the map of program schedule changes to set
      */
     public static void setProgramScheduleChangeMap(Map<String, String> prorgamScheduleChangeMap) {
@@ -816,7 +816,7 @@ public class App {
     
     /**
      * Returns the map containing progress list data.
-     * @author Ammar Khaled
+     * @author Ammar Shafii
      * @return a map of progress list data
      */
     public static Map<String, String> getProgressListMap() {
@@ -825,7 +825,7 @@ public class App {
     
     /**
      * Sets the map containing progress list data.
-     * @author Ammar Khaled
+     * @author Ammar Shafii
      * @param progressListMap the map of progress list data to set
      */
     public static void setProgressListMap(Map<String, String> progressListMap) {

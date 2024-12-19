@@ -32,7 +32,8 @@ public class NotificationsForInstructorTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expected="Schedule changed";
-		String actual =NotificationControls.addProgramScheduleChange(string, string2);
+		
+		String actual =NotificationControls.addProgramScheduleChange("Fit", null);
 		assertTrue(expected.equals(actual));
 		
 		
@@ -54,8 +55,8 @@ public class NotificationsForInstructorTest {
 	public void i_announce_with_details(String string, String string2) {
 	    // Write code here that turns the phrase above into concrete actions
 	  //  throw new io.cucumber.java.PendingException();
-		String expected="Schedule changed";
-		String actual =NotificationControls.AddanAnnouncement(string2);
+		String expected="Announcement made";
+		String actual =NotificationControls.AddanAnnouncement("Hi");
 		assertTrue(expected.equals(actual));
 		
 	}

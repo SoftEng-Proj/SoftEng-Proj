@@ -4,6 +4,15 @@ import com.Software.FitnessSystem.InfrastructureForPages.BasePage;
 import com.Software.FitnessSystem.InstructorControllers.ProgramManagementControls;
 import com.Software.FitnessSystem.LoginPage.InstructorPageControllers;
 
+
+
+/**
+ * Represents the program management page for the instructor where an instructor
+ * has the option for creating,updating,deleting and setting a program schedule for 
+ * a program.
+ *  
+ * @author Ammar Shafii
+ */
 public class ProgramManagementPage extends BasePage {
 	private final InstructorPageControllers instructorController;
 	private String progName;
@@ -19,10 +28,24 @@ public class ProgramManagementPage extends BasePage {
 	private String newProgLinks;
 	private String newProgPrice;
 	
+	
+	/**
+     * Constructor to initialize the program management page with the provided InstructorPageController
+     * 
+     * @param instructorController The controller responsible for managing instructor page navigation and actions.
+     */
 	public ProgramManagementPage (InstructorPageControllers instructorController) {
 		this.instructorController=instructorController;
 	}
 	
+	
+	
+	/**
+     * Displays the program management page with options of creating, updating, deleting and 
+     * setting a schedule type for a program.
+     *  
+     * 
+     */
     @Override
     public void display() {
         System.out.println("\nProgram Management Menu:");
@@ -33,6 +56,16 @@ public class ProgramManagementPage extends BasePage {
         System.out.println("5. Go back.");
     }
     
+    
+    
+    
+    /**
+     * Executes the selected option based on the user's choice.
+     * Based on the user's input, it can either create, update , delete or set a 
+     * program schedule type.      
+     * 
+     * @param choice The option selected by the instructor.
+     */
     @Override
     public void executeOption(int choice) {
         switch (choice) {
@@ -67,6 +100,13 @@ public class ProgramManagementPage extends BasePage {
         App.saveFitnessProgramsChanges();
     }
     
+    
+    
+    /**
+     * Reads the info of the program to be created.      
+     * 
+     * 
+     */
     public void EnterProgramInfo() {
     	System.out.println("Enter the name of the new program:");
         progName = scanner.nextLine();
@@ -82,6 +122,10 @@ public class ProgramManagementPage extends BasePage {
         progPrice = scanner.nextLine();
     }
     
+    
+    /**
+     * The info of program to be updated.       
+     */
     public void EnterUpdatedProgramInfo() {
     	System.out.println("Enter the name of the program to be updated:");
     	UpdateProgName = scanner.nextLine();

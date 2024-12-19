@@ -12,7 +12,7 @@ public class ProgramManagementForInstrcutorTest {
 	public void i_create_a_new_program_with_title_duration_difficulty_goals_price(String string, String string2, String string3, String string4, String string5) {
 	    // Write code here that turns the phrase above into concrete actions
 		String expected = "Program created successfully";
-		String actual =ProgramManagementControls.createProgram("0", "0", "0", "0", "0", "0");
+		String actual =ProgramManagementControls.createProgram("Muscle Build", "60 days", "beginner", "strength", "link", "50");
 		assertTrue(expected.equals(actual));
 	}
 
@@ -21,7 +21,7 @@ public class ProgramManagementForInstrcutorTest {
 	    // Write code here that turns the phrase above into concrete actions
 	  //  throw new io.cucumber.java.PendingException();
 		String expected = "Program created successfully";
-		String actual =ProgramManagementControls.createProgram("0", "0", "0", "0", "0", "0");
+		String actual =ProgramManagementControls.createProgram("Muscle Build", "60 days", "beginner", "strength", "link", "50");
 		assertTrue(expected.equals(actual));
 	}
 
@@ -30,7 +30,7 @@ public class ProgramManagementForInstrcutorTest {
 	    // Write code here that turns the phrase above into concrete actions
 	  //  throw new io.cucumber.java.PendingException();
 		String expected = "Schedule set";
-		String actual =ProgramManagementControls.setSchedule(string, "Online");
+		String actual =ProgramManagementControls.setSchedule("Muscle Build", "Online");
 		assertTrue(expected.equals(actual));
 	}
 
@@ -38,9 +38,14 @@ public class ProgramManagementForInstrcutorTest {
 	public void the_program_should_be_created_with_the_provided_details() {
 	    // Write code here that turns the phrase above into concrete actions
 	   // throw new io.cucumber.java.PendingException();
-		String expected = "Program created successfully";
-		String actual =ProgramManagementControls.createProgram("0", "0", "0", "0", "0", "0");
-		assertTrue(expected.equals(actual));
+		//String expected = "Program created successfully";
+		//String actual =ProgramManagementControls.createProgram("0", "0", "0", "0", "0", "0");
+		//assertTrue(expected.equals(actual));
+		 boolean expected=true;
+		 boolean actual = ProgramManagementControls.ProgCreated();
+		 assertTrue(actual==expected);
+		 
+		
 	}
 
 	@Given("I have a program titled {string}")
@@ -50,11 +55,11 @@ public class ProgramManagementForInstrcutorTest {
 		String duration = "30 days"; 
 	    String level = "Intermediate"; 
 	    String goal = "Improve flexibility";
-	    String links = "http://example.com"; 
+	    String links = "example"; 
 	    String price = "$50"; 
 	    
 	    String expected = "Program created successfully";
-	    String actual = ProgramManagementControls.createProgram(string, duration, level, goal, links, price);	   
+	    String actual = ProgramManagementControls.createProgram("Muscle Build", duration, level, goal, links, price);	   
 	    assertTrue(expected.equals(actual));
 	}
 
@@ -63,7 +68,8 @@ public class ProgramManagementForInstrcutorTest {
 	    // Write code here that turns the phrase above into concrete actions
 	   // throw new io.cucumber.java.PendingException();
 		String expected = "Program updated";
-		String actual =ProgramManagementControls.updateProgram(string, string2, string3, string4, "0", "0");
+		ProgramManagementControls.createProgram("Muscle Build", "60 days", "beginner", "strength", "link", "50");
+		String actual =ProgramManagementControls.updateProgram("Muscle build", "0", "0","0", "0", "0");
 		assertTrue(expected.equals(actual));
 		
 	}
@@ -72,9 +78,10 @@ public class ProgramManagementForInstrcutorTest {
 	public void the_program_should_be_updated_with_the_new_details() {
 	    // Write code here that turns the phrase above into concrete actions
 	  //  throw new io.cucumber.java.PendingException();
-		String expected = "Program updated";
-		String actual =ProgramManagementControls.updateProgram("0","0", "0", "0", "0", "0");
-		assertTrue(expected.equals(actual));
+		boolean expected=true;
+		ProgramManagementControls.createProgram("Muscle Build", "60 days", "beginner", "strength", "link", "50");
+		 boolean actual = ProgramManagementControls.ProgUpdated();
+		 assertTrue(actual==expected);
 	}
 
 	@When("I delete the program")
@@ -82,7 +89,8 @@ public class ProgramManagementForInstrcutorTest {
 	    // Write code here that turns the phrase above into concrete actions
 	   // throw new io.cucumber.java.PendingException();
 		String expected = "Program Deleted";
-		String actual =ProgramManagementControls.deleteProgram("0");
+		ProgramManagementControls.createProgram("Muscle Build", "60 days", "beginner", "strength", "link", "50");
+		String actual =ProgramManagementControls.deleteProgram("Muscle Build");
 		assertTrue(expected.equals(actual));
 	}
 
@@ -91,7 +99,8 @@ public class ProgramManagementForInstrcutorTest {
 	    // Write code here that turns the phrase above into concrete actions
 	   // throw new io.cucumber.java.PendingException();
 		String expected = "Program Deleted";
-		String actual =ProgramManagementControls.deleteProgram("0");
+		ProgramManagementControls.createProgram("Muscle Build", "60 days", "beginner", "strength", "link", "50");
+		String actual =ProgramManagementControls.deleteProgram("Muscle Build");
 		assertTrue(expected.equals(actual));
 		
 	}

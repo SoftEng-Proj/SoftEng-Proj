@@ -15,7 +15,7 @@ import java.util.Scanner;
  * The class facilitates navigation through a menu system, allowing instructors to 
  * interact with the system efficiently.
  * 
- * @author Ammar Khaled
+ * @author Ammar Shafii
  */
 public class InstructorPageControllers {
 	private NavigationControllerForInstructor navigationController = new NavigationControllerForInstructor();

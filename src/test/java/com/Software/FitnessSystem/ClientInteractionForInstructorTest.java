@@ -35,7 +35,8 @@ public class ClientInteractionForInstructorTest {
 	    // Write code here that turns the phrase above into concrete actions
 	  //  throw new io.cucumber.java.PendingException();
 		String expected= "Message sent";
-		String actual = InteractForInstructorControls.sendMessageToClient("0", "0");
+		InteractForInstructorControls.MakeSureOfClient();
+		String actual = InteractForInstructorControls.sendMessageToClient("Omar", "0");
 		assertTrue(expected.equals(actual));
 	}
 
@@ -52,6 +53,7 @@ public class ClientInteractionForInstructorTest {
 	public void i_am_on_the_dicussion_forum_for_the_program(String string) {
 	    // Write code here that turns the phrase above into concrete actions
 	  //  throw new io.cucumber.java.PendingException();
+		
 		boolean expected = true;
 		boolean actual = InteractForInstructorPage.isForumPage();
 		assertTrue(actual == expected);
@@ -62,7 +64,8 @@ public class ClientInteractionForInstructorTest {
 	    // Write code here that turns the phrase above into concrete actions
 	   // throw new io.cucumber.java.PendingException();
 		String expected= "Forum sent";
-		String actual = InteractForInstructorControls.sendMessageToClient("0", "0");
+		InteractForInstructorControls.MakeSureOfProgram();
+		String actual = InteractForInstructorControls.sendMessageToProgramForum("Fit", "0");
 		assertTrue(expected.equals(actual));
 	}
 
@@ -101,7 +104,9 @@ public class ClientInteractionForInstructorTest {
 	   // throw new io.cucumber.java.PendingException();
 		
 		String expected= "Feedback sent";
-		String actual = InteractForInstructorControls.sendFeedbackToClient("0", "0");
+		InteractForInstructorControls.MakeSureOfClient();
+
+		String actual = InteractForInstructorControls.sendFeedbackToClient("Omar", "0");
 		assertTrue(expected.equals(actual));
 		
 		
@@ -132,7 +137,9 @@ public class ClientInteractionForInstructorTest {
 	    // Write code here that turns the phrase above into concrete actions
 	  //  throw new io.cucumber.java.PendingException();
 		String expected= "Prgoress sent";
-		String actual = InteractForInstructorControls.sendProgressToClient("0", "0");
+		InteractForInstructorControls.MakeSureOfClient();
+
+		String actual = InteractForInstructorControls.sendProgressToClient("Omar", "0");
 		assertTrue(expected.equals(actual));
 	}
 

@@ -558,7 +558,7 @@ public class LoadAndSaveEntities {
 	/**
 	 * Saves the instructor messages to clients data to a file.
 	 * If the file doesn't exist, a new file will be created.
-	 * @author Ammar Khaled
+	 * @author Ammar Shafii
 	 * @param InstructorMSGSToClientsMap the map of instructor messages to save
 	 * @param InstructorMSGsFile the path to the file where the data will be saved
 	 */
@@ -579,7 +579,7 @@ public class LoadAndSaveEntities {
     /**
      * Loads the instructor messages to clients data from a file into the provided map.
      * If the file doesn't exist, an error message will be printed.
-     * @author Ammar Khaled
+     * @author Ammar Shafii
      * @param InstructorMSGSToClientsMap the map to load the instructor messages to clients into
      * @param InstructorMSGsFile the path to the file from which to load the data
      */
@@ -602,7 +602,7 @@ public class LoadAndSaveEntities {
     /**
      * Saves the program forum messages to a file.
      * If the file doesn't exist, a new file will be created.
-     * @author Ammar Khaled
+     * @author Ammar Shafii
      * @param ProgramForumMsgsMap the map of program forum messages to save
      * @param ProgramForumMsgsFile the path to the file where the data will be saved
      */
@@ -623,7 +623,7 @@ public class LoadAndSaveEntities {
     /**
      * Loads the program forum messages data from a file into the provided map.
      * If the file doesn't exist, an error message will be printed.
-     * @author Ammar Khaled
+     * @author Ammar Shafii
      * @param ProgramForumMsgsMap the map to load the program forum messages into
      * @param ProgramForumMsgsFile the path to the file from which to load the data
      */
@@ -646,7 +646,7 @@ public class LoadAndSaveEntities {
     /**
      * Saves the feedback data to clients to a file.
      * If the file doesn't exist, a new file will be created.
-     * @author Ammar Khaled
+     * @author Ammar Shafii
      * @param FeedbackToClientMap the map of feedback to save
      * @param FeedbackToClientFile the path to the file where the data will be saved
      */
@@ -667,7 +667,7 @@ public class LoadAndSaveEntities {
     /**
      * Loads the feedback data to clients from a file into the provided map.
      * If the file doesn't exist, an error message will be printed.
-     * @author Ammar Khaled
+     * @author Ammar Shafii
      * @param FeedbackToClientMap the map to load the feedback to clients into
      * @param FeedbackToClientFile the path to the file from which to load the data
      */
@@ -690,7 +690,7 @@ public class LoadAndSaveEntities {
     /**
      * Saves the instructor reminder data to a file.
      * If the file doesn't exist, a new file will be created.
-     * @author Ammar Khaled
+     * @author Ammar Shafii
      * @param InstructorReminderMap the map of instructor reminders to save
      * @param InstructorReminderFile the path to the file where the data will be saved
      */
@@ -711,7 +711,7 @@ public class LoadAndSaveEntities {
 	/**
 	 * Loads the instructor reminder data from a file into the provided map.
 	 * If the file doesn't exist, an error message will be printed.
-	 * @author Ammar Khaled
+	 * @author Ammar Shafii
 	 * @param InstructorReminderMap the map to load the instructor reminders into
 	 * @param InstructorReminderFile the path to the file from which to load the data
 	 */
@@ -734,7 +734,7 @@ public class LoadAndSaveEntities {
     /**
      * Saves the instructor recommendation data to a file.
      * If the file doesn't exist, a new file will be created.
-     * @author Ammar Khaled
+     * @author Ammar Shafii
      * @param InstructorRecommednationMap the map of instructor recommendations to save
      * @param InstructorRecommednationFile the path to the file where the data will be saved
      */
@@ -755,7 +755,7 @@ public class LoadAndSaveEntities {
     /**
      * Loads the instructor recommendation data from a file into the provided map.
      * If the file doesn't exist, an error message will be printed.
-     * @author Ammar Khaled
+     * @author Ammar Shafii
      * @param InstructorRecommednationMap the map to load the instructor recommendations into
      * @param InstructorRecommednationFile the path to the file from which to load the data
      */
@@ -778,7 +778,7 @@ public class LoadAndSaveEntities {
     /**
      * Saves the instructor announcements data to a file.
      * If the file doesn't exist, a new file will be created.
-     * @author Ammar Khaled
+     * @author Ammar Shafii
      * @param instructorAnnouncements the list of instructor announcements to save
      * @param instructorAnnouncementsFile the path to the file where the data will be saved
      */
@@ -800,7 +800,7 @@ public class LoadAndSaveEntities {
     /**
      * Loads the instructor announcements data from a file into the provided list.
      * If the file doesn't exist, an error message will be printed.
-     * @author Ammar Khaled
+     * @author Ammar Shafii
      * @param instructorAnnouncements the list to load the instructor announcements into
      * @param instructorAnnouncementsFile the path to the file from which to load the data
      */
@@ -839,7 +839,7 @@ public class LoadAndSaveEntities {
     /**
      * Saves the program schedule change data to a file.
      * If the file doesn't exist, a new file will be created.
-     * @author Ammar Khaled
+     * @author Ammar Shafii
      * @param ProgramScheduleChangeMap the map of program schedule changes to save
      * @param ProgramScheduleChangeFile the path to the file where the data will be saved
      */
@@ -860,7 +860,7 @@ public class LoadAndSaveEntities {
     /**
      * Loads the program schedule change data from a file into the provided map.
      * If the file doesn't exist, an error message will be printed.
-     * @author Ammar Khaled
+     * @author Ammar Shafii
      * @param ProgramScheduleChangeMap the map to load the program schedule changes into
      * @param ProgramScheduleChangeFile the path to the file from which to load the data
      */
@@ -883,7 +883,7 @@ public class LoadAndSaveEntities {
     /**
      * Saves the progress list data to a file.
      * If the file doesn't exist, a new file will be created.
-     * @author Ammar Khaled
+     * @author Ammar Shafii
      * @param ProgressListMap the map of progress list to save
      * @param ProgressListFile the path to the file where the data will be saved
      */
@@ -904,7 +904,7 @@ public class LoadAndSaveEntities {
     /**
      * Loads the progress list data from a file into the provided map.
      * If the file doesn't exist, an error message will be printed.
-     * @author Ammar Khaled
+     * @author Ammar Shafii
      * @param ProgressListMap the map to load the progress list into
      * @param ProgressListFile the path to the file from which to load the data
      */
