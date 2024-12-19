@@ -12,7 +12,7 @@ Feature: User Management
     Given I am on the "User Management" page
     And I have selected an existing user
     When I edit the user details
-    And I save the changes
+    And I save the changed data
     Then the user account should be updated successfully
     
   @deactivate_a_user_account

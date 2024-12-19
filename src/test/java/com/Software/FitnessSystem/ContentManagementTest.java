@@ -1,39 +1,36 @@
 package com.Software.FitnessSystem;
 import static com.Software.FitnessSystem.App.*;
 import static com.Software.FitnessSystem.AdminControllers.ContentManagementControls.*;
-import com.Software.FitnessSystem.AdminControllers.ContentManagementControls;
 import com.Software.FitnessSystem.LoginPage.AdminPagesController;
-import static org.junit.Assert.assertTrue;
 
+import static org.junit.Assert.assertEquals;
 import java.util.Map;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-class ContentManagementTest {
-	ContentManagementControls contentManagement;
+public class ContentManagementTest {
     AdminPagesController adminControllers;
     App app;
     
     public ContentManagementTest() {
-        this.app = new App();
+		this.app = new App();
         this.adminControllers = new AdminPagesController();
-        this.contentManagement = new ContentManagementControls();
     }
 	
 	@Given("I am logged in as an admin")
 	public void i_am_logged_in_as_an_admin() {
 		String expected = "AdminLoggedIn";
     	String actual = login("AdminUser", "AdminPassword", "Admin");
-        assertTrue(expected.equals(actual));
+        assertEquals(expected, actual);
 	}
 	
 	@When("I navigate to the {string} page")
 	public void i_navigate_to_the_page(String string) {
 		boolean expected = true;
-        boolean actual = adminControllers.navigateToPage(3);
-        assertTrue(expected == actual);
+        boolean actual = adminControllers.navigateToPage(3, adminControllers);
+        assertEquals(expected, actual);
 	}
 	
 	@When("I review a wellness article, tip, or recipe")
@@ -42,7 +39,7 @@ class ContentManagementTest {
 		Map<String, Content> tips = getPendingInstructorTipsMap();
 		setApprovedTipsMap(tips);
         boolean actual = reviewArticleAndTips(tips);
-        assertTrue(expected == actual);
+        assertEquals(expected, actual);
 	}
 	
 	@Then("I can approve or reject the submission")
@@ -52,7 +49,7 @@ class ContentManagementTest {
 		setApprovedTipsMap(tips);
 		accessToPrinter(tips);
         boolean actual = approveOrRejectTheTips(getInstructorTipsMap());
-        assertTrue(expected == actual);
+        assertEquals(expected, actual);
 	}
 	
 	@When("I review an article or tip on health and wellness")
@@ -61,7 +58,7 @@ class ContentManagementTest {
 		Map<String, Content> tips = getPendingInstructorTipsMap();
 		setApprovedTipsMap(tips);
         boolean actual = reviewArticleAndTips(tips);
-        assertTrue(expected == actual);
+        assertEquals(expected, actual);
 	}
 	
 	@When("I review user feedback or complaints")
@@ -69,7 +66,7 @@ class ContentManagementTest {
 		boolean expected = true;
 		setHandledFeedbackMap(getHandledFeedbackMap());
         boolean actual = reviewArticleAndTips(getUserFeedbackMap());
-        assertTrue(expected == actual);
+        assertEquals(expected, actual);
 	}
 	
 	@Then("I should be able to handle them appropriately")
@@ -79,6 +76,6 @@ class ContentManagementTest {
 		Map<String, Content> feedback = getUserFeedbackMap();
 		accessToPrinter(feedback);
         boolean actual = respondToFeedback(feedback);
-        assertTrue(expected == actual);
+        assertEquals(expected, actual);
 	}
 }

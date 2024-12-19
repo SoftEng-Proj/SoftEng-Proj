@@ -1,4 +1,5 @@
 package com.Software.FitnessSystem;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import com.Software.FitnessSystem.ClientControllers.AccountManagementControls;
 import com.Software.FitnessSystem.ClientPageNavigation.AccountManagementPage;
@@ -21,7 +22,7 @@ public class AccountManagementTest {
 	    //throw new io.cucumber.java.PendingException();
 		boolean expected = true;
         boolean actual = AccountManagementPage.isOnDietaryRestrictionsPage();
-        assertTrue(expected == actual);
+        assertEquals(expected, actual);
 	}
 
 	@When("I select {string} as my dietary preference")
@@ -30,7 +31,7 @@ public class AccountManagementTest {
 	    //throw new io.cucumber.java.PendingException();
 		String expcted = "Dietary Preferences Updated";
 		String acutal = AccountManagementControls.setDietaryPreferences(null, "", "");
-		assertTrue(acutal.equals(expcted));
+        assertEquals(acutal, expcted);
 	}
 
 	@When("I add {string} as a restriction")

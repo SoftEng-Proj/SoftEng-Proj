@@ -12,7 +12,7 @@ import java.util.Scanner;
  * This class serves as the central controller for managing admin page navigation, 
  * allowing seamless movement between pages for user management, content management, 
  * program monitoring, and subscription management.
- * 
+ * <p>
  * The controller provides a main menu where the admin can select different options 
  * to navigate to specific pages or log out of the system.
  * 
@@ -42,12 +42,11 @@ public class AdminPagesController {
      * 
      * @return {@code true} if the navigation is successful.
      */
-    @SuppressWarnings("resource")
-	public boolean navigateToManagementPage() {
+    public boolean navigateToManagementPage() {
         displayMainMenu();
         Scanner input = new Scanner(System.in);
         int choiceNumber = input.nextInt();
-        navigateToPage(choiceNumber);
+        navigateToPage(choiceNumber, this);
         return true;
     }
     
@@ -64,12 +63,12 @@ public class AdminPagesController {
      * 
      * @return {@code true} if the navigation is successful.
      */
-    public boolean navigateToPage(int page) {
+    public boolean navigateToPage(int page, AdminPagesController adminControllers) {
         switch (page) {
-            case 1 -> navigationController.navigateTo(managementPage, this);
-            case 2 -> navigationController.navigateTo(monitoringPage, this);
-            case 3 -> navigationController.navigateTo(contentPage, this);
-            case 4 -> navigationController.navigateTo(subscriptionPage, this);
+            case 1 -> navigationController.navigateTo(managementPage, adminControllers);
+            case 2 -> navigationController.navigateTo(monitoringPage, adminControllers);
+            case 3 -> navigationController.navigateTo(contentPage, adminControllers);
+            case 4 -> navigationController.navigateTo(subscriptionPage, adminControllers);
             case 5 -> {
             	System.out.print("\n");
             	new LoginPageController();
@@ -93,7 +92,7 @@ public class AdminPagesController {
         System.out.println("2. Monitor user activity and engagement statistics.");
         System.out.println("3. Approve or reject content submissions.");
         System.out.println("4. Manage subscription plans.");
-        System.out.println("5. Logout.");
+        System.out.println("5. Log out and return to the login page");
         System.out.println("6. Exit.");
         System.out.print(">> Enter your choice: ");
     }

@@ -1,0 +1,70 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class AccountManagementControls
+class AccountManagementPage
+class Admin
+class AdminPagesController
+class App
+class BasePage
+class Client
+class ClientPageControllers
+class Content
+class ContentManagementControls
+class ContentManagementPage
+class CustomPlan
+class FeedbackReviewsControls
+class FeedbackReviewsPage
+class FitnessMilestone
+class Instructor
+class InstructorPageControllers
+class InteractForInstructorControls
+class InteractForInstructorPage
+class LoadAndSaveEntities
+class LoginPageController
+class NavigationControllerForAdmin
+class NavigationControllerForClient
+class NavigationControllerForInstructor
+class NotificationControls
+class NotificationsPage
+interface Page << interface >>
+class Profile
+class Program
+class ProgramEnrollment
+class ProgramExplorationEnrollmentControls
+class ProgramExplorationEnrollmentPage
+class ProgramManagementControls
+class ProgramManagementPage
+class ProgramMonitoringControls
+class ProgramMonitoringPage
+class ProgressTrackingControls
+class ProgressTrackingInstructorControls
+class ProgressTrackingInstructorPage
+class ProgressTrackingPage
+class Report
+class SubscriptionManagementControls
+class SubscriptionManagementPage
+class SubscriptionPlan
+interface User << interface >>
+class UserManagementControls
+class UserManagementPage
+
+AccountManagementPage                 -[#000082,plain]-^  BasePage                             
+BasePage                              -[#008200,dashed]-^  Page                                 
+Client                                -[#008200,dashed]-^  User                                 
+ContentManagementPage                 -[#000082,plain]-^  BasePage                             
+FeedbackReviewsPage                   -[#000082,plain]-^  BasePage                             
+Instructor                            -[#008200,dashed]-^  User                                 
+InteractForInstructorPage             -[#000082,plain]-^  BasePage                             
+NotificationsPage                     -[#000082,plain]-^  BasePage                             
+ProgramExplorationEnrollmentPage      -[#000082,plain]-^  BasePage                             
+ProgramManagementPage                 -[#000082,plain]-^  BasePage                             
+ProgramMonitoringPage                 -[#000082,plain]-^  BasePage                             
+ProgressTrackingInstructorPage        -[#000082,plain]-^  BasePage                             
+ProgressTrackingPage                  -[#000082,plain]-^  BasePage                             
+SubscriptionManagementPage            -[#000082,plain]-^  BasePage                             
+UserManagementPage                    -[#000082,plain]-^  BasePage                             
+@enduml
