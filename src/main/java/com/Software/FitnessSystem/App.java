@@ -62,21 +62,20 @@ public class App {
     private static final Map<String, Content> PendingHealthTipsMap = new HashMap<>();
     private static final Map<String, Content> UserFeedbackMap = new HashMap<>();
     private static final Map<String, String> HandledFeedbackMap = new HashMap<>();
-    private static Map<String, Profile> ClientProfileMap = new HashMap<>();
-    private static Map<String, Map<String, Integer>> ProgramRatings = new HashMap<>();
-    private static Map<String, Map<String, String>> ProgramReviews = new HashMap<>();
-    private static Map<String, Map<String, String>> ProgramSuggestions = new HashMap<>();
-    private static Map<String, String> InstructorMessagesForClientsMap= new HashMap<>();
-    private static Map<String, String> ProgramForumMsgsMap= new HashMap<>();
+    private static final Map<String, Profile> ClientProfileMap = new HashMap<>();
+    private static final Map<String, Map<String, Integer>> ProgramRatings = new HashMap<>();
+    private static final Map<String, Map<String, String>> ProgramReviews = new HashMap<>();
+    private static final Map<String, Map<String, String>> ProgramSuggestions = new HashMap<>();
+    private static final Map<String, String> InstructorMessagesForClientsMap= new HashMap<>();
+    private static final Map<String, String> ProgramForumMsgsMap= new HashMap<>();
     private static final Map<String, String> FeedbackToClientMap= new HashMap<>();
-    private static List<FitnessMilestone> MilestonesList = new ArrayList<>();
-    private static Map<String, String> InstructorReminderMap= new HashMap<>();
-    private static Map<String, String> InstructorRecommendationMap= new HashMap<>();
-    private static List<String> InstructorAnnouncementMap= new ArrayList<>();
-    private static Map<String, String> ProgramScheduleChangeMap= new HashMap<>();
-    private static Map<String, String> ProgressListMap= new HashMap<>();
+    private static final List<FitnessMilestone> MilestonesList = new ArrayList<>();
+    private static final Map<String, String> InstructorReminderMap= new HashMap<>();
+    private static final Map<String, String> InstructorRecommendationMap= new HashMap<>();
+    private static final List<String> InstructorAnnouncementMap= new ArrayList<>();
+    private static final Map<String, String> ProgramScheduleChangeMap= new HashMap<>();
+    private static final Map<String, String> ProgressListMap= new HashMap<>();
     
-    private static Admin Admin;
     private static Instructor Instructor;
     private static Client Client;
     
@@ -150,7 +149,7 @@ public class App {
         
         switch (role) {
         case "Admin":
-        	Admin = AdminsMap.get(userName);
+        	AdminsMap.get(userName);
         	return "AdminLoggedIn";
         case "Instructor":
         	Instructor = InstructorsMap.get(userName);
