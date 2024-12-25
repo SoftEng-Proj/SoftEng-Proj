@@ -78,7 +78,7 @@ public class App {
     
     private static Instructor Instructor;
     private static Client Client;
-    
+
     public static void main(String[] args) {
         new App();
         printWelcomeMessage();
@@ -136,14 +136,13 @@ public class App {
      * Updates login statistics and session data for the user.
      * @author Muath Hassoun
      * @param userName The username of the user.
-     * @param password The password of the user.
      * @param role The role of the user ("Admin", "Instructor", or "Client").
      * @return A string indicating the result of the login attempt:
      *         "AdminLoggedIn", "InstructorLoggedIn", "ClientLoggedIn",
      *         "InvalidLogIn", or "NoOneLoggedIn".
      */
-	public static String login(String userName, String password, String role) {
-    	LocalDateTime currentDateTime = LocalDateTime.now();
+	public static String login(String userName, String role) {
+        LocalDateTime currentDateTime = LocalDateTime.now();
     	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         String formattedDateTime = currentDateTime.format(formatter);
         

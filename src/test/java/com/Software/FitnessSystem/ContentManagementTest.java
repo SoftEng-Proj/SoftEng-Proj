@@ -22,7 +22,7 @@ public class ContentManagementTest {
 	@Given("I am logged in as an admin")
 	public void i_am_logged_in_as_an_admin() {
 		String expected = "AdminLoggedIn";
-    	String actual = login("AdminUser", "AdminPassword", "Admin");
+    	String actual = login("AdminUser", "Admin");
         assertEquals(expected, actual);
 	}
 	

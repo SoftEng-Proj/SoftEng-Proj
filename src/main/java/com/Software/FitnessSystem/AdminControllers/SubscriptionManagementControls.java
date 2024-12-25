@@ -23,7 +23,6 @@ public class SubscriptionManagementControls {
      * 
      * @return true if an operation was completed successfully, or the user chooses to go back; false otherwise.
      */
-	@SuppressWarnings("resource")
 	public static boolean dealWithSubscriptionPlan() {
 		showMainMenu();
 		boolean isDone = false;
@@ -45,8 +44,7 @@ public class SubscriptionManagementControls {
             	isDone = removeSubscriptionPlan();
                 break;
             case 4:
-            	isDone = true;
-                return isDone;
+                return true;
             default:
                 System.out.println("Invalid choice. Please try again.");
         }
@@ -99,7 +97,6 @@ public class SubscriptionManagementControls {
      * 
      * @return true if the subscription plan is added successfully; false otherwise.
      */
-	@SuppressWarnings("resource")
 	private static boolean addSubscriptionPlan() {
 		Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the plan name:");
@@ -138,10 +135,9 @@ public class SubscriptionManagementControls {
      * 
      * @return true if the plan is updated successfully; false otherwise.
      */
-	@SuppressWarnings("resource")
 	private static boolean editSubscriptionPlan() {
 		Scanner scanner = new Scanner(System.in);
-		Boolean isUpdated = false;
+		boolean isUpdated = false;
 		
 		System.out.println("Do you want to edit a plan? (yes/no)");
         if (scanner.nextLine().equalsIgnoreCase("yes")) {
@@ -228,7 +224,6 @@ public class SubscriptionManagementControls {
      * 
      * @return true if the subscription plan was removed successfully; false otherwise.
      */
-	@SuppressWarnings("resource")
 	private static boolean removeSubscriptionPlan() {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Enter the plan name to edit (e.g., BASIC, PREMIUM, ...):");
@@ -242,7 +237,6 @@ public class SubscriptionManagementControls {
 	 * renewing, or applying free trials to the subscription plan.
 	 * This method interacts with the user to determine the desired action and executes accordingly.
 	 */
-	@SuppressWarnings("resource")
 	public static void dealWithUsersSubscriptionPlan() {
 		CustomPlan planType = askAboutPlanType();
         SubscriptionPlan subscriptionPlan = new SubscriptionPlan(planType);
@@ -298,7 +292,6 @@ public class SubscriptionManagementControls {
 	 * 
 	 * @return The selected {@link CustomPlan} object.
 	 */
-	@SuppressWarnings("resource")
 	private static CustomPlan askAboutPlanType() {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("\nEnter the user's subscription plan (BASIC or PREMIUM or ...):");
@@ -320,12 +313,10 @@ public class SubscriptionManagementControls {
 	 * 
 	 * @return The new subscription plan type as a String.
 	 */
-	@SuppressWarnings("resource")
 	private static String askAboutTheNewPlanType() {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("\nEnter the user's new subscription plan (BASIC or PREMIUM or ...):");
-        String planTypeInput = scanner.nextLine().toUpperCase();
-        return planTypeInput;
+        return scanner.nextLine().toUpperCase();
 	}
 	
 	/**
@@ -334,7 +325,6 @@ public class SubscriptionManagementControls {
 	 * @param planType The subscription plan type to filter users by.
 	 * @return True if users with the specified plan are found; false otherwise.
 	 */
-	@SuppressWarnings("resource")
 	private static boolean printUsersWithThisPlanType(CustomPlan planType) {
 	    Scanner scanner = new Scanner(System.in);
 	    System.out.println("Do you want to see Clients or Instructors? (C/I):");
@@ -369,7 +359,6 @@ public class SubscriptionManagementControls {
 	 * 
 	 * @return True if the user is found; false otherwise.
 	 */
-	@SuppressWarnings("resource")
 	private static boolean selectUserToUpdateHisSubscriptionPlan() {
         boolean isFound = false;
 		Scanner scanner = new Scanner(System.in);
@@ -390,7 +379,6 @@ public class SubscriptionManagementControls {
         } else {
             System.out.println("User not found.");
             SubscriptionManagementControls.user = null;
-            isFound = false;
         }
         
         return isFound;
@@ -435,7 +423,7 @@ public class SubscriptionManagementControls {
 	 * @param <T>              A type parameter extending {@link User}.
 	 */
 	public static <T extends User> void giveTheUserNewSubscriptionOpportunity(SubscriptionPlan subscriptionPlan, T user) {
-    	int login = user.getLogins();
+    	int login;
         if (subscriptionPlan != null) {
         	double price = subscriptionPlan.getPlanType().getPrice();
             int freeOpportunityDays = calculateFreeOpportunity(price);

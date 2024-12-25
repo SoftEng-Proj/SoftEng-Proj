@@ -101,7 +101,7 @@ public class ClientPageControllers {
         System.out.println("2. Program Exploration and Enrollment.");
         System.out.println("3. Progress Tracking.");
         System.out.println("4. Feedback and Reviews.");
-        System.out.println("5. Logout.");
+        System.out.println("5. Log out and return to the login page.");
         System.out.println("6. Exit.");
         System.out.print("\nEnter your choice: ");
     }

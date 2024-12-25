@@ -9,10 +9,10 @@ package com.Software.FitnessSystem.AdminControllers;
  * @author Muath Hassoun
  */
 public class Report {
-    private String programName;
-    private double revenue;
-    private int attendance;
-    private String clientProgress;
+    private final String programName;
+    private final double revenue;
+    private final int attendance;
+    private final String clientProgress;
     
     /**
      * Constructor to initialize a Report object with specific details.

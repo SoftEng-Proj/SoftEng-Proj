@@ -16,7 +16,7 @@ import java.util.Scanner;
  * - Deactivating accounts for instructors and clients.
  * - Approving new instructor registrations.
  * - Monitoring user activity and engagement statistics.
- * 
+ * <p>
  * It also provides methods for prompting the user for details and saving account changes.
  * 
  * @author Muath Hassoun
@@ -31,8 +31,6 @@ public class UserManagementPage extends BasePage {
 	private static String role;
 	
 	private String stringResolution = "";
-	private boolean booleanResolution = false;
-	
 	/**
      * Sets the details for the user.
      * 
@@ -60,50 +58,6 @@ public class UserManagementPage extends BasePage {
      */
 	public static void setUsername(String username, String role) {
 		UserManagementPage.username = username;
-		UserManagementPage.role = role;
-	}
-	
-	/**
-     * Sets the password for the user.
-     * 
-     * @param password The password for the user.
-     * @param role The role of the user (e.g., Instructor, Client).
-     */
-	public static void setUserPassword(String password, String role) {
-		UserManagementPage.password = password;
-		UserManagementPage.role = role;
-	}
-	
-	/**
-     * Sets the first name for the user.
-     * 
-     * @param fName The first name of the user.
-     * @param role The role of the user (e.g., Instructor, Client).
-     */
-	public static void setUserFirstName(String fName, String role) {
-		UserManagementPage.fName = fName;
-		UserManagementPage.role = role;
-	}
-	
-	/**
-     * Sets the last name for the user.
-     * 
-     * @param lName The last name of the user.
-     * @param role The role of the user (e.g., Instructor, Client).
-     */
-	public static void setUserLastName(String lName, String role) {
-		UserManagementPage.lName = lName;
-		UserManagementPage.role = role;
-	}
-	
-	/**
-     * Sets the email address for the user.
-     * 
-     * @param email The email address of the user.
-     * @param role The role of the user (e.g., Instructor, Client).
-     */
-	public static void setUserEmail(String email, String role) {
-		UserManagementPage.email = email;
 		UserManagementPage.role = role;
 	}
 	
@@ -159,28 +113,28 @@ public class UserManagementPage extends BasePage {
             	printUserDetails(getInstructorsMap());
             	selecteAUser();
             	UserManagementPage.role = "Instructor";
-            	booleanResolution = selectUser(username, role);
+				selectUser(username, role);
             	editUserDetails(username, role);
                 break;
             case 4:
             	printUserDetails(getClientsMap());
             	selecteAUser();
             	UserManagementPage.role = "Client";
-            	booleanResolution = selectUser(username, role);
+            	selectUser(username, role);
             	editUserDetails(username, role);
                 break;
             case 5:
             	printUserDetails(getInstructorsMap());
             	selecteAUser();
             	UserManagementPage.role = "Instructor";
-            	booleanResolution = selectUser(username, role);
+            	selectUser(username, role);
             	deactivateUser(username, role);
                 break;
             case 6:
             	printUserDetails(getClientsMap());
             	selecteAUser();
             	UserManagementPage.role = "Client";
-            	booleanResolution = selectUser(username, role);
+            	selectUser(username, role);
             	deactivateUser(username, role);
                 break;
             case 7:
@@ -203,29 +157,23 @@ public class UserManagementPage extends BasePage {
     /**
      * Prompts the admin to enter user details (first name, last name, email, username, password).
      */
-    @SuppressWarnings("resource")
 	private void promptUserForDetails() {
         Scanner scanner = new Scanner(System.in);
         
         System.out.print("\nEnter first name: ");
-        String fName = scanner.nextLine();
-        UserManagementPage.fName = fName;
+        UserManagementPage.fName = scanner.nextLine();
         
         System.out.print("Enter last name: ");
-        String lName = scanner.nextLine();
-        UserManagementPage.lName = lName;
+        UserManagementPage.lName = scanner.nextLine();
         
         System.out.print("Enter email: ");
-        String email = scanner.nextLine();
-        UserManagementPage.email = email;
+        UserManagementPage.email = scanner.nextLine();
         
         System.out.print("Enter username: ");
-        String username = scanner.nextLine();
-        UserManagementPage.username = username;
+        UserManagementPage.username = scanner.nextLine();
         
         System.out.print("Enter password: ");
-        String password = scanner.nextLine();
-        UserManagementPage.password = password;
+        UserManagementPage.password = scanner.nextLine();
     }
     
     /**
@@ -242,14 +190,11 @@ public class UserManagementPage extends BasePage {
     
     /**
      * Prints the user details from a given user map (instructors or clients).
-     * 
+     *
      * @param userMap The map containing user details (instructors or clients).
-     * @return true if there are users to display, false otherwise.
      */
-	private <T extends User> boolean printUserDetails(Map<String, T> userMap) {
-	    if (userMap == null || userMap.isEmpty()) {
-	        return false;
-	    } else {
+	private <T extends User> void printUserDetails(Map<String, T> userMap) {
+	    if (!(userMap == null || userMap.isEmpty())) {
 	    	System.out.println();
 	        System.out.printf("%-20s %-15s %-15s %-25s\n", "Username", "First Name", "Last Name", "Email");
 	        System.out.println("---------------------------------------------------------------------------");
@@ -262,19 +207,16 @@ public class UserManagementPage extends BasePage {
 	        ));
 	        
 	        System.out.println();
-	        return true;
-	    }
+        }
 	}
 	
 	/**
      * Prompts the admin to select a user by username.
      */
-	@SuppressWarnings("resource")
 	private void selecteAUser() {
     	Scanner scanner = new Scanner(System.in);
         System.out.print("Enter Username: ");
-        String username = scanner.nextLine();
-        UserManagementPage.username = username;
+        UserManagementPage.username = scanner.nextLine();
     }
     
 	/**
@@ -294,14 +236,5 @@ public class UserManagementPage extends BasePage {
      */
     public String getStringResolution() {
     	return stringResolution;
-    }
-    
-    /**
-     * Gets the boolean resolution for the user management actions.
-     * 
-     * @return The boolean resolution.
-     */
-    public boolean getBooleanResolution() {
-    	return booleanResolution;
     }
 }

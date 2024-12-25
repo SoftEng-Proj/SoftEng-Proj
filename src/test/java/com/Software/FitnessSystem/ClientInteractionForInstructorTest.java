@@ -15,7 +15,7 @@ public class ClientInteractionForInstructorTest {
 	    // Write code here that turns the phrase above into concrete actions
 	   // throw new io.cucumber.java.PendingException();
 		String expected = "InstructorLoggedIn";
-    	String actual = App.login("InstructorUser", "InstructorPassword", "Instructor");
+    	String actual = App.login("InstructorUser", "Instructor");
         assertTrue(expected.equals(actual));
     
 	}

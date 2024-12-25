@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 /**
  * Content Management Controls for handling tips and feedback.
- * @author DELL
+ * @author Muath Hassoun
  */
 public class ContentManagementControls {
     /**
@@ -26,7 +26,7 @@ public class ContentManagementControls {
     
     /**
      * Sets the map of approved tips.
-     * @author DELL
+     * @author Muath Hassoun
      * @param approvedTips A map of tip IDs to their corresponding Content objects.
      */
     public static void setApprovedTipsMap(Map<String, Content> approvedTips) {
@@ -35,7 +35,7 @@ public class ContentManagementControls {
     
     /**
      * Sets the map of handled feedback.
-     * @author DELL
+     * @author Muath Hassoun
      * @param handledFeedback A map of feedback IDs to their responses.
      */
     public static void setHandledFeedbackMap(Map<String, String> handledFeedback) {
@@ -44,7 +44,7 @@ public class ContentManagementControls {
     
     /**
      * Deals with content types, either reviewing feedback or approving/rejecting tips.
-     * @author DELL
+     * @author Muath Hassoun
      * @param tips The map of tips or feedback to review.
      * @param isForFeedbacks True if the content is for feedback, false if for tips.
      */
@@ -61,7 +61,7 @@ public class ContentManagementControls {
     
     /**
      * Reviews articles and tips to determine if there are any to process.
-     * @author DELL
+     * @author Muath Hassoun
      * @param tips The map of tips to review.
      * @return True if there are tips to review, false if none.
      */
@@ -73,13 +73,13 @@ public class ContentManagementControls {
             return thereIsPendingTip;
         } else {
             thereIsPendingTip = true;
-            return thereIsPendingTip;
+            return true;
         }
     }
     
     /**
      * Provides access to print the tips.
-     * @author DELL
+     * @author Muath Hassoun
      * @param tips The map of tips to print.
      */
     public static void accessToPrinter(Map<String, Content> tips) {
@@ -88,7 +88,7 @@ public class ContentManagementControls {
     
     /**
      * Prints the details of all the outstanding tips.
-     * @author DELL
+     * @author Muath Hassoun
      * @param tips The map of tips to print.
      */
     private static void printTips(Map<String, Content> tips) {
@@ -107,11 +107,10 @@ public class ContentManagementControls {
     
     /**
      * Prompts the user to approve or reject a list of tips based on their IDs.
-     * @author DELL
+     * @author Muath Hassoun
      * @param tips The map of tips to review.
      * @return True if any tips were approved or rejected, false if no action was taken.
      */
-    @SuppressWarnings("resource")
     public static boolean approveOrRejectTheTips(Map<String, Content> tips) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("\nEnter the Tip IDs to approve/reject, separated by commas: ");
@@ -146,7 +145,7 @@ public class ContentManagementControls {
     
     /**
      * Marks a tip as approved and moves it to the approved tips map.
-     * @author DELL
+     * @author Muath Hassoun
      * @param id The ID of the tip to approve.
      * @param tips The map of tips to review.
      */
@@ -158,7 +157,7 @@ public class ContentManagementControls {
     
     /**
      * Marks a tip as rejected and removes it from the tips map.
-     * @author DELL
+     * @author Muath Hassoun
      * @param id The ID of the tip to reject.
      * @param tips The map of tips to review.
      */
@@ -169,11 +168,10 @@ public class ContentManagementControls {
     
     /**
      * Prompts the user to handle feedback by responding to a list of feedback IDs.
-     * @author DELL
+     * @author Muath Hassoun
      * @param tips The map of tips (which are feedback in this case) to handle.
      * @return True if feedback was successfully handled, false otherwise.
      */
-    @SuppressWarnings("resource")
     public static boolean respondToFeedback(Map<String, Content> tips) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("\nEnter the Feedback IDs to handle, separated by commas: ");
@@ -197,7 +195,7 @@ public class ContentManagementControls {
     
     /**
      * Handles a specific feedback by responding based on its content type and marking it as handled.
-     * @author DELL
+     * @author Muath Hassoun
      * @param id The ID of the feedback to handle.
      * @param userFeedbackMap The map of feedback to review.
      */

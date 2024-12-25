@@ -13,7 +13,7 @@ import com.Software.FitnessSystem.LoginPage.AdminPagesController;
  * @author Muath Hassoun
  */
 public class SubscriptionManagementPage extends BasePage {
-    private AdminPagesController adminController;
+    private final AdminPagesController adminController;
     
     /**
      * Constructor to initialize the SubscriptionManagementPage with the provided AdminPagesController.
