@@ -63,7 +63,7 @@ public class LoadAndSaveEntities {
         
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            Map<String, CustomPlan> loadedCustomSubscriptionPlan = objectMapper.readValue(file, new TypeReference<Map<String, CustomPlan>>() {});
+            Map<String, CustomPlan> loadedCustomSubscriptionPlan = objectMapper.readValue(file, new TypeReference<>() {});
             CustomSubscriptionPlanMap.putAll(loadedCustomSubscriptionPlan);
         } catch (IOException e) {
             System.err.println("Error loading Admins data: " + e.getMessage());
@@ -107,7 +107,7 @@ public class LoadAndSaveEntities {
         
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            Map<String, Admin> loadedAdmins = objectMapper.readValue(file, new TypeReference<Map<String, Admin>>() {});
+            Map<String, Admin> loadedAdmins = objectMapper.readValue(file, new TypeReference<>() {});
             adminsMap.putAll(loadedAdmins);
         } catch (IOException e) {
             System.err.println("Error loading Admins data: " + e.getMessage());
@@ -151,7 +151,7 @@ public class LoadAndSaveEntities {
         
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            Map<String, Instructor> loadedInstructors = objectMapper.readValue(file, new TypeReference<Map<String, Instructor>>() {});
+            Map<String, Instructor> loadedInstructors = objectMapper.readValue(file, new TypeReference<>() {});
             instructorsMap.putAll(loadedInstructors);
         } catch (IOException e) {
             System.err.println("Error loading Instructors data: " + e.getMessage());
@@ -195,7 +195,7 @@ public class LoadAndSaveEntities {
         
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            Map<String, Client> loadedClients = objectMapper.readValue(file, new TypeReference<Map<String, Client>>() {});
+            Map<String, Client> loadedClients = objectMapper.readValue(file, new TypeReference<>() {});
             clientsMap.putAll(loadedClients);
         } catch (IOException e) {
             System.err.println("Error loading Clients data: " + e.getMessage());
@@ -239,7 +239,7 @@ public class LoadAndSaveEntities {
         
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            Map<String, Program> loadedFitnessPrograms = objectMapper.readValue(file, new TypeReference<Map<String, Program>>() {});
+            Map<String, Program> loadedFitnessPrograms = objectMapper.readValue(file, new TypeReference<>() {});
             fitnessProgramsMap.putAll(loadedFitnessPrograms);
         } catch (IOException e) {
             System.err.println("Error loading Fitness Programs data: " + e.getMessage());
@@ -283,7 +283,7 @@ public class LoadAndSaveEntities {
         
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            Map<String, Content> loadedContent = objectMapper.readValue(file, new TypeReference<Map<String, Content>>() {});
+            Map<String, Content> loadedContent = objectMapper.readValue(file, new TypeReference<>() {});
             instructorTipsMap.putAll(loadedContent);
         } catch (IOException e) {
             System.err.println("Error loading Tips data: " + e.getMessage());
@@ -327,7 +327,7 @@ public class LoadAndSaveEntities {
         
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            Map<String, String> loadedFeedbacks = objectMapper.readValue(file, new TypeReference<Map<String, String>>() {});
+            Map<String, String> loadedFeedbacks = objectMapper.readValue(file, new TypeReference<>() {});
             handledFeedbackMap.putAll(loadedFeedbacks);
         } catch (IOException e) {
             System.err.println("Error loading handled feedback data: " + e.getMessage());
@@ -371,7 +371,7 @@ public class LoadAndSaveEntities {
         
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            Map<String, Profile> loadedClientProfiles = objectMapper.readValue(file, new TypeReference<Map<String, Profile>>() {});
+            Map<String, Profile> loadedClientProfiles = objectMapper.readValue(file, new TypeReference<>() {});
             clientProfileMap.putAll(loadedClientProfiles);
         } catch (IOException e) {
             System.err.println("Error loading client profiles: " + e.getMessage());
@@ -415,7 +415,7 @@ public class LoadAndSaveEntities {
 	    
 	    try {
 	        ObjectMapper objectMapper = new ObjectMapper();
-	        List<FitnessMilestone> loadedMilestones = objectMapper.readValue(file, new TypeReference<List<FitnessMilestone>>() {});
+	        List<FitnessMilestone> loadedMilestones = objectMapper.readValue(file, new TypeReference<>() {});
 	        MilestonesList.addAll(loadedMilestones);
 	    } catch (IOException e) {
 	        System.err.println("Error loading milestones data: " + e.getMessage());
@@ -460,7 +460,7 @@ public class LoadAndSaveEntities {
 	    try {
 	        ObjectMapper objectMapper = new ObjectMapper();
 	        Map<String, Map<String, Integer>> loadedRatings = objectMapper.readValue(
-	            file, new TypeReference<Map<String, Map<String, Integer>>>() {});
+	            file, new TypeReference<>() {});
 	        programRatings.putAll(loadedRatings);
 	    } catch (IOException e) {
 	        System.err.println("Error loading program ratings data: " + e.getMessage());
@@ -505,7 +505,7 @@ public class LoadAndSaveEntities {
 	    try {
 	        ObjectMapper objectMapper = new ObjectMapper();
 	        Map<String, Map<String, String>> loadedReviews = objectMapper.readValue(
-	            file, new TypeReference<Map<String, Map<String, String>>>() {});
+	            file, new TypeReference<>() {});
 	        programReviews.putAll(loadedReviews);
 	    } catch (IOException e) {
 	        System.err.println("Error loading program reviews data: " + e.getMessage());
@@ -550,7 +550,7 @@ public class LoadAndSaveEntities {
 	    try {
 	        ObjectMapper objectMapper = new ObjectMapper();
 	        Map<String, Map<String, String>> loadedSuggestions = objectMapper.readValue(
-	        		file, new TypeReference<Map<String, Map<String, String>>>() {});
+	        		file, new TypeReference<>() {});
 	        programSuggestions.putAll(loadedSuggestions);
 	    } catch (IOException e) {
 	        System.err.println("Error loading program suggestions data: " + e.getMessage());
@@ -594,7 +594,7 @@ public class LoadAndSaveEntities {
         
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            Map<String, String> loadedInstructorTips = objectMapper.readValue(file, new TypeReference<Map<String, String>>() {});
+            Map<String, String> loadedInstructorTips = objectMapper.readValue(file, new TypeReference<>() {});
             InstructorMSGSToClientsMap.putAll(loadedInstructorTips);
         } catch (IOException e) {
             System.err.println("Error loading Instructor msgs: " + e.getMessage());
@@ -638,7 +638,7 @@ public class LoadAndSaveEntities {
         
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            Map<String, String> loadedInstructorTips = objectMapper.readValue(file, new TypeReference<Map<String, String>>() {});
+            Map<String, String> loadedInstructorTips = objectMapper.readValue(file, new TypeReference<>() {});
             ProgramForumMsgsMap.putAll(loadedInstructorTips);
         } catch (IOException e) {
             System.err.println("Error loading program forums msgs: " + e.getMessage());
@@ -682,7 +682,7 @@ public class LoadAndSaveEntities {
         
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            Map<String, String> loadedInstructorTips = objectMapper.readValue(file, new TypeReference<Map<String, String>>() {});
+            Map<String, String> loadedInstructorTips = objectMapper.readValue(file, new TypeReference<>() {});
             FeedbackToClientMap.putAll(loadedInstructorTips);
         } catch (IOException e) {
             System.err.println("Error loading Feedbacks to client: " + e.getMessage());
@@ -726,7 +726,7 @@ public class LoadAndSaveEntities {
         
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            Map<String, String> loadedInstructorTips = objectMapper.readValue(file, new TypeReference<Map<String, String>>() {});
+            Map<String, String> loadedInstructorTips = objectMapper.readValue(file, new TypeReference<>() {});
             InstructorReminderMap.putAll(loadedInstructorTips);
         } catch (IOException e) {
             System.err.println("Error loading Instructor Reminder: " + e.getMessage());
@@ -770,7 +770,7 @@ public class LoadAndSaveEntities {
         
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            Map<String, String> loadedInstructorTips = objectMapper.readValue(file, new TypeReference<Map<String, String>>() {});
+            Map<String, String> loadedInstructorTips = objectMapper.readValue(file, new TypeReference<>() {});
             InstructorRecommednationMap.putAll(loadedInstructorTips);
         } catch (IOException e) {
             System.err.println("Error loading Instructor Recommednation: " + e.getMessage());
@@ -820,7 +820,7 @@ public class LoadAndSaveEntities {
                 return;
             }
             
-            List<String> loadedInstructorTips = objectMapper.readValue(file, new TypeReference<List<String>>() {});
+            List<String> loadedInstructorTips = objectMapper.readValue(file, new TypeReference<>() {});
             instructorAnnouncements.addAll(loadedInstructorTips);
             System.out.println("Instructor announcements loaded successfully.");
         } catch (IOException e) {
@@ -875,7 +875,7 @@ public class LoadAndSaveEntities {
         
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            Map<String, String> loadedInstructorTips = objectMapper.readValue(file, new TypeReference<Map<String, String>>() {});
+            Map<String, String> loadedInstructorTips = objectMapper.readValue(file, new TypeReference<>() {});
             ProgramScheduleChangeMap.putAll(loadedInstructorTips);
         } catch (IOException e) {
             System.err.println("Error loading Program schedule: " + e.getMessage());
@@ -919,7 +919,7 @@ public class LoadAndSaveEntities {
         
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            Map<String, String> loadedInstructorTips = objectMapper.readValue(file, new TypeReference<Map<String, String>>() {});
+            Map<String, String> loadedInstructorTips = objectMapper.readValue(file, new TypeReference<>() {});
             ProgressListMap.putAll(loadedInstructorTips);
         } catch (IOException e) {
             System.err.println("Error loading Progress: " + e.getMessage());

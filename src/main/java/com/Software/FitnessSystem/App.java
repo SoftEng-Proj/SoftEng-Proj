@@ -220,33 +220,6 @@ public class App {
 	}
 	
 	/**
-	 * Gets the admin account associated with the current session.
-	 * @author Muath Hassoun
-	 * @return The current admin account.
-	 */
-	public static Admin getAdminAccount() {
-	    return Admin;
-	}
-	
-	/**
-	 * Gets the instructor account associated with the current session.
-	 * @author Muath Hassoun
-	 * @return The current instructor account.
-	 */
-	public static Instructor getInstructorAccount() {
-	    return Instructor;
-	}
-	
-	/**
-	 * Gets the client account associated with the current session.
-	 * @author Muath Hassoun
-	 * @return The current client account.
-	 */
-	public static Client getClientAccount() {
-	    return Client;
-	}
-	
-	/**
 	 * Saves the custom subscription plan changes to the corresponding file.
 	 * @author Muath Hassoun
 	 */
@@ -273,26 +246,6 @@ public class App {
 	 */
 	public static void saveFitnessProgramsChanges() {
 	    saveFitnessProgramsToFile(FitnessProgramsMap, FITNESS_PROGRAMS_FILENAME);
-	}
-	
-	/**
-	 * Saves changes to instructor announcements.
-	 * @author Ammar Shafii
-	 * @return A boolean indicating whether the changes were saved successfully.
-	 */
-	public static boolean saveInstructorAnnouncementsChanges() {
-	    saveInstructorAnnouncementToFile(InstructorAnnouncementMap, INSTRUCTOR_ANNOUNCEMENTS);
-	    return true;
-	}
-	
-	/**
-	 * Saves changes to program schedule changes.
-	 * @author Ammar Shafii
-	 * @return A boolean indicating whether the changes were saved successfully.
-	 */
-	public static boolean saveProgramScheduleChangeChanges() {
-	    saveProgramScheduleChangeToFile(ProgramScheduleChangeMap, PROGRAMSCHEDULE_CHANGE);
-	    return true;
 	}
 	
 	/**
@@ -329,16 +282,6 @@ public class App {
 	}
 	
 	/**
-	 * Saves changes to the progress list.
-	 * @author Alaa Alawneh
-	 * @return A boolean indicating whether the changes were saved successfully.
-	 */
-	public static boolean saveProgressListChanges() {
-	    saveProgressListToFile(ProgressListMap, PROGRESS_FILE);
-	    return true;
-	}
-	
-	/**
 	 * Saves changes to instructor tips and articles.
 	 *
 	 * @author Muath Hassoun
@@ -346,26 +289,6 @@ public class App {
 	public static void saveInstructorTipsChanges() {
 	    saveContentsToFile(InstructorTipsMap, TIPS_AND_ARTICLES_FILENAME);
 	    saveContentsToFile(PendingInstructorTipsMap, PENDING_TIPS_AND_ARTICLES_FILENAME);
-	}
-	
-	/**
-	 * Saves changes to instructor reminders.
-	 * @author Ammar Shafii
-	 * @return A boolean indicating whether the changes were saved successfully.
-	 */
-	public static boolean saveInstructorReminderChanges() {
-	    saveInstructorReminderToFile(InstructorReminderMap, INSTRUCTOR_REMINDER);
-	    return true;
-	}
-	
-	/**
-	 * Saves changes to instructor recommendations.
-	 * @author Ammar Shafii
-	 * @return A boolean indicating whether the changes were saved successfully.
-	 */
-	public static boolean saveInstructorRcommendationChanges() {
-	    saveInstructorRecommendationToFile(InstructorRecommendationMap, INSTRUCTOR_RECCOMENDATION);
-	    return true;
 	}
 	
 	/**
@@ -423,15 +346,6 @@ public class App {
 	public static void saveProgramSuggestionsChanges() {
 	    saveProgramSuggestionsToFile(ProgramSuggestions, PROGRAM_SUGGESTIONS_FILENAME);
 	}
-	
-    /**
-     * Returns the map containing user subscription plans.
-     * @author Muath Hassoun
-     * @return a map of user subscription plans
-     */
-    public static Map<String, User> getUserSubscriptionPlanMap() {
-        return UserSubscriptionPlan;
-    }
     
     /**
      * Returns the map containing custom subscription plans.
@@ -440,16 +354,6 @@ public class App {
      */
     public static Map<String, CustomPlan> getSubscriptionPlanMap() {
         return CustomSubscriptionPlan;
-    }
-    
-    /**
-     * Adds a new admin account to the AdminsMap.
-     * @author Muath Hassoun
-     * @param username the username of the admin
-     * @param adminAccount the admin account object
-     */
-    public static void putNewAdmin(String username, Admin adminAccount) {
-        AdminsMap.put(username, adminAccount);
     }
     
     /**
@@ -481,16 +385,6 @@ public class App {
     }
     
     /**
-     * Adds a new pending instructor account to the PendingInstructorsMap.
-     * @author Muath Hassoun
-     * @param username the username of the instructor
-     * @param instructorAccount the instructor account object
-     */
-    public static void putPnedingInstructor(String username, Instructor instructorAccount) {
-        PendingInstructorsMap.put(username, instructorAccount);
-    }
-    
-    /**
      * Returns the map containing all pending instructor accounts.
      * @author Muath Hassoun
      * @return a map of pending instructor accounts
@@ -516,16 +410,6 @@ public class App {
      */
     public static Map<String, Client> getClientsMap() {
         return ClientsMap;
-    }
-    
-    /**
-     * Adds a new fitness program to the FitnessProgramsMap.
-     * @author Muath Hassoun
-     * @param programName the name of the fitness program
-     * @param fitnessProgram the fitness program object
-     */
-    public static void putNewFitnessPrograms(String programName, Program fitnessProgram) {
-        FitnessProgramsMap.put(programName, fitnessProgram);
     }
     
     /**
@@ -610,30 +494,12 @@ public class App {
     }
     
     /**
-     * Sets the map containing all client profiles.
-     * @author Alaa Alawneh
-     * @param clientProfileMap the map of client profiles to set
-     */
-    public static void setClientProfileMap(Map<String, Profile> clientProfileMap) {
-        ClientProfileMap = clientProfileMap;
-    }
-    
-    /**
      * Returns the list containing all fitness milestones.
      * @author Alaa Alawneh
      * @return a list of fitness milestones
      */
     public static List<FitnessMilestone> getMilestonesList() {
         return MilestonesList;
-    }
-    
-    /**
-     * Sets the list containing all fitness milestones.
-     * @author Alaa Alawneh
-     * @param milestonesList the list of fitness milestones to set
-     */
-    public static void setMilestonesMap(List<FitnessMilestone> milestonesList) {
-        MilestonesList = milestonesList;
     }
     
     /**
@@ -646,30 +512,12 @@ public class App {
     }
     
     /**
-     * Sets the map containing program ratings.
-     * @author Alaa Alawneh
-     * @param programRatings the map of program ratings to set
-     */
-    public static void setProgramRatings(Map<String, Map<String, Integer>> programRatings) {
-        ProgramRatings = programRatings;
-    }
-    
-    /**
      * Returns the map containing program reviews.
      * @author Alaa Alawneh
      * @return a map of program reviews
      */
     public static Map<String, Map<String, String>> getProgramReviews() {
         return ProgramReviews;
-    }
-    
-    /**
-     * Sets the map containing program reviews.
-     * @author Alaa Alawneh
-     * @param programReviews the map of program reviews to set
-     */
-    public static void setProgramReviews(Map<String, Map<String, String>> programReviews) {
-        ProgramReviews = programReviews;
     }
     
     /**
@@ -682,30 +530,12 @@ public class App {
     }
     
     /**
-     * Sets the map containing program suggestions.
-     * @author Alaa Alawneh
-     * @param programSuggestions the map of program suggestions to set
-     */
-    public static void setProgramSuggestions(Map<String, Map<String, String>> programSuggestions) {
-        ProgramSuggestions = programSuggestions;
-    }
-    
-    /**
      * Returns the map containing instructor messages for clients.
      * @author Ammar Shafii
      * @return a map of instructor messages for clients
      */
     public static Map<String, String> getInstructorMessagesForClientMap() {
         return InstructorMessagesForClientsMap;
-    }
-    
-    /**
-     * Sets the map containing instructor messages for clients.
-     * @author Ammar Shafii
-     * @param instructorMessageMap the map of instructor messages for clients to set
-     */
-    public static void setInstructorMessagesForClientMap(Map<String, String> instructorMessageMap) {
-        InstructorMessagesForClientsMap = instructorMessageMap;
     }
     
     /**
@@ -718,30 +548,12 @@ public class App {
     }
     
     /**
-     * Sets the map containing program forum messages.
-     * @author Ammar Shafii
-     * @param programForumMsgsMap the map of program forum messages to set
-     */
-    public static void setProgramForumMsgsMap(Map<String, String> programForumMsgsMap) {
-        ProgramForumMsgsMap = programForumMsgsMap;
-    }
-    
-    /**
      * Returns the map containing feedback to clients.
      * @author Ammar Shafii
      * @return a map of feedback to clients
      */
     public static Map<String, String> getFeedbackToClientMap() {
         return FeedbackToClientMap;
-    }
-    
-    /**
-     * Sets the map containing feedback to clients.
-     * @author Ammar Shafii
-     * @param feedbackMap the map of feedback to clients to set
-     */
-    public static void setFeedbackToClientMap(Map<String, String> feedbackMap) {
-        ProgramForumMsgsMap = feedbackMap;
     }
     
     /**
@@ -754,30 +566,12 @@ public class App {
     }
     
     /**
-     * Sets the map containing instructor reminders.
-     * @author Ammar Shafii
-     * @param reminderMap the map of instructor reminders to set
-     */
-    public static void setInstructorReminderMap(Map<String, String> reminderMap) {
-        InstructorReminderMap = reminderMap;
-    }
-    
-    /**
      * Returns the map containing instructor recommendations.
      * @author Ammar Shafii
      * @return a map of instructor recommendations
      */
     public static Map<String, String> getInstructorRcommednationMap() {
         return InstructorRecommendationMap;
-    }
-    
-    /**
-     * Sets the map containing instructor recommendations.
-     * @author Ammar Shafii
-     * @param recommendationMap the map of instructor recommendations to set
-     */
-    public static void setInstructorRecommendationMap(Map<String, String> recommendationMap) {
-        InstructorRecommendationMap = recommendationMap;
     }
     
     /**
@@ -790,15 +584,6 @@ public class App {
     }
     
     /**
-     * Sets the list containing instructor announcements.
-     * @author Ammar Shafii
-     * @param instructorAnnouncementsMap the list of instructor announcements to set
-     */
-    public static void setInstructorAnnouncementsMap(List<String> instructorAnnouncementsMap) {
-        InstructorAnnouncementMap = instructorAnnouncementsMap;
-    }
-    
-    /**
      * Returns the map containing program schedule changes.
      * @author Ammar Shafii
      * @return a map of program schedule changes
@@ -808,29 +593,11 @@ public class App {
     }
     
     /**
-     * Sets the map containing program schedule changes.
-     * @author Ammar Shafii
-     * @param prorgamScheduleChangeMap the map of program schedule changes to set
-     */
-    public static void setProgramScheduleChangeMap(Map<String, String> prorgamScheduleChangeMap) {
-        ProgramScheduleChangeMap = prorgamScheduleChangeMap;
-    }
-    
-    /**
      * Returns the map containing progress list data.
      * @author Ammar Shafii
      * @return a map of progress list data
      */
     public static Map<String, String> getProgressListMap() {
         return ProgressListMap;
-    }
-    
-    /**
-     * Sets the map containing progress list data.
-     * @author Ammar Shafii
-     * @param progressListMap the map of progress list data to set
-     */
-    public static void setProgressListMap(Map<String, String> progressListMap) {
-        ProgressListMap = progressListMap;
     }
 }
