@@ -92,7 +92,7 @@ public class AdminPagesController {
         System.out.println("2. Monitor user activity and engagement statistics.");
         System.out.println("3. Approve or reject content submissions.");
         System.out.println("4. Manage subscription plans.");
-        System.out.println("5. Log out and return to the login page");
+        System.out.println("5. Log out and return to the login page.");
         System.out.println("6. Exit.");
         System.out.print(">> Enter your choice: ");
     }

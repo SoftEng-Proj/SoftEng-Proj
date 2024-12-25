@@ -12,7 +12,7 @@ import com.Software.FitnessSystem.LoginPage.AdminPagesController;
  * @author Muath Hassoun
  */
 public class ProgramMonitoringPage extends BasePage {
-	private AdminPagesController adminController;
+	private final AdminPagesController adminController;
 	
 	/**
      * Constructor to initialize the ProgramMonitoringPage with the provided AdminPagesController.

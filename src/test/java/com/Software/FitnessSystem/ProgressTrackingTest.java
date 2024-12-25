@@ -16,7 +16,7 @@ public class ProgressTrackingTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expected = "ClientLoggedIn";
-    	String actual = App.login("Clientuser", "ClientPassword", "Client");
+    	String actual = App.login("Clientuser", "Client");
         assertTrue(expected.equals(actual));
 	}
 

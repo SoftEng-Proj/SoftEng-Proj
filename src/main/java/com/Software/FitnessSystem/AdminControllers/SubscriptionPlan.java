@@ -138,16 +138,6 @@ public class SubscriptionPlan {
     }
     
     /**
-     * Retrieves a dynamic plan by its name.
-     *
-     * @param name the name of the plan to retrieve.
-     * @return the CustomPlan associated with the given name, or null if not found.
-     */
-    public static CustomPlan getDynamicPlan(String name) {
-        return dynamicPlans.get(name.toUpperCase());
-    }
-    
-    /**
      * Returns a string representation of the subscription plan.
      *
      * @return a string describing the subscription plan.

@@ -20,11 +20,11 @@ import java.util.Scanner;
  * @author Muath Hassoun
  */
 public class UserManagementControls {
-	private static Map<String, Instructor> ApprovedInstructorsMap = new HashMap<>();
-	private static List<String> deactivateInstructor = new ArrayList<>();
-	private static List<String> deactivateClient = new ArrayList<>();
-	private static List<String> updatedInstructor = new ArrayList<>();
-	private static List<String> updatedClient = new ArrayList<>();
+	private static final Map<String, Instructor> ApprovedInstructorsMap = new HashMap<>();
+	private static final List<String> deactivateInstructor = new ArrayList<>();
+	private static final List<String> deactivateClient = new ArrayList<>();
+	private static final List<String> updatedInstructor = new ArrayList<>();
+	private static final List<String> updatedClient = new ArrayList<>();
 	
     private static Instructor newInstructor;
     private static Instructor returnedInstructor;
@@ -32,9 +32,9 @@ public class UserManagementControls {
     private static Client returnedClient;
     private static boolean thereAreActivations = false;
     
-    private static LocalDateTime currentDateTime = LocalDateTime.now();
-    private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-    private static String formattedDateTime = currentDateTime.format(formatter);
+    private static final LocalDateTime currentDateTime = LocalDateTime.now();
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    private static final String formattedDateTime = currentDateTime.format(formatter);
     
     /**
      * Creates a new user account based on the provided details.
@@ -48,16 +48,17 @@ public class UserManagementControls {
      * @return A string indicating the status of the operation ("Instructor_Added", "Client_Added", or "Fail").
      */
 	public static String fillUserDetails(String fName, String lName, String email, String userName, String password, String role) {
-		switch(role) {
-		case "Instructor":
-			instructorNewAccount(fName, lName, email, userName, password);
-			return role + "_Added";
-		case "Client":
-			clientNewAccount(fName, lName, email, userName, password);
-			return role + "_Added";
-		default:
-			return "Fail";
-		}
+        return switch (role) {
+            case "Instructor" -> {
+                instructorNewAccount(fName, lName, email, userName, password);
+                yield role + "_Added";
+            }
+            case "Client" -> {
+                clientNewAccount(fName, lName, email, userName, password);
+                yield role + "_Added";
+            }
+            default -> "Fail";
+        };
 	}
 	
 	private static void instructorNewAccount(String fName, String lName, String email, String userName, String password) {
@@ -84,18 +85,17 @@ public class UserManagementControls {
      * @return True if the account was successfully created; otherwise, false.
      */
 	public static boolean verifyUserCreation(String userName, String role) {
-		switch(role) {
-		case "Instructor":
-			putNewInstructor(userName, newInstructor);
-			boolean isInstructorCreated = getInstructorsMap().containsKey(userName) ? true : false;
-			return isInstructorCreated;
-		case "Client":
-			putNewClient(userName, newClient);
-			boolean isClientCreated = getClientsMap().containsKey(userName) ? true : false;
-			return isClientCreated;
-		default:
-			return false;
-		}
+        return switch (role) {
+            case "Instructor" -> {
+                putNewInstructor(userName, newInstructor);
+                yield getInstructorsMap().containsKey(userName);
+            }
+            case "Client" -> {
+                putNewClient(userName, newClient);
+                yield getClientsMap().containsKey(userName);
+            }
+            default -> false;
+        };
 	}
 	
 	/**
@@ -106,16 +106,17 @@ public class UserManagementControls {
      * @return True if the user exists; otherwise, false.
      */
 	public static boolean selectUser(String username, String role) {
-		switch(role) {
-		case "Instructor":
-			returnedInstructor = getInstructorsMap().get(username);
-			return true;
-		case "Client":
-			returnedClient = getClientsMap().get(username);
-			return true;
-		default:
-			return false;
-		}
+        return switch (role) {
+            case "Instructor" -> {
+                returnedInstructor = getInstructorsMap().get(username);
+                yield true;
+            }
+            case "Client" -> {
+                returnedClient = getClientsMap().get(username);
+                yield true;
+            }
+            default -> false;
+        };
 	}
 	
 	/**
@@ -184,7 +185,6 @@ public class UserManagementControls {
 		}
 	}
 	
-	@SuppressWarnings("resource")
 	private static void editInstructorDetails(Instructor editInstructor) {
 	    Scanner scanner = new Scanner(System.in);
 	    updatedInstructor.remove(editInstructor.getUsername());
@@ -226,7 +226,6 @@ public class UserManagementControls {
 	    }
 	}
 	
-	@SuppressWarnings("resource")
 	private static void editClientDetails(Client editClient) {
 	    Scanner scanner = new Scanner(System.in);
 	    updatedClient.remove(editClient.getUsername());
@@ -285,14 +284,11 @@ public class UserManagementControls {
      * @return True if the update was successful; otherwise, false.
      */
 	public boolean verifyUserUpdate(String username, String role) {
-		switch(role) {
-		case "Instructor":
-			return updatedInstructor.contains(username);
-		case "Client":
-			return updatedClient.contains(username);
-		default:
-			return false;
-		}
+        return switch (role) {
+            case "Instructor" -> updatedInstructor.contains(username);
+            case "Client" -> updatedClient.contains(username);
+            default -> false;
+        };
 	}
 	
 	/**
@@ -327,27 +323,20 @@ public class UserManagementControls {
      * @return True if the deactivation was successful; otherwise, false.
      */
 	public boolean verifyUserDeactivation(String username, String role) {
-		switch(role) {
-		case "Instructor":
-			return deactivateInstructor.contains(username);
-		case "Client":
-			return deactivateClient.contains(username);
-		default:
-			return false;
-		}
+        return switch (role) {
+            case "Instructor" -> deactivateInstructor.contains(username);
+            case "Client" -> deactivateClient.contains(username);
+            default -> false;
+        };
 	}
 	
 	/**
-     * Checks and approves pending instructor applications.
-     *
-     * @return True if pending applications were approved; otherwise, false.
-     */
-	public static boolean checkAndApproveInstructors() {
-		if(!checkPendingApplications()) {
-			return false;
-		} else {
+	 * Checks and approves pending instructor applications.
+	 */
+	public static void checkAndApproveInstructors() {
+		if(checkPendingApplications()) {
 			approveInstructors();
-			return verifyAccountActivation();
+			verifyAccountActivation();
 		}
 	}
 	
@@ -384,7 +373,6 @@ public class UserManagementControls {
      *
      * @return True if any instructors were approved; otherwise, false.
      */
-	@SuppressWarnings("resource")
 	public static boolean approveInstructors() {
 	    Map<String, Instructor> pendingInstructors = getPendingInstructorsMap();
 	    Map<String, Instructor> instructorsMap = getInstructorsMap();

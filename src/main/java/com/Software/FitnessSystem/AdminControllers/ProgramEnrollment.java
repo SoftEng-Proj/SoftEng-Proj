@@ -44,7 +44,7 @@ public class ProgramEnrollment {
 
     /**
      * Retrieves the name of the fitness program.
-     * 
+     *
      * @return The name of the program.
      */
     public String getProgramName() {
@@ -53,7 +53,7 @@ public class ProgramEnrollment {
 
     /**
      * Sets the name of the fitness program.
-     * 
+     *
      * @param programName The name to set for the program.
      */
     public void setProgramName(String programName) {
@@ -71,7 +71,7 @@ public class ProgramEnrollment {
 
     /**
      * Sets the number of enrollments for the fitness program.
-     * 
+     *
      * @param enrollments The number of enrollments to set.
      */
     public void setEnrollments(int enrollments) {
@@ -150,7 +150,7 @@ public class ProgramEnrollment {
                 }
             } catch (DateTimeParseException e) {
                 System.out.println("Invalid date format for program: " + entry.getName());
-                e.printStackTrace();
+                e.fillInStackTrace();
             }
         }
     }

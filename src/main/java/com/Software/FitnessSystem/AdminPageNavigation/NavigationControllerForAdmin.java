@@ -12,8 +12,6 @@ import java.util.Scanner;
  * @author Muath Hassoun
  */
 public class NavigationControllerForAdmin {
-    private Page currentPage;
-    
     /**
      * Navigates to a specific page and allows the admin to interact with the page.
      * Continuously prompts the user to enter a choice and executes the selected option.
@@ -23,14 +21,12 @@ public class NavigationControllerForAdmin {
      * @param page The page to navigate to.
      * @param controller The controller responsible for managing admin page actions.
      */
-    @SuppressWarnings("resource")
 	public void navigateTo(Page page, AdminPagesController controller) {
-        this.currentPage = page;
         while (true) {
-            currentPage.display();
+            page.display();
             System.out.print(">> Enter your choice: ");
             int choice = new Scanner(System.in).nextInt();
-            currentPage.executeOption(choice);
+            page.executeOption(choice);
         }
     }
 }

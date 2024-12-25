@@ -11,9 +11,9 @@ import java.util.Scanner;
  * generating reports, and tracking the status of programs (Active or Completed).
  * Includes functionalities to display all programs, view enrollment statistics,
  * and generate detailed reports.
- * 
+ * <p>
  * This class relies on `ProgramEnrollment` for data representation.
- * 
+ * <p>
  * Author: Muath Hassoun
  */
 public class ProgramMonitoringControls {
@@ -113,11 +113,8 @@ public class ProgramMonitoringControls {
 
     /**
      * Displays the report generation menu and processes the user's choice.
-     * 
-     * @return true if a report was generated; false otherwise.
      */
-    @SuppressWarnings("resource")
-	public static boolean chooseReportGenerationOption() {
+	public static void chooseReportGenerationOption() {
         Scanner scanner = new Scanner(System.in);
         printTheGenerateQuestion();
 
@@ -143,17 +140,15 @@ public class ProgramMonitoringControls {
         switch (choice) {
             case 1:
                 System.out.println("Generating report for all programs...");
-                return generateReportsOption(getProgramEnrollmentMap(), "Null", false);
+                generateReportsOption(getProgramEnrollmentMap(), "Null", false);
+                return;
             case 2:
                 System.out.print("\n");
                 printPrograms(getProgramEnrollmentMap(), false);
                 String programName = askTheNameOfTheProgram();
                 System.out.println("\nReport generation in progress for the program: \"" + programName + "\".");
-                return generateReportsOption(getProgramEnrollmentMap(), programName, true);
-            case 3:
-                return true;
+                generateReportsOption(getProgramEnrollmentMap(), programName, true);
         }
-        return false;
     }
 
     /**
@@ -173,7 +168,6 @@ public class ProgramMonitoringControls {
      * 
      * @return The name of the program entered by the user.
      */
-    @SuppressWarnings("resource")
 	public static String askTheNameOfTheProgram() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter the program name:");
@@ -245,7 +239,7 @@ public class ProgramMonitoringControls {
         System.out.println("\n--- Completed Programs ---");
         trackCompletedPrograms(programs);
         isProgramStatusPrinted = true;
-        return isProgramStatusPrinted;
+        return true;
     }
     
     /**

@@ -18,7 +18,7 @@ import com.Software.FitnessSystem.LoginPage.AdminPagesController;
  * @author Muath Hassoun
  */
 public class ContentManagementPage extends BasePage {
-    private AdminPagesController adminController;
+    private final AdminPagesController adminController;
     
     /**
      * Constructor to initialize the ContentManagementPage with the provided AdminPagesController.
