@@ -8,6 +8,11 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class ProgramExplorationEnrollmentTest {
+	App app;
+	public ProgramExplorationEnrollmentTest(App ap){
+		this.app = ap;
+	}
+	
 	@Given("I am on the program exploration page")
 	public void i_am_on_the_program_exploration_page() {
 	    // Write code here that turns the phrase above into concrete actions

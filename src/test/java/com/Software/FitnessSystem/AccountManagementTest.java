@@ -12,9 +12,9 @@ public class AccountManagementTest {
 	AccountManagementControls accountManagement;
     App app;
     
-    public AccountManagementTest() {
-        this.app = new App();
-        this.accountManagement = new AccountManagementControls();
+    public AccountManagementTest(App ap, AccountManagementControls am) {
+        this.app = ap;
+        this.accountManagement = am;
     }
 	@Given("I am on the dietary preferences settings page")
 	public void i_am_on_the_dietary_preferences_settings_page() {

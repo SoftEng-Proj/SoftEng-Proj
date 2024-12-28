@@ -8,6 +8,11 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class FeedbackReviewsTest {
+	App app;
+	public FeedbackReviewsTest(App ap){
+		this.app = ap;
+	}
+	
 	@When("I rate the program {string} out of {int} stars")
 	public void i_rate_the_program_out_of_stars(String string, Integer int1) {
 	    // Write code here that turns the phrase above into concrete actions
