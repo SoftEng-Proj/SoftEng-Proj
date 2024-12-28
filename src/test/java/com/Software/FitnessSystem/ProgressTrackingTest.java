@@ -11,6 +11,13 @@ import io.cucumber.java.en.When;
 public class ProgressTrackingTest {
 	ProgressTrackingControls progressTrackingControls = new ProgressTrackingControls();
 	ProgramEnrollment programEnrollment = new ProgramEnrollment();
+	App app;
+	
+	public ProgressTrackingTest(App ap,ProgressTrackingControls ptc, ProgramEnrollment pe) {
+		this.app = ap;
+        this.progressTrackingControls = ptc;
+        this.programEnrollment = pe;
+	}
 	@Given("I am logged into my account")
 	public void i_am_logged_into_my_account() {
 	    // Write code here that turns the phrase above into concrete actions
