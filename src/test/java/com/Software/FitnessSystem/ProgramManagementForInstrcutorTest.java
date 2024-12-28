@@ -7,6 +7,13 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class ProgramManagementForInstrcutorTest {
+	
+App app;
+    
+    public  ProgramManagementForInstrcutorTest(App obj) {
+		this.app = obj;
+      
+    }
 
 	@When("I create a new program with Title {string}, Duration {string}, Difficulty {string},Goals {string}, Price {string}")
 	public void i_create_a_new_program_with_title_duration_difficulty_goals_price(String string, String string2, String string3, String string4, String string5) {

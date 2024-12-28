@@ -8,6 +8,14 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class ProgressTrackingForInstructorTest {
+	
+	
+App app;
+    
+    public ProgressTrackingForInstructorTest(App obj) {
+		this.app = obj;
+      
+    }
 
 
 @When("I view the progress of {string}")

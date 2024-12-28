@@ -3,12 +3,20 @@ import static org.junit.Assert.*;
 
 import com.Software.FitnessSystem.InstructorControllers.InteractForInstructorControls;
 import com.Software.FitnessSystem.InstructorPageNavigation.InteractForInstructorPage;
+import com.Software.FitnessSystem.LoginPage.AdminPagesController;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class ClientInteractionForInstructorTest {
+	
+App app;
+    
+    public ClientInteractionForInstructorTest(App obj) {
+		this.app = obj;
+      
+    }
 
 	@Given("I am logged in as an instructor")
 	public void i_am_logged_in_as_an_instructor() {
