@@ -93,9 +93,9 @@ public class App {
     public App() {
     	loadCustomSubscriptionPlanFromFile(CustomSubscriptionPlan, SUBSCRIPTION_PLAN_FILENAME);
     	loadAdminsFromFile(AdminsMap, ADMIN_ACCOUNTS_FILENAME);
-    	loadInstructorsFromFile(InstructorsMap, INSTRUCTOR_ACCOUNTS_FILENAME);
+		loadInstructorsFromFile(InstructorsMap, INSTRUCTOR_ACCOUNTS_FILENAME);
+		loadClientsFromFile(ClientsMap, CLIENT_ACCOUNTS_FILENAME);
     	loadInstructorsFromFile(PendingInstructorsMap, PENDING_INSTRUCTOR_ACCOUNTS_FILENAME);
-    	loadClientsFromFile(ClientsMap, CLIENT_ACCOUNTS_FILENAME);
     	loadFitnessProgramsFromFile(FitnessProgramsMap, FITNESS_PROGRAMS_FILENAME);
     	loadContentsFromFile(InstructorTipsMap, TIPS_AND_ARTICLES_FILENAME);
     	loadContentsFromFile(PendingInstructorTipsMap, PENDING_TIPS_AND_ARTICLES_FILENAME);
@@ -115,9 +115,9 @@ public class App {
         loadInstructorRecommednationFromFile(InstructorRecommendationMap, INSTRUCTOR_RECCOMENDATION);
         loadProgramScheduleChangeFromFile(ProgramScheduleChangeMap, PROGRAMSCHEDULE_CHANGE);
         loadProgressListFromFile(ProgressListMap, PROGRESS_FILE);
-        
-        SubscriptionPlan.convertFromPlanTypeToCustomPlan();
-    	fillUserSubscriptionPlanMap();
+
+		SubscriptionPlan.convertFromPlanTypeToCustomPlan();
+		fillUserSubscriptionPlanMap();
     	ProgramEnrollmentMap = ProgramEnrollment.enrolmentStatistics(FitnessProgramsMap);
     }
     
@@ -209,7 +209,7 @@ public class App {
 	            UserSubscriptionPlan.put(client.getUsername(), client);
 	        }
 	    }
-	    
+
 	    if (InstructorsMap != null && !InstructorsMap.isEmpty()) {
 	        for (Instructor instructor : InstructorsMap.values()) {
 	            UserSubscriptionPlan.put(instructor.getUsername(), instructor);

@@ -7,6 +7,11 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class NotificationsForInstructorTest {
+	App app;
+
+	public NotificationsForInstructorTest(App obj){
+		this.app = obj;
+	}
 
 	@Given("there is a program titled {string}")
 	public void there_is_a_program_titled(String string) {

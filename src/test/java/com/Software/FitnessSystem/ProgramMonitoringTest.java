@@ -12,9 +12,9 @@ public class ProgramMonitoringTest {
     AdminPagesController adminControllers;
     App app;
     
-    public ProgramMonitoringTest() {
-        this.app = new App();
-        this.adminControllers = new AdminPagesController();
+    public ProgramMonitoringTest(App obj, AdminPagesController admin) {
+		this.app = obj;
+        this.adminControllers = admin;
     }
     
 	@Given("I am on the {string} page")

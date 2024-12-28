@@ -14,7 +14,6 @@ App app;
     
     public ProgressTrackingForInstructorTest(App obj) {
 		this.app = obj;
-      
     }
 
 

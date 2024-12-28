@@ -15,7 +15,6 @@ App app;
     
     public ClientInteractionForInstructorTest(App obj) {
 		this.app = obj;
-      
     }
 
 	@Given("I am logged in as an instructor")
@@ -23,7 +22,7 @@ App app;
 	    // Write code here that turns the phrase above into concrete actions
 	   // throw new io.cucumber.java.PendingException();
 		String expected = "InstructorLoggedIn";
-    	String actual = App.login("InstructorUser", "Instructor");
+    	String actual = App.login("AmmarAr", "Instructor");
         assertTrue(expected.equals(actual));
     
 	}
