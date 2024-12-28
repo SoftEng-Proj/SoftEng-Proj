@@ -16,10 +16,10 @@ public class UserManagementTest {
     AdminPagesController adminControllers;
     App app;
     
-    public UserManagementTest() {
-        this.app = new App();
-        this.adminControllers = new AdminPagesController();
-        this.managementControls = new UserManagementControls();
+    public UserManagementTest(App obj, AdminPagesController admin, UserManagementControls userManag) {
+        this.app = obj;
+        this.adminControllers = admin;
+        this.managementControls = userManag;
     }
     
     @Given("I am logged in as an admin")
@@ -29,8 +29,8 @@ public class UserManagementTest {
         assertEquals(expected, actual);
     }
     
-    @When("I navigate to the {string} page")
-    public void i_navigate_to_the_page(String string) {
+    @When("I navigate to the User Management page")
+    public void i_navigate_to_the_User_Management_page() {
     	boolean expected = true;
         boolean actual = adminControllers.navigateToManagementPage();
         assertEquals(expected, actual);
@@ -59,8 +59,8 @@ public class UserManagementTest {
         assertEquals(expected, actual);
     }
     
-    @Given("I am on the {string} page")
-    public void i_am_on_the_page(String string) {
+    @Given("I am on the User Management page")
+    public void i_am_on_the_User_Management_page() {
     	boolean expected = true;
         boolean actual = adminControllers.navigateToPage(1, adminControllers);
         assertEquals(expected, actual);

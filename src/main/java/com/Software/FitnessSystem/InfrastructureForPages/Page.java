@@ -4,10 +4,10 @@ package com.Software.FitnessSystem.InfrastructureForPages;
  * Represents a blueprint for pages in the fitness system.
  * This interface defines the essential methods that all pages must implement 
  * to support displaying content and handling user interactions.
- * 
+ * <p>
  * Any class that implements this interface must provide concrete implementations 
  * for the display logic and the execution of user-selected options.
- * 
+ * <p>
  * This interface is a core part of the system's page navigation structure.
  * 
  * @author Muath Hassoun

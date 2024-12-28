@@ -5,7 +5,7 @@ import java.util.Scanner;
  * Represents a base class for pages in the fitness system.
  * This class implements the common functionality shared by all pages in the system.
  * It provides basic methods for navigation and user input handling.
- * 
+ * <p>
  * This class implements the {@link Page} interface and can be extended by specific page classes 
  * to provide detailed page functionality.
  * 

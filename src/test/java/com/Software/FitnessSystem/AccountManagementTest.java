@@ -31,7 +31,7 @@ public class AccountManagementTest {
 	    //throw new io.cucumber.java.PendingException();
 		String expcted = "Dietary Preferences Updated";
 		String acutal = AccountManagementControls.setDietaryPreferences(null, "", "");
-        assertEquals(acutal, expcted);
+        assertEquals(expcted, acutal);
 	}
 
 	@When("I add {string} as a restriction")
@@ -40,7 +40,7 @@ public class AccountManagementTest {
 	    //throw new io.cucumber.java.PendingException();
 		String expcted = "Dietary Preferences Updated";
 		String acutal = AccountManagementControls.setDietaryPreferences(null, "", "");
-		assertTrue(acutal.equals(expcted));
+        assertEquals(expcted, acutal);
 		
 	}
 

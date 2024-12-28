@@ -14,13 +14,13 @@ public class SubscriptionManagementTest {
     AdminPagesController adminControllers;
     App app;
     
-    public SubscriptionManagementTest() {
-        this.app = new App();
-        this.adminControllers = new AdminPagesController();
+    public SubscriptionManagementTest(App obj, AdminPagesController admin) {
+        this.app = obj;
+        this.adminControllers = admin;
     }
     
-	@Given("I am on the {string} page")
-	public void i_am_on_the_page(String string) {
+	@Given("I am on the Subscription Management page")
+	public void i_am_on_the_Subscription_Management_page() {
 		boolean expected = true;
         boolean actual = adminControllers.navigateToPage(4, adminControllers);
         assertEquals(expected, actual);

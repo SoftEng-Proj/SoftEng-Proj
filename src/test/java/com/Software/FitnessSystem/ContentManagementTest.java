@@ -14,13 +14,13 @@ public class ContentManagementTest {
     AdminPagesController adminControllers;
     App app;
     
-    public ContentManagementTest() {
-		this.app = new App();
-        this.adminControllers = new AdminPagesController();
+    public ContentManagementTest(App obj, AdminPagesController adminPagesController) {
+		this.app = obj;
+        this.adminControllers = adminPagesController;
     }
 	
-	@Given("I am logged in as an admin")
-	public void i_am_logged_in_as_an_admin() {
+	@Given("I am logged in as an Admin")
+	public void i_am_logged_in_as_an_Admin() {
 		String expected = "AdminLoggedIn";
     	String actual = login("AdminUser", "Admin");
         assertEquals(expected, actual);

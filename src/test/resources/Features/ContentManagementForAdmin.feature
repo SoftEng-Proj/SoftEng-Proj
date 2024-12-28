@@ -2,7 +2,7 @@
 Feature: Content Management
   @approve_or_reject_wellness_articles_tips_or_recipes_shared_by_instructors
   Scenario: Approve or reject wellness articles, tips, or recipes shared by instructors
-    Given I am logged in as an admin
+    Given I am logged in as an Admin
     When I navigate to the "Content Management" page
     And I review a wellness article, tip, or recipe
     Then I can approve or reject the submission
