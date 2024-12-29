@@ -1,0 +1,9 @@
+com.Software.FitnessSystem
+com.Software.FitnessSystem.AdminControllers
+com.Software.FitnessSystem.AdminPageNavigation
+com.Software.FitnessSystem.ClientControllers
+com.Software.FitnessSystem.ClientPageNavigation
+com.Software.FitnessSystem.InfrastructureForPages
+com.Software.FitnessSystem.InstructorControllers
+com.Software.FitnessSystem.InstructorPageNavigation
+com.Software.FitnessSystem.LoginPage

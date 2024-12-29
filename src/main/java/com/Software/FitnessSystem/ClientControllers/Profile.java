@@ -1,0 +1,117 @@
+package com.Software.FitnessSystem.ClientControllers;
+
+/**
+ * Represents a fitness profile for a client
+ * The profile has age, fitness goals, dietary preferences, and dietary restrictions
+ * 
+ * @author Alaa Alawneh
+ */
+public class Profile {
+    private String age;
+    private String fitnessGoals;
+    private String dietaryPreference;
+    private String dietaryRestrictions;
+
+    /**
+     * Constructs a new Profile with the specified age and fitness goals
+     *
+     * @param age          the age of the client
+     * @param fitnessGoals the fitness goals of the client
+     */
+    public Profile(String age, String fitnessGoals) {
+        this.age = age;
+        this.fitnessGoals = fitnessGoals;
+        this.dietaryPreference = "";
+        this.dietaryRestrictions = "";
+    }
+
+    /**
+     * Constructs a default Profile with no initial values
+     */
+    public Profile() {
+    }
+
+    /**
+     * Gets the age of the client
+     *
+     * @return the age of the client
+     */
+    public String getAge() {
+        return age;
+    }
+
+    /**
+     * Sets the age of the client
+     *
+     * @param age the new age of the client
+     */
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    /**
+     * Gets the fitness goals of the client
+     *
+     * @return the fitness goals of the client
+     */
+    public String getFitnessGoals() {
+        return fitnessGoals;
+    }
+
+    /**
+     * Sets the fitness goals of the client
+     *
+     * @param fitnessGoals the new fitness goals of the client
+     */
+    public void setFitnessGoals(String fitnessGoals) {
+        this.fitnessGoals = fitnessGoals;
+    }
+
+    /**
+     * Gets the dietary preference of the client
+     *
+     * @return the dietary preference of the client
+     */
+    public String getDietaryPreference() {
+        return dietaryPreference;
+    }
+
+    /**
+     * Sets the dietary preference of the client
+     *
+     * @param dietaryPreference the new dietary preference of the client
+     */
+    public void setDietaryPreference(String dietaryPreference) {
+        this.dietaryPreference = dietaryPreference;
+    }
+
+    /**
+     * Gets the dietary restrictions of the client
+     *
+     * @return the dietary restrictions of the client
+     */
+    public String getDietaryRestrictions() {
+        return dietaryRestrictions;
+    }
+
+    /**
+     * Sets the dietary restrictions of the client
+     *
+     * @param dietaryRestrictions the new dietary restrictions of the client
+     */
+    public void setDietaryRestrictions(String dietaryRestrictions) {
+        this.dietaryRestrictions = dietaryRestrictions;
+    }
+
+    /**
+     * Returns a string representation of the Profile
+     *
+     * @return a string containing the age, fitness goals, dietary preference, and dietary restrictions
+     */
+    @Override
+    public String toString() {
+        return "Profile [Age=" + age + ", Fitness Goals=" + fitnessGoals
+                + ", Dietary Preference=" + dietaryPreference
+                + ", Dietary Restrictions=" + dietaryRestrictions + "]";
+    }
+}
