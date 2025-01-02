@@ -34,4 +34,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SoftToken }}
-        run: mvn -X -B  jacoco:prepare-agent  verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar  jacoco:report -Dsonar.coverage.exclusions=**/App.java,**/LoadAndSaveEntities.java,**/AdminPageNavigation/**,**/ClientPageNavigation/**,**/InstructorPageNavigation/**,**/LoginPage/** -Dsonar.projectKey=SoftEng-Proj_SoftEng-Proj
+        run: mvn -X -B  jacoco:prepare-agent  verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar  jacoco:report -Dsonar.coverage.exclusions=**/App.java,**/LoadAndSaveEntities.java,**/AdminPageNavigation/**,**/ClientPageNavigation/**,**/InstructorPageNavigation/**,**/LoginPage/**,**/InstructorPageNavigation/** -Dsonar.projectKey=SoftEng-Proj_SoftEng-Proj
