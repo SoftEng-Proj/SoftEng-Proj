@@ -1,3 +1,4 @@
+@AlaaAlawnehTests
 @account_management
 Feature: Account Management
   I want to create and customize profiles with personal details and dietary preferences.

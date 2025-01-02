@@ -1,5 +1,7 @@
 package com.Software.FitnessSystem.ClientControllers;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * Represents a fitness profile for a client
  * The profile has age, fitness goals, dietary preferences, and dietary restrictions
@@ -7,6 +9,7 @@ package com.Software.FitnessSystem.ClientControllers;
  * @author Alaa Alawneh
  */
 public class Profile {
+	private String name;
     private String age;
     private String fitnessGoals;
     private String dietaryPreference;
@@ -19,6 +22,7 @@ public class Profile {
      * @param fitnessGoals the fitness goals of the client
      */
     public Profile(String age, String fitnessGoals) {
+    	this.name = name;
         this.age = age;
         this.fitnessGoals = fitnessGoals;
         this.dietaryPreference = "";
@@ -36,6 +40,20 @@ public class Profile {
      *
      * @return the age of the client
      */
+    
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Sets the name of the client
+     *
+     * @param name the new name of the client
+     */
+    public void setName(String age) {
+        this.name = name;
+    }
+    
     public String getAge() {
         return age;
     }

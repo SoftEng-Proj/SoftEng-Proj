@@ -1,12 +1,14 @@
 package com.Software.FitnessSystem.ClientControllers;
 
 import com.Software.FitnessSystem.Client;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 /**
  * Represents a fitness milestone achieved by the client
  * Each milestone has a type, value, date, and the username of the client
  * 
  * @author Alaa Alawneh
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class FitnessMilestone {
 	    private String username;
 	    private String type;

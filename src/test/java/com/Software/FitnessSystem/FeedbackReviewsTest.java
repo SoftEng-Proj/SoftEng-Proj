@@ -18,7 +18,7 @@ public class FeedbackReviewsTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expected = "Rating Submited succsesfully";
-		String actual = FeedbackReviewsControls.submitRating("", "", 0);
+		String actual = FeedbackReviewsControls.submitRating("testUser", "Rating Submited succsesfully", 3);
 		assertTrue(actual.equals(expected));
 	}
 
@@ -27,7 +27,7 @@ public class FeedbackReviewsTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expected = "Rating Submited succsesfully";
-		String actual = FeedbackReviewsControls.submitRating("", "", 0);
+		String actual = FeedbackReviewsControls.submitRating("testUser", "program1", 5);
 		assertTrue(actual.equals(expected));
 	}
 
@@ -36,7 +36,7 @@ public class FeedbackReviewsTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expected = "Rating Submited succsesfully";
-		String actual = FeedbackReviewsControls.submitRating("", "", 0);
+		String actual = FeedbackReviewsControls.submitRating("testUser", "program1", 5);
 		assertTrue(actual.equals(expected));
 	}
 
@@ -45,7 +45,7 @@ public class FeedbackReviewsTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expected = "Review Submited succsesfully";
-		String actual = FeedbackReviewsControls.submitReview("", "", "");
+		String actual = FeedbackReviewsControls.submitReview("testUser", "program1", string);
 		assertTrue(actual.equals(expected));
 	}
 
@@ -54,7 +54,7 @@ public class FeedbackReviewsTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expected = "Review Submited succsesfully";
-		String actual = FeedbackReviewsControls.submitReview("", "", "");
+		String actual = FeedbackReviewsControls.submitReview("testUser", "program1", "Great program with challenging workouts!");
 		assertTrue(actual.equals(expected));
 	}
 
@@ -63,7 +63,7 @@ public class FeedbackReviewsTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expected = "Review Submited succsesfully";
-		String actual = FeedbackReviewsControls.submitReview("", "", "");
+		String actual = FeedbackReviewsControls.submitReview("testUser", "program1", "Great program with challenging workouts!");
 		assertTrue(actual.equals(expected));
 	}
 
@@ -72,7 +72,7 @@ public class FeedbackReviewsTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expected = "Suggestion Submited succsesfully";
-		String actual = FeedbackReviewsControls.submitSuggestion("", "", "");
+		String actual = FeedbackReviewsControls.submitSuggestion("testUser", string, "Add more yoga classes.");
 		assertTrue(actual.equals(expected));
 	}
 
@@ -81,7 +81,7 @@ public class FeedbackReviewsTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expected = "Suggestion Submited succsesfully";
-		String actual = FeedbackReviewsControls.submitSuggestion("", "", "");
+		String actual = FeedbackReviewsControls.submitSuggestion("testUser", "program1", string);
 		assertTrue(actual.equals(expected));
 	}
 
@@ -90,7 +90,7 @@ public class FeedbackReviewsTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expected = "Suggestion Submited succsesfully";
-		String actual = FeedbackReviewsControls.submitSuggestion("", "", "");
+		String actual = FeedbackReviewsControls.submitSuggestion("testUser", "program1", "Add more yoga classes.");
 		assertTrue(actual.equals(expected));
 	}
 }

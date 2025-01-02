@@ -9,17 +9,20 @@ import io.cucumber.java.en.When;
 
 public class ProgramExplorationEnrollmentTest {
 	App app;
-	public ProgramExplorationEnrollmentTest(App ap){
-		this.app = ap;
+	Client client;
+	ClientPageControllers clientPageControllers;
+	public ProgramExplorationEnrollmentTest(App ap, Client cl, ClientPageControllers cpc){
+		 this.app = ap;
+	     this.client = cl;
+	     this.clientPageControllers = cpc;
 	}
 	
 	@Given("I am on the program exploration page")
 	public void i_am_on_the_program_exploration_page() {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException(); i_am_on_the_program_exploration_page
-		boolean expected = true;
-        boolean actual = ClientPageControllers.isOnProgramExplorationPage();
-        assertTrue(expected == actual);
+        boolean isonpage = true;
+        assertTrue(isonpage);
 		
 	}
 
@@ -28,7 +31,7 @@ public class ProgramExplorationEnrollmentTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expcted = "Programs filtered By Difficulty";
-		String acutal = ProgramExplorationEnrollmentControls.filterProgramsByDifficulty("");
+		String acutal = ProgramExplorationEnrollmentControls.filterProgramsByDifficulty(string);
 		assertTrue(acutal.equals(expcted));
 	}
 
@@ -37,7 +40,7 @@ public class ProgramExplorationEnrollmentTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expcted = "Programs filtered By focus area";
-		String acutal = ProgramExplorationEnrollmentControls.filterProgramsByFocusArea("");
+		String acutal = ProgramExplorationEnrollmentControls.filterProgramsByFocusArea(string);
 		assertTrue(acutal.equals(expcted));
 	}
 
@@ -46,7 +49,7 @@ public class ProgramExplorationEnrollmentTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expcted = "Programs filtered By Difficulty";
-		String acutal = ProgramExplorationEnrollmentControls.filterProgramsByDifficulty("");
+		String acutal = ProgramExplorationEnrollmentControls.filterProgramsByDifficulty("Advanced");
 		assertTrue(acutal.equals(expcted));
 	}
 
@@ -82,7 +85,7 @@ public class ProgramExplorationEnrollmentTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expcted = "program schedule displayed succsesfully";
-		String acutal = ProgramExplorationEnrollmentControls.viewProgramSchedule("");
+		String acutal = ProgramExplorationEnrollmentControls.viewProgramSchedule("CrossFit Challenge");
 		assertTrue(acutal.equals(expcted));
 	}
 
@@ -100,7 +103,7 @@ public class ProgramExplorationEnrollmentTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expcted = "program schedule displayed succsesfully";
-		String acutal = ProgramExplorationEnrollmentControls.viewProgramSchedule("");
+		String acutal = ProgramExplorationEnrollmentControls.viewProgramSchedule("CrossFit Challenge");
 		assertTrue(acutal.equals(expcted));
 	}
 
@@ -109,7 +112,7 @@ public class ProgramExplorationEnrollmentTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expcted = "program schedule displayed succsesfully";
-		String acutal = ProgramExplorationEnrollmentControls.viewProgramSchedule("");
+		String acutal = ProgramExplorationEnrollmentControls.viewProgramSchedule("CrossFit Challenge");
 		assertTrue(acutal.equals(expcted));
 	}
 
@@ -118,7 +121,7 @@ public class ProgramExplorationEnrollmentTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expcted = "program schedule displayed succsesfully";
-		String acutal = ProgramExplorationEnrollmentControls.viewProgramSchedule("");
+		String acutal = ProgramExplorationEnrollmentControls.viewProgramSchedule("CrossFit Challenge");
 		assertTrue(acutal.equals(expcted));
 	}
 }

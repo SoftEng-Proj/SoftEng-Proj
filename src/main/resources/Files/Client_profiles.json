@@ -1,1 +1,9 @@
-{}
+{
+  "John29Doe": {
+    "name": "John Doe",
+    "age": "25",
+    "fitnessGoals": "Weight Loss",
+    "dietaryRestrictions": "No Gluten",
+    "dietaryPreference": "Vegetarian"
+  }
+}

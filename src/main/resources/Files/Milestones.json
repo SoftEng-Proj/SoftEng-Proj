@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "username": "john_doe",
+    "type": "goal",
+    "value": "1000",
+    "date": "2025-01-01"
+  },
+  {
+    "username": "jane_doe",
+    "type": "goal",
+    "value": "500",
+    "date": "2025-01-02"
+  }
+]

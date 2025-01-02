@@ -1,3 +1,4 @@
+@AlaaAlawnehTests
 @program_exploration_and_enrollment
 Feature: Program Exploration and Enrollment
   I want to browse fitness programs using filters and enroll in programs to view schedules.

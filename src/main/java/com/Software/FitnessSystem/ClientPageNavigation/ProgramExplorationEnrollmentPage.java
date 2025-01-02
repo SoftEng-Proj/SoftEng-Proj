@@ -1,4 +1,6 @@
 package com.Software.FitnessSystem.ClientPageNavigation;
+import java.util.Scanner;
+
 import com.Software.FitnessSystem.Client;
 import com.Software.FitnessSystem.ClientControllers.ProgramExplorationEnrollmentControls;
 import com.Software.FitnessSystem.InfrastructureForPages.BasePage;
@@ -17,6 +19,7 @@ public class ProgramExplorationEnrollmentPage extends BasePage {
 	private ClientPageControllers clientController;
     @SuppressWarnings("unused")
 	private ProgramExplorationEnrollmentControls programExplorationEnrollmentControls;
+    private Scanner scanner;
     /**
      * Constructs a ProgramExplorationEnrollmentPage with the given client controller
      * and current client
@@ -27,6 +30,7 @@ public class ProgramExplorationEnrollmentPage extends BasePage {
     public ProgramExplorationEnrollmentPage(ClientPageControllers clientController, Client currentClient) {
         this.clientController = clientController;
         this.programExplorationEnrollmentControls = new ProgramExplorationEnrollmentControls(currentClient);
+        this.scanner = new Scanner(System.in);
     }
     /**
      * Displays the menu options for program exploration and enrollment
