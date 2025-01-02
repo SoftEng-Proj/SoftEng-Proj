@@ -16,6 +16,7 @@ public class SubscriptionManagementControls {
 	private static boolean isPrinted = false;
 	private static String userTupe = "";
 	private static User user;
+	public SubscriptionManagementControls() {}
 	
 	/**
      * Displays the main menu for managing subscription plans and handles user interaction.

@@ -36,6 +36,8 @@ public class UserManagementControls {
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     private static final String formattedDateTime = currentDateTime.format(formatter);
     
+    public UserManagementControls() {}
+    
     /**
      * Creates a new user account based on the provided details.
      *

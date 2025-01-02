@@ -9,6 +9,8 @@ import java.util.Scanner;
  * @author Muath Hassoun
  */
 public class ContentManagementControls {
+	public ContentManagementControls() {}
+	
     /**
      * Static flag indicating whether there are pending tips to review.
      */
