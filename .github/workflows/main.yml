@@ -18,9 +18,6 @@ jobs:
         with:
           java-version: 22
           distribution: 'zulu' # Alternative distribution options are available.
-      - name: Step 4 - run test cases
-        run: mvn --batch-mode -Dmaven.test.failure.ignore=true test
-        
       - name: Cache SonarQube packages
         uses: actions/cache@v4
         with:
@@ -36,11 +33,5 @@ jobs:
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B jacoco:prepare-agent verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar jacoco:report -Dsonar.coverage.exclusions=\
-             com/Software/FitnessSystem/App.java,\
-             com/Software/FitnessSystem/LoadAndSaveEntities.java,\
-             com/Software/FitnessSystem/AdminPageNavigation/**,\
-             com/Software/FitnessSystem/ClientPageNavigation/**,\
-             com/Software/FitnessSystem/InstructorPageNavigation/**,\
-             com/Software/FitnessSystem/LoginPage/** -Dsonar.projectKey=SoftEng-Proj_SoftEng-Proj
+          SONAR_TOKEN: ${{ secrets.SoftToken }}
+        run: mvn -X -B  jacoco:prepare-agent  verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar  jacoco:report -Dsonar.coverage.exclusions=**/App.java,**/LoadAndSaveEntities.java,**/AdminPageNavigation/**,**/ClientPageNavigation/**,**/InstructorPageNavigation/**,**/LoginPage/**,**/InstructorPageNavigation/** -Dsonar.projectKey=SoftEng-Proj_SoftEng-Proj

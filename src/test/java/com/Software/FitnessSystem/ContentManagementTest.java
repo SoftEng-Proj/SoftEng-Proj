@@ -41,7 +41,7 @@ public class ContentManagementTest {
 		Map<String, Content> tips = getPendingInstructorTipsMap();
 		setApprovedTipsMap(tips);
 		accessToPrinter(tips);
-        boolean actual = approveOrRejectTheTips(getInstructorTipsMap());
+        boolean actual = isApprovedTip("TIP004", getInstructorTipsMap());
         assertEquals(expected, actual);
 	}
 	
@@ -68,7 +68,7 @@ public class ContentManagementTest {
 		setHandledFeedbackMap(getHandledFeedbackMap());
 		Map<String, Content> feedback = getUserFeedbackMap();
 		accessToPrinter(feedback);
-        boolean actual = respondToFeedback(feedback);
+        boolean actual = handleSelectFeedback("User008", feedback);
         assertEquals(expected, actual);
 	}
 }
