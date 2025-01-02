@@ -37,11 +37,9 @@ public class UserManagementTest {
     	String userName = "John6565Doe";
     	String password = "password123";
     	String role = "Instructor";
-    	setUserValues(fName, lName, email, userName, password, role);
-    	adminControllers.managementPage.executeOption(1);
     	
     	String expected = "Instructor_Added";
-    	String actual = adminControllers.managementPage.getStringResolution();
+    	String actual = fillUserDetails(fName, lName, email, userName, password, role);
         assertEquals(expected, actual);
     }
     
@@ -62,7 +60,8 @@ public class UserManagementTest {
     @When("I edit the user details")
     public void i_edit_the_user_details() {
         boolean expected = true;
-        boolean actual = editUserDetails("JohnDoe", "Instructor");
+        Instructor editInstructor = getInstructorsMap().get("JohnDoe");
+        boolean actual = checkNewData(editInstructor, "John", "Doe", "email", "JohnDoe", "password12");
         assertEquals(expected, actual);
     }
     
@@ -76,8 +75,8 @@ public class UserManagementTest {
     @Then("the user account should be updated successfully")
     public void the_user_account_should_be_updated_successfully() {
     	boolean expected = true;
-    	editUserDetails("JohnDoe", "Instructor");
-        boolean actual = managementControls.verifyUserUpdate("JohnDoe", "Instructor");
+    	Instructor editInstructor = getInstructorsMap().get("JohnDoe");
+        boolean actual = checkNewData(editInstructor, "John", "Doe", "email", "JohnDoe", "password12");
         assertEquals(expected, actual);
     }
     
@@ -113,8 +112,9 @@ public class UserManagementTest {
     @When("I approve an application")
     public void i_approve_an_application() {
     	boolean expected = true;
-    	checkPendingApplications();
-        boolean hasApproved = approveInstructors();
+    	
+    	String[] list = {"ActivatePend"};
+        boolean hasApproved = approveInstructors(list, true);
         assertEquals(expected, hasApproved);
     }
     

@@ -72,7 +72,7 @@ public class ContentManagementControls {
     		return false;
     	}
         thereIsPendingTip = true;
-
+        
         if (tips.isEmpty()) {
             System.out.println("There's nothing to review.");
             return thereIsPendingTip;
@@ -158,10 +158,11 @@ public class ContentManagementControls {
      * @param id The ID of the tip to approve.
      * @param tips The map of tips to review.
      */
-    private static void isApprovedTip(String id, Map<String, Content> tips) {
+    public static boolean isApprovedTip(String id, Map<String, Content> tips) {
         System.out.println("Tip ID " + id + " approved.");
         approvedTips.put(id, tips.get(id));
         tips.remove(id);
+        return true;
     }
     
     /**
@@ -170,9 +171,10 @@ public class ContentManagementControls {
      * @param id The ID of the tip to reject.
      * @param tips The map of tips to review.
      */
-    private static void isRejectedTip(String id, Map<String, Content> tips) {
+    public static boolean isRejectedTip(String id, Map<String, Content> tips) {
         System.out.println("Tip ID " + id + " rejected.");
         tips.remove(id);
+        return true;
     }
     
     /**
@@ -208,7 +210,7 @@ public class ContentManagementControls {
      * @param id The ID of the feedback to handle.
      * @param userFeedbackMap The map of feedback to review.
      */
-    private static void handleSelectFeedback(String id, Map<String, Content> userFeedbackMap) {
+    public static boolean handleSelectFeedback(String id, Map<String, Content> userFeedbackMap) {
         Content feedback = userFeedbackMap.get(id);
         if (feedback != null) {
             String respondText = "";
@@ -224,8 +226,10 @@ public class ContentManagementControls {
             }
             userFeedbackMap.remove(id);
             handledFeedback.put(id, respondText);
+            return true;
         } else {
             System.out.println("No feedback found with the specified ID.");
+            return false;
         }
     }
 }
