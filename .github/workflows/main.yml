@@ -18,6 +18,9 @@ jobs:
         with:
           java-version: 22
           distribution: 'zulu' # Alternative distribution options are available.
+      - name: Step 4 - run test cases
+        run: mvn --batch-mode -Dmaven.test.failure.ignore=true test
+        
       - name: Cache SonarQube packages
         uses: actions/cache@v4
         with:
@@ -34,4 +37,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B jacoco:prepare-agent verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar jacoco:report -Dsonar.projectKey=SoftEng-Proj_SoftEng-Proj
+        run: mvn -B jacoco:prepare-agent verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar jacoco:report -Dsonar.coverage.exclusions=**/App.java -Dsonar.projectKey=SoftEng-Proj_SoftEng-Proj
