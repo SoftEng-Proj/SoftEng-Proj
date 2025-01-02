@@ -37,10 +37,10 @@ jobs:
         run: mvn -X -B jacoco:prepare-agent verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar jacoco:report \
           -Dsonar.branch.name=main \
           -Dsonar.coverage.exclusions=\
-             com/Software/FitnessSystem/App.java,\
-             com/Software/FitnessSystem/LoadAndSaveEntities.java,\
-             com/Software/FitnessSystem/AdminPageNavigation/**,\
-             com/Software/FitnessSystem/ClientPageNavigation/**,\
-             com/Software/FitnessSystem/InstructorPageNavigation/**,\
-             com/Software/FitnessSystem/LoginPage/** \
+             **/App.java,\
+             **/LoadAndSaveEntities.java,\
+             **/AdminPageNavigation/**,\
+             **/ClientPageNavigation/**,\
+             **/InstructorPageNavigation/**,\
+             **/LoginPage/** \
           -Dsonar.projectKey=SoftEng-Proj_SoftEng-Proj
