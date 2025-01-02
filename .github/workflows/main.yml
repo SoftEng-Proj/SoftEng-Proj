@@ -37,4 +37,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B jacoco:prepare-agent verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar jacoco:report -Dsonar.coverage.exclusions=**/App.java -Dsonar.projectKey=SoftEng-Proj_SoftEng-Proj
+        run: mvn -B jacoco:prepare-agent verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar jacoco:report -Dsonar.coverage.exclusions=\
+             com/Software/FitnessSystem/App.java,\
+             com/Software/FitnessSystem/LoadAndSaveEntities.java,\
+             com/Software/FitnessSystem/AdminPageNavigation/**,\
+             com/Software/FitnessSystem/ClientPageNavigation/**,\
+             com/Software/FitnessSystem/InstructorPageNavigation/**,\
+             com/Software/FitnessSystem/LoginPage/** -Dsonar.projectKey=SoftEng-Proj_SoftEng-Proj
