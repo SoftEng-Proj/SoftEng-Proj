@@ -38,9 +38,10 @@ jobs:
           -Dsonar.branch.name=main \
           -Dsonar.coverage.exclusions=\
              **/App.java,\
-             **/LoadAndSaveEntities.java,\
-             **/AdminPageNavigation/**,\
-             **/ClientPageNavigation/**,\
-             **/InstructorPageNavigation/**,\
-             **/LoginPage/** \
-          -Dsonar.projectKey=SoftEng-Proj_SoftEng-Proj
+             -Dsonar.projectKey=SoftEng-Proj_SoftEng-Proj
+             #**/LoadAndSaveEntities.java,\
+             #**/AdminPageNavigation/**,\
+             #**/ClientPageNavigation/**,\
+             #**/InstructorPageNavigation/**,\
+             #**/LoginPage/** \
+          
