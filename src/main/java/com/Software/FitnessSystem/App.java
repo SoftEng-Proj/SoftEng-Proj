@@ -118,7 +118,7 @@ public class App {
         loadProgressListFromFile(ProgressListMap, PROGRESS_FILE);
 
 		SubscriptionPlan.convertFromPlanTypeToCustomPlan();
-		//fillUserSubscriptionPlanMap();
+		fillUserSubscriptionPlanMap();
     	ProgramEnrollmentMap = ProgramEnrollment.enrolmentStatistics(FitnessProgramsMap);
     }
     
@@ -146,32 +146,30 @@ public class App {
         LocalDateTime currentDateTime = LocalDateTime.now();
     	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         String formattedDateTime = currentDateTime.format(formatter);
-        
-        switch (role) {
-        case "Admin":
-        	AdminsMap.get(userName);
-        	return "AdminLoggedIn";
-        case "Instructor":
-        	Instructor = InstructorsMap.get(userName);
-			return instructorLogIn(formattedDateTime);
-			/*
-        	if(UserSubscriptionPlan.get(userName).getLogins() >= Instructor.getLogins()) {
-        		return instructorLogIn(formattedDateTime);
-        	} else {
-        		return "InvalidLogIn";
-        	}*/
-        case "Client":
-        	Client = ClientsMap.get(userName);
-			return clientLogIn(formattedDateTime);
-			/*
-        	if(UserSubscriptionPlan.get(userName).getLogins() >= Client.getLogins()) {
-        		return clientLogIn(formattedDateTime);
-        	} else {
-        		return "InvalidLogIn";
-        	}*/
-        default:
-        	return "NoOneLoggedIn";
-        }
+
+        return switch (role) {
+            case "Admin" -> {
+                AdminsMap.get(userName);
+                yield "AdminLoggedIn";
+            }
+            case "Instructor" -> {
+                Instructor = InstructorsMap.get(userName);
+                if(UserSubscriptionPlan.get(userName).getLogins() >= Instructor.getLogins()) {
+                	yield instructorLogIn(formattedDateTime);
+            	} else {
+            		yield "InvalidLogIn";
+            	}
+            }
+            case "Client" -> {
+                Client = ClientsMap.get(userName);
+                if(UserSubscriptionPlan.get(userName).getLogins() >= Client.getLogins()) {
+                	yield clientLogIn(formattedDateTime);
+            	} else {
+            		yield "InvalidLogIn";
+            	}
+            }
+            default -> "NoOneLoggedIn";
+        };
 	}
 	
 	/**

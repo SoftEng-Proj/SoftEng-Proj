@@ -3,7 +3,6 @@ import static org.junit.Assert.*;
 
 import com.Software.FitnessSystem.InstructorControllers.InteractForInstructorControls;
 import com.Software.FitnessSystem.InstructorPageNavigation.InteractForInstructorPage;
-import com.Software.FitnessSystem.LoginPage.AdminPagesController;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
