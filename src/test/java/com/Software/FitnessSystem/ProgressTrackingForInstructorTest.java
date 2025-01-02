@@ -31,7 +31,7 @@ public void i_should_see_progress_details_with_a_completion_rate_of_and_attendan
     // Write code here that turns the phrase above into concrete actions
    // throw new io.cucumber.java.PendingException();
 	boolean expected = true;
-	boolean actual= ProgressTrackingInstructorPage.viewClientProgress();
+	boolean actual= ProgressTrackingInstructorPage.ViewedCheck();
 	assertTrue(expected==actual);
 }
 
@@ -65,11 +65,7 @@ public void the_client_should_receive_a_reminder_message() {
 	
 }
 
-//@When("I send a motivational reminder to {string} which says {string}")
-//public void i_send_a_motivational_reminder_to_which_says(String string, String string2) {
-    // Write code here that turns the phrase above into concrete actions
-    //throw new io.cucumber.java.PendingException();
-//}
+
 
 @When("I send a recommendation to {string} which says {string}")
 public void i_send_a_recommendation_to_which_says(String string, String string2) {
@@ -79,6 +75,20 @@ public void i_send_a_recommendation_to_which_says(String string, String string2)
 	boolean actual= ProgressTrackingInstructorControls.Recommendationn("Ali", "More effort");
 	assertTrue(expected==actual);
 }
+
+
+
+@Then("the client should receive a recommendation message")
+public void theClientShouldReceiveARecommendationMessage() {
+    // Write code here that turns the phrase above into concrete actions
+   // throw new io.cucumber.java.PendingException();
+	boolean expected = true;
+	boolean actual= ProgressTrackingInstructorControls.ReceivedRecommCheck();
+	assertTrue(expected==actual);
+	
+}
+
+
 
 
 }

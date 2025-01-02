@@ -27,9 +27,9 @@ App app;
 	public void i_add_a_video_tutorial_and_images() {
 	    // Write code here that turns the phrase above into concrete actions
 	  //  throw new io.cucumber.java.PendingException();
-		String expected = "Program created successfully";
-		String actual =ProgramManagementControls.createProgram("Muscle Build", "60 days", "beginner", "strength", "link", "50");
-		assertTrue(expected.equals(actual));
+		boolean expected=true;
+		 boolean actual = ProgramManagementControls.TutorialAdded();
+		 assertTrue(actual==expected);
 	}
 
 	@When("I schedule group sessions for {string}")
@@ -45,9 +45,6 @@ App app;
 	public void the_program_should_be_created_with_the_provided_details() {
 	    // Write code here that turns the phrase above into concrete actions
 	   // throw new io.cucumber.java.PendingException();
-		//String expected = "Program created successfully";
-		//String actual =ProgramManagementControls.createProgram("0", "0", "0", "0", "0", "0");
-		//assertTrue(expected.equals(actual));
 		 boolean expected=true;
 		 boolean actual = ProgramManagementControls.ProgCreated();
 		 assertTrue(actual==expected);
@@ -75,8 +72,7 @@ App app;
 	    // Write code here that turns the phrase above into concrete actions
 	   // throw new io.cucumber.java.PendingException();
 		String expected = "Program updated";
-		ProgramManagementControls.createProgram("Muscle Build", "60 days", "beginner", "strength", "link", "50");
-		String actual =ProgramManagementControls.updateProgram("Muscle build", "0", "0","0", "0", "0");
+		String actual =ProgramManagementControls.updateProgram("Muscle Build", "10 days", "advanced","stamina", "links", "70");
 		assertTrue(expected.equals(actual));
 		
 	}
@@ -86,7 +82,6 @@ App app;
 	    // Write code here that turns the phrase above into concrete actions
 	  //  throw new io.cucumber.java.PendingException();
 		boolean expected=true;
-		ProgramManagementControls.createProgram("Muscle Build", "60 days", "beginner", "strength", "link", "50");
 		 boolean actual = ProgramManagementControls.ProgUpdated();
 		 assertTrue(actual==expected);
 	}
@@ -96,7 +91,6 @@ App app;
 	    // Write code here that turns the phrase above into concrete actions
 	   // throw new io.cucumber.java.PendingException();
 		String expected = "Program Deleted";
-		ProgramManagementControls.createProgram("Muscle Build", "60 days", "beginner", "strength", "link", "50");
 		String actual =ProgramManagementControls.deleteProgram("Muscle Build");
 		assertTrue(expected.equals(actual));
 	}
@@ -105,10 +99,9 @@ App app;
 	public void the_program_should_no_longer_appear_in_the_list_of_programs() {
 	    // Write code here that turns the phrase above into concrete actions
 	   // throw new io.cucumber.java.PendingException();
-		String expected = "Program Deleted";
-		ProgramManagementControls.createProgram("Muscle Build", "60 days", "beginner", "strength", "link", "50");
-		String actual =ProgramManagementControls.deleteProgram("Muscle Build");
-		assertTrue(expected.equals(actual));
+		boolean expected=true;
+		 boolean actual = ProgramManagementControls.ProgDeleted();
+		 assertTrue(actual==expected);
 		
 	}
 

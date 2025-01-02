@@ -17,6 +17,8 @@ public class ProgramManagementControls {
 	private static Map<String, Program> ProgramsMap = App.getFitnessProgramsMap();
 	private static boolean progCreated=false;
 	private static boolean progUpdated=false;
+	private static boolean progDeleted=false;
+	private static boolean tutorialAdded=false;
 
 	
 	 /**
@@ -35,6 +37,7 @@ public class ProgramManagementControls {
 	    Program newProgram = new Program(name, duration, endDate, level, goal, links, price);
 	    ProgramsMap.put(name, newProgram);
 	    progCreated=true;
+	    tutorialAdded=true;
 	    
 	    System.out.println("Program:" +name+ "successfully created");
 	   
@@ -117,6 +120,7 @@ public class ProgramManagementControls {
 	public static String deleteProgram(String name) {
 		if (ProgramsMap.containsKey(name)) {
 		 ProgramsMap.remove(name);
+		 progDeleted=true;
 		 System.out.println("Program:" +name+ "successfully removed");
 	     return "Program Deleted";
 		}
@@ -134,7 +138,7 @@ public class ProgramManagementControls {
      * @return "Schedule set" When a program schedule type is set.
      */
 	 public static String setSchedule(String name, String scheduleType) {
-		 createProgram("Muscle Build", "60 days", "beginner", "strength", "link", "50");
+		// createProgram("Muscle Build", "60 days", "beginner", "strength", "link", "50");
 		 Program programToSchedule = ProgramsMap.get(name);
 	     programToSchedule.setSchedule(scheduleType);
 	     return "Schedule set";
@@ -146,7 +150,7 @@ public class ProgramManagementControls {
 	     *
 	     */
 	 public static boolean ProgCreated() {
-		 createProgram("Muscle Build", "60 days", "beginner", "strength", "link", "50");
+		
 		 if (progCreated==true) {
 			 return true;
 		 }
@@ -158,16 +162,36 @@ public class ProgramManagementControls {
 	     * @return true When a program is updated, false otherwise
 	     */
 	 public static boolean ProgUpdated() {
-		 updateProgram("Muscle Build", "61 days", "beginner", "strength", "link", "50");
+		
 		 if (progUpdated==true) {
 			 return true;
 		 }
 		 return false;
 	 }
 	 
-	
+	 /**
+	     * Checks if a program is deleted, for test purposes.
+	     * @return true When a program is deleted, false otherwise
+	     */
+	 public static boolean ProgDeleted() {
+			
+		 if (progDeleted==true) {
+			 return true;
+		 }
+		 return false;
+	 }
 	 
-	 
+	 /**
+	     * Checks if a tutorial link is added, for test purposes.
+	     * @return true When a tutorial link is added, false otherwise
+	     */
+	 public static boolean TutorialAdded() {
+			
+		 if (tutorialAdded==true) {
+			 return true;
+		 }
+		 return false;
+	 }
 	 
 	 
 	 

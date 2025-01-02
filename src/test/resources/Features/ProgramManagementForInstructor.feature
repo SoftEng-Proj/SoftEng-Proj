@@ -1,6 +1,8 @@
+@AmmarShafiiTests
  Feature: Program Management
   As an instructor
   I want to create, update, and delete fitness programs
+ @AmmarShafiiTests
  Scenario Outline: Create a new fitness program
     Given I am logged in as an instructor
     When I create a new program with Title '<Title>', Duration '<Duration>', Difficulty '<Difficulty>',Goals '<Goals>', Price '<Price>' 
@@ -14,7 +16,7 @@
     | Building Muscles     | 7 weeks  | Intermediate | Mass increase       | $60   | In-person   | 
     | Cardio               | 5 weeks  | Advanced     |Stamina improvement  | $90   | Online      |
     
-    
+    @AmmarShafiiTests
     Scenario Outline: Update an already existing fitness program
     Given I am logged in as an instructor
     And I have a program titled '<ProgramTitle>'
@@ -27,19 +29,19 @@
   | Increase Mobility | 6 weeks     | Intermediate  | $70      |In-Person      |
   | Cardio            | 2 weeks     | Beginner      | $ 40     |In-Person      |
   
-  
+  @AmmarShafiiTests
   Scenario: Delete an exsting fitness program
   Given I am logged in as an instructor 
   And I have a program titled 'Increase Mobility'
   When I delete the program 
   Then the program should no longer appear in the list of programs
-  
+  @AmmarShafiiTests
   Scenario: Delete an exsting fitness program
   Given I am logged in as an instructor 
   And I have a program titled 'Building Muscles'
   When I delete the program 
   Then the program should no longer appear in the list of programs
-  
+  @AmmarShafiiTests
   Scenario: Delete an exsting fitness program
   Given I am logged in as an instructor 
   And I have a program titled 'Cardio'

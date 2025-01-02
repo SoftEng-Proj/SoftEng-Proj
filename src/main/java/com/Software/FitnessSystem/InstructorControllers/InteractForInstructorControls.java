@@ -27,6 +27,7 @@ public class InteractForInstructorControls {
 	//private static boolean Clienntt=false;
 	private static boolean prgs=false;
 	private static boolean Feedbackprovided=false;
+	private static boolean isForumPage=false;
 
 
 	/**
@@ -58,14 +59,29 @@ public class InteractForInstructorControls {
 	     * @param message The message to send.
 	     */
 	 public static String sendMessageToProgramForum(String programname, String message)  {
+		  isForumPage = true;
 		 if (programMap.containsKey(programname)) {
 	            ForumMessages.put(programname, message);
 	            System.out.println("Message sent to \"" +programname + "\": " + message);
 	            return "Forum sent";
 	        } else {
-	            System.out.println("Error: Client \"" + programname + "\" does not exist. Please check the name and try again.");
+	            System.out.println("Error: Program \"" + programname + "\" does not exist. Please check the name and try again.");
 	            return "Forum not sent";
 	        }
+	 }
+	 
+	 /**
+	     * Checks if on forum page or not, for test purposes.
+	     * 
+	     * @return true if on forum page, false otherwise.
+	     * 
+	     * 
+	     */
+	 public static boolean ForumPage() {
+		 if (isForumPage==true) {
+			return true;
+		 }
+		 return false;
 	 }
 
 	 /**
@@ -118,9 +134,11 @@ public class InteractForInstructorControls {
 	     * 
 	     * 
 	     */
-	 public static boolean MSGisVisible() {
-		clientsMap.put("Omar", null);
-		InteractForInstructorControls.sendMessageToClient("Omar", null);
+	 public static boolean Assurance() {
+		clientsMap.put("Omar", new Client("Omar", "Client Details","0","0","0"));
+		
+		InteractForInstructorControls.sendMessageToClient("Omar", "Hi");
+		
 		
 		 if (MSGG==true) {
 			 return true;
@@ -130,20 +148,33 @@ public class InteractForInstructorControls {
 		 } 
 	 }
 	 
+	 public static boolean MSGisVisible() {
+		 if (MSGG==true) {
+			 return true;
+		 }
+		 else {
+			 return false;
+		 } 
+		 
+	 }
 	 /**
 	     * It ensures a client exists for test purposes
 	     *   
 	     */
-	 public static void MakeSureOfClient() {
-		 clientsMap.put("Omar", null);
+	 public static boolean MakeSureOfClient() {
+		 clientsMap.put("Omar", new Client("Omar", "Client Details","0","0","0"));
+		 return true;
 	 }
+	 
 	 
 	 /**
 	     * It ensures a program exists for test purposes
 	     *   
 	     */
 	 public static void MakeSureOfProgram() {
-		 programMap.put("Fit", null);
+		
+		 programMap.put("Fit", new Program ("Fit","10 days","10-5-2024","beginner","0","0","0"));
+		
 	 }
 	 
 	 
@@ -155,8 +186,8 @@ public class InteractForInstructorControls {
 	     * 
 	     */
 	 public static boolean ProgressReview() {
-		 clientsMap.put("Omar", null);
-			InteractForInstructorControls.sendProgressToClient("Omar", null);
+		// clientsMap.put("Omar", new Client("Omar", "Client Details","0","0","0"));
+			//InteractForInstructorControls.sendProgressToClient("Omar", "0");
 		 if (prgs==true) {
 			 return true;
 		 }
@@ -173,8 +204,8 @@ public class InteractForInstructorControls {
 	     * 
 	     */
 	 public static boolean Feedbackprovide() {
-		 clientsMap.put("Omar", null);
-			InteractForInstructorControls.sendFeedbackToClient("Omar", null);
+		// clientsMap.put("Omar", new Client("Omar", "Client Details","0","0","0"));
+			//InteractForInstructorControls.sendFeedbackToClient("Omar", "0");
 		 if (Feedbackprovided==true) {
 			 return true;
 		 }

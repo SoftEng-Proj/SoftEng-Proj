@@ -121,7 +121,7 @@ public class ProgramManagementPage extends BasePage {
         progLevel = scanner.nextLine();
         System.out.println("Enter the goal of the program:");
         progGoal = scanner.nextLine();
-        System.out.println("Enter the video tutorial or images related to Program:");
+        System.out.println("Enter the video tutorial or images link related to Program:");
         progLinks = scanner.nextLine();
         System.out.println("Enter the price of the new program:");
         progPrice = scanner.nextLine();

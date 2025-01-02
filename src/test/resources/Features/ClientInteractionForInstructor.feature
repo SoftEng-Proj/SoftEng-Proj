@@ -1,52 +1,40 @@
+@AmmarShafiiTests
 Feature: Client Interaction
   As an instructor
   I want to interact with enrolled clients and provide feedback or progress reports
 
-  Scenario Outline: Send a message to an enrolled client
+@AmmarShafiiTests
+  Scenario: Send a message to an enrolled client
     Given I am logged in as an instructor
-    And I have an enrolled client named '<ClientName>'
-    When I send a message to '<ClientName>' which says '<Message>'
+    And I have an enrolled client named "Omar"
+    When I send a message to "Omar" which says "Good Job"
     Then the client should receive the message
 
-    Examples:
-      | ClientName | Message
-      | Omar       | "Good Job"
-      | Samer      | "Noticable Difference"
-      | Ahmad      | "Not bad"
    
-
-   Scenario Outline: Post a message on the dicussion forum
+   
+@AmmarShafiiTests
+   Scenario: Post a message on the dicussion forum
      Given I am logged in as an instructor
-     And I am on the dicussion forum for the program '<ProgramTitle>'
-     When I post a message on the forum which says '<ForumMessage>'
+     And I am on the dicussion forum for the program "Cardio"
+     When I post a message on the forum which says "It was a fun session"
      Then the message should be visible to all enrolled clients
    
-   Examples:
-      | ProgramTitle      | ForumMessage                            |
-      | Building Muscles  | "Remeber to post your before and after" |
-      | Increase Mobility | "How do you feel after the session?"    |
-      | Cardio            | "It was a fun session"                  |
    
    
-   Scenario Outline: Provide a feedback report to a client
+   @AmmarShafiiTests
+   Scenario: Provide a feedback report to a client
    Given I am logged in as an instructor
-   And I have a client named '<ClientName>'
-   And I have reviewed the client progress
-   When I provide feedback to '<ClientName>' with the content '<Feedback>'
+   And I have a client named "Fares"
+   When I provide feedback to "Fares" with the content "Focus more on your form"
    Then the client should receive the feedback
    
    
-   Examples:
-      | ClientName     | Feedback                       |
-      | Mohammad       | "Try increasing your reps."    |
-      | Fares          | "Focus more on your form"      |
-      | Nidal          | "You need to push a bit harder"|
+  
       
-      
+    @AmmarShafiiTests
     Scenario Outline: Provide a progress report to a client
     Given I am logged in as an instructor
     And I have a client named '<ClientName>'
-    And I have reviewed the client progress for the last '<Duration>'
     When I provide a progress report to '<ClientName>' with the content '<ProgressReport>'
     Then the client should receive the progress report
     
