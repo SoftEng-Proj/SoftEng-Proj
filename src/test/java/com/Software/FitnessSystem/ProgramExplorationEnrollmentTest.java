@@ -28,7 +28,7 @@ public class ProgramExplorationEnrollmentTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expcted = "Programs filtered By Difficulty";
-		String acutal = ProgramExplorationEnrollmentControls.filterProgramsByDifficulty("");
+		String acutal = ProgramExplorationEnrollmentControls.filterProgramsByDifficulty("string");
 		assertTrue(acutal.equals(expcted));
 	}
 
@@ -37,7 +37,7 @@ public class ProgramExplorationEnrollmentTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expcted = "Programs filtered By focus area";
-		String acutal = ProgramExplorationEnrollmentControls.filterProgramsByFocusArea("");
+		String acutal = ProgramExplorationEnrollmentControls.filterProgramsByFocusArea("string");
 		assertTrue(acutal.equals(expcted));
 	}
 
@@ -46,7 +46,7 @@ public class ProgramExplorationEnrollmentTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expcted = "Programs filtered By Difficulty";
-		String acutal = ProgramExplorationEnrollmentControls.filterProgramsByDifficulty("");
+		String acutal = ProgramExplorationEnrollmentControls.filterProgramsByDifficulty("Advanced");
 		assertTrue(acutal.equals(expcted));
 	}
 
@@ -82,7 +82,7 @@ public class ProgramExplorationEnrollmentTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expcted = "program schedule displayed succsesfully";
-		String acutal = ProgramExplorationEnrollmentControls.viewProgramSchedule("");
+		String acutal = ProgramExplorationEnrollmentControls.viewProgramSchedule("CrossFit Challenge");
 		assertTrue(acutal.equals(expcted));
 	}
 
@@ -100,7 +100,7 @@ public class ProgramExplorationEnrollmentTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expcted = "program schedule displayed succsesfully";
-		String acutal = ProgramExplorationEnrollmentControls.viewProgramSchedule("");
+		String acutal = ProgramExplorationEnrollmentControls.viewProgramSchedule("CrossFit Challenge");
 		assertTrue(acutal.equals(expcted));
 	}
 
@@ -109,7 +109,7 @@ public class ProgramExplorationEnrollmentTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expcted = "program schedule displayed succsesfully";
-		String acutal = ProgramExplorationEnrollmentControls.viewProgramSchedule("");
+		String acutal = ProgramExplorationEnrollmentControls.viewProgramSchedule("CrossFit Challenge");
 		assertTrue(acutal.equals(expcted));
 	}
 
@@ -118,7 +118,7 @@ public class ProgramExplorationEnrollmentTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expcted = "program schedule displayed succsesfully";
-		String acutal = ProgramExplorationEnrollmentControls.viewProgramSchedule("");
+		String acutal = ProgramExplorationEnrollmentControls.viewProgramSchedule("CrossFit Challenge");
 		assertTrue(acutal.equals(expcted));
 	}
 }

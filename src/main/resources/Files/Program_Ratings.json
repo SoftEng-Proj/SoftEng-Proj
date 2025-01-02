@@ -1,1 +1,29 @@
-{}
+{
+  "programRatings": {
+    "program1": {
+      "John29Doe": 5,
+      "active": 4
+    },
+    "program2": {
+      "John29Doe": 3
+    }
+  },
+  "programReviews": {
+    "program1": {
+      "John29Doe": "Excellent program, highly recommended!",
+      "active": "Good program but room for improvement."
+    },
+    "program2": {
+      "John29Doe": "Average experience, could be better."
+    }
+  },
+  "programSuggestions": {
+    "program1": {
+      "John29Doe": "Consider adding more advanced workout routines.",
+      "active": "Include a feature to track hydration levels."
+    },
+    "program2": {
+      "John29Doe": "Add a dark mode for better usability at night."
+    }
+  }
+}

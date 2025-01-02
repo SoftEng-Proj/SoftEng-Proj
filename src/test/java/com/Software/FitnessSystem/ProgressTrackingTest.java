@@ -12,11 +12,13 @@ public class ProgressTrackingTest {
 	ProgressTrackingControls progressTrackingControls;
 	ProgramEnrollment programEnrollment;
 	App app;
+	Client client;
 	
 	public ProgressTrackingTest(App ap,ProgressTrackingControls ptc, ProgramEnrollment pe) {
 		this.app = ap;
         this.progressTrackingControls = ptc;
         this.programEnrollment = pe;
+        this.client = client;
 	}
 	@Given("I am logged into my account")
 	public void i_am_logged_into_my_account() {
@@ -37,11 +39,12 @@ public class ProgressTrackingTest {
 	}
 
 	@When("I update my milestone with {string} as {string}")
-	public void i_update_my_milestone_with_as(String string, String string2) {
+	public void i_update_my_milestone_with_as(String type, String value) {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
+        String date = "2025-01-01";
 		String expected = "milestone added successfully";
-		String actual = ProgressTrackingControls.addMilestone("0",  "0",  "0", null);
+		String actual = ProgressTrackingControls.addMilestone(type, value, date, client);
 		assertTrue(expected.equals(actual));
 	}
 
@@ -49,8 +52,11 @@ public class ProgressTrackingTest {
 	public void my_milestone_should_be_recorded() {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
+		String type = "Weight Loss";
+        String value = "5kg";
+        String date = "2025-01-01";
 		String expected = "milestone added successfully";
-		String actual = ProgressTrackingControls.addMilestone("0",  "0",  "0", null);
+		String actual = ProgressTrackingControls.addMilestone(type, value, date, client);
 		assertTrue(expected.equals(actual));
 	}
 
@@ -58,8 +64,11 @@ public class ProgressTrackingTest {
 	public void i_should_see_a_confirmation_message_saying(String string) {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
+		String type = "Weight Loss";
+        String value = "5kg";
+        String date = "2025-01-01";
 		String expected = "milestone added successfully";
-		String actual = ProgressTrackingControls.addMilestone("0",  "0",  "0", null);
+		String actual = ProgressTrackingControls.addMilestone(type, value, date, client);
 		assertTrue(expected.equals(actual));
 	}
 
