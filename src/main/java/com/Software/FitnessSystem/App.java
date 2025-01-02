@@ -55,7 +55,6 @@ public class App {
     private static final Map<String, Instructor> PendingInstructorsMap = new HashMap<>();
     private static final Map<String, Client> ClientsMap = new HashMap<>();
     private static final Map<String, Program> FitnessProgramsMap = new HashMap<>();
-    private static Map<String, ProgramEnrollment> ProgramEnrollmentMap = new HashMap<>();
     private static final Map<String, Content> InstructorTipsMap = new HashMap<>();
     private static final Map<String, Content> PendingInstructorTipsMap = new HashMap<>();
     private static final Map<String, Content> HealthTipsMap = new HashMap<>();
@@ -75,10 +74,15 @@ public class App {
     private static final List<String> InstructorAnnouncementMap= new ArrayList<>();
     private static final Map<String, String> ProgramScheduleChangeMap= new HashMap<>();
     private static final Map<String, String> ProgressListMap= new HashMap<>();
+    private static Map<String, ProgramEnrollment> ProgramEnrollmentMap = new HashMap<>();
     
     private static Instructor Instructor;
     private static Client Client;
-
+    
+    private static LocalDateTime currentDateTime = LocalDateTime.now();
+    private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    public static String formattedDateTime = currentDateTime.format(formatter);
+    
     public static void main(String[] args) {
         new App();
         printWelcomeMessage();
@@ -143,13 +147,10 @@ public class App {
      *         "InvalidLogIn", or "NoOneLoggedIn".
      */
 	public static String login(String userName, String role) {
-        LocalDateTime currentDateTime = LocalDateTime.now();
-    	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-        String formattedDateTime = currentDateTime.format(formatter);
-
         return switch (role) {
             case "Admin" -> {
-                AdminsMap.get(userName);
+                @SuppressWarnings("unused")
+				Admin admin = AdminsMap.get(userName);
                 yield "AdminLoggedIn";
             }
             case "Instructor" -> {

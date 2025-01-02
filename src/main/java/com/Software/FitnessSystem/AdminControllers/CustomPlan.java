@@ -1,5 +1,7 @@
 package com.Software.FitnessSystem.AdminControllers;
 
+import java.util.Objects;
+
 /**
  * Represents a customizable subscription plan in the Fitness Management System.
  * Provides attributes for plan name, price, duration, and description, 
@@ -70,7 +72,11 @@ public class CustomPlan {
      * @param price The price to set for the plan.
      */
     public void setPrice(double price) {
-        this.price = price;
+        if (price >= 0) {
+            this.price = price;
+        } else {
+            throw new IllegalArgumentException("Price cannot be negative.");
+        }
     }
     
     /**
@@ -88,7 +94,11 @@ public class CustomPlan {
      * @param duration The duration to set for the plan.
      */
     public void setDuration(int duration) {
-        this.duration = duration;
+        if (duration > 0) {
+            this.duration = duration;
+        } else {
+            throw new IllegalArgumentException("Duration must be greater than 0.");
+        }
     }
     
     /**
@@ -107,5 +117,43 @@ public class CustomPlan {
      */
     public void setDescription(String description) {
         this.description = description;
+    }
+    
+    /**
+     * Returns a string representation of the CustomPlan object.
+     * 
+     * @return A string that describes the CustomPlan object.
+     */
+    @Override
+    public String toString() {
+        return String.format("CustomPlan[name=%s, price=%.2f, duration=%d days, description=%s]",
+                             name, price, duration, description);
+    }
+    
+    /**
+     * Checks if two CustomPlan objects are equal based on their attributes.
+     * 
+     * @param obj The object to compare.
+     * @return {@code true} if the objects are equal, otherwise {@code false}.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        CustomPlan that = (CustomPlan) obj;
+        return Double.compare(that.price, price) == 0 &&
+               duration == that.duration &&
+               name.equals(that.name) &&
+               description.equals(that.description);
+    }
+    
+    /**
+     * Returns a hash code for the CustomPlan object based on its attributes.
+     * 
+     * @return The hash code for the CustomPlan object.
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, price, duration, description);
     }
 }

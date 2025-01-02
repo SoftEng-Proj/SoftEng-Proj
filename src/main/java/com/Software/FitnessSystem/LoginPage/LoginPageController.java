@@ -1,6 +1,9 @@
 package com.Software.FitnessSystem.LoginPage;
 import static com.Software.FitnessSystem.App.*;
+
 import com.Software.FitnessSystem.Client;
+import com.Software.FitnessSystem.Instructor;
+
 import java.util.Scanner;
 
 /**
@@ -179,28 +182,61 @@ public class LoginPageController {
      * 
      * @return {@code true} if the credentials are valid, otherwise {@code false}.
      */
-    private static boolean verifyCredentials(String username, String password, int from) {
-    	switch(from) {
-    	case 1:
-        	if(getAdminsMap().containsKey(username) && 
-        			getAdminsMap().get(username).getPassword().equals(password)) {
-        		return true;
-        	}
-    		return false;
-    	case 2:
-        	if(getInstructorsMap().containsKey(username) && 
-        			getInstructorsMap().get(username).getPassword().equals(password)) {
-        		return true;
-        	}
-    		return false;
-    	case 3:
-        	if(getClientsMap().containsKey(username) && 
-        			getClientsMap().get(username).getPassword().equals(password)) {
-        		return true;
-        	}
-    		return false;
-    	default:
-    		return false;
-    	}
+    private static boolean verifyCredentials(String username, String password, int userType) {
+        return switch (userType) {
+            case 1 -> verifyAdmin(username, password);
+            case 2 -> verifyInstructor(username, password);
+            case 3 -> verifyClient(username, password);
+            default -> false; // invalid user type
+        };
+    }
+
+    /**
+     * Verifies the admin credentials.
+     * 
+     * @param username The username entered by the admin.
+     * @param password The password entered by the admin.
+     * 
+     * @return {@code true} if the admin credentials are valid, otherwise {@code false}.
+     */
+    private static boolean verifyAdmin(String username, String password) {
+        // Verify if the username exists and the password matches
+        return getAdminsMap().containsKey(username) && getAdminsMap().get(username).getPassword().equals(password);
+    }
+
+    /**
+     * Verifies the instructor credentials.
+     * 
+     * @param username The username entered by the instructor.
+     * @param password The password entered by the instructor.
+     * 
+     * @return {@code true} if the instructor credentials are valid and the login limit is not exceeded, otherwise {@code false}.
+     */
+    private static boolean verifyInstructor(String username, String password) {
+        if (getInstructorsMap().containsKey(username) && getInstructorsMap().get(username).getPassword().equals(password)) {
+            Instructor instructor = getInstructorsMap().get(username);
+            if (getSubscriptionPlanMap().get(username).getDuration() >= instructor.getLogins()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Verifies the client credentials.
+     * 
+     * @param username The username entered by the client.
+     * @param password The password entered by the client.
+     * 
+     * @return {@code true} if the client credentials are valid, otherwise {@code false}.
+     */
+    private static boolean verifyClient(String username, String password) {
+    	if (getClientsMap().containsKey(username) && getClientsMap().get(username).getPassword().equals(password)) {
+            Client client = getClientsMap().get(username);
+            if (getSubscriptionPlanMap().get(username).getDuration() >= client.getLogins()) {
+                return true;
+            }
+        }
+        return false;
     }
 }
