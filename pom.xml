@@ -11,8 +11,9 @@
   <properties>
     <maven.compiler.source>22</maven.compiler.source>
     <maven.compiler.target>22</maven.compiler.target>
-    <sonar.organization>softeng-proj</sonar.organization>
     <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+    <sonar.organization>softeng-proj</sonar.organization>
+    <sonar.projectKey>softeng-proj</sonar.projectKey>
   </properties>
   
   <dependencies>
