@@ -22,7 +22,7 @@ Feature: Account Management
     And I submit the form
     Then my profile should be created
     And I should see a confirmation message "Profile created successfully"
-
+    
   @AlaaAlawnehTestss
   Scenario: Update personal details in the profile
     When I update my age to "30"
