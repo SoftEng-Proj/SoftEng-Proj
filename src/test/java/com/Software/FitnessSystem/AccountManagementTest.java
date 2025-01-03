@@ -24,7 +24,9 @@ public class AccountManagementTest {
     @When("I add {string} as a restriction")
     public void i_add_as_a_restriction(String restriction) {
         String expected = "Updated successfully";
-        String actual = AccountManagementControls.setDietaryPreferences(App.getClientsMap().get("John29Doe"), "high protein", restriction);
+        Client client = App.getClientsMap().get("John29Doe");
+        String actual = AccountManagementControls.setDietaryPreferences(client, 
+        		App.getClientProfileMap().get(client.getUsername()).getDietaryPreference(), restriction);
         assertEquals(expected, actual);
     }
     
