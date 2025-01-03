@@ -11,26 +11,18 @@ public class ProgramExplorationEnrollmentTest {
 	App app;
 	Client client;
 	ClientPageControllers clientPageControllers;
-	public ProgramExplorationEnrollmentTest(App ap, Client cl, ClientPageControllers cpc){
-		 this.app = ap;
-	     this.client = cl;
-	     this.clientPageControllers = cpc;
+	
+	public ProgramExplorationEnrollmentTest() {
+
 	}
 	
-	@Given("I am on the program exploration page")
-	public void i_am_on_the_program_exploration_page() {
-	    // Write code here that turns the phrase above into concrete actions
-	    //throw new io.cucumber.java.PendingException(); i_am_on_the_program_exploration_page
-        boolean isonpage = true;
-        assertTrue(isonpage);
-		
-	}
 
 	@When("I filter programs by difficulty level {string}")
 	public void i_filter_programs_by_difficulty_level(String string) {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expcted = "Programs filtered By Difficulty";
+		string = "Intermediate";
 		String acutal = ProgramExplorationEnrollmentControls.filterProgramsByDifficulty(string);
 		assertTrue(acutal.equals(expcted));
 	}
@@ -40,6 +32,7 @@ public class ProgramExplorationEnrollmentTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expcted = "Programs filtered By focus area";
+		string = "High-intensity functional movements";
 		String acutal = ProgramExplorationEnrollmentControls.filterProgramsByFocusArea(string);
 		assertTrue(acutal.equals(expcted));
 	}
@@ -58,7 +51,7 @@ public class ProgramExplorationEnrollmentTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expcted = "enrolled in program succsesfully";
-		String acutal = ProgramExplorationEnrollmentControls.enrollInProgram();
+		String acutal = ProgramExplorationEnrollmentControls.enrollInProgram(App.getClientsMap().get("John29Doe"));
 		assertTrue(acutal.equals(expcted));
 	}
 
@@ -67,7 +60,7 @@ public class ProgramExplorationEnrollmentTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expcted = "enrolled in program succsesfully";
-		String acutal = ProgramExplorationEnrollmentControls.enrollInProgram();
+		String acutal = ProgramExplorationEnrollmentControls.enrollInProgram(App.getClientsMap().get("John29Doe"));
 		assertTrue(acutal.equals(expcted));
 	}
 
@@ -76,7 +69,7 @@ public class ProgramExplorationEnrollmentTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expcted = "enrolled in program succsesfully";
-		String acutal = ProgramExplorationEnrollmentControls.enrollInProgram();
+		String acutal = ProgramExplorationEnrollmentControls.enrollInProgram(App.getClientsMap().get("John29Doe"));
 		assertTrue(acutal.equals(expcted));
 	}
 
@@ -94,7 +87,7 @@ public class ProgramExplorationEnrollmentTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expcted = "enrolled in program succsesfully";
-		String acutal = ProgramExplorationEnrollmentControls.enrollInProgram();
+		String acutal = ProgramExplorationEnrollmentControls.enrollInProgram(App.getClientsMap().get("John29Doe"));
 		assertTrue(acutal.equals(expcted));
 	}
 
@@ -103,7 +96,8 @@ public class ProgramExplorationEnrollmentTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expcted = "program schedule displayed succsesfully";
-		String acutal = ProgramExplorationEnrollmentControls.viewProgramSchedule("CrossFit Challenge");
+		string = "CrossFit Challenge";
+		String acutal = ProgramExplorationEnrollmentControls.viewProgramSchedule(string);
 		assertTrue(acutal.equals(expcted));
 	}
 

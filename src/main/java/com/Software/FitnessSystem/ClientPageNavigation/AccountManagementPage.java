@@ -59,7 +59,6 @@ public class AccountManagementPage extends BasePage {
                 String fitnessGoals = scanner.nextLine();
                 AccountManagementControls.createProfile(username, client, age, fitnessGoals);
                 App.saveClientProfileChanges();
-                onCreateProfilePage = false;
                 break;
             case 2:
             	onUpdatePersonalDetailsPage = true;
@@ -69,7 +68,6 @@ public class AccountManagementPage extends BasePage {
                 String newFitnessGoals = scanner.nextLine();
                 AccountManagementControls.updatePersonalDetails(client, newAge, newFitnessGoals);
                 App.saveClientProfileChanges();
-                onUpdatePersonalDetailsPage = false;
                 break;
             case 3:
             	onDietaryRestrictionsPage = true;
@@ -79,7 +77,6 @@ public class AccountManagementPage extends BasePage {
                 String restrictions = scanner.nextLine();
                 AccountManagementControls.setDietaryPreferences(client, dietaryPreference, restrictions);
                 App.saveClientProfileChanges();
-                onDietaryRestrictionsPage = false;
                 break;
             case 4:
                 accountManagementControls.viewProfile(client);

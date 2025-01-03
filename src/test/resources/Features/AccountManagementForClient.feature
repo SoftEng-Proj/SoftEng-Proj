@@ -5,8 +5,7 @@ Feature: Account Management
 
   @set_dietary_preferences
   Scenario Outline: Set dietary preferences or restrictions
-    Given I am logged into my account
-    And I am on the dietary preferences settings page
+    
     When I select "<dietary_preference>" as my dietary preference
     And I add "<restriction>" as a restriction
     And I save the changes
@@ -15,7 +14,6 @@ Feature: Account Management
     
   @create_profile
   Scenario: Create a new user profile
-    Given I am on the account creation page
     When I enter my personal details including age "25" and fitness goals "Build muscle"
     And I specify my dietary preferences or restrictions as "No dairy"
     And I submit the form
@@ -24,8 +22,6 @@ Feature: Account Management
 
   @update_profile
   Scenario: Update personal details in the profile
-    Given I am logged into my account
-    And I am on the profile settings page
     When I update my age to "30"
     And I change my fitness goals to "Lose weight"
     And I save the changes

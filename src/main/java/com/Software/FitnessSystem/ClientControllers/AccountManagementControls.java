@@ -37,15 +37,11 @@ public class AccountManagementControls {
 			return "Empty";
 		}
 		
-		if (profilesMap.containsKey(client.getUsername())) {
-            System.out.println("Profile already exists for " + client.getUsername());
-            return fitnessGoals;
-        }
 		
         Profile newProfile = new Profile(age, fitnessGoals);
         profilesMap.put(client.getUsername(), newProfile);
         System.out.println("Profile created successfully for " + client.getUsername() + "\n");
-        return "Profile Created Successfully.";
+        return "Profile Created Successfully";
     }
 	
 	 /**
@@ -66,7 +62,7 @@ public class AccountManagementControls {
         profile.setFitnessGoals(newFitnessGoals);
         
         System.out.println("Profile updated successfully for " + client.getUsername() + "\n");
-        return "Updated Personal Details successfully.";
+        return "Updated Personal Details successfully";
     }
 	/**
      * Sets the dietary preferences and restrictions for the client profile

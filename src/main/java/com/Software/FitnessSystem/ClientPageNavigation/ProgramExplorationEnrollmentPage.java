@@ -20,6 +20,7 @@ public class ProgramExplorationEnrollmentPage extends BasePage {
     @SuppressWarnings("unused")
 	private ProgramExplorationEnrollmentControls programExplorationEnrollmentControls;
     private Scanner scanner;
+    private Client client;
     /**
      * Constructs a ProgramExplorationEnrollmentPage with the given client controller
      * and current client
@@ -63,7 +64,7 @@ public class ProgramExplorationEnrollmentPage extends BasePage {
                 ProgramExplorationEnrollmentControls.filterProgramsByFocusArea(focusArea);
                 break;
             case 3:
-                ProgramExplorationEnrollmentControls.enrollInProgram();
+                ProgramExplorationEnrollmentControls.enrollInProgram(client);
                 break;
             case 4:
                 System.out.print("Enter Program Name to View Schedule: ");

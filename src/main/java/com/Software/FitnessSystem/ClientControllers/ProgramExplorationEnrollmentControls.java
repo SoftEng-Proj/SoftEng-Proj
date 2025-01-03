@@ -72,8 +72,8 @@ public class ProgramExplorationEnrollmentControls {
      *
      * @return A message saying the enrollment was successful or null if unsuccessful
      */
-    public static String enrollInProgram() {
-        if (currentClient == null) {
+    public static String enrollInProgram(Client client) {
+        if (client == null) {
             System.out.println("No client found!");
             return null;
         }
@@ -103,11 +103,11 @@ public class ProgramExplorationEnrollmentControls {
         }
 
         Program selectedProgram = (Program) programs.values().toArray()[choice - 1];
-        currentClient.setEnrolledProgram(selectedProgram);
-        System.out.println(currentClient.getUsername() + " has been enrolled in the " + selectedProgram.getName() + " program.");
+        client.setEnrolledProgram(selectedProgram);
+        System.out.println(client.getUsername() + " has been enrolled in the " + selectedProgram.getName() + " program.");
 
         App.saveAccountChanges();
-        return "enrolled in program successfully";
+        return "enrolled in program succsesfully";
     }
 
     /**
@@ -120,11 +120,11 @@ public class ProgramExplorationEnrollmentControls {
         for (Program program : programs.values()) {
             if (program.getName().equalsIgnoreCase(programName)) {
                 System.out.println("Schedule for Program \"" + programName + "\": " + program.getSchedule());
-                return programName;
+                return "program schedule displayed succsesfully";
             }
         }
 
         System.out.println("Program named \"" + programName + "\" not found.");
-        return "program schedule displayed successfully";
+        return null;
     }
 }

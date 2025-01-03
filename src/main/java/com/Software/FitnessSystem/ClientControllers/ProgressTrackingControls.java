@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.Software.FitnessSystem.App;
 import com.Software.FitnessSystem.Client;
+import com.Software.FitnessSystem.AdminControllers.ProgramEnrollment;
 /**
  * This class provides controls for managing and tracking fitness progress
  * It allows adding fitness milestones and viewing progress based on the recorded milestones
@@ -54,4 +55,5 @@ public class ProgressTrackingControls {
         }
         return "You've made so much progress wow!";
     }
+    
 }

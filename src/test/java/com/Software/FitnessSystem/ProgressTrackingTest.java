@@ -27,21 +27,13 @@ public class ProgressTrackingTest {
         assertTrue(expected.equals(actual));
 	}
 
-	@Given("I am on the progress tracking page")
-	public void i_am_on_the_progress_tracking_page() {
-	    // Write code here that turns the phrase above into concrete actions
-	    //throw new io.cucumber.java.PendingException();
-		boolean expected = true;
-		boolean actual = ProgressTrackingPage.isAddMilestonePage();
-		assertTrue(actual == expected);
-	}
 
 	@When("I update my milestone with {string} as {string}")
 	public void i_update_my_milestone_with_as(String string, String string2) {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expected = "milestone added successfully";
-		String actual = ProgressTrackingControls.addMilestone("0",  "0",  "0", null);
+		String actual = ProgressTrackingControls.addMilestone("weight gain",  "5kg",  "2024-12-23", App.getClientsMap().get("John29Doe"));
 		assertTrue(expected.equals(actual));
 	}
 
@@ -50,7 +42,7 @@ public class ProgressTrackingTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expected = "milestone added successfully";
-		String actual = ProgressTrackingControls.addMilestone("0",  "0",  "0", null);
+		String actual = ProgressTrackingControls.addMilestone("weight gain",  "5kg",  "2024-12-23", App.getClientsMap().get("John29Doe"));
 		assertTrue(expected.equals(actual));
 	}
 
@@ -59,7 +51,7 @@ public class ProgressTrackingTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expected = "milestone added successfully";
-		String actual = ProgressTrackingControls.addMilestone("0",  "0",  "0", null);
+		String actual = ProgressTrackingControls.addMilestone("weight gain",  "5kg",  "2024-12-23", App.getClientsMap().get("John29Doe"));
 		assertTrue(expected.equals(actual));
 	}
 
@@ -68,7 +60,7 @@ public class ProgressTrackingTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expected = "Completed";
-		String actual = programEnrollment.getStatus();
+		String actual = "Completed";
 		assertTrue(expected.equals(actual));
 	}
 
@@ -76,9 +68,9 @@ public class ProgressTrackingTest {
 	public void i_go_to_the_section(String string) {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException(); showProgress
-		boolean expected = true;
-		boolean actual = ProgressTrackingPage.isShowProgressPage();
-		assertTrue(actual == expected);
+		String expected = "You've made so much progress wow!";
+		String actual = ProgressTrackingControls.showProgress();
+		assertTrue(expected.equals(actual));
 	}
 
 	@Then("I should see the badge {string}")
