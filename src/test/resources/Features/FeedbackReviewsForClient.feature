@@ -1,8 +1,8 @@
-@AlaaAlawnehTests
+@AlaaAlawnehTestss
 Feature: Feedback and Reviews  
   I want to rate and review completed programs and suggest improvements to instructors.
 
-  @AlaaAlawnehTests
+  @AlaaAlawnehTestss
   Scenario Outline: Rate a completed program  
     Given I am logged into my account  
     And I have completed the program "<program_name>"  
@@ -11,7 +11,7 @@ Feature: Feedback and Reviews
     Then my rating should be saved  
     And I should see a confirmation message "Thank you for your feedback!"
 
-  @AlaaAlawnehTests
+  @AlaaAlawnehTestss
   Scenario Outline: Submit a review for a completed program  
     Given I am logged into my account  
     And I have completed the program "<program_name>"  
@@ -20,7 +20,7 @@ Feature: Feedback and Reviews
     Then my review should be saved  
     And I should see a confirmation message "Thank you for your review!"
 
-  @AlaaAlawnehTests
+  @AlaaAlawnehTestss
   Scenario: Submit an improvement suggestion to instructors  
     Given I am logged into my account  
     And I have completed the program "Cardio Blast"  
