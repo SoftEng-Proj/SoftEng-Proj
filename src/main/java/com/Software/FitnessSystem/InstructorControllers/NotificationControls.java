@@ -65,7 +65,7 @@ public class NotificationControls {
      * 
      */
 	public static boolean ChangeSent() {
-		ProgramMap.put("Fit", null);
+		
 		if (Changesent==true) {
 		return true;
 		}
@@ -79,7 +79,7 @@ public class NotificationControls {
      * 
      */
 	public static boolean AnnouncementSent() {
-		AddanAnnouncement("Hi");
+		//AddanAnnouncement("Hi");
 		if (Announcementsent==true) {
 		return true;
 		}
@@ -93,15 +93,15 @@ public class NotificationControls {
      * 
      */
 	public static void SchedUpdate() {
-		ProgramMap.put("Fit", null);
+		ProgramMap.put("Fit", new Program ("Fit","0","0","0","0","0","0"));
 	}
 	
 	/**
      * to ensure a program is found. 
      */
 	public static boolean ProgramFound() {
-		ProgramMap.put("Fit", null);
-		NotificationControls.addProgramScheduleChange("Fit", null);
+		
+		
 		if (programfound==true) {
 		return true;
 		}
@@ -109,8 +109,16 @@ public class NotificationControls {
 		return false;
 		}
 	}
-	
-	
+	/**
+     * To ensure a program exists, for test purposes. 
+     * 
+     * 
+     */
+	public static boolean ProgramExists() {
+			ProgramMap.put("Fit", new Program ("Fit","20 Days","10-2-2024","2","3","4","5"));
+		
+		return true;
+	}
 
 	
 }

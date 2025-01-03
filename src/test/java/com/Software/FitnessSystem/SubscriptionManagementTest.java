@@ -37,7 +37,7 @@ public class SubscriptionManagementTest {
 	@Given("I add or update a plan \\(e.g., Basic or Premium)")
 	public void i_add_or_update_a_plan_e_g_basic_or_premium() {
 		boolean expected = true;
-        boolean actual = dealWithSubscriptionPlan();
+        boolean actual = doAdding("Test", 120.0, 120, "new");
         assertEquals(expected, actual);
 	}
 	

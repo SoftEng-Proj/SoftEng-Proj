@@ -1,8 +1,9 @@
+@AmmarShafiiTests
 Feature: Progress Tracking
 As an instructor
 I want to monitor client progress and send reminders so that I can help clients achieve their goals
 
-
+@AmmarShafiiTests
 Scenario Outline: Monitor a client progress
 Given I am logged in as an instructor
 And I have an enrolled client named '<ClientName>'
@@ -14,6 +15,7 @@ Examples:
   | Samer      | 60%            | 12/20      |
   | Ahmad      | 100%           | 15/15      |
   
+  @AmmarShafiiTests
   Scenario Outline: Send a motivational reminder to a client
   Given I am logged in as an instructor
   And I have an enrolled client named '<ClientName>' with a completion rate of '<CompletionRate>'
@@ -26,12 +28,12 @@ Examples:
   | Samer      | 60%            |"Success Needs Hard work"  |
   | Ahmad      | 100%           |"You're Fantastic"         |
   
-  
+  @AmmarShafiiTests
   Scenario Outline: Send recommendations to a client
   Given I am logged in as an instructor
   And I have an enrolled client named '<ClientName>' with a completion rate of '<CompletionRate>'
   When I send a recommendation to '<ClientName>' which says '<Recommondation>'
-  Then the client should receive a reminder message
+  Then the client should receive a recommendation message
 
 Examples:
   | ClientName | CompletionRate | Recommendation                     |

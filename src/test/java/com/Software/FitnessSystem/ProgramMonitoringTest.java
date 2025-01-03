@@ -62,7 +62,7 @@ public class ProgramMonitoringTest {
 	public void i_generate_a_report_for_a_specific_program() {
 		boolean expected = true;
 		accessToPrintPrograms(getProgramEnrollmentMap(), false);
-		String programName = askTheNameOfTheProgram();
+		String programName = "CrossFit Challenge";
         boolean actual = generateReportsOption(getProgramEnrollmentMap(), programName, true);
         assertEquals(expected, actual);
 	}

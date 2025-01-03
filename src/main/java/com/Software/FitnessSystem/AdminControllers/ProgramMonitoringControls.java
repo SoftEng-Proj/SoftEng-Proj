@@ -31,7 +31,7 @@ public class ProgramMonitoringControls {
     public static boolean viewAllPrograms() {
         areProgramsDisplayed = true;
         Map<String, ProgramEnrollment> programs = getProgramEnrollmentMap();
-
+        
         if (programs.isEmpty()) {
             System.out.println("No programs available to display.");
             areProgramsDisplayed = false;
@@ -185,7 +185,7 @@ public class ProgramMonitoringControls {
      */
     public static boolean generateReportsOption(Map<String, ProgramEnrollment> programs, String specifiedProgramName, boolean isSpecified) {
         isReportsPrinted = false;
-
+        
         if (!isSpecified) {
             System.out.println("--- Reports on Revenue, Attendance, and Client Progress ---");
             for (Map.Entry<String, ProgramEnrollment> entry : programs.entrySet()) {

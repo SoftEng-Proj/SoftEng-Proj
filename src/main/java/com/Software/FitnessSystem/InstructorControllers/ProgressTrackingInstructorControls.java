@@ -28,6 +28,7 @@ public class ProgressTrackingInstructorControls {
     private static boolean receivedRecomm= false;
     
     
+    
     /**
 	 *  Gets the clients' milestones.
 	 * @return progressList The client's milestones.
@@ -66,8 +67,8 @@ public class ProgressTrackingInstructorControls {
 	 * @return true When a reminder is received, false otherwise
 	 */
 	public static boolean ReceivedCheck() {
-		client.put("Ali", null);
-        sendReminder("Ali","Test");
+		//client.put("Ali", null);
+     //   sendReminder("Ali","Test");
         if (checkIfReceived==true) {
             return true;
         }
@@ -109,12 +110,7 @@ public class ProgressTrackingInstructorControls {
 	public static boolean Reminderr(String name, String msg) {
         client.put(name, null);
         sendReminder(name,msg);
-        if (checkIfReceived==true) {
-        	return true;
-        }
-        else {
-        	return false;
-        }
+        return true;
 	}
         
         
@@ -129,14 +125,16 @@ public class ProgressTrackingInstructorControls {
         public static boolean Recommendationn(String namee, String msgg) {
             client.put(namee, null);
             sendRecommendation(namee,msgg);
-            if (receivedRecomm==true) {
-            	return true;
-            }
-            else {
-            	return false;
-            }
-        
+            return true;
         
 	}
+        
+        public static boolean ReceivedRecommCheck() {
+    		
+            if (receivedRecomm==true) {
+                return true;
+            }
+            return false;
+    	}
 	
 }

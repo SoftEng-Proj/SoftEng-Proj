@@ -16,6 +16,7 @@ import com.Software.FitnessSystem.LoginPage.InstructorPageControllers;
  */
 public class ProgressTrackingInstructorPage extends BasePage {
 	private InstructorPageControllers instructorController;
+	private static boolean viewed=false;
 	
 	
 	/**
@@ -94,11 +95,18 @@ public class ProgressTrackingInstructorPage extends BasePage {
      * @return true At the end of the viewing process.
      */
     public static boolean viewClientProgress() {
+    	viewed=true;
         System.out.println("\nViewing progress...");
         for (FitnessMilestone progress : ProgressTrackingInstructorControls.getMilestones()) {
             System.out.println(progress);
         }
         
         return true;
+    }
+    public static boolean ViewedCheck() {
+    	if (viewed==true){
+    		return true;
+    	}
+    	return false;
     }
 }

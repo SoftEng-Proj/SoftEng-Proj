@@ -10,8 +10,12 @@ import io.cucumber.junit.CucumberOptions;
 		plugin = {"html:target/cucumber-report/report.html"},
 		monochrome = true,
 		snippets = CucumberOptions.SnippetType.CAMELCASE,
-		tags = "@AlaaAlawnehTests"
-)
+		tags = "@MuathHassounTests or @AmmarShafiiTests or @AlaaAlawnehTests")
 
+/**
+ * @MuathHassounTests
+ * @AmmarShafiiTests
+ * 
+ */
 public class AcceptanceTest {
 }

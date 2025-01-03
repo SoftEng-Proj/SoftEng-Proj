@@ -70,7 +70,7 @@ public class InteractForInstructorPage extends BasePage {
             	System.out.println("Enter the message on the forum:");
             	String msg = scanner.nextLine();
             	 
-                InteractForInstructorControls.sendMessageToClient(progname, msg);
+                InteractForInstructorControls.sendMessageToProgramForum(progname, msg);
                 App.saveProgramForumMsgsChanges();
                 //isForumPage = false;
                 break;

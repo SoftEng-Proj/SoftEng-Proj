@@ -5,7 +5,7 @@ Feature: Content Management
     Given I am logged in as an Admin
     When I review a wellness article, tip, or recipe
     Then I can approve or reject the submission
-
+    
   @MuathHassounTests
   Scenario: Approve articles or tips shared on health and wellness
     Given I am logged in as an admin

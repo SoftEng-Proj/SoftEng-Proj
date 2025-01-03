@@ -123,12 +123,30 @@ public class SubscriptionManagementControls {
         System.out.println("Enter the description of the plan:");
         String description = scanner.nextLine();
         
-        CustomPlan newCustomPlan = new CustomPlan(planName.toUpperCase(), price, duration, description);
-        getSubscriptionPlanMap().put(planName, newCustomPlan);
-        
-        System.out.println("Subscription Plan added successfully.");
-        return true;
+        boolean isAdded = doAdding(planName.toUpperCase(), price, duration, description);
+
+        if (isAdded) {
+            System.out.println("Subscription Plan added successfully.");
+        } else {
+            System.out.println("Failed to add Subscription Plan.");
+        }
+        return isAdded;
     }
+	
+	/**
+     * Adds a subscription plan to the subscription map.
+     *
+     * @param planName    the name of the subscription plan (must be unique).
+     * @param price       the price of the subscription plan.
+     * @param duration    the duration of the subscription plan (in days).
+     * @param description a brief description of the subscription plan.
+     * @return true if the plan is successfully added; false otherwise.
+     */
+	public static boolean doAdding(String planName, double price, int duration, String description) {
+		CustomPlan newCustomPlan = new CustomPlan(planName, price, duration, description);
+        getSubscriptionPlanMap().put(planName, newCustomPlan);
+        return true;
+	}
 	
 	/**
      * Allows the user to edit an existing subscription plan by selecting a plan and modifying its properties.
