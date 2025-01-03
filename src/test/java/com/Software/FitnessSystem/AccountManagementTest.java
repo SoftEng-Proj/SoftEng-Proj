@@ -92,7 +92,7 @@ public class AccountManagementTest {
     @When("I change my fitness goals to {string}")
     public void i_change_my_fitness_goals_to(String newFitnessGoals) {
         String expected = "Updated personal details successfully";
-        String actual = AccountManagementControls.updatePersonalDetails(App.getClientsMap().get("John29Doe"), "24", newFitnessGoals);
+        String actual = AccountManagementControls.updatePersonalDetails(App.getClientsMap().get("John29Doe"), "30", newFitnessGoals);
         assertEquals(expected, actual);
     }
 
