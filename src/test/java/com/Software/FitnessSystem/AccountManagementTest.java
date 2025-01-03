@@ -6,12 +6,10 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class AccountManagementTest {
-	AccountManagementControls accountManagement;
     App app;
     
-    public AccountManagementTest(App ap, AccountManagementControls am) {
+    public AccountManagementTest(App ap) {
         this.app = ap;
-        this.accountManagement = am;
     }
     
 	@When("I select {string} as my dietary preference")
