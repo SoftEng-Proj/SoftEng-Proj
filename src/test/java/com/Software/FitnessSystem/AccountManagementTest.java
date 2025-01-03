@@ -47,7 +47,7 @@ public class AccountManagementTest {
 	@When("I enter my personal details including age {string} and fitness goals {string}")
 	public void i_enter_my_personal_details_including_age_and_fitness_goals(String string, String string2) {
 		String expcted = "Profile Created Successfully";
-		String acutal = AccountManagementControls.createProfile("active", App.getClientsMap().get("John29Doe"), "23", "gain muscle");
+		String acutal = AccountManagementControls.createProfile("John29Doe", App.getClientsMap().get("John29Doe"), "23", "gain muscle");
         assertEquals(expcted, acutal);
 	}
 
@@ -61,25 +61,24 @@ public class AccountManagementTest {
 	@When("I submit the form")
 	public void i_submit_the_form() {
 		String expcted = "Profile Created Successfully";
-		String acutal = AccountManagementControls.createProfile("active", App.getClientsMap().get("John29Doe"), "23", "gain muscle");
+		String acutal = AccountManagementControls.createProfile("active", App.getClientsMap().get("active"), "23", "gain muscle");
         assertEquals(expcted, acutal);
 	}
 
 	@Then("my profile should be created")
 	public void my_profile_should_be_created() {
 		String expcted = "Profile Created Successfully";
-		String acutal = AccountManagementControls.createProfile("active", App.getClientsMap().get("John29Doe"), "23", "gain muscle");
+		String acutal = AccountManagementControls.createProfile("active", App.getClientsMap().get("active"), "23", "gain muscle");
         assertEquals(expcted, acutal);
 	}
 
 	@Then("I should see a confirmation message {string}")
 	public void i_should_see_a_confirmation_message(String string) {
 		String expcted = "Profile Created Successfully";
-		String acutal = AccountManagementControls.createProfile("active", App.getClientsMap().get("John29Doe"), "23", "gain muscle");
+		String acutal = AccountManagementControls.createProfile("active", App.getClientsMap().get("active"), "23", "gain muscle");
         assertEquals(expcted, acutal);
 	}
-
-
+	
 	@When("I update my age to {string}")
 	public void i_update_my_age_to(String string) {
 		String expcted = "Updated Personal Details successfully";

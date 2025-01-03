@@ -37,7 +37,6 @@ public class AccountManagementControls {
 			return "Empty";
 		}
 		
-		
         Profile newProfile = new Profile(age, fitnessGoals);
         profilesMap.put(client.getUsername(), newProfile);
         System.out.println("Profile created successfully for " + client.getUsername() + "\n");
@@ -58,9 +57,9 @@ public class AccountManagementControls {
             System.out.println("No profile found for " + client.getUsername());
             return newFitnessGoals;
         }
+        
         profile.setAge(newAge);
         profile.setFitnessGoals(newFitnessGoals);
-        
         System.out.println("Profile updated successfully for " + client.getUsername() + "\n");
         return "Updated Personal Details successfully";
     }
