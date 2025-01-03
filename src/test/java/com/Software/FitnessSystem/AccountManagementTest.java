@@ -99,7 +99,7 @@ public class AccountManagementTest {
     @Then("my profile should be updated")
     public void my_profile_should_be_updated() {
         String expected = "Updated personal details successfully";
-        String actual = AccountManagementControls.updatePersonalDetails(App.getClientsMap().get("John29Doe"), "24", "gain muscle");
+        String actual = AccountManagementControls.updatePersonalDetails(App.getClientsMap().get("John29Doe"), "30", "Lose weigh");
         assertEquals(expected, actual);
     }
 }
