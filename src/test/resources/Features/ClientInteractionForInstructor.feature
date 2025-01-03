@@ -3,16 +3,14 @@ Feature: Client Interaction
   As an instructor
   I want to interact with enrolled clients and provide feedback or progress reports
 
-@AmmarShafiiTests
+  @AmmarShafiiTests
   Scenario: Send a message to an enrolled client
     Given I am logged in as an instructor
     And I have an enrolled client named "Omar"
     When I send a message to "Omar" which says "Good Job"
     Then the client should receive the message
 
-   
-   
-@AmmarShafiiTests
+   @AmmarShafiiTests
    Scenario: Post a message on the dicussion forum
      Given I am logged in as an instructor
      And I am on the dicussion forum for the program "Cardio"

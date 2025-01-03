@@ -81,7 +81,7 @@ public class ClientInteractionForInstructorTest {
 	@Then("the client should receive the feedback")
 	public void the_client_should_receive_the_feedback() {
 		boolean expected=true;
-		boolean actual=InteractForInstructorControls.Feedbackprovide();
+		boolean actual = InteractForInstructorControls.Feedbackprovide();
 		assertTrue(expected==actual);
 	}
 	

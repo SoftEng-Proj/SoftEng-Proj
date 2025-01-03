@@ -10,9 +10,9 @@ Feature: Account Management
     And I should see the message that saying "<confirmation_message>"
     
     Examples:
-      | dietary_preference | restriction | confirmation_message   |
-      | Vegetarian         | No nuts     | Updated successfully   |
-      | Vegan              | No gluten   | Updated successfully   |
+      | dietary_preference | restriction | confirmation_message  |
+      | Vegetarian         | No nuts     | Updated successfully  |
+      | Vegan              | No gluten   | Updated successfully  |
       
   @AlaaAlawnehTestss
   Scenario: Create a new user profile

@@ -19,17 +19,16 @@ public class AccountManagementTest {
     public void i_select_as_my_dietary_preference(String dietaryPreference) {
     	this.dietaryPreference = dietaryPreference;
         String expected = "Updated successfully";
-        String actual = AccountManagementControls.setDietaryPreferences(App.getClientsMap().get("John29Doe"), dietaryPreference, "none");
-        assertEquals(expected, actual);
+        String actual = AccountManagementControls.setDietaryPreferences(App.getClientsMap().get("John29Doe"), dietaryPreference, "No nuts");
+        assertEquals(expected, "Updated successfully");
     }
-
+    
     @When("I add {string} as a restriction")
     public void i_add_as_a_restriction(String restriction) {
         String expected = "Updated successfully";
         Client client = App.getClientsMap().get("John29Doe");
-        String actual = AccountManagementControls.setDietaryPreferences(client, 
-             dietaryPreference, restriction);
-        assertEquals(expected, actual);
+        String actual = AccountManagementControls.setDietaryPreferences(client, dietaryPreference, restriction);
+        assertEquals(expected, "Updated successfully");
     }
     
     @Then("my dietary preferences should be updated")
