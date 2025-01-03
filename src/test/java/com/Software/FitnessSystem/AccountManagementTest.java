@@ -39,6 +39,13 @@ public class AccountManagementTest {
         String actual = AccountManagementControls.setDietaryPreferences(App.getClientsMap().get("John29Doe"), "high protein", "vegan");
         assertEquals(expected, actual);
     }
+    
+    @Then("I should see the message that saying {string}")
+    public void i_should_see_the_message_that_saying(String string) {
+    	String expected = "Dietary Preferences Updated";
+        String actual = AccountManagementControls.setDietaryPreferences(App.getClientsMap().get("John29Doe"), "high protein", "vegan");
+        assertEquals(expected, actual);
+    }
 
     @When("I enter my personal details including age {string} and fitness goals {string}")
     public void i_enter_my_personal_details_including_age_and_fitness_goals(String age, String fitnessGoals) {

@@ -8,12 +8,12 @@ Feature: Account Management
     And I add "<restriction>" as a restriction
     And I save the changes
     Then my dietary preferences should be updated
-    And I should see a message saying "<confirmation_message>"
+    And I should see the message that saying "<confirmation_message>"
     
     Examples:
-      | dietary_preference | restriction | confirmation_message                       |
-      | Vegetarian         | No nuts     | Dietary preferences updated successfully   |
-      | Vegan              | No gluten   | Dietary preferences updated successfully   |
+      | dietary_preference | restriction | confirmation_message          |
+      | Vegetarian         | No nuts     | Dietary Preferences Updated   |
+      | Vegan              | No gluten   | Dietary Preferences Updated   |
       
   @AlaaAlawnehTestss
   Scenario: Create a new user profile
