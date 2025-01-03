@@ -11,9 +11,9 @@ Feature: Account Management
     And I should see the message that saying "<confirmation_message>"
     
     Examples:
-      | dietary_preference | restriction | confirmation_message          |
-      | Vegetarian         | No nuts     | Dietary Preferences Updated   |
-      | Vegan              | No gluten   | Dietary Preferences Updated   |
+      | dietary_preference | restriction | confirmation_message   |
+      | Vegetarian         | No nuts     | Updated successfully   |
+      | Vegan              | No gluten   | Updated successfully   |
       
   @AlaaAlawnehTestss
   Scenario: Create a new user profile
@@ -29,4 +29,4 @@ Feature: Account Management
     And I change my fitness goals to "Lose weight"
     And I save the changes
     Then my profile should be updated
-    And I should see the message that saying "Profile updated successfully"
+    And I should see the message that saying "Updated successfully"

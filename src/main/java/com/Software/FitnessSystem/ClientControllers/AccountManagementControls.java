@@ -40,7 +40,7 @@ public class AccountManagementControls {
         Profile newProfile = new Profile(age, fitnessGoals);
         profilesMap.put(client.getUsername(), newProfile);
         System.out.println("Profile created successfully for " + client.getUsername() + "\n");
-        return "Profile Created Successfully";
+        return "Profile created successfully";
     }
 	
 	 /**
@@ -61,7 +61,7 @@ public class AccountManagementControls {
         profile.setAge(newAge);
         profile.setFitnessGoals(newFitnessGoals);
         System.out.println("Profile updated successfully for " + client.getUsername() + "\n");
-        return "Updated Personal Details successfully";
+        return "Updated personal details successfully";
     }
 	/**
      * Sets the dietary preferences and restrictions for the client profile
@@ -82,7 +82,7 @@ public class AccountManagementControls {
         profile.setDietaryRestrictions(restrictions);
         
         System.out.println("Dietary preferences updated for " + client.getUsername() + "\n");
-        return "Dietary Preferences Updated";
+        return "Updated successfully";
     }
 	/**
      * Displays the profile details of a client
