@@ -51,7 +51,7 @@ public class ProgramExplorationEnrollmentTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expcted = "enrolled in program succsesfully";
-		String acutal = ProgramExplorationEnrollmentControls.enrollInProgram(App.getClientsMap().get("John29Doe"));
+		String acutal = ProgramExplorationEnrollmentControls.enrollInProgram(App.getClientsMap().get("John29Doe"), 13);
 		assertTrue(acutal.equals(expcted));
 	}
 
@@ -60,7 +60,7 @@ public class ProgramExplorationEnrollmentTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expcted = "enrolled in program succsesfully";
-		String acutal = ProgramExplorationEnrollmentControls.enrollInProgram(App.getClientsMap().get("John29Doe"));
+		String acutal = ProgramExplorationEnrollmentControls.enrollInProgram(App.getClientsMap().get("John29Doe"), 13);
 		assertTrue(acutal.equals(expcted));
 	}
 
@@ -69,7 +69,7 @@ public class ProgramExplorationEnrollmentTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expcted = "enrolled in program succsesfully";
-		String acutal = ProgramExplorationEnrollmentControls.enrollInProgram(App.getClientsMap().get("John29Doe"));
+		String acutal = ProgramExplorationEnrollmentControls.enrollInProgram(App.getClientsMap().get("John29Doe"), 13);
 		assertTrue(acutal.equals(expcted));
 	}
 
@@ -87,7 +87,7 @@ public class ProgramExplorationEnrollmentTest {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new io.cucumber.java.PendingException();
 		String expcted = "enrolled in program succsesfully";
-		String acutal = ProgramExplorationEnrollmentControls.enrollInProgram(App.getClientsMap().get("John29Doe"));
+		String acutal = ProgramExplorationEnrollmentControls.enrollInProgram(App.getClientsMap().get("John29Doe"), 13);
 		assertTrue(acutal.equals(expcted));
 	}
 

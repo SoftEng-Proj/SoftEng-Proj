@@ -1,9 +1,11 @@
 package com.Software.FitnessSystem.ClientPageNavigation;
+import java.util.Map;
 import java.util.Scanner;
 
 import com.Software.FitnessSystem.Client;
 import com.Software.FitnessSystem.ClientControllers.ProgramExplorationEnrollmentControls;
 import com.Software.FitnessSystem.InfrastructureForPages.BasePage;
+import com.Software.FitnessSystem.InstructorControllers.Program;
 import com.Software.FitnessSystem.LoginPage.ClientPageControllers;
 /**
  * The ProgramExplorationEnrollmentPage class is the page where clients
@@ -64,7 +66,25 @@ public class ProgramExplorationEnrollmentPage extends BasePage {
                 ProgramExplorationEnrollmentControls.filterProgramsByFocusArea(focusArea);
                 break;
             case 3:
-                ProgramExplorationEnrollmentControls.enrollInProgram(client);
+                System.out.println("Available Fitness Programs:");
+                int i = 1;
+                for (Map.Entry<String, Program> entry : ProgramExplorationEnrollmentControls.getPrograms().entrySet()) {
+                    Program program = entry.getValue();
+                    System.out.println(i + ". " + program.getName());
+                    System.out.println("   Duration: " + program.getDuration());
+                    System.out.println("   Level: " + program.getLevel());
+                    System.out.println("   Goal: " + program.getGoal());
+                    System.out.println("   Price: " + program.getPrice());
+                    System.out.println("   Schedule: " + program.getSchedule());
+                    System.out.println("   Links: " + program.getLinks());
+                    System.out.println("   End Date: " + program.getEndAt());
+                    i++;
+                }
+
+                System.out.print("Enter the number of the program you want to enroll in: ");
+                int programNumber = scanner.nextInt();
+                scanner.nextLine();
+                ProgramExplorationEnrollmentControls.enrollInProgram(client, programNumber);
                 break;
             case 4:
                 System.out.print("Enter Program Name to View Schedule: ");

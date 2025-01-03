@@ -35,7 +35,7 @@ public class ProgramExplorationEnrollmentControls {
      */
     public static String filterProgramsByDifficulty(String difficulty) {
         System.out.println("\nPrograms matching difficulty level: " + difficulty);
-        for (Program program : programs.values()) {
+        for (Program program : getPrograms().values()) {
             if (program.getLevel().equalsIgnoreCase(difficulty)) {
                 System.out.println("Program Name: " + program.getName());
                 System.out.println("Goal: " + program.getGoal());
@@ -55,7 +55,7 @@ public class ProgramExplorationEnrollmentControls {
      */
     public static String filterProgramsByFocusArea(String focusArea) {
         System.out.println("\nPrograms focusing on: " + focusArea);
-        for (Program program : programs.values()) {
+        for (Program program : getPrograms().values()) {
             if (program.getGoal().equalsIgnoreCase(focusArea)) {
                 System.out.println("Program Name: " + program.getName());
                 System.out.println("Goal: " + program.getGoal());
@@ -72,37 +72,18 @@ public class ProgramExplorationEnrollmentControls {
      *
      * @return A message saying the enrollment was successful or null if unsuccessful
      */
-    public static String enrollInProgram(Client client) {
+    public static String enrollInProgram(Client client, int programNumber) {
         if (client == null) {
             System.out.println("No client found!");
             return null;
         }
 
-        System.out.println("Available Fitness Programs:");
-        int i = 1;
-        for (Map.Entry<String, Program> entry : programs.entrySet()) {
-            Program program = entry.getValue();
-            System.out.println(i + ". " + program.getName());
-            System.out.println("   Duration: " + program.getDuration());
-            System.out.println("   Level: " + program.getLevel());
-            System.out.println("   Goal: " + program.getGoal());
-            System.out.println("   Price: " + program.getPrice());
-            System.out.println("   Schedule: " + program.getSchedule());
-            System.out.println("   Links: " + program.getLinks());
-            System.out.println("   End Date: " + program.getEndAt());
-            i++;
-        }
-
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the number of the program you want to enroll in:");
-        int choice = scanner.nextInt();
-
-        if (choice < 1 || choice > programs.size()) {
+        if (programNumber < 1 || programNumber > programs.size()) {
             System.out.println("Invalid program selection.");
             return null;
         }
 
-        Program selectedProgram = (Program) programs.values().toArray()[choice - 1];
+        Program selectedProgram = (Program) programs.values().toArray()[programNumber - 1];
         client.setEnrolledProgram(selectedProgram);
         System.out.println(client.getUsername() + " has been enrolled in the " + selectedProgram.getName() + " program.");
 
@@ -117,7 +98,7 @@ public class ProgramExplorationEnrollmentControls {
      * @return A message saying the schedule was displayed or an error message if the program was not found
      */
     public static String viewProgramSchedule(String programName) {
-        for (Program program : programs.values()) {
+        for (Program program : getPrograms().values()) {
             if (program.getName().equalsIgnoreCase(programName)) {
                 System.out.println("Schedule for Program \"" + programName + "\": " + program.getSchedule());
                 return "program schedule displayed succsesfully";
@@ -127,4 +108,12 @@ public class ProgramExplorationEnrollmentControls {
         System.out.println("Program named \"" + programName + "\" not found.");
         return null;
     }
+
+	public static Map<String, Program> getPrograms() {
+		return programs;
+	}
+
+	public static void setPrograms(Map<String, Program> programs) {
+		ProgramExplorationEnrollmentControls.programs = programs;
+	}
 }
