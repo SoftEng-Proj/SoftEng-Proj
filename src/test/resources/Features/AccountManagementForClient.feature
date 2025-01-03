@@ -29,4 +29,4 @@ Feature: Account Management
     And I change my fitness goals to "Lose weight"
     And I save the changes
     Then my profile should be updated
-    And I should see a message saying "Profile updated successfully"
+    And I should see the message that saying "Profile updated successfully"
