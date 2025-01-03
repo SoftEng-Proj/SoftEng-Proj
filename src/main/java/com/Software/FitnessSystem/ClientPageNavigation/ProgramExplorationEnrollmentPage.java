@@ -32,7 +32,7 @@ public class ProgramExplorationEnrollmentPage extends BasePage {
      */
     public ProgramExplorationEnrollmentPage(ClientPageControllers clientController, Client currentClient) {
         this.clientController = clientController;
-        this.programExplorationEnrollmentControls = new ProgramExplorationEnrollmentControls(currentClient);
+        this.programExplorationEnrollmentControls = new ProgramExplorationEnrollmentControls();
         this.scanner = new Scanner(System.in);
     }
     /**

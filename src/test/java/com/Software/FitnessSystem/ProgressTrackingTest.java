@@ -1,7 +1,6 @@
 package com.Software.FitnessSystem;
 import com.Software.FitnessSystem.AdminControllers.ProgramEnrollment;
 import com.Software.FitnessSystem.ClientControllers.ProgressTrackingControls;
-import com.Software.FitnessSystem.ClientPageNavigation.ProgressTrackingPage;
 import static org.junit.Assert.assertTrue;
 
 import io.cucumber.java.en.Given;
@@ -20,8 +19,6 @@ public class ProgressTrackingTest {
 	}
 	@Given("I am logged into my account")
 	public void i_am_logged_into_my_account() {
-	    // Write code here that turns the phrase above into concrete actions
-	    //throw new io.cucumber.java.PendingException();
 		String expected = "ClientLoggedIn";
     	String actual = App.login("John29Doe", "Client");
         assertTrue(expected.equals(actual));
@@ -30,8 +27,6 @@ public class ProgressTrackingTest {
 
 	@When("I update my milestone with {string} as {string}")
 	public void i_update_my_milestone_with_as(String string, String string2) {
-	    // Write code here that turns the phrase above into concrete actions
-	    //throw new io.cucumber.java.PendingException();
 		String expected = "milestone added successfully";
 		String actual = ProgressTrackingControls.addMilestone("weight gain",  "5kg",  "2024-12-23", App.getClientsMap().get("John29Doe"));
 		assertTrue(expected.equals(actual));
@@ -39,8 +34,6 @@ public class ProgressTrackingTest {
 
 	@Then("my milestone should be recorded")
 	public void my_milestone_should_be_recorded() {
-	    // Write code here that turns the phrase above into concrete actions
-	    //throw new io.cucumber.java.PendingException();
 		String expected = "milestone added successfully";
 		String actual = ProgressTrackingControls.addMilestone("weight gain",  "5kg",  "2024-12-23", App.getClientsMap().get("John29Doe"));
 		assertTrue(expected.equals(actual));
@@ -48,8 +41,6 @@ public class ProgressTrackingTest {
 
 	@Then("I should see a confirmation message saying {string}")
 	public void i_should_see_a_confirmation_message_saying(String string) {
-	    // Write code here that turns the phrase above into concrete actions
-	    //throw new io.cucumber.java.PendingException();
 		String expected = "milestone added successfully";
 		String actual = ProgressTrackingControls.addMilestone("weight gain",  "5kg",  "2024-12-23", App.getClientsMap().get("John29Doe"));
 		assertTrue(expected.equals(actual));
@@ -57,8 +48,6 @@ public class ProgressTrackingTest {
 
 	@Given("I have completed the program {string}")
 	public void i_have_completed_the_program(String string) {
-	    // Write code here that turns the phrase above into concrete actions
-	    //throw new io.cucumber.java.PendingException();
 		String expected = "Completed";
 		String actual = "Completed";
 		assertTrue(expected.equals(actual));
@@ -66,8 +55,6 @@ public class ProgressTrackingTest {
 
 	@When("I go to the {string} section")
 	public void i_go_to_the_section(String string) {
-	    // Write code here that turns the phrase above into concrete actions
-	    //throw new io.cucumber.java.PendingException(); showProgress
 		String expected = "You've made so much progress wow!";
 		String actual = ProgressTrackingControls.showProgress();
 		assertTrue(expected.equals(actual));
@@ -75,8 +62,6 @@ public class ProgressTrackingTest {
 
 	@Then("I should see the badge {string}")
 	public void i_should_see_the_badge(String string) {
-	    // Write code here that turns the phrase above into concrete actions
-	    //throw new io.cucumber.java.PendingException();
 		String expected = "You've made so much progress wow!";
 		String actual = ProgressTrackingControls.showProgress();
 		assertTrue(expected.equals(actual));
@@ -84,8 +69,6 @@ public class ProgressTrackingTest {
 
 	@Then("I should see a message saying {string}")
 	public void i_should_see_a_message_saying(String string) {
-	    // Write code here that turns the phrase above into concrete actions
-	    //throw new io.cucumber.java.PendingException();
 		String expected = "You've made so much progress wow!";
 		String actual = ProgressTrackingControls.showProgress();
 		assertTrue(expected.equals(actual));

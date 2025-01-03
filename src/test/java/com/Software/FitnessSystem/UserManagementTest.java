@@ -1,7 +1,6 @@
 package com.Software.FitnessSystem;
 import static com.Software.FitnessSystem.App.*;
 import static com.Software.FitnessSystem.AdminControllers.UserManagementControls.*;
-import static com.Software.FitnessSystem.AdminPageNavigation.UserManagementPage.*;
 import com.Software.FitnessSystem.AdminControllers.UserManagementControls;
 import com.Software.FitnessSystem.LoginPage.AdminPagesController;
 

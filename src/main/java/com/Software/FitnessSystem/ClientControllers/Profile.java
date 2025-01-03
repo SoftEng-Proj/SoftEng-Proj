@@ -1,7 +1,4 @@
 package com.Software.FitnessSystem.ClientControllers;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 /**
  * Represents a fitness profile for a client
  * The profile has age, fitness goals, dietary preferences, and dietary restrictions
@@ -22,7 +19,7 @@ public class Profile {
      * @param fitnessGoals the fitness goals of the client
      */
     public Profile(String age, String fitnessGoals) {
-    	this.name = name;
+    	this.name = "";
         this.age = age;
         this.fitnessGoals = fitnessGoals;
         this.dietaryPreference = "";
@@ -50,7 +47,7 @@ public class Profile {
      *
      * @param name the new name of the client
      */
-    public void setName(String age) {
+    public void setName(String name) {
         this.name = name;
     }
     

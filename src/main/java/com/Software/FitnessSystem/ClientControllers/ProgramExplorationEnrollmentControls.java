@@ -1,8 +1,5 @@
 package com.Software.FitnessSystem.ClientControllers;
-
 import java.util.Map;
-import java.util.Scanner;
-
 import com.Software.FitnessSystem.App;
 import com.Software.FitnessSystem.InstructorControllers.Program;
 import com.Software.FitnessSystem.Client;
@@ -14,16 +11,11 @@ import com.Software.FitnessSystem.Client;
  */
 public class ProgramExplorationEnrollmentControls {
     private static Map<String, Program> programs = App.getFitnessProgramsMap();
-
-    private static Client currentClient;
-
+    
     /**
-     * Constructor to set the current client
-     *
-     * @param currentClient The client who is using this feature
+     * Constructor
      */
-    public ProgramExplorationEnrollmentControls(Client currentClient) {
-        ProgramExplorationEnrollmentControls.currentClient = currentClient;
+    public ProgramExplorationEnrollmentControls() {
     }
 
     /**
@@ -77,16 +69,16 @@ public class ProgramExplorationEnrollmentControls {
             System.out.println("No client found!");
             return null;
         }
-
+        
         if (programNumber < 1 || programNumber > programs.size()) {
             System.out.println("Invalid program selection.");
             return null;
         }
-
+        
         Program selectedProgram = (Program) programs.values().toArray()[programNumber - 1];
         client.setEnrolledProgram(selectedProgram);
         System.out.println(client.getUsername() + " has been enrolled in the " + selectedProgram.getName() + " program.");
-
+        
         App.saveAccountChanges();
         return "enrolled in program succsesfully";
     }
@@ -104,7 +96,7 @@ public class ProgramExplorationEnrollmentControls {
                 return "program schedule displayed succsesfully";
             }
         }
-
+        
         System.out.println("Program named \"" + programName + "\" not found.");
         return null;
     }
