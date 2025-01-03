@@ -4,13 +4,17 @@ Feature: Account Management
 
   @AlaaAlawnehTestss
   Scenario Outline: Set dietary preferences or restrictions
-    
     When I select "<dietary_preference>" as my dietary preference
     And I add "<restriction>" as a restriction
     And I save the changes
     Then my dietary preferences should be updated
     And I should see a message saying "<confirmation_message>"
     
+    Examples:
+      | dietary_preference | restriction | confirmation_message                       |
+      | Vegetarian         | No nuts     | Dietary preferences updated successfully   |
+      | Vegan              | No gluten   | Dietary preferences updated successfully   |
+      
   @AlaaAlawnehTestss
   Scenario: Create a new user profile
     When I enter my personal details including age "25" and fitness goals "Build muscle"
@@ -26,9 +30,3 @@ Feature: Account Management
     And I save the changes
     Then my profile should be updated
     And I should see a message saying "Profile updated successfully"
-
-
-    Examples: 
-      | dietary_preference | restriction | confirmation_message                        |
-      | Vegetarian         | No nuts     | Dietary preferences updated successfully   |
-      | Vegan              | No gluten   | Dietary preferences updated successfully   |

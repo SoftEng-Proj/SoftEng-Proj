@@ -78,6 +78,7 @@ public class AccountManagementControls {
             System.out.println("No profile found for " + client.getUsername());
             return restrictions;
         }
+        
         profile.setDietaryPreference(dietaryPreference);
         profile.setDietaryRestrictions(restrictions);
         

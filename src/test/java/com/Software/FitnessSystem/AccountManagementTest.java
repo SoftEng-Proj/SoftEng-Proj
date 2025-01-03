@@ -13,14 +13,14 @@ public class AccountManagementTest {
         this.app = ap;
         this.accountManagement = am;
     }
-
+    
 	@When("I select {string} as my dietary preference")
 	public void i_select_as_my_dietary_preference(String dietaryPreference) {
 		String expected = "Dietary Preferences Updated";
 		String acutal = AccountManagementControls.setDietaryPreferences(App.getClientsMap().get("John29Doe"), dietaryPreference, "none");
         assertEquals(expected, acutal);
 	}
-
+	
 	@When("I add {string} as a restriction")
 	public void i_add_as_a_restriction(String restriction) {
 		String expected = "Dietary Preferences Updated";
@@ -47,35 +47,35 @@ public class AccountManagementTest {
 	@When("I enter my personal details including age {string} and fitness goals {string}")
 	public void i_enter_my_personal_details_including_age_and_fitness_goals(String string, String string2) {
 		String expcted = "Profile Created Successfully";
-		String acutal = AccountManagementControls.createProfile("active", App.getClientsMap().get("active"), "23", "gain muscle");
+		String acutal = AccountManagementControls.createProfile("active", App.getClientsMap().get("John29Doe"), "23", "gain muscle");
         assertEquals(expcted, acutal);
 	}
 
 	@When("I specify my dietary preferences or restrictions as {string}")
 	public void i_specify_my_dietary_preferences_or_restrictions_as(String string) {
 		String expcted = "Dietary Preferences Updated";
-		String acutal = AccountManagementControls.setDietaryPreferences(App.getClientsMap().get("active"), "high proten", "vegan");
+		String acutal = AccountManagementControls.setDietaryPreferences(App.getClientsMap().get("John29Doe"), "high proten", "vegan");
         assertEquals(expcted, acutal);
 	}
 
 	@When("I submit the form")
 	public void i_submit_the_form() {
 		String expcted = "Profile Created Successfully";
-		String acutal = AccountManagementControls.createProfile("active", App.getClientsMap().get("active"), "23", "gain muscle");
+		String acutal = AccountManagementControls.createProfile("active", App.getClientsMap().get("John29Doe"), "23", "gain muscle");
         assertEquals(expcted, acutal);
 	}
 
 	@Then("my profile should be created")
 	public void my_profile_should_be_created() {
 		String expcted = "Profile Created Successfully";
-		String acutal = AccountManagementControls.createProfile("active", App.getClientsMap().get("active"), "23", "gain muscle");
+		String acutal = AccountManagementControls.createProfile("active", App.getClientsMap().get("John29Doe"), "23", "gain muscle");
         assertEquals(expcted, acutal);
 	}
 
 	@Then("I should see a confirmation message {string}")
 	public void i_should_see_a_confirmation_message(String string) {
 		String expcted = "Profile Created Successfully";
-		String acutal = AccountManagementControls.createProfile("active", App.getClientsMap().get("active"), "23", "gain muscle");
+		String acutal = AccountManagementControls.createProfile("active", App.getClientsMap().get("John29Doe"), "23", "gain muscle");
         assertEquals(expcted, acutal);
 	}
 
