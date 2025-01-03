@@ -14,6 +14,8 @@ import com.Software.FitnessSystem.Client;
  */
 public class AccountManagementControls {
 	private static Map<String, Profile> profilesMap = App.getClientProfileMap();
+	private static String dietaryPreferences = "";
+	
 	/**
      * Default constructor for AccountManagementControls
      * beacause the class uses static methods no need to make an instance
@@ -73,6 +75,8 @@ public class AccountManagementControls {
      */
 	public static String setDietaryPreferences(Client client, String dietaryPreference, String restrictions) {
         Profile profile = profilesMap.get(client.getUsername());
+        dietaryPreferences = "";
+        
         if (profile == null) {
             System.out.println("No profile found for " + client.getUsername());
             return restrictions;
@@ -82,8 +86,14 @@ public class AccountManagementControls {
         profile.setDietaryRestrictions(restrictions);
         
         System.out.println("Dietary preferences updated for " + client.getUsername() + "\n");
-        return "Updated successfully";
+        dietaryPreferences = "Updated successfully";
+        return dietaryPreferences;
     }
+	
+	public static String getDietaryPreferences() {
+		return dietaryPreferences;
+	}
+	
 	/**
      * Displays the profile details of a client
      *

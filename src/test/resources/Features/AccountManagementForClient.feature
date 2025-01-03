@@ -6,7 +6,6 @@ Feature: Account Management
   Scenario Outline: Set dietary preferences or restrictions
     Given I select "<dietary_preference>" as my dietary preference
     When I add "<restriction>" as a restriction
-    And I save the changes
     Then my dietary preferences should be updated
     And I should see the message that saying "<confirmation_message>"
     
@@ -27,6 +26,5 @@ Feature: Account Management
   Scenario: Update personal details in the profile
     When I update my age to "30"
     And I change my fitness goals to "Lose weight"
-    And I save the changes
     Then my profile should be updated
     And I should see the message that saying "Updated successfully"

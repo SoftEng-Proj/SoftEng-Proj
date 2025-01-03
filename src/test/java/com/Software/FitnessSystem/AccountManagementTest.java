@@ -20,7 +20,7 @@ public class AccountManagementTest {
         String actual = AccountManagementControls.setDietaryPreferences(App.getClientsMap().get("John29Doe"), dietaryPreference, "none");
         assertEquals(expected, actual);
     }
-    
+
     @When("I add {string} as a restriction")
     public void i_add_as_a_restriction(String restriction) {
         String expected = "Updated successfully";
@@ -28,24 +28,17 @@ public class AccountManagementTest {
         assertEquals(expected, actual);
     }
     
-    @When("I save the changes")
-    public void i_save_the_changes() {
-        String expected = "Updated successfully";
-        String actual = AccountManagementControls.setDietaryPreferences(App.getClientsMap().get("John29Doe"), "high protein", "vegan");
-        assertEquals(expected, actual);
-    }
-
     @Then("my dietary preferences should be updated")
     public void my_dietary_preferences_should_be_updated() {
         String expected = "Updated successfully";
-        String actual = AccountManagementControls.setDietaryPreferences(App.getClientsMap().get("John29Doe"), "high protein", "vegan");
+        String actual = AccountManagementControls.getDietaryPreferences();
         assertEquals(expected, actual);
     }
-    
+
     @Then("I should see the message that saying {string}")
     public void i_should_see_the_message_that_saying(String confirmationMessage) {
-    	String expected = confirmationMessage;
-        String actual = AccountManagementControls.setDietaryPreferences(App.getClientsMap().get("John29Doe"), "high protein", "vegan");
+        String expected = confirmationMessage;
+        String actual = AccountManagementControls.getDietaryPreferences();
         assertEquals(expected, actual);
     }
 
@@ -97,7 +90,7 @@ public class AccountManagementTest {
         String actual = AccountManagementControls.updatePersonalDetails(App.getClientsMap().get("John29Doe"), "30", newFitnessGoals);
         assertEquals(expected, actual);
     }
-
+    
     @Then("my profile should be updated")
     public void my_profile_should_be_updated() {
         String expected = "Updated personal details successfully";
