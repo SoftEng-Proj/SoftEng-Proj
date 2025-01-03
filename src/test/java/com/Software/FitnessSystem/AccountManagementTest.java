@@ -16,35 +16,35 @@ public class AccountManagementTest {
     public void i_select_as_my_dietary_preference(String dietaryPreference) {
         String expected = "Updated successfully";
         String actual = AccountManagementControls.setDietaryPreferences(App.getClientsMap().get("John29Doe"), dietaryPreference, "none");
-        assertEquals(expected, "Updated successfully");
+        assertEquals(expected, actual);
     }
     
     @When("I add {string} as a restriction")
     public void i_add_as_a_restriction(String restriction) {
         String expected = "Updated successfully";
         String actual = AccountManagementControls.setDietaryPreferences(App.getClientsMap().get("John29Doe"), "high protein", restriction);
-        assertEquals(expected, "Updated successfully");
+        assertEquals(expected, actual);
     }
 
     @When("I save the changes")
     public void i_save_the_changes() {
         String expected = "Updated successfully";
         String actual = AccountManagementControls.setDietaryPreferences(App.getClientsMap().get("John29Doe"), "high protein", "vegan");
-        assertEquals(expected, "Updated successfully");
+        assertEquals(expected, actual);
     }
 
     @Then("my dietary preferences should be updated")
     public void my_dietary_preferences_should_be_updated() {
         String expected = "Updated successfully";
         String actual = AccountManagementControls.setDietaryPreferences(App.getClientsMap().get("John29Doe"), "high protein", "vegan");
-        assertEquals(expected, "Updated successfully");
+        assertEquals(expected, actual);
     }
     
     @Then("I should see the message that saying {string}")
     public void i_should_see_the_message_that_saying(String confirmationMessage) {
     	String expected = confirmationMessage;
         String actual = AccountManagementControls.setDietaryPreferences(App.getClientsMap().get("John29Doe"), "high protein", "vegan");
-        assertEquals(expected, "Updated successfully");
+        assertEquals(expected, actual);
     }
 
     @When("I enter my personal details including age {string} and fitness goals {string}")
