@@ -1,7 +1,9 @@
 package com.Software.FitnessSystem;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import com.Software.FitnessSystem.ClientControllers.AccountManagementControls;
 import com.Software.FitnessSystem.ClientControllers.FeedbackReviewsControls;
 
 import io.cucumber.java.en.Then;
@@ -19,7 +21,7 @@ public class FeedbackReviewsTest {
 		String actual = FeedbackReviewsControls.submitRating("testUser", "Rating Submited succsesfully", 3);
 		assertTrue(actual.equals(expected));
 	}
-
+	
 	@When("I submit my rating")
 	public void i_submit_my_rating() {
 		String expected = "Rating Submited succsesfully";
@@ -54,7 +56,7 @@ public class FeedbackReviewsTest {
 		String actual = FeedbackReviewsControls.submitReview("testUser", "program1", "Great program with challenging workouts!");
 		assertTrue(actual.equals(expected));
 	}
-
+	
 	@When("I navigate to the {string} section")
 	public void i_navigate_to_the_section(String string) {
 		String expected = "Suggestion Submited succsesfully";

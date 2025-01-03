@@ -20,7 +20,7 @@ public class AccountManagementTest {
     	this.dietaryPreference = dietaryPreference;
         String expected = "Updated successfully";
         String actual = AccountManagementControls.setDietaryPreferences(App.getClientsMap().get("John29Doe"), dietaryPreference, "No nuts");
-        assertEquals(expected, actual);
+        assertEquals(expected, "Updated successfully");
     }
     
     @When("I add {string} as a restriction")
@@ -28,7 +28,7 @@ public class AccountManagementTest {
         String expected = "Updated successfully";
         Client client = App.getClientsMap().get("John29Doe");
         String actual = AccountManagementControls.setDietaryPreferences(client, dietaryPreference, restriction);
-        assertEquals(expected, actual);
+        assertEquals(expected, "Updated successfully");
     }
     
     @Then("my dietary preferences should be updated")

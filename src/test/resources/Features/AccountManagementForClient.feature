@@ -1,8 +1,8 @@
-@AlaaAlawnehTestss
+@AlaaAlawnehTests
 Feature: Account Management
   I want to create and customize profiles with personal details and dietary preferences.
 
-  @AlaaAlawnehTestss
+  @AlaaAlawnehTests
   Scenario Outline: Set dietary preferences or restrictions
     Given I select "<dietary_preference>" as my dietary preference
     When I add "<restriction>" as a restriction
@@ -14,7 +14,7 @@ Feature: Account Management
       | Vegetarian         | No nuts     | Updated successfully  |
       | Vegan              | No gluten   | Updated successfully  |
       
-  @AlaaAlawnehTestss
+  @AlaaAlawnehTests
   Scenario: Create a new user profile
     When I enter my personal details including age "25" and fitness goals "Build muscle"
     And I specify my dietary preferences or restrictions as "No dairy"
@@ -22,7 +22,7 @@ Feature: Account Management
     Then my profile should be created
     And I should see a confirmation message "Profile created successfully"
     
-  @AlaaAlawnehTestss
+  @AlaaAlawnehTests
   Scenario: Update personal details in the profile
     When I update my age to "30"
     And I change my fitness goals to "Lose weight"
