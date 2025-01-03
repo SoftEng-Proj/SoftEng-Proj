@@ -4,8 +4,8 @@ Feature: Account Management
 
   @AlaaAlawnehTestss
   Scenario Outline: Set dietary preferences or restrictions
-    When I select "<dietary_preference>" as my dietary preference
-    And I add "<restriction>" as a restriction
+    Given I select "<dietary_preference>" as my dietary preference
+    When I add "<restriction>" as a restriction
     And I save the changes
     Then my dietary preferences should be updated
     And I should see the message that saying "<confirmation_message>"
