@@ -12,10 +12,5 @@ import io.cucumber.junit.CucumberOptions;
 		snippets = CucumberOptions.SnippetType.CAMELCASE,
 		tags = "@MuathHassounTests or @AmmarShafiiTests or @AlaaAlawnehTests")
 
-/*
- * @MuathHassounTests
- * @AmmarShafiiTests
- * @AlaaAlawnehTests
- */
 public class AcceptanceTest {
 }
