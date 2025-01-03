@@ -9,13 +9,15 @@ import io.cucumber.java.en.When;
 
 public class AccountManagementTest {
     App app;
-
+    private String dietaryPreference;
+    
     public AccountManagementTest(App ap) {
         this.app = ap;
     }
-
+    
     @Given("I select {string} as my dietary preference")
     public void i_select_as_my_dietary_preference(String dietaryPreference) {
+    	this.dietaryPreference = dietaryPreference;
         String expected = "Updated successfully";
         String actual = AccountManagementControls.setDietaryPreferences(App.getClientsMap().get("John29Doe"), dietaryPreference, "none");
         assertEquals(expected, actual);
@@ -26,7 +28,7 @@ public class AccountManagementTest {
         String expected = "Updated successfully";
         Client client = App.getClientsMap().get("John29Doe");
         String actual = AccountManagementControls.setDietaryPreferences(client, 
-        		App.getClientProfileMap().get(client.getUsername()).getDietaryPreference(), restriction);
+             dietaryPreference, restriction);
         assertEquals(expected, actual);
     }
     
@@ -36,7 +38,7 @@ public class AccountManagementTest {
         String actual = AccountManagementControls.getDietaryPreferences();
         assertEquals(expected, actual);
     }
-
+    
     @Then("I should see the message that saying {string}")
     public void i_should_see_the_message_that_saying(String confirmationMessage) {
         String expected = confirmationMessage;
