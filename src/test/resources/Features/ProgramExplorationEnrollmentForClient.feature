@@ -1,8 +1,8 @@
-@AlaaAlawnehTests
+@AlaaAlawnssehTests
 Feature: Program Exploration and Enrollment
   I want to browse fitness programs using filters and enroll in programs to view schedules.
   
-  @AlaaAlawnehTests
+  @AlaaAlawnssehTests
   Scenario Outline: Browse programs using filters
     Given I filter programs by difficulty level "<difficulty_level>"
     When I filter programs by focus area "<focus_area>"
@@ -14,14 +14,14 @@ Feature: Program Exploration and Enrollment
       | Intermediate     | Muscle building    |
       | Advanced         | Flexibility        |
       
-  @AlaaAlawnehTests
+  @AlaaAlawnssehTests
   Scenario: Enroll in a program
     Given I have selected a program named "Strength Training for Beginners"
     When I click on the Enroll button
     Then I should be enrolled in the program
     And I should see the program's schedule displayed
     
-  @AlaaAlawnehTests
+  @AlaaAlawnssehTests
   Scenario: View the schedule of an enrolled program
     Given I am enrolled in the program "Yoga for Flexibility"
     When I go to the "My Programs" section

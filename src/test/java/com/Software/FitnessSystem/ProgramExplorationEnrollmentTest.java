@@ -16,16 +16,14 @@ public class ProgramExplorationEnrollmentTest {
 	@Given("I filter programs by difficulty level {string}")
 	public void i_filter_programs_by_difficulty_level(String difficultyLevel) {
 		String expcted = "Programs filtered By Difficulty";
-		difficultyLevel = "Intermediate";
-		String acutal = ProgramExplorationEnrollmentControls.filterProgramsByDifficulty(difficultyLevel);
+		String acutal = ProgramExplorationEnrollmentControls.filterProgramsByDifficulty("Intermediate");
 		assertTrue(acutal.equals(expcted));
 	}
 	
 	@When("I filter programs by focus area {string}")
 	public void i_filter_programs_by_focus_area(String focusArea) {
 		String expcted = "Programs filtered By focus area";
-		focusArea = "High-intensity functional movements";
-		String acutal = ProgramExplorationEnrollmentControls.filterProgramsByFocusArea(focusArea);
+		String acutal = ProgramExplorationEnrollmentControls.filterProgramsByFocusArea("High-intensity functional movements");
 		assertTrue(acutal.equals(expcted));
 	}
 	
@@ -74,8 +72,7 @@ public class ProgramExplorationEnrollmentTest {
 	@When("I select the program {string}")
 	public void i_select_the_program(String string) {
 		String expcted = "program schedule displayed succsesfully";
-		string = "CrossFit Challenge";
-		String acutal = ProgramExplorationEnrollmentControls.viewProgramSchedule(string);
+		String acutal = ProgramExplorationEnrollmentControls.viewProgramSchedule("CrossFit Challenge");
 		assertTrue(acutal.equals(expcted));
 	}
 	
