@@ -103,15 +103,13 @@ public class UserManagementControls {
      * @param role     The role of the user ("Instructor" or "Client").
      * @return True if the user exists; otherwise, false.
      */
-	public static boolean selectUser(String username, String role) {
+	public static boolean checkTheUser(String username, String role) {
         return switch (role) {
             case "Instructor" -> {
-                getInstructorsMap().get(username);
-                yield true;
+                yield getInstructorsMap().containsKey(username);
             }
             case "Client" -> {
-                getClientsMap().get(username);
-                yield true;
+                yield getClientsMap().containsKey(username);
             }
             default -> false;
         };

@@ -45,7 +45,8 @@ public class AccountManagementPage extends BasePage {
      * @param choice   the option selected by the client
      */
     @Override
-    public void executeOption(int choice) {
+    public boolean executeOption(int choice) {
+    	boolean returnValue = true;
         System.out.print("Enter your Username: ");
         String username = scanner.nextLine();
         Client client = App.getClientsMap().get(username);
@@ -84,10 +85,12 @@ public class AccountManagementPage extends BasePage {
             case 5:
                 System.out.println("\nReturning to the main menu...");
                 clientController.navigateToManagementPage();
+                returnValue = false;
                 break;
             default:
                 System.out.println("Invalid choice. Please try again.");
         }
+        return returnValue;
     }
     
     /**

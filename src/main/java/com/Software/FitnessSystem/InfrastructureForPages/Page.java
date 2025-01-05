@@ -27,5 +27,5 @@ public interface Page {
      * 
      * @param choice The user's input, typically representing a menu option or command.
      */
-    void executeOption(int choice);
+    boolean executeOption(int choice);
 }

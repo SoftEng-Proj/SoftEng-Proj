@@ -73,14 +73,14 @@ public class UserManagementTest {
     @Given("I have selected an existing client")
     public void i_have_selected_an_existing_client() {
     	boolean expected = true;
-    	boolean actual = selectUser("JohnDoe", "Client");
+    	boolean actual = checkTheUser("JohnDoe", "Client");
         assertEquals(expected, actual);
     }
 
     @When("I edit the client details")
     public void i_edit_the_client_details() {
     	boolean expected = true;
-    	boolean actual = selectUser("JohnDoe", "Client");
+    	boolean actual = checkTheUser("JohnDoe", "Client");
         assertEquals(expected, actual);
     }
     
@@ -95,14 +95,14 @@ public class UserManagementTest {
     @Given("I have selected an existing instructor")
     public void i_have_selected_an_existing_instructor() {
     	boolean expected = true;
-    	boolean actual = selectUser("JohnDoe", "Instructor");
+    	boolean actual = checkTheUser("JohnDoe", "Instructor");
         assertEquals(expected, actual);
     }
     
     @When("I edit the instructor details")
     public void i_edit_the_instructor_details() {
     	boolean expected = true;
-    	boolean actual = selectUser("JohnDoe", "Instructor");
+    	boolean actual = checkTheUser("JohnDoe", "Instructor");
         assertEquals(expected, actual);
     }
     
@@ -124,7 +124,7 @@ public class UserManagementTest {
     @Given("I have selected an active client")
     public void i_have_selected_an_active_client() {
     	boolean expected = true;
-    	boolean actual = selectUser("active", "Client");
+    	boolean actual = checkTheUser("active", "Client");
         assertEquals(expected, actual);
     }
 
@@ -146,7 +146,7 @@ public class UserManagementTest {
     @Given("I have selected an active instructor")
     public void i_have_selected_an_active_instructor() {
     	boolean expected = true;
-    	boolean actual = selectUser("Activate", "Instructor");
+    	boolean actual = checkTheUser("Activate", "Instructor");
         assertEquals(expected, actual);
     }
 

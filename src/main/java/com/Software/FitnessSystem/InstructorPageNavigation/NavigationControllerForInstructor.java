@@ -31,7 +31,9 @@ public class NavigationControllerForInstructor {
     @SuppressWarnings("resource")
 	public void navigateTo(Page page, InstructorPageControllers controller) {
         this.currentPage = page;
-        while (true) {
+        boolean doLoop = true;
+        
+        while (doLoop) {
             currentPage.display();
             System.out.print("Enter your choice: ");
             int choice = 0;
@@ -41,7 +43,7 @@ public class NavigationControllerForInstructor {
             	choice = 1;
             }
             
-            currentPage.executeOption(choice);
+            doLoop = currentPage.executeOption(choice);
         }
     }
 }

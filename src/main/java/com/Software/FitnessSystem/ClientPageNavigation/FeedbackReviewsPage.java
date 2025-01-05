@@ -40,7 +40,8 @@ public class FeedbackReviewsPage extends BasePage {
      * @param choice   the option selected by client
      */
     @Override
-    public void executeOption(int choice) {
+    public boolean executeOption(int choice) {
+    	boolean returnValue = true;
         System.out.print("Enter your Username: ");
         String username = scanner.nextLine();
         
@@ -69,9 +70,11 @@ public class FeedbackReviewsPage extends BasePage {
             case 4:
                 System.out.println("\nReturning to the main menu...");
                 clientController.navigateToManagementPage();
+                returnValue = false;
                 break;
             default:
                 System.out.println("Invalid choice. Please try again.");
         }
+        return returnValue;
     }
 }

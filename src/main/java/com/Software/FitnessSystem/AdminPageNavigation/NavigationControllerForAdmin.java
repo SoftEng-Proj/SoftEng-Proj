@@ -22,7 +22,9 @@ public class NavigationControllerForAdmin {
      * @param controller The controller responsible for managing admin page actions.
      */
 	public void navigateTo(Page page, AdminPagesController controller) {
-        while (true) {
+		boolean doLoop = true;
+		
+        while (doLoop) {
             page.display();
             System.out.print(">> Enter your choice: ");
             int choice = 0;
@@ -32,7 +34,7 @@ public class NavigationControllerForAdmin {
             	choice = 1;
             }
             
-            page.executeOption(choice);
+            doLoop = page.executeOption(choice);
         }
     }
 }

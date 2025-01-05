@@ -41,7 +41,8 @@ public class ProgressTrackingPage extends BasePage {
     }
     
     @Override
-    public void executeOption(int choice) {
+    public boolean executeOption(int choice) {
+    	boolean returnValue = true;
         switch (choice) {
             case 1:
             	isAddMilestonePage = true;
@@ -54,15 +55,16 @@ public class ProgressTrackingPage extends BasePage {
             	isShowProgressPage = true;
             	ProgressTrackingControls.showProgress();
             	isShowProgressPage = false;
-            	
                 break;
             case 3:
             	System.out.println("\nReturning to the main menu...");
             	clientController.navigateToManagementPage();
+            	returnValue = false;
                 break;
             default:
                 System.out.println("Invalid choice. Please try again.");
         }
+        return returnValue;
     }
     /**
      * asksthe user for milestone details and stores them

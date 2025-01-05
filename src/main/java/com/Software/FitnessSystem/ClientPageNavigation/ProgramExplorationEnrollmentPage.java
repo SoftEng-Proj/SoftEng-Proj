@@ -53,7 +53,8 @@ public class ProgramExplorationEnrollmentPage extends BasePage {
      * @param choice the option chosen by the client
      */
     @Override
-    public void executeOption(int choice) {
+    public boolean executeOption(int choice) {
+    	boolean returnValue = true;
         switch (choice) {
             case 1:
                 System.out.print("Enter Difficulty Level (Beginner, Intermediate, Advanced): ");
@@ -94,9 +95,11 @@ public class ProgramExplorationEnrollmentPage extends BasePage {
             case 5:
                 System.out.println("\nReturning to the main menu...");
                 clientController.navigateToManagementPage();
+                returnValue = false;
                 break;
             default:
                 System.out.println("Invalid choice. Please try again.");
         }
+        return returnValue;
     }
 }

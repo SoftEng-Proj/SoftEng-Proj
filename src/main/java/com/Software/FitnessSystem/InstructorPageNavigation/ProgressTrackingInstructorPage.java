@@ -52,7 +52,8 @@ public class ProgressTrackingInstructorPage extends BasePage {
      * @param choice The option selected by the instructor.
      */
     @Override
-    public void executeOption(int choice) {
+    public boolean executeOption(int choice) {
+    	boolean returnValue = true;
         switch (choice) {
             case 1:	
             	  viewClientProgress();
@@ -80,11 +81,13 @@ public class ProgressTrackingInstructorPage extends BasePage {
                 break;
             case 4:
             	System.out.println("\nReturning to the main menu...");
-            	instructorController.navigateToManagementPage();       	
+            	instructorController.navigateToManagementPage();
+            	returnValue = false;
                 break;
             default:
                 System.out.println("Invalid choice. Please try again.");
         }
+        return returnValue;
     }
     
     

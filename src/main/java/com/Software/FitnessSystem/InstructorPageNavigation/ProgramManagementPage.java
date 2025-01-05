@@ -67,7 +67,8 @@ public class ProgramManagementPage extends BasePage {
      * @param choice The option selected by the instructor.
      */
     @Override
-    public void executeOption(int choice) {
+    public boolean executeOption(int choice) {
+    	boolean returnValue = true;
         switch (choice) {
             case 1:
                 EnterProgramInfo();
@@ -93,16 +94,17 @@ public class ProgramManagementPage extends BasePage {
                 String scheduleType = scheduleChoice.equals("1") ? "Online" : "In-person";
                 ProgramManagementControls.setSchedule(programName, scheduleType);
                 App.saveFitnessProgramsChanges();
-                
                 break;
             case 5:
             	System.out.println("\nReturning to the main menu...");
             	instructorController.navigateToManagementPage();
+            	returnValue = false;
                 break;
             default:
                 System.out.println("Invalid choice. Please try again.");
         }
         App.saveFitnessProgramsChanges();
+        return returnValue;
     }
     
     

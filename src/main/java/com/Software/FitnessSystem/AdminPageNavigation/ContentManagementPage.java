@@ -49,7 +49,8 @@ public class ContentManagementPage extends BasePage {
      * @param choice The option selected by the admin.
      */
     @Override
-    public void executeOption(int choice) {
+    public boolean executeOption(int choice) {
+    	boolean returnValue = true;
         switch (choice) {
             case 1:
             	handleContentApproval(getPendingInstructorTipsMap(), getInstructorTipsMap(), false);
@@ -67,10 +68,12 @@ public class ContentManagementPage extends BasePage {
             case 4:
                 System.out.println("\nReturning to the main menu...");
                 adminController.navigateToManagementPage();
+                returnValue = false;
                 break;
             default:
                 System.out.println("Invalid choice. Please try again.");
         }
+        return returnValue;
     }
     
     /**

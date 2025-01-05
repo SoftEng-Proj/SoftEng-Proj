@@ -97,7 +97,8 @@ public class UserManagementPage extends BasePage {
      * @param choice The option selected by the admin.
      */
     @Override
-    public void executeOption(int choice) {
+    public boolean executeOption(int choice) {
+    	boolean returnValue = true;
         switch (choice) {
             case 1:
             	promptUserForDetails();
@@ -115,29 +116,33 @@ public class UserManagementPage extends BasePage {
             	printUserDetails(getInstructorsMap());
             	selecteAUser();
             	UserManagementPage.role = "Instructor";
-				selectUser(username, role);
-				CoUserManagementPage.editUserDetails(username, role);
+            	if(checkTheUser(username, role)) {
+            		CoUserManagementPage.editUserDetails(username, role);
+            	}
                 break;
             case 4:
             	printUserDetails(getClientsMap());
             	selecteAUser();
             	UserManagementPage.role = "Client";
-            	selectUser(username, role);
-            	CoUserManagementPage.editUserDetails(username, role);
+            	if(checkTheUser(username, role)) {
+            		CoUserManagementPage.editUserDetails(username, role);
+            	}
                 break;
             case 5:
             	printUserDetails(getInstructorsMap());
             	selecteAUser();
             	UserManagementPage.role = "Instructor";
-            	selectUser(username, role);
-            	deactivateUser(username, role);
+            	if(checkTheUser(username, role)) {
+                	deactivateUser(username, role);
+            	}
                 break;
             case 6:
             	printUserDetails(getClientsMap());
             	selecteAUser();
             	UserManagementPage.role = "Client";
-            	selectUser(username, role);
-            	deactivateUser(username, role);
+            	if(checkTheUser(username, role)) {
+                	deactivateUser(username, role);
+            	}
                 break;
             case 7:
             	checkAndApproveInstructors();
@@ -148,12 +153,14 @@ public class UserManagementPage extends BasePage {
             case 9:
             	System.out.println("\nReturning to the main menu...");
             	AdminPagesController.navigateToManagementPage();
+            	returnValue = false;
                 break;
             default:
                 System.out.println("Invalid choice. Please try again.");
         }
         
         saveAccountChanges();
+        return returnValue;
     }
     
     /**

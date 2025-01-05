@@ -55,7 +55,6 @@ public class CoUserManagementPage {
 	        return true;
 	    } catch (Exception e) {
 	        System.err.println("An error occurred while editing the user: " + e.getMessage());
-	        e.printStackTrace();
 	        return false;
 	    }
 	}
