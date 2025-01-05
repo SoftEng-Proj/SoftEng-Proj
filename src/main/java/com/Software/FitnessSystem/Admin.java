@@ -57,17 +57,4 @@ public class Admin {
     public void setPassword(String password) {
         this.password = password;
     }
-    
-    /**
-     * Returns a string representation of the Admin object.
-     * @author Muath Hassoun
-     * @return a string representation of the admin including username and password
-     */
-    @Override
-    public String toString() {
-        return "Admin {" +
-               "\nUsername: '" + username + "'" +
-               "\nPassword: '" + password + "'" +
-               "}\n";
-    }
 }

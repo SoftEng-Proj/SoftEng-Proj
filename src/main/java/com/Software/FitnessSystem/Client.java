@@ -4,8 +4,6 @@
  * @author Muath Hassoun
  */
 package com.Software.FitnessSystem;
-import static com.Software.FitnessSystem.App.*;
-import static com.Software.FitnessSystem.AdminControllers.SubscriptionManagementControls.*;
 import com.Software.FitnessSystem.AdminControllers.SubscriptionPlan;
 import com.Software.FitnessSystem.InstructorControllers.Program;
 
@@ -204,16 +202,6 @@ public class Client implements User {
     @Override
     public void setSubscriptionPlan(SubscriptionPlan subscriptionPlan) {
         this.subscriptionPlan = subscriptionPlan;
-    }
-    
-    /**
-     * Updates the subscription plan for the client by calling external methods.
-     * @author Muath Hassoun
-     * @param client the client to update the subscription plan for
-     */
-    public void updateSubscriptionPlanForClient(Client client) {
-        giveTheUserNewSubscriptionOpportunity(subscriptionPlan, client);
-        saveAccountChanges();
     }
     
     /**

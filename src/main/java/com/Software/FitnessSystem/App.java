@@ -120,7 +120,7 @@ public class App {
 		loadInstructorAnnouncementFromFile(InstructorAnnouncementMap, INSTRUCTOR_ANNOUNCEMENTS);
         loadProgramScheduleChangeFromFile(ProgramScheduleChangeMap, PROGRAMSCHEDULE_CHANGE);
         loadProgressListFromFile(ProgressListMap, PROGRESS_FILE);
-
+        
 		SubscriptionPlan.convertFromPlanTypeToCustomPlan();
 		fillUserSubscriptionPlanMap();
     	ProgramEnrollmentMap = ProgramEnrollment.enrolmentStatistics(FitnessProgramsMap);
@@ -262,8 +262,6 @@ public class App {
 		saveProgressMSGToFile(ProgressListMap, PROGRESS_FILE);
 	}
 	
-	
-	
 	/**
 	 * Saves instructor messages for clients.
 	 * @author Ammar Shafii
@@ -272,18 +270,13 @@ public class App {
 	    saveInstructorMsgsToClientsToFile(InstructorMessagesForClientsMap, INSTRUCTOR_MSGS_FOR_CLIENTS);
 	}
 	
-	
-	
 	public static void saveInstructorReminderChanges() {
 		saveInstructorReminderToFile(InstructorReminderMap, INSTRUCTOR_REMINDER);
 	}
 	
-	
 	public static void saveInstructorRecommendationChanges() {
 		saveInstructorRecommendationToFile(InstructorRecommendationMap, INSTRUCTOR_RECCOMENDATION);
 	}
-	
-	
 	
 	/**
 	 * Saves changes to program forum messages.
@@ -297,7 +290,6 @@ public class App {
 		
 	    saveProgramForumMsgsToFile(ProgramScheduleChangeMap, PROGRAMSCHEDULE_CHANGE);
 	}
-	
 	
 	
 	public static void saveAnnouncementChanges() {

@@ -1,10 +1,8 @@
 package com.Software.FitnessSystem.AdminControllers;
-
 import static com.Software.FitnessSystem.App.*;
 
 import java.util.AbstractMap;
 import java.util.Map;
-import java.util.Scanner;
 
 /**
  * Provides administrative controls for monitoring fitness program enrollment, 
@@ -89,7 +87,7 @@ public class ProgramMonitoringControls {
      * @param programs The map of programs to print.
      * @param isLimited If true, limits the display to the top 6 programs.
      */
-    private static void printPrograms(Map<String, ProgramEnrollment> programs, boolean isLimited) {
+    public static void printPrograms(Map<String, ProgramEnrollment> programs, boolean isLimited) {
 		int counter = isLimited ? 6 : programs.size();
 		
 		programs.entrySet().stream()
@@ -111,70 +109,7 @@ public class ProgramMonitoringControls {
     public static void accessToPrintPrograms(Map<String, ProgramEnrollment> programs, boolean isLimited) {
 		printPrograms(programs, isLimited);
 	}
-
-    /**
-     * Displays the report generation menu and processes the user's choice.
-     */
-	public static void chooseReportGenerationOption() {
-        Scanner scanner = new Scanner(System.in);
-        printTheGenerateQuestion();
-
-        int choice = -1;
-        boolean validInput = false;
-
-        while (!validInput) {
-            try {
-                choice = scanner.nextInt();
-                if (choice == 1 || choice == 2) {
-                    validInput = true;
-                } else {
-                    System.out.println("Invalid choice, please choose 1 or 2.");
-                    printTheGenerateQuestion();
-                }
-            } catch (Exception e) {
-                System.out.println("Invalid input! Please enter a number (1 or 2).");
-                scanner.nextLine();
-                printTheGenerateQuestion();
-            }
-        }
-
-        switch (choice) {
-            case 1:
-                System.out.println("Generating report for all programs...");
-                generateReportsOption(getProgramEnrollmentMap(), "Null", false);
-                return;
-            case 2:
-                System.out.print("\n");
-                printPrograms(getProgramEnrollmentMap(), false);
-                String programName = askTheNameOfTheProgram();
-                System.out.println("\nReport generation in progress for the program: \"" + programName + "\".");
-                generateReportsOption(getProgramEnrollmentMap(), programName, true);
-        }
-    }
-
-    /**
-     * Prompts the user to choose between generating reports for all programs 
-     * or a specific program.
-     */
-    private static void printTheGenerateQuestion() {
-        System.err.println("\nDo you want to generate a report for all programs or a specific program?");
-        System.err.println("1. All programs");
-        System.err.println("2. Specific program");
-        System.err.println("3. Go Back.");
-        System.err.println(">> Enter your choice: ");
-    }
-
-    /**
-     * Prompts the user to enter the name of a specific program.
-     * 
-     * @return The name of the program entered by the user.
-     */
-	public static String askTheNameOfTheProgram() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Please enter the program name:");
-        return scanner.nextLine();
-    }
-
+	
     /**
      * Generates reports for all programs or a specific program.
      * 

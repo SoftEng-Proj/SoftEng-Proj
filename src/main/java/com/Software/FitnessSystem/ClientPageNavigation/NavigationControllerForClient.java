@@ -26,13 +26,13 @@ public class NavigationControllerForClient {
         while (true) {
             currentPage.display();
             System.out.print("Enter your choice: ");
-            int choice = new Scanner(System.in).nextInt();
-            
-            if (choice == 7) {
-                System.out.println("\nReturning to the main menu...");
-               // controller.navigateToManagementPage();
-                break;
+            int choice = 0;
+            try {
+            	choice = new Scanner(System.in).nextInt();
+            } catch(ArithmeticException e) {
+            	choice = 1;
             }
+            
             currentPage.executeOption(choice);
         }
     }

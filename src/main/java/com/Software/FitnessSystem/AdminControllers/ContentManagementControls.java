@@ -1,30 +1,17 @@
 package com.Software.FitnessSystem.AdminControllers;
 import com.Software.FitnessSystem.Content;
+
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 /**
  * Content Management Controls for handling tips and feedback.
  * @author Muath Hassoun
  */
 public class ContentManagementControls {
-	public ContentManagementControls() {}
-	
-    /**
-     * Static flag indicating whether there are pending tips to review.
-     */
     private static boolean thereIsPendingTip = false;
-    
-    /**
-     * Map holding the approved tips, indexed by their IDs.
-     */
-    private static Map<String, Content> approvedTips = new HashMap<>();
-    
-    /**
-     * Map holding the handled feedback, indexed by feedback IDs.
-     */
-    private static Map<String, String> handledFeedback = new HashMap<>();
+    public static Map<String, Content> approvedTips = new HashMap<>();
+    public static Map<String, String> handledFeedback = new HashMap<>();
     
     /**
      * Sets the map of approved tips.
@@ -42,23 +29,6 @@ public class ContentManagementControls {
      */
     public static void setHandledFeedbackMap(Map<String, String> handledFeedback) {
         ContentManagementControls.handledFeedback = handledFeedback;
-    }
-    
-    /**
-     * Deals with content types, either reviewing feedback or approving/rejecting tips.
-     * @author Muath Hassoun
-     * @param tips The map of tips or feedback to review.
-     * @param isForFeedbacks True if the content is for feedback, false if for tips.
-     */
-    public static void dealWithContentTypes(Map<String, Content> tips, boolean isForFeedbacks) {
-        if (reviewArticleAndTips(tips)) {
-            printTips(tips);
-            if (isForFeedbacks) {
-                respondToFeedback(approvedTips);
-            } else {
-                approveOrRejectTheTips(approvedTips);
-            }
-        }
     }
     
     /**
@@ -96,7 +66,7 @@ public class ContentManagementControls {
      * @author Muath Hassoun
      * @param tips The map of tips to print.
      */
-    private static void printTips(Map<String, Content> tips) {
+    public static void printTips(Map<String, Content> tips) {
         System.out.println("\nReview of outstanding contents:\n");
         for (Map.Entry<String, Content> entry : tips.entrySet()) {
             String key = entry.getKey();
@@ -108,100 +78,6 @@ public class ContentManagementControls {
             System.out.printf("Description: %s%n", content.getContentDescription());
             System.out.println("---------------------------");
         }
-    }
-    
-    /**
-     * Prompts the user to approve or reject a list of tips based on their IDs.
-     * @author Muath Hassoun
-     * @param tips The map of tips to review.
-     * @return True if any tips were approved or rejected, false if no action was taken.
-     */
-    public static boolean approveOrRejectTheTips(Map<String, Content> tips) {
-    	if(tips == null || tips.isEmpty()) {
-    		return false;
-    	}
-    	
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("\nEnter the Tip IDs to approve/reject, separated by commas: ");
-        String input = scanner.nextLine();
-        String[] idsToReview = input.split(",");
-        
-        boolean is = false;
-        for (String id : idsToReview) {
-            id = id.trim();
-            if (tips.containsKey(id)) {
-                System.out.print("Do you approve or reject Tip ID " + id + "? (approve/reject): ");
-                String decision = scanner.nextLine().trim().toLowerCase();
-                
-                if ("approve".equals(decision)) {
-                    isApprovedTip(id, tips);
-                    is = true;
-                } else if ("reject".equals(decision)) {
-                    isRejectedTip(id, tips);
-                    is = true;
-                } else {
-                    System.out.println("Invalid choice for Tip ID " + id + ". Skipping...");
-                    is = false;
-                }
-            } else {
-                System.out.println("Tip ID '" + id + "' does not exist.");
-                is = true;
-            }
-        }
-        
-        return is;
-    }
-    
-    /**
-     * Marks a tip as approved and moves it to the approved tips map.
-     * @author Muath Hassoun
-     * @param id The ID of the tip to approve.
-     * @param tips The map of tips to review.
-     */
-    public static boolean isApprovedTip(String id, Map<String, Content> tips) {
-        System.out.println("Tip ID " + id + " approved.");
-        approvedTips.put(id, tips.get(id));
-        tips.remove(id);
-        return true;
-    }
-    
-    /**
-     * Marks a tip as rejected and removes it from the tips map.
-     * @author Muath Hassoun
-     * @param id The ID of the tip to reject.
-     * @param tips The map of tips to review.
-     */
-    public static boolean isRejectedTip(String id, Map<String, Content> tips) {
-        System.out.println("Tip ID " + id + " rejected.");
-        tips.remove(id);
-        return true;
-    }
-    
-    /**
-     * Prompts the user to handle feedback by responding to a list of feedback IDs.
-     * @author Muath Hassoun
-     * @param tips The map of tips (which are feedback in this case) to handle.
-     * @return True if feedback was successfully handled, false otherwise.
-     */
-    public static boolean respondToFeedback(Map<String, Content> tips) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("\nEnter the Feedback IDs to handle, separated by commas: ");
-        String input = scanner.nextLine();
-        String[] idsToReview = input.split(",");
-        
-        boolean is = true;
-        for (String id : idsToReview) {
-            id = id.trim();
-            if (tips.containsKey(id)) {
-                handleSelectFeedback(id, tips);
-                is = true;
-            } else {
-                System.out.println("Feedback ID '" + id + "' does not exist.");
-                is = false;
-            }
-        }
-        
-        return is;
     }
     
     /**

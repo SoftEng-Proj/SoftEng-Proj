@@ -1,6 +1,8 @@
 package com.Software.FitnessSystem.AdminPageNavigation;
 import static com.Software.FitnessSystem.App.*;
 import static com.Software.FitnessSystem.AdminControllers.UserManagementControls.*;
+
+import com.Software.FitnessSystem.Instructor;
 import com.Software.FitnessSystem.User;
 import com.Software.FitnessSystem.LoginPage.AdminPagesController;
 import com.Software.FitnessSystem.InfrastructureForPages.BasePage;
@@ -114,14 +116,14 @@ public class UserManagementPage extends BasePage {
             	selecteAUser();
             	UserManagementPage.role = "Instructor";
 				selectUser(username, role);
-            	editUserDetails(username, role);
+				CoUserManagementPage.editUserDetails(username, role);
                 break;
             case 4:
             	printUserDetails(getClientsMap());
             	selecteAUser();
             	UserManagementPage.role = "Client";
             	selectUser(username, role);
-            	editUserDetails(username, role);
+            	CoUserManagementPage.editUserDetails(username, role);
                 break;
             case 5:
             	printUserDetails(getInstructorsMap());
@@ -218,6 +220,60 @@ public class UserManagementPage extends BasePage {
         System.out.print("Enter Username: ");
         UserManagementPage.username = scanner.nextLine();
     }
+	
+	/**
+	 * Checks and approves pending instructor applications.
+	 */
+	public static void checkAndApproveInstructors() {
+		if(checkPendingApplications()) {
+			approveInstructors();
+			verifyAccountActivation();
+		}
+	}
+	
+	/**
+	 * Approves pending instructor applications.
+	 *
+	 * @param pendingUserNames Array of usernames to approve (used if `skip` is false).
+	 * @param skip             If true, prompts the user to input usernames.
+	 * @return True if any instructors were approved; otherwise, false.
+	 */
+	public static boolean approveInstructors() {
+	    Map<String, Instructor> pendingInstructors = getPendingInstructorsMap();
+	    Map<String, Instructor> instructorsMap = getInstructorsMap();
+	    
+	    if (pendingInstructors == null || pendingInstructors.isEmpty()) {
+	        System.out.println("No pending applications to approve.");
+	        return false;
+	    }
+	    
+	    String[] usernames = getUsernamesFromInput();
+	    if (usernames == null || usernames.length == 0) {
+	        System.out.println("No usernames provided for approval.");
+	        return false;
+	    }
+	    
+	    boolean anyApproved = processApprovals(usernames, pendingInstructors, instructorsMap);
+	    if (!anyApproved) {
+	        System.out.println("No instructors were approved.");
+	        return false;
+	    }
+	    
+	    System.out.println("Instructor approval process completed.");
+	    return true;
+	}
+	
+	/**
+	 * Prompts the user to input usernames for approval.
+	 *
+	 * @return An array of usernames entered by the user.
+	 */
+	private static String[] getUsernamesFromInput() {
+	    Scanner scanner = new Scanner(System.in);
+	    System.out.println("Enter the usernames of the instructors to approve (separate with commas): ");
+	    String input = scanner.nextLine();
+	    return input.trim().isEmpty() ? new String[0] : input.split(",");
+	}
     
 	/**
      * Returns the default value if the input value is null.

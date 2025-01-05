@@ -25,7 +25,13 @@ public class NavigationControllerForAdmin {
         while (true) {
             page.display();
             System.out.print(">> Enter your choice: ");
-            int choice = new Scanner(System.in).nextInt();
+            int choice = 0;
+            try {
+            	choice = new Scanner(System.in).nextInt();
+            } catch(ArithmeticException e) {
+            	choice = 1;
+            }
+            
             page.executeOption(choice);
         }
     }

@@ -78,14 +78,4 @@ public class Content {
     public void setContentDescription(String description) {
         this.description = description;
     }
-    
-    /**
-     * Returns a string representation of the Content object.
-     * @author Muath Hassoun
-     * @return a string representation of the content including type and description
-     */
-    @Override
-    public String toString() {
-        return "Type: " + type + "\nDescription: " + description;
-    }
 }

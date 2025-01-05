@@ -1,6 +1,7 @@
 package com.Software.FitnessSystem;
 import static com.Software.FitnessSystem.App.*;
 import static com.Software.FitnessSystem.AdminControllers.ContentManagementControls.*;
+import static com.Software.FitnessSystem.AdminPageNavigation.CoContentManagementPage.*;
 import com.Software.FitnessSystem.LoginPage.AdminPagesController;
 
 import static org.junit.Assert.assertEquals;

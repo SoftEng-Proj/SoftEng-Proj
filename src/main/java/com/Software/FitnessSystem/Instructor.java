@@ -1,6 +1,4 @@
 package com.Software.FitnessSystem;
-import static com.Software.FitnessSystem.App.*;
-import static com.Software.FitnessSystem.AdminControllers.SubscriptionManagementControls.*;
 import com.Software.FitnessSystem.AdminControllers.SubscriptionPlan;
 
 public class Instructor implements User{
@@ -197,16 +195,6 @@ public class Instructor implements User{
     @Override
     public void setSubscriptionPlan(SubscriptionPlan subscriptionPlan) {
         this.subscriptionPlan = subscriptionPlan;
-    }
-    
-    /**
-     * Updates the subscription plan for the instructor.
-     * @author Muath Hassoun
-     * @param instructor the instructor to update the subscription plan for
-     */
-    public void updateSubscriptionPlanForInstructor(Instructor instructor) {
-        giveTheUserNewSubscriptionOpportunity(subscriptionPlan, instructor);
-        saveAccountChanges();
     }
     
     /**

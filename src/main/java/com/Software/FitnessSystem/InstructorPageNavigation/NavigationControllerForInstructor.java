@@ -34,7 +34,12 @@ public class NavigationControllerForInstructor {
         while (true) {
             currentPage.display();
             System.out.print("Enter your choice: ");
-            int choice = new Scanner(System.in).nextInt();
+            int choice = 0;
+            try {
+            	choice = new Scanner(System.in).nextInt();
+            } catch(ArithmeticException e) {
+            	choice = 1;
+            }
             
             currentPage.executeOption(choice);
         }

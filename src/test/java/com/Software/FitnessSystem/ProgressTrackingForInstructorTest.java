@@ -62,6 +62,5 @@ public class ProgressTrackingForInstructorTest {
     	boolean expected = true;
     	boolean actual= ProgressTrackingInstructorControls.ReceivedRecommCheck();
     	assertTrue(expected==actual);
-    	
     }
 }

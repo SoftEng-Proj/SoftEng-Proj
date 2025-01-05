@@ -1,6 +1,5 @@
 package com.Software.FitnessSystem.AdminControllers;
 import static com.Software.FitnessSystem.App.*;
-import static com.Software.FitnessSystem.LoadAndSaveEntities.*;
 import com.Software.FitnessSystem.Client;
 import com.Software.FitnessSystem.Instructor;
 import com.Software.FitnessSystem.User;
@@ -11,7 +10,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 
 /**
  * This class provides various administrative controls for managing user accounts, including instructors and clients.
@@ -23,13 +21,11 @@ public class UserManagementControls {
 	private static final Map<String, Instructor> ApprovedInstructorsMap = new HashMap<>();
 	private static final List<String> deactivateInstructor = new ArrayList<>();
 	private static final List<String> deactivateClient = new ArrayList<>();
-	private static final List<String> updatedInstructor = new ArrayList<>();
-	private static final List<String> updatedClient = new ArrayList<>();
+	public static final List<String> updatedInstructor = new ArrayList<>();
+	public static final List<String> updatedClient = new ArrayList<>();
 	
     private static Instructor newInstructor;
-    private static Instructor returnedInstructor;
     private static Client newClient;
-    private static Client returnedClient;
     private static boolean thereAreActivations = false;
     
     private static final LocalDateTime currentDateTime = LocalDateTime.now();
@@ -110,113 +106,15 @@ public class UserManagementControls {
 	public static boolean selectUser(String username, String role) {
         return switch (role) {
             case "Instructor" -> {
-                returnedInstructor = getInstructorsMap().get(username);
+                getInstructorsMap().get(username);
                 yield true;
             }
             case "Client" -> {
-                returnedClient = getClientsMap().get(username);
+                getClientsMap().get(username);
                 yield true;
             }
             default -> false;
         };
-	}
-	
-	/**
-     * Retrieves the currently selected instructor.
-     *
-     * @return The selected instructor.
-     */
-	public static Instructor getReturnedInstructor() {
-		return returnedInstructor;
-	}
-	
-	/**
-     * Retrieves the currently selected client.
-     *
-     * @return The selected client.
-     */
-	public static Client getReturnedClient() {
-		return returnedClient;
-	}
-	
-	/**
-	 * Edits the details of a user account.
-	 *
-	 * @param username The username of the account to edit.
-	 * @param role     The role of the user ("Instructor" or "Client").
-	 * @return True if the details were successfully updated; otherwise, false.
-	 */
-	public static boolean editUserDetails(String username, String role) {
-	    switch (role) {
-	        case "Instructor":
-	            return processEdit(getInstructorsMap(), username, INSTRUCTOR_ACCOUNTS_FILENAME);
-	        case "Client":
-	            return processEdit(getClientsMap(), username, CLIENT_ACCOUNTS_FILENAME);
-	        default:
-	            System.out.println("Invalid role provided.");
-	            return false;
-	    }
-	}
-	
-	/**
-	 * Processes the editing of a user based on the provided map and file.
-	 *
-	 * @param userMap  The map containing the user accounts.
-	 * @param username The username of the account to edit.
-	 * @param filename The file where updated accounts will be saved.
-	 * @return True if the details were successfully updated; otherwise, false.
-	 */
-	private static <T extends User> boolean processEdit(Map<String, T> userMap, String username, String filename) {
-	    T user = userMap.get(username);
-	    if (user == null) {
-	        System.out.println("User with username '" + username + "' not found.");
-	        return false;
-	    }
-	    
-	    try {
-	        editDetails(user);
-	        printingAMessageOfSuccess(user);
-	        return true;
-	    } catch (Exception e) {
-	        System.err.println("An error occurred while editing the user: " + e.getMessage());
-	        e.printStackTrace();
-	        return false;
-	    }
-	}
-	
-	/**
-	 * Edits the details of the provided user.
-	 *
-	 * @param user The user to edit.
-	 */
-	private static <T extends User> void editDetails(T user) {
-	    try (Scanner scanner = new Scanner(System.in)) {
-	        updatedInstructor.remove(user.getUsername());
-	        updatedInstructor.add(user.getUsername());
-	        
-	        String newFirstName = promptForUpdate(scanner, "First Name", user.getFirstName());
-	        String newLastName = promptForUpdate(scanner, "Last Name", user.getLastName());
-	        String newEmail = promptForUpdate(scanner, "Email", user.getEmail());
-	        String newUsername = promptForUpdate(scanner, "Username", user.getUsername());
-	        String newPassword = promptForUpdate(scanner, "Password", user.getPassword());
-
-	        checkNewData(user, newFirstName, newLastName, newEmail, newUsername, newPassword);
-	    }
-	}
-	
-	/**
-	 * Prompts the user to update a field and returns the updated value.
-	 *
-	 * @param scanner The Scanner instance for input.
-	 * @param field   The name of the field being updated.
-	 * @param current The current value of the field.
-	 * @return The updated value or the current value if left blank.
-	 */
-	private static String promptForUpdate(Scanner scanner, String field, String current) {
-	    System.out.println("Current " + field + ": " + current);
-	    System.out.print("Enter new " + field + " (leave blank to keep unchanged): ");
-	    String input = scanner.nextLine().trim();
-	    return input.isEmpty() ? current : input;
 	}
 	
 	/**
@@ -271,36 +169,6 @@ public class UserManagementControls {
 	}
 	
 	/**
-	 * Prints a success message with the updated details of a user.
-	 *
-	 * @param <T>      The type of user, extending the `User` class.
-	 * @param editUser The user object whose details have been updated.
-	 */
-	private static <T extends User> void printingAMessageOfSuccess(T editUser) {
-		System.out.println("\nUser details updated successfully!");
-	    System.out.println("First Name: " + editUser.getFirstName());
-	    System.out.println("Last Name: " + editUser.getLastName());
-	    System.out.println("Email: " + editUser.getEmail());
-	    System.out.println("Username: " + editUser.getUsername());
-	    System.out.println("Password: " + editUser.getPassword());
-	}
-	
-	/**
-     * Verifies if a user account's details have been updated successfully.
-     *
-     * @param username The username of the updated account.
-     * @param role     The role of the user ("Instructor" or "Client").
-     * @return True if the update was successful; otherwise, false.
-     */
-	public boolean verifyUserUpdate(String username, String role) {
-        return switch (role) {
-            case "Instructor" -> updatedInstructor.contains(username);
-            case "Client" -> updatedClient.contains(username);
-            default -> false;
-        };
-	}
-	
-	/**
      * Deactivates a user account.
      *
      * @param username The username of the account to deactivate.
@@ -340,16 +208,6 @@ public class UserManagementControls {
 	}
 	
 	/**
-	 * Checks and approves pending instructor applications.
-	 */
-	public static void checkAndApproveInstructors() {
-		if(checkPendingApplications()) {
-			approveInstructors(null, false);
-			verifyAccountActivation();
-		}
-	}
-	
-	/**
      * Checks for pending instructor applications.
      *
      * @return True if there are pending applications; otherwise, false.
@@ -378,54 +236,6 @@ public class UserManagementControls {
 	}
 	
 	/**
-	 * Approves pending instructor applications.
-	 *
-	 * @param pendingUserNames Array of usernames to approve (used if `skip` is false).
-	 * @param skip             If true, prompts the user to input usernames.
-	 * @return True if any instructors were approved; otherwise, false.
-	 */
-	public static boolean approveInstructors(String[] pendingUserNames, boolean skip) {
-	    Map<String, Instructor> pendingInstructors = getPendingInstructorsMap();
-	    Map<String, Instructor> instructorsMap = getInstructorsMap();
-	    if(skip) {
-	    	processApprovals(pendingUserNames, pendingInstructors, instructorsMap);
-	    	return true;
-	    }
-	    
-	    if (pendingInstructors == null || pendingInstructors.isEmpty()) {
-	        System.out.println("No pending applications to approve.");
-	        return false;
-	    }
-	    
-	    String[] usernames = getUsernamesFromInput();
-	    if (usernames == null || usernames.length == 0) {
-	        System.out.println("No usernames provided for approval.");
-	        return false;
-	    }
-	    
-	    boolean anyApproved = processApprovals(usernames, pendingInstructors, instructorsMap);
-	    if (!anyApproved) {
-	        System.out.println("No instructors were approved.");
-	        return false;
-	    }
-	    
-	    System.out.println("Instructor approval process completed.");
-	    return true;
-	}
-	
-	/**
-	 * Prompts the user to input usernames for approval.
-	 *
-	 * @return An array of usernames entered by the user.
-	 */
-	private static String[] getUsernamesFromInput() {
-	    Scanner scanner = new Scanner(System.in);
-	    System.out.println("Enter the usernames of the instructors to approve (separate with commas): ");
-	    String input = scanner.nextLine();
-	    return input.trim().isEmpty() ? new String[0] : input.split(",");
-	}
-	
-	/**
 	 * Processes the approval of instructors based on the provided usernames.
 	 *
 	 * @param usernames          Array of usernames to approve.
@@ -433,7 +243,7 @@ public class UserManagementControls {
 	 * @param instructorsMap     Map of approved instructors.
 	 * @return True if any instructors were approved; otherwise, false.
 	 */
-	private static boolean processApprovals(String[] usernames, Map<String, Instructor> pendingInstructors, 
+	public static boolean processApprovals(String[] usernames, Map<String, Instructor> pendingInstructors, 
 	                                        Map<String, Instructor> instructorsMap) {
 	    boolean anyApproved = false;
 	    for (String username : usernames) {

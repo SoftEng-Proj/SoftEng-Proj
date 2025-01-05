@@ -1,5 +1,8 @@
 package com.Software.FitnessSystem.AdminPageNavigation;
 import static com.Software.FitnessSystem.App.*;
+
+import java.util.Scanner;
+
 import static com.Software.FitnessSystem.AdminControllers.ProgramMonitoringControls.*;
 import com.Software.FitnessSystem.InfrastructureForPages.BasePage;
 import com.Software.FitnessSystem.LoginPage.AdminPagesController;
@@ -67,5 +70,68 @@ public class ProgramMonitoringPage extends BasePage {
             default:
                 System.out.println("Invalid choice. Please try again.");
         }
+    }
+    
+    /**
+     * Displays the report generation menu and processes the user's choice.
+     */
+	public static void chooseReportGenerationOption() {
+        Scanner scanner = new Scanner(System.in);
+        printTheGenerateQuestion();
+
+        int choice = -1;
+        boolean validInput = false;
+
+        while (!validInput) {
+            try {
+                choice = scanner.nextInt();
+                if (choice == 1 || choice == 2) {
+                    validInput = true;
+                } else {
+                    System.out.println("Invalid choice, please choose 1 or 2.");
+                    printTheGenerateQuestion();
+                }
+            } catch (Exception e) {
+                System.out.println("Invalid input! Please enter a number (1 or 2).");
+                scanner.nextLine();
+                printTheGenerateQuestion();
+            }
+        }
+
+        switch (choice) {
+            case 1:
+                System.out.println("Generating report for all programs...");
+                generateReportsOption(getProgramEnrollmentMap(), "Null", false);
+                return;
+            case 2:
+                System.out.print("\n");
+                printPrograms(getProgramEnrollmentMap(), false);
+                String programName = askTheNameOfTheProgram();
+                System.out.println("\nReport generation in progress for the program: \"" + programName + "\".");
+                generateReportsOption(getProgramEnrollmentMap(), programName, true);
+        }
+    }
+	
+    /**
+     * Prompts the user to choose between generating reports for all programs 
+     * or a specific program.
+     */
+    private static void printTheGenerateQuestion() {
+        System.err.println("\nDo you want to generate a report for all programs or a specific program?");
+        System.err.println("1. All programs");
+        System.err.println("2. Specific program");
+        System.err.println("3. Go Back.");
+        System.err.println(">> Enter your choice: ");
+    }
+    
+    /**
+     * Prompts the user to enter the name of a specific program.
+     * 
+     * @return The name of the program entered by the user.
+     */
+	public static String askTheNameOfTheProgram() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please enter the program name:");
+        return scanner.nextLine();
     }
 }

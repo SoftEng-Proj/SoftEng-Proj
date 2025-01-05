@@ -116,7 +116,7 @@ public class SubscriptionPlan {
      *
      * @param planType the predefined plan type to be added.
      */
-    private static void addToSubscriptionPlanMap(PlanType planType) {
+    public static void addToSubscriptionPlanMap(PlanType planType) {
     	String name = planType.name();
         double price = planType.getPrice();
         int duration = planType.getDuration();
@@ -135,20 +135,5 @@ public class SubscriptionPlan {
      */
     public static void addDynamicPlan(String name, double price, int duration, String description) {
         dynamicPlans.put(name.toUpperCase(), new CustomPlan(name, price, duration, description) {});
-    }
-    
-    /**
-     * Returns a string representation of the subscription plan.
-     *
-     * @return a string describing the subscription plan.
-     */
-    @Override
-    public String toString() {
-        return "SubscriptionPlan: \n" +
-        		"Level: '" + getPlanType().toString() + "'\n" +
-                "Price: " + planType.getPrice() + "\n" +
-                "Duration: '" + planType.getDuration() + "'\n" +
-                "Description: '" + planType.getDescription() + "'\n" +
-                "-----------------------------------------------------\n";
     }
 }

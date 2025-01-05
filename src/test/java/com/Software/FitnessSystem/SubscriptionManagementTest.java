@@ -2,22 +2,28 @@ package com.Software.FitnessSystem;
 import static com.Software.FitnessSystem.App.*;
 import static com.Software.FitnessSystem.LoadAndSaveEntities.*;
 import static com.Software.FitnessSystem.AdminControllers.SubscriptionManagementControls.*;
+import static com.Software.FitnessSystem.AdminControllers.SubscriptionPlan.addToSubscriptionPlanMap;
+
 import com.Software.FitnessSystem.AdminControllers.SubscriptionPlan;
+import com.Software.FitnessSystem.AdminControllers.SubscriptionPlan.PlanType;
 import com.Software.FitnessSystem.LoginPage.AdminPagesController;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
 public class SubscriptionManagementTest {
     AdminPagesController adminControllers;
     App app;
-
+    
     public SubscriptionManagementTest(App obj, AdminPagesController admin) {
         this.app = obj;
         this.adminControllers = admin;
     }
-	
+    
 	@Given("I edit a subscription plan")
 	public void i_edit_a_subscription_plan() {
 		boolean expected = true;
@@ -34,19 +40,69 @@ public class SubscriptionManagementTest {
         assertEquals(expected, actual);
 	}
 	
-	@Given("I add or update a plan \\(e.g., Basic or Premium)")
-	public void i_add_or_update_a_plan_e_g_basic_or_premium() {
-		boolean expected = true;
+    @Given("I add a new subscription plan \\(e.g., Basic or Premium)")
+    public void i_add_a_new_subscription_plan_e_g_basic_or_premium() {
+    	boolean expected = true;
         boolean actual = doAdding("Test", 120.0, 120, "new");
+        addToSubscriptionPlanMap(PlanType.FREE);
         assertEquals(expected, actual);
-	}
-	
-	@Then("the plan should be available for clients and instructors.")
-	public void the_plan_should_be_available_for_clients_and_instructors() {
-		boolean expected = true;
+    }
+    
+    @Then("the new plan should be available for clients and instructors.")
+    public void the_new_plan_should_be_available_for_clients_and_instructors() {
+    	boolean expected = true;
         boolean actual = saveCustomSubscriptionPlanToFile(getSubscriptionPlanMap(), SUBSCRIPTION_PLAN_FILENAME);
         assertEquals(expected, actual);
-	}
+    }
+    
+    @Given("I update an existing subscription plan with {string} as {string}")
+    public void i_update_an_existing_subscription_plan_with_as(String type, String value) {
+        boolean expected = true;
+        boolean actual;
+        
+        switch (type.toLowerCase()) {
+            case "price":
+                actual = doAmendment(Double.parseDouble(value), getSubscriptionPlanMap().get("New Plan"), type);
+                break;
+            case "duration":
+                actual = doAmendment(Integer.parseInt(value), getSubscriptionPlanMap().get("New Plan"), type);
+                break;
+            case "description":
+                actual = doAmendment(value, getSubscriptionPlanMap().get("New Plan"), type);
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid type: " + type);
+        }
+        
+        amendedPlanPrinting(getSubscriptionPlanMap().get("New Plan"));
+        assertEquals(expected, actual);
+    }
+    
+    @When("the plan is updated")
+    public void the_plan_is_updated() {
+        assertTrue(getSubscriptionPlanMap().containsKey("New Plan"));
+    }
+    
+    @Then("the updated plan should be available for clients and instructors with {string} set to {string}")
+    public void the_updated_plan_should_be_available_for_clients_and_instructors_with_set_to(String string, String string2) {
+    	boolean expected = true;
+        boolean actual = saveCustomSubscriptionPlanToFile(getSubscriptionPlanMap(), SUBSCRIPTION_PLAN_FILENAME);
+        assertEquals(expected, actual);
+    }
+    
+    @Given("I delete a subscription plan")
+    public void i_delete_a_subscription_plan() {
+    	boolean expected = true;
+        boolean actual = doRemoving("New Plan");
+        assertEquals(expected, actual);
+    }
+    
+    @Then("the plan should no longer be available for clients and instructors.")
+    public void the_plan_should_no_longer_be_available_for_clients_and_instructors() {
+    	boolean expected = true;
+        boolean actual = (!getSubscriptionPlanMap().containsKey("New Plan"));
+        assertEquals(expected, actual);
+    }
 	
 	@Given("I view subscription details")
 	public void i_view_subscription_details() {

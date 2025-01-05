@@ -28,8 +28,29 @@ public class UserManagementTest {
         assertEquals(expected, actual);
     }
     
-    @When("I fill in the details for a new user")
-    public void i_fill_in_the_details_for_a_new_user() {
+    @When("I fill in the details for a new client")
+    public void i_fill_in_the_details_for_a_new_client() {
+    	String fName = "John";
+    	String lName = "Doe";
+    	String email = "johndoe@example.com";
+    	String userName = "John6565Doe";
+    	String password = "password123";
+    	String role = "Client";
+    	
+    	String expected = "Client_Added";
+    	String actual = fillUserDetails(fName, lName, email, userName, password, role);
+        assertEquals(expected, actual);
+    }
+
+    @Then("the new client account should be created successfully")
+    public void the_new_client_account_should_be_created_successfully() {
+    	boolean expected = true;
+        boolean actual = verifyUserCreation("JohnDoe", "Client");
+        assertEquals(expected, actual);
+    }
+
+    @When("I fill in the details for a new instructor")
+    public void i_fill_in_the_details_for_a_new_instructor() {
     	String fName = "John";
     	String lName = "Doe";
     	String email = "johndoe@example.com";
@@ -41,25 +62,54 @@ public class UserManagementTest {
     	String actual = fillUserDetails(fName, lName, email, userName, password, role);
         assertEquals(expected, actual);
     }
-    
-    @Then("the new user account should be created successfully")
-    public void the_new_user_account_should_be_created_successfully() {
+
+    @Then("the new instructor account should be created successfully")
+    public void the_new_instructor_account_should_be_created_successfully() {
     	boolean expected = true;
         boolean actual = verifyUserCreation("JohnDoe", "Instructor");
         assertEquals(expected, actual);
     }
+
+    @Given("I have selected an existing client")
+    public void i_have_selected_an_existing_client() {
+    	boolean expected = true;
+    	boolean actual = selectUser("JohnDoe", "Client");
+        assertEquals(expected, actual);
+    }
+
+    @When("I edit the client details")
+    public void i_edit_the_client_details() {
+    	boolean expected = true;
+    	boolean actual = selectUser("JohnDoe", "Client");
+        assertEquals(expected, actual);
+    }
     
-    @Given("I have selected an existing user")
-    public void i_have_selected_an_existing_user() {
-        boolean expected = true;
+    @Then("the client account should be updated successfully")
+    public void the_client_account_should_be_updated_successfully() {
+    	boolean expected = true;
+    	Client editInstructor = getClientsMap().get("JohnDoe");
+        boolean actual = checkNewData(editInstructor, "John", "Doe", "email", "JohnDoe", "password12");
+        assertEquals(expected, actual);
+    }
+    
+    @Given("I have selected an existing instructor")
+    public void i_have_selected_an_existing_instructor() {
+    	boolean expected = true;
     	boolean actual = selectUser("JohnDoe", "Instructor");
         assertEquals(expected, actual);
     }
     
-    @When("I edit the user details")
-    public void i_edit_the_user_details() {
-        boolean expected = true;
-        Instructor editInstructor = getInstructorsMap().get("JohnDoe");
+    @When("I edit the instructor details")
+    public void i_edit_the_instructor_details() {
+    	boolean expected = true;
+    	boolean actual = selectUser("JohnDoe", "Instructor");
+        assertEquals(expected, actual);
+    }
+    
+    @Then("the instructor account should be updated successfully")
+    public void the_instructor_account_should_be_updated_successfully() {
+    	boolean expected = true;
+    	Instructor editInstructor = getInstructorsMap().get("JohnDoe");
         boolean actual = checkNewData(editInstructor, "John", "Doe", "email", "JohnDoe", "password12");
         assertEquals(expected, actual);
     }
@@ -70,35 +120,49 @@ public class UserManagementTest {
         boolean actual = saveAccountChanges();
         assertEquals(expected, actual);
     }
-    
-    @Then("the user account should be updated successfully")
-    public void the_user_account_should_be_updated_successfully() {
+
+    @Given("I have selected an active client")
+    public void i_have_selected_an_active_client() {
     	boolean expected = true;
-    	Instructor editInstructor = getInstructorsMap().get("JohnDoe");
-        boolean actual = checkNewData(editInstructor, "John", "Doe", "email", "JohnDoe", "password12");
+    	boolean actual = selectUser("active", "Client");
         assertEquals(expected, actual);
     }
+
+    @When("I deactivate the client account")
+    public void i_deactivate_the_client_account() {
+    	boolean expected = true;
+    	boolean actual = deactivateUser("active", "Client");
+        assertEquals(expected, actual);
+    }
+
+    @Then("the client should no longer be able to log in")
+    public void the_client_should_no_longer_be_able_to_log_in() {
+    	boolean expected = true;
+    	deactivateUser("active", "Client");
+        boolean isDeactivated = managementControls.verifyUserDeactivation("active", "Client");
+        assertEquals(expected, isDeactivated);
+    }
     
-    @Given("I have selected an active user")
-    public void i_have_selected_an_active_user() {
+    @Given("I have selected an active instructor")
+    public void i_have_selected_an_active_instructor() {
     	boolean expected = true;
     	boolean actual = selectUser("Activate", "Instructor");
         assertEquals(expected, actual);
     }
-    
-    @When("I deactivate the user account")
-    public void i_deactivate_the_user_account() {
+
+    @When("I deactivate the instructor account")
+    public void i_deactivate_the_instructor_account() {
     	boolean expected = true;
     	boolean actual = deactivateUser("Activate", "Instructor");
         assertEquals(expected, actual);
     }
     
-    @Then("the user should no longer be able to log in")
-    public void the_user_should_no_longer_be_able_to_log_in() {
+    @Then("the instructor should no longer be able to log in")
+    public void the_instructor_should_no_longer_be_able_to_log_in() {
     	boolean expected = true;
     	deactivateUser("Activate", "Instructor");
         boolean isDeactivated = managementControls.verifyUserDeactivation("Activate", "Instructor");
-        assertEquals(expected, isDeactivated);
+        assertEquals(expected, isDeactivated);;
     }
     
     @Given("there are pending instructor applications")
@@ -108,17 +172,29 @@ public class UserManagementTest {
         assertEquals(expected, hasPending);
     }
     
-    @When("I approve an application")
-    public void i_approve_an_application() {
+    @When("I approve a instructor application")
+    public void iApproveAInstructorApplication() {
     	boolean expected = true;
     	
     	String[] list = {"ActivatePend"};
-        boolean hasApproved = approveInstructors(list, true);
+        boolean hasApproved = processApprovals(list, getPendingInstructorsMap(), getInstructorsMap());
         assertEquals(expected, hasApproved);
     }
     
-    @Then("the account should become active")
-    public void their_account_should_become_active() {
+    /*
+     *     
+    @When("i approve a instructor application")
+    public void i_approve_a_instructor_application() {
+    	boolean expected = true;
+    	
+    	String[] list = {"ActivatePend"};
+        boolean hasApproved = processApprovals(list, getPendingInstructorsMap(), getInstructorsMap());
+        assertEquals(expected, hasApproved);
+    }
+     */
+    
+    @Then("the instructor account should become active")
+    public void the_instructor_account_should_become_active() {
     	boolean expected = true;
         boolean isActive = verifyAccountActivation();
         assertEquals(expected, isActive);
@@ -127,7 +203,7 @@ public class UserManagementTest {
     @When("I view activity reports")
     public void i_view_activity_reports() {
     	boolean expected = true;
-        boolean actual = viewActivityReports();
+        boolean actual = viewAndVerifyReportsActivity();
         assertEquals(expected, actual);
     }
     

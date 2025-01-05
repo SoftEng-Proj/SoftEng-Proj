@@ -1,13 +1,12 @@
 package com.Software.FitnessSystem.AdminPageNavigation;
 import static com.Software.FitnessSystem.App.*;
-
-import java.util.Map;
-
+import static com.Software.FitnessSystem.AdminPageNavigation.CoContentManagementPage.*;
 import static com.Software.FitnessSystem.AdminControllers.ContentManagementControls.*;
-
 import com.Software.FitnessSystem.Content;
 import com.Software.FitnessSystem.InfrastructureForPages.BasePage;
 import com.Software.FitnessSystem.LoginPage.AdminPagesController;
+
+import java.util.Map;
 
 /**
  * Represents the Content Management page for the admin in the fitness system.
@@ -85,5 +84,22 @@ public class ContentManagementPage extends BasePage {
     private void handleContentApproval(Map<String, Content> pendingContentMap, Map<String, Content> approvedContentMap, boolean isFeedback) {
         setApprovedTipsMap(approvedContentMap);
         dealWithContentTypes(pendingContentMap, isFeedback);
+    }
+    
+    /**
+     * Deals with content types, either reviewing feedback or approving/rejecting tips.
+     * @author Muath Hassoun
+     * @param tips The map of tips or feedback to review.
+     * @param isForFeedbacks True if the content is for feedback, false if for tips.
+     */
+    private static void dealWithContentTypes(Map<String, Content> tips, boolean isForFeedbacks) {
+        if (reviewArticleAndTips(tips)) {
+        	printTips(tips);
+            if (isForFeedbacks) {
+            	respondToFeedback(approvedTips);
+            } else {
+            	approveOrRejectTheTips(approvedTips);
+            }
+        }
     }
 }
