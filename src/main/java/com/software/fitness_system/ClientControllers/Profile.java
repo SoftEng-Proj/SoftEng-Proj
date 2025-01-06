@@ -14,12 +14,12 @@ public class Profile {
     
     /**
      * Constructs a new Profile with the specified age and fitness goals
-     *
+     * @param name         the first name of the client
      * @param age          the age of the client
      * @param fitnessGoals the fitness goals of the client
      */
-    public Profile(String age, String fitnessGoals) {
-    	this.name = "";
+    public Profile(String name, String age, String fitnessGoals) {
+    	this.name = name;
         this.age = age;
         this.fitnessGoals = fitnessGoals;
         this.dietaryPreference = "";
@@ -31,8 +31,30 @@ public class Profile {
      */
     public Profile() {
     }
-
-   
+    
+    /**
+     * Gets the name of the client
+     *
+     * @return the name of the client
+     */
+    public String getName() {
+        return name;
+    }
+    
+    /**
+     * Sets the name of the client
+     *
+     * @param name the new name of the client
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    /**
+     * Gets the age of the client
+     *
+     * @return the age of the client
+     */
     public String getAge() {
         return age;
     }
@@ -72,7 +94,7 @@ public class Profile {
     public String getDietaryPreference() {
         return dietaryPreference;
     }
-
+    
     /**
      * Sets the dietary preference of the client
      *

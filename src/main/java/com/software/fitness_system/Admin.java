@@ -5,18 +5,6 @@ public class Admin {
     private String password;
     
     /**
-     * Constructor to initialize an Admin object with a username and password.
-     * @author Muath Hassoun
-     * @param username the username of the admin
-     * @param password the password of the admin
-     */
-    public Admin(String username, String password) {
-        super();
-        this.username = username;
-        this.password = password;
-    }
-    
-    /**
      * Default constructor for the Admin object.
      */
     public Admin() {

@@ -64,9 +64,12 @@ public class NotificationsPage extends BasePage {
                 ProgramInfo();
             	System.out.println("Enter program's schedule change:");
             	NewSchedule = scanner.nextLine();
-            	NotificationControls.addProgramScheduleChange(Programname, NewSchedule);
-            	App.saveProgramSchedChangeChanges();
+            	String result = NotificationControls.addProgramScheduleChange(Programname, NewSchedule);
+            	if(result.equals("not changed")) {
+            		System.out.println("program not found: " + Programname);
+            	}
             	
+            	App.saveProgramSchedChangeChanges();
                 break;
             case 2:
                 System.out.println("Enter the Announcement:");

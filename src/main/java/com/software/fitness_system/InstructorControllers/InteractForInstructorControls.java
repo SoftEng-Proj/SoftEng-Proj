@@ -44,7 +44,6 @@ public class InteractForInstructorControls {
 	            MSGG=true;
 	            return "Message sent";
 	       } else {
-	            System.out.println("Error: Client \"" + clientName + "\" does not exist. Please check the name and try again.");
 	            return "Message not sent";
 	       }
 	 }
@@ -63,7 +62,6 @@ public class InteractForInstructorControls {
 	            System.out.println("Message sent to \"" +programname + "\": " + message);
 	            return "Forum sent";
 	        } else {
-	            System.out.println("Error: Program \"" + programname + "\" does not exist. Please check the name and try again.");
 	            return "Forum not sent";
 	        }
 	 }
@@ -94,7 +92,6 @@ public class InteractForInstructorControls {
 	            Feedbackprovided=true;
 	            return "Feedback sent";
 	        } else {
-	            System.out.println("Error: Client \"" + clientName + "\" does not exist. Please check the name and try again.");
 	            return "Feedback not sent";
 	        }
 	    }
@@ -116,7 +113,6 @@ public class InteractForInstructorControls {
 	            prgs=true;
 	            return "Progress sent";
 	        } else {
-	            System.out.println("Error: Client \"" + clientName + "\" does not exist. Please check the name and try again.");
 	            return "not sent";
 	        }
 		 

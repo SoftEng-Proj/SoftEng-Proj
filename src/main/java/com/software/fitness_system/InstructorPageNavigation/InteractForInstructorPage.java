@@ -61,7 +61,10 @@ public class InteractForInstructorPage extends BasePage {
                 System.out.println("Enter your message:");
                 String message = scanner.nextLine();
 
-                InteractForInstructorControls.sendMessageToClient(clientName, message);
+                String mssg = InteractForInstructorControls.sendMessageToClient(clientName, message);
+                if(mssg.equals("Message not sent")) {
+    	            System.out.println("Error: Client \"" + clientName + "\" does not exist. Please check the name and try again.");
+                }
                 App.saveInstructorMSGSForClientsChanges();
                 break;
             case 2:
@@ -71,9 +74,11 @@ public class InteractForInstructorPage extends BasePage {
             	System.out.println("Enter the message on the forum:");
             	String msg = scanner.nextLine();
             	 
-                InteractForInstructorControls.sendMessageToProgramForum(progname, msg);
+                String msge = InteractForInstructorControls.sendMessageToProgramForum(progname, msg);
+                if(msge.equals("Forum not sent")) {
+    	            System.out.println("Error: Program \"" + progname + "\" does not exist. Please check the name and try again.");
+                }
                 App.saveProgramForumMsgsChanges();
-                //isForumPage = false;
                 break;
             case 3:
             	System.out.println("Enter the name of the client");
@@ -81,7 +86,10 @@ public class InteractForInstructorPage extends BasePage {
             	System.out.println("Enter your feedback:");
                 String feedback = scanner.nextLine();
                  
-                InteractForInstructorControls.sendFeedbackToClient(clientt, feedback);
+                String sent = InteractForInstructorControls.sendFeedbackToClient(clientt, feedback);
+            	if(sent.equals("Feedback not sent")) {
+    	            System.out.println("Error: Client \"" + clientt + "\" does not exist. Please check the name and try again.");
+            	}
                 App.saveFeedbackToClientChanges();          	
                 break;
             case 4:
@@ -91,7 +99,10 @@ public class InteractForInstructorPage extends BasePage {
             	System.out.println("Enter the progress message:");
             	String MSG = scanner.nextLine();
             	
-            	InteractForInstructorControls.sendProgressToClient(clienttt, MSG);
+            	String notSent = InteractForInstructorControls.sendProgressToClient(clienttt, MSG);
+            	if(notSent.equals("not sent")) {
+    	            System.out.println("Error: Client \"" + clienttt + "\" does not exist. Please check the name and try again.");
+            	}
             	App.saveProgressListChanges();            	
                 break;
             case 5:

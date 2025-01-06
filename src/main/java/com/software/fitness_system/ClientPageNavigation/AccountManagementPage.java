@@ -66,7 +66,11 @@ public class AccountManagementPage extends BasePage {
                 String newAge = scanner.nextLine();
                 System.out.print("Enter New Fitness Goals: ");
                 String newFitnessGoals = scanner.nextLine();
-                AccountManagementControls.updatePersonalDetails(client, newAge, newFitnessGoals);
+                String returnVal = AccountManagementControls.updatePersonalDetails(client, newAge, newFitnessGoals);
+                if(returnVal.equals(newFitnessGoals)) {
+                    System.out.println("No profile found for " + client.getUsername());
+                }
+                
                 App.saveClientProfileChanges();
                 break;
             case 3:
@@ -75,7 +79,11 @@ public class AccountManagementPage extends BasePage {
                 String dietaryPreference = scanner.nextLine();
                 System.out.print("Enter Dietary Restrictions (comma-separated): ");
                 String restrictions = scanner.nextLine();
-                AccountManagementControls.setDietaryPreferences(client, dietaryPreference, restrictions);
+                String returned = AccountManagementControls.setDietaryPreferences(client, dietaryPreference, restrictions);
+                if(returned.equals(restrictions)) {
+                    System.out.println("No profile found for " + client.getUsername());
+                }
+                
                 App.saveClientProfileChanges();
                 break;
             case 4:

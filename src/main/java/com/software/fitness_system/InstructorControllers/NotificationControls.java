@@ -34,7 +34,6 @@ public class NotificationControls {
 		    return "Schedule changed";
 		}
 		else {
-			System.out.println("program not found: " + name);
 			return "not changed";
 		}
 	}
@@ -72,8 +71,7 @@ public class NotificationControls {
      * 
      */
 	public static boolean ProgramExists() {
-			ProgramMap.put("Fit", new Program ("Fit","20 Days","10-2-2024","2","3","4","5"));
-		
+		ProgramMap.put("Fit", new Program ("Fit","20 Days","10-2-2024","2","3","4","5"));
 		return true;
 	}
 }

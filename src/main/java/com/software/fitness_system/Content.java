@@ -13,19 +13,6 @@ public class Content {
     }
     
     /**
-     * Constructor to initialize a Content object with an ID, type, and description.
-     * @author Muath Hassoun
-     * @param ID the ID of the content
-     * @param type the type of the content
-     * @param description the description of the content
-     */
-    public Content(String ID, String type, String description) {
-        this.ID = ID;
-        this.type = type;
-        this.description = description;
-    }
-    
-    /**
      * Returns the ID of the content.
      * @author Muath Hassoun
      * @return the ID of the content

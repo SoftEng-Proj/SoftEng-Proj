@@ -77,13 +77,19 @@ public class ProgramManagementPage extends BasePage {
                 break;
             case 2:
             	EnterUpdatedProgramInfo();
-                ProgramManagementControls.updateProgram(UpdateProgName, newProgDuration, newProgLevel, newProgGoal, newProgLinks, newProgPrice);
+                String result = ProgramManagementControls.updateProgram(UpdateProgName, newProgDuration, newProgLevel, newProgGoal, newProgLinks, newProgPrice);
+                if(result.equals("not updated")) {
+                	System.out.println("Program not found");
+                }
                 App.saveFitnessProgramsChanges();
                 break;
             case 3:
             	System.out.println("Enter the name of the program to be deleted:");
                 String deleteProgName = scanner.nextLine();
-                ProgramManagementControls.deleteProgram(deleteProgName);
+                String deleted = ProgramManagementControls.deleteProgram(deleteProgName);
+                if(deleted.equals("not deleted")) {
+                	System.out.println("Program not found");
+                }
                 App.saveFitnessProgramsChanges();
                 break;
             case 4:

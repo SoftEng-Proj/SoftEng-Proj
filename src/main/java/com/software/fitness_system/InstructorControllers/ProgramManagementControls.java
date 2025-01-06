@@ -98,7 +98,6 @@ public class ProgramManagementControls {
 	     return "Program updated";
 		}
 		else {
-			System.out.println("Program not found");
 			 return "not updated";
 		}
 	 }
@@ -119,7 +118,6 @@ public class ProgramManagementControls {
 	     return "Program Deleted";
 		}
 		else {
-			 System.out.println("Program not found");
 			 return "not deleted";
 		}
 	 }

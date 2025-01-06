@@ -79,16 +79,13 @@ public class ProgressTrackingInstructorControls {
 	 * @return true When a client is found, false otherwise
 	 */
 	public static boolean sendRecommendation(String clientName, String recommendationMessage) {
+		receivedRecomm = false;
 		if (client.containsKey(clientName)||clientt.containsKey(clientName)) {
-        recommendationList.put(clientName, recommendationMessage);
-        receivedRecomm=true;
-        System.out.println("The recommendation for:" +clientName+ "is sent.");
-
-        return true;
+	        recommendationList.put(clientName, recommendationMessage);
+	        receivedRecomm = true;
+	        System.out.println("The recommendation for:" +clientName+ "is sent.");
 		}
-		else {
-			return false;
-		}
+		return receivedRecomm;
     }
 	
 	/**

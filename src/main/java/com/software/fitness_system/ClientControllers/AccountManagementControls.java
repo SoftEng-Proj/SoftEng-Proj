@@ -30,11 +30,20 @@ public class AccountManagementControls {
 			return "Empty";
 		}
 		
-        Profile newProfile = new Profile(age, fitnessGoals);
-        profilesMap.put(client.getUsername(), newProfile);
-        System.out.println("Profile created successfully for " + client.getUsername() + "\n");
+        Profile newProfile = new Profile(client.getFirstName(), age, fitnessGoals);
+        profilesMap.put(username, newProfile);
+        printProfileData(newProfile);
         return "Profile created successfully";
     }
+	
+	private static void printProfileData(Profile newProfile) {
+	    System.out.println("Profile Information:");
+	    System.out.println("Name: " + newProfile.getName());
+	    System.out.println("Age: " + newProfile.getAge());
+	    System.out.println("Fitness Goals: " + newProfile.getFitnessGoals());
+	    System.out.println("Dietary Preference: " + newProfile.getDietaryPreference());
+	    System.out.println("Dietary Restrictions: " + newProfile.getDietaryRestrictions());
+	}
 	
 	 /**
      * Updates the personal details of a client's profile
@@ -47,13 +56,12 @@ public class AccountManagementControls {
 	public static String updatePersonalDetails(Client client, String newAge, String newFitnessGoals) {
         Profile profile = profilesMap.get(client.getUsername());
         if (profile == null) {
-            System.out.println("No profile found for " + client.getUsername());
             return newFitnessGoals;
         }
         
         profile.setAge(newAge);
         profile.setFitnessGoals(newFitnessGoals);
-        System.out.println("Profile updated successfully for " + client.getUsername() + "\n");
+        System.out.println("Profile updated successfully for " + profile.getName() + "\n");
         return "Updated personal details successfully";
     }
 	
@@ -70,14 +78,13 @@ public class AccountManagementControls {
         dietaryPreferences = "";
         
         if (profile == null) {
-            System.out.println("No profile found for " + client.getUsername());
             return restrictions;
         }
         
         profile.setDietaryPreference(dietaryPreference);
         profile.setDietaryRestrictions(restrictions);
         
-        System.out.println("Dietary preferences updated for " + client.getUsername() + "\n");
+        System.out.println("Dietary preferences updated for " + profile.getName() + "\n");
         dietaryPreferences = "Updated successfully";
         return dietaryPreferences;
     }
