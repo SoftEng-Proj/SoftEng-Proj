@@ -83,23 +83,7 @@ public class FitnessMilestone {
         this.date = date;
     }
 
-    /**
-     * Gets the username of the client associated with this milestone
-     *
-     * @return the username of the client
-     */
-    public String getName() {
-        return username;
-    }
-
-    /**
-     * Sets the username of the client associated with this milestone
-     *
-     * @param username the new username of the client
-     */
-    public void setName(String username) {
-        this.username = username;
-    }
+   
 
     /**
      * Returns a string representation of the milestone
