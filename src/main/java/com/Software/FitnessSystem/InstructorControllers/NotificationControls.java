@@ -13,15 +13,11 @@ import com.Software.FitnessSystem.App;
  * @author Ammar Shafii
  */
 public class NotificationControls {
-	
 	private static Map<String, String> SchedChangeMap = App.getProgramScheduleChangeMap();
-	private static Map<String, Program> ProgramMap=App.getFitnessProgramsMap();
-	private static List<String> AnnouncementMap= App.getInstructorAnnouncementsMap();
-	private static boolean Changesent=false;
-	private static boolean Announcementsent=false;
-	private static boolean programfound=false;
-
-	
+	private static Map<String, Program> ProgramMap = App.getFitnessProgramsMap();
+	private static List<String> AnnouncementMap = App.getInstructorAnnouncementsMap();
+	private static boolean Changesent = false;
+	private static boolean Announcementsent = false;
 	
 	/**
      * Changes a program schedule.
@@ -30,18 +26,17 @@ public class NotificationControls {
      * @param msg The new program schedule
      */
 	public static String addProgramScheduleChange(String name, String msg) {
+		Changesent = false;
 		if(ProgramMap.containsKey(name)) {
-		SchedChangeMap.put(name, msg);
-		System.out.println("Schedule is updated for program: " + name);
-		Changesent=true;
-		programfound=true;
-	    return "Schedule changed";
+			SchedChangeMap.put(name, msg);
+			System.out.println("Schedule is updated for program: " + name);
+			Changesent = true;
+		    return "Schedule changed";
 		}
 		else {
 			System.out.println("program not found: " + name);
 			return "not changed";
 		}
-	    
 	}
 	
 	/**
@@ -53,62 +48,24 @@ public class NotificationControls {
 	public static String AddanAnnouncement(String name) {
 		AnnouncementMap.add(name);
 		System.out.println("An announcement is made ");
-		Announcementsent=true;
+		Announcementsent = true;
 	    return "Announcement made.";
-	    
 	}
-	
 	
 	/**
      * To ensure a schedule change occures, for test purposes.
-     * 
-     * 
      */
 	public static boolean ChangeSent() {
-		
-		if (Changesent==true) {
-		return true;
-		}
-		return false;
-	    
+		return Changesent;
 	}
 	
 	/**
      * To ensure an announcement is sent, for test purposes.
-     * 
-     * 
      */
 	public static boolean AnnouncementSent() {
-		//AddanAnnouncement("Hi");
-		if (Announcementsent==true) {
-		return true;
-		}
-		return false;
-	    
+		return Announcementsent;
 	}
 	
-	/**
-     * To ensure a schedule change, for test purposes. 
-     * 
-     * 
-     */
-	public static void SchedUpdate() {
-		ProgramMap.put("Fit", new Program ("Fit","0","0","0","0","0","0"));
-	}
-	
-	/**
-     * to ensure a program is found. 
-     */
-	public static boolean ProgramFound() {
-		
-		
-		if (programfound==true) {
-		return true;
-		}
-		else {
-		return false;
-		}
-	}
 	/**
      * To ensure a program exists, for test purposes. 
      * 
@@ -119,6 +76,4 @@ public class NotificationControls {
 		
 		return true;
 	}
-
-	
 }

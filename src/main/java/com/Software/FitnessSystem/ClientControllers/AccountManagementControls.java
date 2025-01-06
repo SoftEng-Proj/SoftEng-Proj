@@ -1,10 +1,8 @@
-
-
 package com.Software.FitnessSystem.ClientControllers;
-
-import java.util.Map;
 import com.Software.FitnessSystem.App;
 import com.Software.FitnessSystem.Client;
+import java.util.Map;
+
 /**
  * This class provides methods to manage client account profiles
  * and the ability to create update and view profiles
@@ -13,16 +11,8 @@ import com.Software.FitnessSystem.Client;
  * @author Alaa Alawneh
  */
 public class AccountManagementControls {
-	private static Map<String, Profile> profilesMap = App.getClientProfileMap();
+	public static Map<String, Profile> profilesMap = App.getClientProfileMap();
 	private static String dietaryPreferences = "";
-	
-	/**
-     * Default constructor for AccountManagementControls
-     * beacause the class uses static methods no need to make an instance
-     */
-    public AccountManagementControls() {
-    	
-    }
 	
 	 /**
      * Creates a new profile for a client if it does not exist
@@ -65,6 +55,7 @@ public class AccountManagementControls {
         System.out.println("Profile updated successfully for " + client.getUsername() + "\n");
         return "Updated personal details successfully";
     }
+	
 	/**
      * Sets the dietary preferences and restrictions for the client profile
      *
@@ -93,23 +84,4 @@ public class AccountManagementControls {
 	public static String getDietaryPreferences() {
 		return dietaryPreferences;
 	}
-	
-	/**
-     * Displays the profile details of a client
-     *
-     * @param client    The client object
-     */
-	public void viewProfile(Client client) {
-        Profile profile = profilesMap.get(client.getUsername());
-        if (profile == null) {
-            System.out.println("No profile found for " + client.getUsername());
-            return;
-        }
-        
-        System.out.println("\nProfile Details for " + client.getUsername() + ":");
-        System.out.println("Age: " + profile.getAge());
-        System.out.println("Fitness Goals: " + profile.getFitnessGoals());
-        System.out.println("Dietary Preferences: " + profile.getDietaryPreference());
-        System.out.println("Dietary Restrictions: " + profile.getDietaryRestrictions());
-    }
 }

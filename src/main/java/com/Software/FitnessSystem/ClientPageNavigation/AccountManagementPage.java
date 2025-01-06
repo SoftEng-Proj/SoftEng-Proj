@@ -1,5 +1,6 @@
 package com.Software.FitnessSystem.ClientPageNavigation;
 import com.Software.FitnessSystem.ClientControllers.AccountManagementControls;
+import com.Software.FitnessSystem.ClientControllers.Profile;
 import com.Software.FitnessSystem.InfrastructureForPages.BasePage;
 import com.Software.FitnessSystem.LoginPage.ClientPageControllers;
 import com.Software.FitnessSystem.App;
@@ -14,7 +15,6 @@ import com.Software.FitnessSystem.Client;
  */
 public class AccountManagementPage extends BasePage {
 	private ClientPageControllers clientController;
-    private AccountManagementControls accountManagementControls;
     private static boolean onDietaryRestrictionsPage = false;
     private static boolean onCreateProfilePage = false;
     private static boolean onUpdatePersonalDetailsPage = false;
@@ -25,7 +25,6 @@ public class AccountManagementPage extends BasePage {
      */
     public AccountManagementPage(ClientPageControllers clientController) {
         this.clientController = clientController;
-        this.accountManagementControls = new AccountManagementControls();
     }
     /**
      * Display the account management menu option to chosee from
@@ -80,7 +79,7 @@ public class AccountManagementPage extends BasePage {
                 App.saveClientProfileChanges();
                 break;
             case 4:
-                accountManagementControls.viewProfile(client);
+                viewProfile(client);
                 break;
             case 5:
                 System.out.println("\nReturning to the main menu...");
@@ -118,5 +117,24 @@ public class AccountManagementPage extends BasePage {
      */
     public static boolean isOnUpdatePersonalDetailsPage() {
         return onUpdatePersonalDetailsPage;
+    }
+    
+	/**
+     * Displays the profile details of a client
+     *
+     * @param client  The client object
+     */
+	public void viewProfile(Client client) {
+        Profile profile = AccountManagementControls.profilesMap.get(client.getUsername());
+        if (profile == null) {
+            System.out.println("No profile found for " + client.getUsername());
+            return;
+        }
+        
+        System.out.println("\nProfile Details for " + client.getUsername() + ":");
+        System.out.println("Age: " + profile.getAge());
+        System.out.println("Fitness Goals: " + profile.getFitnessGoals());
+        System.out.println("Dietary Preferences: " + profile.getDietaryPreference());
+        System.out.println("Dietary Restrictions: " + profile.getDietaryRestrictions());
     }
 }

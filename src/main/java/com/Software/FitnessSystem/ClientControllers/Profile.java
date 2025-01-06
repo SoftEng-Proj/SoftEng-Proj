@@ -11,7 +11,7 @@ public class Profile {
     private String fitnessGoals;
     private String dietaryPreference;
     private String dietaryRestrictions;
-
+    
     /**
      * Constructs a new Profile with the specified age and fitness goals
      *
@@ -116,17 +116,5 @@ public class Profile {
      */
     public void setDietaryRestrictions(String dietaryRestrictions) {
         this.dietaryRestrictions = dietaryRestrictions;
-    }
-
-    /**
-     * Returns a string representation of the Profile
-     *
-     * @return a string containing the age, fitness goals, dietary preference, and dietary restrictions
-     */
-    @Override
-    public String toString() {
-        return "Profile [Age=" + age + ", Fitness Goals=" + fitnessGoals
-                + ", Dietary Preference=" + dietaryPreference
-                + ", Dietary Restrictions=" + dietaryRestrictions + "]";
     }
 }
