@@ -215,7 +215,8 @@ public class LoginPageController {
     private static boolean verifyInstructor(String username, String password) {
         if (getInstructorsMap().containsKey(username) && getInstructorsMap().get(username).getPassword().equals(password)) {
             Instructor instructor = getInstructorsMap().get(username);
-            if (getSubscriptionPlanMap().get(username).getDuration() >= instructor.getLogins()) {
+            //getSubscriptionPlanMap().get(username).getDuration() >= instructor.getLogins()
+            if (instructor != null) {
                 return true;
             }
         }
@@ -233,7 +234,8 @@ public class LoginPageController {
     private static boolean verifyClient(String username, String password) {
     	if (getClientsMap().containsKey(username) && getClientsMap().get(username).getPassword().equals(password)) {
             Client client = getClientsMap().get(username);
-            if (getSubscriptionPlanMap().get(username).getDuration() >= client.getLogins()) {
+            //getSubscriptionPlanMap().get(username).getDuration() >= client.getLogins()
+            if (client != null) {
                 return true;
             }
         }

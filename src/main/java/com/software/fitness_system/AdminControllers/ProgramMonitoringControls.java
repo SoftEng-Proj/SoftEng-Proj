@@ -19,7 +19,6 @@ public class ProgramMonitoringControls {
     private static boolean hasItBeenDisplayed = true;
     private static boolean isReportsPrinted = false;
     private static boolean isProgramStatusPrinted = false;
-    public ProgramMonitoringControls() {}
     
     /**
      * Displays all fitness programs.
