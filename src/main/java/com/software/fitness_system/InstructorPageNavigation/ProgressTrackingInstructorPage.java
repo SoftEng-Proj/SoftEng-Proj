@@ -65,7 +65,11 @@ public class ProgressTrackingInstructorPage extends BasePage {
                 System.out.print("Enter the reminder: ");
                 String reminderMessage = scanner.nextLine();
                 
-            	ProgressTrackingInstructorControls.sendReminder(clientname, reminderMessage);
+            	boolean result=ProgressTrackingInstructorControls.sendReminder(clientname, reminderMessage);
+            	if (!result) {
+            		 System.out.println("Client not found");
+            	}
+            	
             	App.saveInstructorReminderChanges();
             
                 break;
@@ -76,7 +80,10 @@ public class ProgressTrackingInstructorPage extends BasePage {
                 System.out.print("Enter the recommendation: ");
                 String recommendationMsg = scanner.nextLine();
                 
-            	ProgressTrackingInstructorControls.sendRecommendation(cname, recommendationMsg);
+            boolean resultt=ProgressTrackingInstructorControls.sendRecommendation(cname, recommendationMsg);
+            if (!resultt) {
+            	 System.out.println("Client not found");
+            }
             	App.saveInstructorRecommendationChanges();
                 break;
             case 4:

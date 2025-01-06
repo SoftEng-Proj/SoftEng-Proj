@@ -59,12 +59,10 @@ public class ProgramManagementControls {
 	        if (duration.contains(" days")) {
 	            try {
 	                daysToAdd = Integer.parseInt(duration.replaceAll("\\D+", ""));
-	            } catch (NumberFormatException ex) {
-	                System.out.println("Invalid duration format for program: " + name);
-	                return LocalDate.now().toString();
+	            } catch (NumberFormatException ex) {   
+	              return LocalDate.now().toString();
 	            }
 	        } else {
-	            System.out.println("Invalid duration format for program: " + name);
 	            return LocalDate.now().toString();
 	        }
 	    }
@@ -147,10 +145,7 @@ public class ProgramManagementControls {
 	     */
 	 public static boolean ProgCreated() {
 		
-		 if (progCreated==true) {
-			 return true;
-		 }
-		 return false;
+		 return progCreated;
 	 }
 	 
 	 /**
@@ -158,11 +153,7 @@ public class ProgramManagementControls {
 	     * @return true When a program is updated, false otherwise
 	     */
 	 public static boolean ProgUpdated() {
-		
-		 if (progUpdated==true) {
-			 return true;
-		 }
-		 return false;
+		 return progUpdated;
 	 }
 	 
 	 /**
@@ -170,11 +161,7 @@ public class ProgramManagementControls {
 	     * @return true When a program is deleted, false otherwise
 	     */
 	 public static boolean ProgDeleted() {
-			
-		 if (progDeleted==true) {
-			 return true;
-		 }
-		 return false;
+		return progDeleted;
 	 }
 	 
 	 /**
@@ -182,14 +169,6 @@ public class ProgramManagementControls {
 	     * @return true When a tutorial link is added, false otherwise
 	     */
 	 public static boolean TutorialAdded() {
-			
-		 if (tutorialAdded==true) {
-			 return true;
-		 }
-		 return false;
+		 return tutorialAdded;
 	 }
-	 
-	 
-	 
-	 
 }

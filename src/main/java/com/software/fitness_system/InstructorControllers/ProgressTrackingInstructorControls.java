@@ -56,7 +56,6 @@ public class ProgressTrackingInstructorControls {
         return true;
 		}
 		else {
-			System.out.println("Client not found");
 			return false;
 		}
     }
@@ -67,12 +66,7 @@ public class ProgressTrackingInstructorControls {
 	 * @return true When a reminder is received, false otherwise
 	 */
 	public static boolean ReceivedCheck() {
-		//client.put("Ali", null);
-     //   sendReminder("Ali","Test");
-        if (checkIfReceived==true) {
-            return true;
-        }
-        return false;
+       return checkIfReceived;
 	}
 	
 	
@@ -93,8 +87,6 @@ public class ProgressTrackingInstructorControls {
         return true;
 		}
 		else {
-			System.out.println("Client not found");
-
 			return false;
 		}
     }
@@ -108,7 +100,7 @@ public class ProgressTrackingInstructorControls {
 	 * @return true When a reminder is sent, false otherwise.
 	 */
 	public static boolean Reminderr(String name, String msg) {
-        client.put(name, null);
+       client.put(name, null);
         sendReminder(name,msg);
         return true;
 	}
@@ -123,7 +115,7 @@ public class ProgressTrackingInstructorControls {
 	 * @return true when a recommendation is sent, false otherwise.
 	 */
         public static boolean Recommendationn(String namee, String msgg) {
-            client.put(namee, null);
+           client.put(namee, null);
             sendRecommendation(namee,msgg);
             return true;
         
@@ -131,10 +123,7 @@ public class ProgressTrackingInstructorControls {
         
         public static boolean ReceivedRecommCheck() {
     		
-            if (receivedRecomm==true) {
-                return true;
-            }
-            return false;
+            return receivedRecomm;
     	}
 	
 }
