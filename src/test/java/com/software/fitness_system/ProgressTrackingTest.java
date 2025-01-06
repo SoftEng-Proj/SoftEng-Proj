@@ -1,0 +1,76 @@
+package com.software.fitness_system;
+import static org.junit.Assert.assertTrue;
+import com.software.fitness_system.AdminControllers.ProgramEnrollment;
+import com.software.fitness_system.ClientControllers.ProgressTrackingControls;
+
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+
+public class ProgressTrackingTest {
+	ProgressTrackingControls progressTrackingControls;
+	ProgramEnrollment programEnrollment;
+	App app;
+	
+	public ProgressTrackingTest(App ap,ProgressTrackingControls ptc, ProgramEnrollment pe) {
+		this.app = ap;
+        this.progressTrackingControls = ptc;
+        this.programEnrollment = pe;
+	}
+	@Given("I am logged into my account")
+	public void i_am_logged_into_my_account() {
+		String expected = "ClientLoggedIn";
+    	String actual = App.login("John29Doe", "Client");
+        assertTrue(expected.equals(actual));
+	}
+
+
+	@When("I update my milestone with {string} as {string}")
+	public void i_update_my_milestone_with_as(String string, String string2) {
+		String expected = "milestone added successfully";
+		String actual = ProgressTrackingControls.addMilestone("weight gain",  "5kg",  "2024-12-23", App.getClientsMap().get("John29Doe"));
+		assertTrue(expected.equals(actual));
+	}
+
+	@Then("my milestone should be recorded")
+	public void my_milestone_should_be_recorded() {
+		String expected = "milestone added successfully";
+		String actual = ProgressTrackingControls.addMilestone("weight gain",  "5kg",  "2024-12-23", App.getClientsMap().get("John29Doe"));
+		assertTrue(expected.equals(actual));
+	}
+
+	@Then("I should see a confirmation message saying {string}")
+	public void i_should_see_a_confirmation_message_saying(String string) {
+		String expected = "milestone added successfully";
+		String actual = ProgressTrackingControls.addMilestone("weight gain",  "5kg",  "2024-12-23", App.getClientsMap().get("John29Doe"));
+		assertTrue(expected.equals(actual));
+	}
+
+	@Given("I have completed the program {string}")
+	public void i_have_completed_the_program(String string) {
+		String expected = "Completed";
+		String actual = "Completed";
+		assertTrue(expected.equals(actual));
+	}
+
+	@When("I go to the {string} section")
+	public void i_go_to_the_section(String string) {
+		String expected = "You've made so much progress wow!";
+		String actual = ProgressTrackingControls.showProgress();
+		assertTrue(expected.equals(actual));
+	}
+
+	@Then("I should see the badge {string}")
+	public void i_should_see_the_badge(String string) {
+		String expected = "You've made so much progress wow!";
+		String actual = ProgressTrackingControls.showProgress();
+		assertTrue(expected.equals(actual));
+	}
+
+	@Then("I should see a message saying {string}")
+	public void i_should_see_a_message_saying(String string) {
+		String expected = "You've made so much progress wow!";
+		String actual = ProgressTrackingControls.showProgress();
+		assertTrue(expected.equals(actual));
+	}
+}
