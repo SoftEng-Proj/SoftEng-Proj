@@ -39,8 +39,7 @@ public class ProgramManagementControls {
 	    progCreated=true;
 	    tutorialAdded=true;
 	    
-	    System.out.println("Program:" +name+ "successfully created");
-	   
+	    System.out.println("Program: " + name + " successfully created");
 	    return "Program created successfully";
 	}
 	
@@ -97,16 +96,13 @@ public class ProgramManagementControls {
 	     programToUpdate.setLinks(newLinks);
 	     programToUpdate.setPrice(newPrice);
 	     progUpdated=true;
-	     System.out.println("Program:" +name+ "successfully updated");
-		  
+	     System.out.println("Program: " + name + " successfully updated");
 	     return "Program updated";
-	     
 		}
 		else {
 			System.out.println("Program not found");
 			 return "not updated";
 		}
-	     
 	 }
 	 
 	
@@ -121,7 +117,7 @@ public class ProgramManagementControls {
 		if (ProgramsMap.containsKey(name)) {
 		 ProgramsMap.remove(name);
 		 progDeleted=true;
-		 System.out.println("Program:" +name+ "successfully removed");
+		 System.out.println("Program: " + name + " successfully removed");
 	     return "Program Deleted";
 		}
 		else {

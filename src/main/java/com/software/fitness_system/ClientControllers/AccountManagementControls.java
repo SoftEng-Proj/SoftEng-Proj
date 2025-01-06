@@ -12,7 +12,7 @@ import com.software.fitness_system.Client;
  * @author Alaa Alawneh
  */
 public class AccountManagementControls {
-	public static Map<String, Profile> profilesMap = App.getClientProfileMap();
+	public static final Map<String, Profile> profilesMap = App.getClientProfileMap();
 	private static String dietaryPreferences = "";
 	
 	 /**

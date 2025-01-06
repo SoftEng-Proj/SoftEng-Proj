@@ -32,18 +32,17 @@ public class FeedbackReviewsControls {
      */
     public static String submitRating(String username, String programId, int rating) {
         if (rating < 1 || rating > 5) {
-            System.out.println("Invalid rating. Please Write a rating between 1 and 5.");
+            System.out.println("Invalid rating. Please write a rating between 1 and 5.");
         } else {
-            if (programRatings.containsKey(programId) == false) {
-                programRatings.put(programId, new HashMap<>());
-            }
+            programRatings.computeIfAbsent(programId, k -> new HashMap<>())
+                          .put(username, rating);
 
-            Map<String, Integer> ratings = programRatings.get(programId);
-            ratings.put(username, rating);
             System.out.println("Your rating has been saved for program: " + programId);
+            return "Rating Submitted successfully";
         }
-        return "Rating Submited succsesfully";
+        return "Invalid rating submission.";
     }
+    
     /**
      * Submits a review for a fitness program
      * 
