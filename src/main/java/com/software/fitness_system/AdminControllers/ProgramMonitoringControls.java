@@ -152,7 +152,7 @@ public class ProgramMonitoringControls {
     private static void printTheReport(Map.Entry<String, ProgramEnrollment> entry) {
         String programName = entry.getKey();
         ProgramEnrollment program = entry.getValue();
-
+        
         double revenue = program.getEnrollments() * 20.0;
         int attendance = program.getEnrollments();
         String clientProgress = "Good";

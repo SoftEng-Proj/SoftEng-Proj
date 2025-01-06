@@ -38,9 +38,8 @@ public class FeedbackReviewsControls {
                           .put(username, rating);
 
             System.out.println("Your rating has been saved for program: " + programId);
-            return "Rating Submitted successfully";
         }
-        return "Invalid rating submission.";
+        return "Rating Submited succsesfully";
     }
     
     /**
