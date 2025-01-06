@@ -923,9 +923,6 @@ public class LoadAndSaveEntities {
         }
     }
     
-    
-    
-    
     public static void saveProgramSchedChangeToFile(Map<String, String> ProgramSchedChangeMap, String ProgramSchedChangeFile) {
         File file = new File(ProgramSchedChangeFile);
         if (!file.exists()) {
@@ -939,8 +936,6 @@ public class LoadAndSaveEntities {
             System.err.println("Error saving Progress: " + e.getMessage());
         }
     }
-    
-    
     
     public static void loadProgramSchedChangeFromFile(Map<String, String> ProgramSchedChange, String ProgramSchedChangeFile) {
         File file = new File(ProgramSchedChangeFile);
@@ -964,10 +959,6 @@ public class LoadAndSaveEntities {
         }
     }
     
-    
-    
-    
-    
     public static void saveProgressMSGToFile(Map<String, String> ProgressMSGMap, String ProgressMSGFile) {
         File file = new File(ProgressMSGFile);
         if (!file.exists()) {
@@ -981,7 +972,6 @@ public class LoadAndSaveEntities {
             System.err.println("Error saving Progress: " + e.getMessage());
         }
     }
-    
     
     public static void loadProgressMSGFromFile(Map<String, String> ProgramSchedChange, String ProgramSchedChangeFile) {
         File file = new File(ProgramSchedChangeFile);
@@ -1004,6 +994,4 @@ public class LoadAndSaveEntities {
             System.err.println("Error loading instructor announcements: " + e.getMessage());
         }
     }
-    
-    
 }
