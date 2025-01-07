@@ -81,39 +81,50 @@ public class ProgramMonitoringPage extends BasePage {
 	public static void chooseReportGenerationOption() {
         Scanner scanner = new Scanner(System.in);
         printTheGenerateQuestion();
-
-        int choice = -1;
+        
         boolean validInput = false;
-
+        int choice = inputData(scanner, validInput);
+        choice(choice);
+    }
+	
+	private static int inputData(Scanner scan, boolean validInput) {
         while (!validInput) {
             try {
-                choice = scanner.nextInt();
+                int choice = scan.nextInt();
                 if (choice == 1 || choice == 2) {
                     validInput = true;
+                    return choice;
                 } else {
                     System.out.println("Invalid choice, please choose 1 or 2.");
                     printTheGenerateQuestion();
+                    return 0;
                 }
             } catch (Exception e) {
                 System.out.println("Invalid input! Please enter a number (1 or 2).");
-                scanner.nextLine();
+                scan.nextLine();
                 printTheGenerateQuestion();
             }
         }
-
-        switch (choice) {
-            case 1:
-                System.out.println("Generating report for all programs...");
-                generateReportsOption(getProgramEnrollmentMap(), "Null", false);
-                return;
-            case 2:
-                System.out.print("\n");
-                printPrograms(getProgramEnrollmentMap(), false);
-                String programName = askTheNameOfTheProgram();
-                System.out.println("\nReport generation in progress for the program: \"" + programName + "\".");
-                generateReportsOption(getProgramEnrollmentMap(), programName, true);
-        }
-    }
+        
+        return 0;
+	}
+	
+	private static void choice(int choice) {
+		switch (choice) {
+        case 1:
+            System.out.println("Generating report for all programs...");
+            generateReportsOption(getProgramEnrollmentMap(), "Null", false);
+            return;
+        case 2:
+            System.out.print("\n");
+            printPrograms(getProgramEnrollmentMap(), false);
+            String programName = askTheNameOfTheProgram();
+            System.out.println("\nReport generation in progress for the program: \"" + programName + "\".");
+            generateReportsOption(getProgramEnrollmentMap(), programName, true);
+        default:
+        	System.out.println("Invalid input! Please enter a number (1 or 2).");
+		}
+	}
 	
     /**
      * Prompts the user to choose between generating reports for all programs 

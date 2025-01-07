@@ -25,6 +25,9 @@ public class UserManagementControls {
 	public static final List<String> updatedInstructor = new ArrayList<>();
 	public static final List<String> updatedClient = new ArrayList<>();
 	
+	private static final String instructor = "Instructor";
+	private static final String client = "Client";
+	
     private static Instructor newInstructor;
     private static Client newClient;
     private static boolean thereAreActivations = false;
@@ -46,11 +49,11 @@ public class UserManagementControls {
      */
 	public static String fillUserDetails(String fName, String lName, String email, String userName, String password, String role) {
         return switch (role) {
-            case "Instructor" -> {
+            case instructor -> {
                 instructorNewAccount(fName, lName, email, userName, password);
                 yield role + "_Added";
             }
-            case "Client" -> {
+            case client -> {
                 clientNewAccount(fName, lName, email, userName, password);
                 yield role + "_Added";
             }
