@@ -181,18 +181,6 @@ public class UserManagementTest {
         assertEquals(expected, hasApproved);
     }
     
-    /*
-     *     
-    @When("i approve a instructor application")
-    public void i_approve_a_instructor_application() {
-    	boolean expected = true;
-    	
-    	String[] list = {"ActivatePend"};
-        boolean hasApproved = processApprovals(list, getPendingInstructorsMap(), getInstructorsMap());
-        assertEquals(expected, hasApproved);
-    }
-     */
-    
     @Then("the instructor account should become active")
     public void the_instructor_account_should_become_active() {
     	boolean expected = true;
