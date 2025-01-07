@@ -8,6 +8,7 @@ import static org.junit.Assert.assertTrue;
 
 import com.software.fitness_system.admin_controllers.SubscriptionPlan;
 import com.software.fitness_system.admin_controllers.SubscriptionPlan.PlanType;
+import com.software.fitness_system.basics.Client;
 import com.software.fitness_system.login_page.AdminPagesController;
 
 import io.cucumber.java.en.Given;

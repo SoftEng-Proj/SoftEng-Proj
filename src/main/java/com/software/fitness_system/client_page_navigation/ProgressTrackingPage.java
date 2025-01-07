@@ -1,6 +1,6 @@
 package com.software.fitness_system.client_page_navigation;
 import com.software.fitness_system.App;
-import com.software.fitness_system.Client;
+import com.software.fitness_system.basics.Client;
 import com.software.fitness_system.client_controllers.ProgressTrackingControls;
 import com.software.fitness_system.infrastructure_for_pages.BasePage;
 import com.software.fitness_system.login_page.ClientPageControllers;

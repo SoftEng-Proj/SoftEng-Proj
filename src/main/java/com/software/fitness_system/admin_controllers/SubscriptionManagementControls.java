@@ -1,7 +1,7 @@
 package com.software.fitness_system.admin_controllers;
 import static com.software.fitness_system.App.*;
 
-import com.software.fitness_system.User;
+import com.software.fitness_system.basics.User;
 
 /**
  * Provides controls for managing subscription plans and user subscriptions.

@@ -2,7 +2,7 @@ package com.software.fitness_system.client_page_navigation;
 import java.util.Map;
 import java.util.Scanner;
 
-import com.software.fitness_system.Client;
+import com.software.fitness_system.basics.Client;
 import com.software.fitness_system.client_controllers.ProgramExplorationEnrollmentControls;
 import com.software.fitness_system.infrastructure_for_pages.BasePage;
 import com.software.fitness_system.instructor_controllers.Program;

@@ -5,8 +5,8 @@ import static com.software.fitness_system.admin_controllers.UserManagementContro
 import java.util.Map;
 import java.util.Scanner;
 
-import com.software.fitness_system.Instructor;
-import com.software.fitness_system.User;
+import com.software.fitness_system.basics.Instructor;
+import com.software.fitness_system.basics.User;
 import com.software.fitness_system.infrastructure_for_pages.BasePage;
 import com.software.fitness_system.login_page.AdminPagesController;
 

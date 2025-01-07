@@ -4,6 +4,8 @@ import static com.software.fitness_system.admin_controllers.UserManagementContro
 import static org.junit.Assert.assertEquals;
 
 import com.software.fitness_system.admin_controllers.UserManagementControls;
+import com.software.fitness_system.basics.Client;
+import com.software.fitness_system.basics.Instructor;
 import com.software.fitness_system.login_page.AdminPagesController;
 
 import io.cucumber.java.en.Given;

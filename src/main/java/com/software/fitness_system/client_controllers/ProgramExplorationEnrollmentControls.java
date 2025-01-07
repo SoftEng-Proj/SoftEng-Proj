@@ -2,7 +2,7 @@ package com.software.fitness_system.client_controllers;
 import java.util.Map;
 
 import com.software.fitness_system.App;
-import com.software.fitness_system.Client;
+import com.software.fitness_system.basics.Client;
 import com.software.fitness_system.instructor_controllers.Program;
 
 /**

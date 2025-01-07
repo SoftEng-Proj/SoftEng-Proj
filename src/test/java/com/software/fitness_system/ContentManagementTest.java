@@ -5,6 +5,7 @@ import static com.software.fitness_system.admin_page_navigation.CoContentManagem
 import static org.junit.Assert.assertEquals;
 import java.util.Map;
 
+import com.software.fitness_system.basics.Content;
 import com.software.fitness_system.login_page.AdminPagesController;
 
 import io.cucumber.java.en.Given;

@@ -1,7 +1,7 @@
 package com.software.fitness_system.client_controllers;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.software.fitness_system.Client;
+import com.software.fitness_system.basics.Client;
 /**
  * Represents a fitness milestone achieved by the client
  * Each milestone has a type, value, date, and the username of the client

@@ -2,7 +2,7 @@ package com.software.fitness_system.admin_controllers;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.software.fitness_system.Content;
+import com.software.fitness_system.basics.Content;
 
 /**
  * Content Management Controls for handling tips and feedback.

@@ -7,10 +7,10 @@ import static com.software.fitness_system.admin_controllers.SubscriptionManageme
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import com.software.fitness_system.User;
 import com.software.fitness_system.admin_controllers.CustomPlan;
 import com.software.fitness_system.admin_controllers.SubscriptionManagementControls;
 import com.software.fitness_system.admin_controllers.SubscriptionPlan;
+import com.software.fitness_system.basics.User;
 
 /**
  * Represents the Co-Subscription Management page for the admin in the fitness system.

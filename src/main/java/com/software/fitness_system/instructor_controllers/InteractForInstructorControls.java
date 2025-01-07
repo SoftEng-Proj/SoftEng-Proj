@@ -3,7 +3,7 @@ package com.software.fitness_system.instructor_controllers;
 import java.util.Map;
 
 import com.software.fitness_system.App;
-import com.software.fitness_system.Client;
+import com.software.fitness_system.basics.Client;
 
 /**
  * It provides the controls for the InteractForInstructorPage to be able to send

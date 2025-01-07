@@ -1,6 +1,6 @@
 package com.software.fitness_system.client_page_navigation;
 import com.software.fitness_system.App;
-import com.software.fitness_system.Client;
+import com.software.fitness_system.basics.Client;
 import com.software.fitness_system.client_controllers.AccountManagementControls;
 import com.software.fitness_system.client_controllers.Profile;
 import com.software.fitness_system.infrastructure_for_pages.BasePage;

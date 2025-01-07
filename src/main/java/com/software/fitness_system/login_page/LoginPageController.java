@@ -3,8 +3,8 @@ import static com.software.fitness_system.App.*;
 
 import java.util.Scanner;
 
-import com.software.fitness_system.Client;
-import com.software.fitness_system.Instructor;
+import com.software.fitness_system.basics.Client;
+import com.software.fitness_system.basics.Instructor;
 
 /**
  * Controls the login process for admin, instructor, and client users.

@@ -5,7 +5,7 @@ import static com.software.fitness_system.admin_page_navigation.CoContentManagem
 
 import java.util.Map;
 
-import com.software.fitness_system.Content;
+import com.software.fitness_system.basics.Content;
 import com.software.fitness_system.infrastructure_for_pages.BasePage;
 import com.software.fitness_system.login_page.AdminPagesController;
 

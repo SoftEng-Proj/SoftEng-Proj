@@ -4,7 +4,7 @@ import static com.software.fitness_system.admin_controllers.ContentManagementCon
 import java.util.Map;
 import java.util.Scanner;
 
-import com.software.fitness_system.Content;
+import com.software.fitness_system.basics.Content;
 
 /**
  * Represents the Co-Content Management page for the admin in the fitness system.

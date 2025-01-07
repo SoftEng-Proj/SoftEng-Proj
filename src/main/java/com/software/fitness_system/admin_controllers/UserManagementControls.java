@@ -8,9 +8,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.software.fitness_system.Client;
-import com.software.fitness_system.Instructor;
-import com.software.fitness_system.User;
+import com.software.fitness_system.basics.Client;
+import com.software.fitness_system.basics.Instructor;
+import com.software.fitness_system.basics.User;
 
 /**
  * This class provides various administrative controls for managing user accounts, including instructors and clients.

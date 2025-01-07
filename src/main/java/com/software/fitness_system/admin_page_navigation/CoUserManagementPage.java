@@ -4,8 +4,8 @@ import static com.software.fitness_system.App.*;
 import java.util.Map;
 import java.util.Scanner;
 
-import com.software.fitness_system.User;
 import com.software.fitness_system.admin_controllers.UserManagementControls;
+import com.software.fitness_system.basics.User;
 
 /**
  * Represents the Co-User Management page for the admin in the fitness system.

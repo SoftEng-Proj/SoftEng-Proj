@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.software.fitness_system.App;
-import com.software.fitness_system.Client;
+import com.software.fitness_system.basics.Client;
 import com.software.fitness_system.client_controllers.FitnessMilestone;
 import com.software.fitness_system.client_controllers.Profile;
 

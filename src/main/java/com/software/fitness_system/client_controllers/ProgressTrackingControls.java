@@ -2,7 +2,7 @@ package com.software.fitness_system.client_controllers;
 import java.util.List;
 
 import com.software.fitness_system.App;
-import com.software.fitness_system.Client;
+import com.software.fitness_system.basics.Client;
 
 /**
  * This class provides controls for managing and tracking fitness progress

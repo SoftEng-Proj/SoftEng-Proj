@@ -1,7 +1,7 @@
 package com.software.fitness_system.login_page;
 import java.util.Scanner;
 
-import com.software.fitness_system.Client;
+import com.software.fitness_system.basics.Client;
 import com.software.fitness_system.client_page_navigation.AccountManagementPage;
 import com.software.fitness_system.client_page_navigation.FeedbackReviewsPage;
 import com.software.fitness_system.client_page_navigation.NavigationControllerForClient;
