@@ -4,8 +4,8 @@
  * @author Muath Hassoun
  */
 package com.software.fitness_system;
-import com.software.fitness_system.AdminControllers.SubscriptionPlan;
-import com.software.fitness_system.InstructorControllers.Program;
+import com.software.fitness_system.admin_controllers.SubscriptionPlan;
+import com.software.fitness_system.instructor_controllers.Program;
 
 public class Client implements User {
     private String fName;

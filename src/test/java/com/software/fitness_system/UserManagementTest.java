@@ -1,9 +1,10 @@
 package com.software.fitness_system;
-import static com.software.fitness_system.AdminControllers.UserManagementControls.*;
 import static com.software.fitness_system.App.*;
+import static com.software.fitness_system.admin_controllers.UserManagementControls.*;
 import static org.junit.Assert.assertEquals;
-import com.software.fitness_system.AdminControllers.UserManagementControls;
-import com.software.fitness_system.LoginPage.AdminPagesController;
+
+import com.software.fitness_system.admin_controllers.UserManagementControls;
+import com.software.fitness_system.login_page.AdminPagesController;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

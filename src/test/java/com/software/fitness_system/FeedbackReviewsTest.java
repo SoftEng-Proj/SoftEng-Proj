@@ -1,6 +1,7 @@
 package com.software.fitness_system;
 import static org.junit.Assert.assertTrue;
-import com.software.fitness_system.ClientControllers.FeedbackReviewsControls;
+
+import com.software.fitness_system.client_controllers.FeedbackReviewsControls;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

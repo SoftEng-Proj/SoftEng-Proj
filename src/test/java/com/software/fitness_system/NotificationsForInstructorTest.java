@@ -1,6 +1,7 @@
 package com.software.fitness_system;
 import static org.junit.Assert.*;
-import com.software.fitness_system.InstructorControllers.NotificationControls;
+
+import com.software.fitness_system.instructor_controllers.NotificationControls;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

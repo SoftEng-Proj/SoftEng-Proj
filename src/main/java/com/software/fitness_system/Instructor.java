@@ -1,5 +1,5 @@
 package com.software.fitness_system;
-import com.software.fitness_system.AdminControllers.SubscriptionPlan;
+import com.software.fitness_system.admin_controllers.SubscriptionPlan;
 
 public class Instructor implements User{
     private String fName;

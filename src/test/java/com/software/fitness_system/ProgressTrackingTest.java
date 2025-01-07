@@ -1,7 +1,8 @@
 package com.software.fitness_system;
 import static org.junit.Assert.assertTrue;
-import com.software.fitness_system.AdminControllers.ProgramEnrollment;
-import com.software.fitness_system.ClientControllers.ProgressTrackingControls;
+
+import com.software.fitness_system.admin_controllers.ProgramEnrollment;
+import com.software.fitness_system.client_controllers.ProgressTrackingControls;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

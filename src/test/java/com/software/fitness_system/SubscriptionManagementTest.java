@@ -1,13 +1,14 @@
 package com.software.fitness_system;
-import static com.software.fitness_system.AdminControllers.SubscriptionManagementControls.*;
-import static com.software.fitness_system.AdminControllers.SubscriptionPlan.addToSubscriptionPlanMap;
 import static com.software.fitness_system.App.*;
 import static com.software.fitness_system.LoadAndSaveEntities.*;
+import static com.software.fitness_system.admin_controllers.SubscriptionManagementControls.*;
+import static com.software.fitness_system.admin_controllers.SubscriptionPlan.addToSubscriptionPlanMap;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import com.software.fitness_system.AdminControllers.SubscriptionPlan;
-import com.software.fitness_system.AdminControllers.SubscriptionPlan.PlanType;
-import com.software.fitness_system.LoginPage.AdminPagesController;
+
+import com.software.fitness_system.admin_controllers.SubscriptionPlan;
+import com.software.fitness_system.admin_controllers.SubscriptionPlan.PlanType;
+import com.software.fitness_system.login_page.AdminPagesController;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

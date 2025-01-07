@@ -1,6 +1,7 @@
 package com.software.fitness_system;
 import static org.junit.Assert.assertEquals;
-import com.software.fitness_system.ClientControllers.AccountManagementControls;
+
+import com.software.fitness_system.client_controllers.AccountManagementControls;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

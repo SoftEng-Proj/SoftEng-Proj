@@ -1,8 +1,9 @@
 package com.software.fitness_system;
-import static com.software.fitness_system.AdminControllers.ProgramMonitoringControls.*;
 import static com.software.fitness_system.App.*;
+import static com.software.fitness_system.admin_controllers.ProgramMonitoringControls.*;
 import static org.junit.Assert.assertEquals;
-import com.software.fitness_system.LoginPage.AdminPagesController;
+
+import com.software.fitness_system.login_page.AdminPagesController;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

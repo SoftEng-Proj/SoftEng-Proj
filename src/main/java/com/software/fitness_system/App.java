@@ -8,13 +8,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.software.fitness_system.AdminControllers.CustomPlan;
-import com.software.fitness_system.AdminControllers.ProgramEnrollment;
-import com.software.fitness_system.AdminControllers.SubscriptionPlan;
-import com.software.fitness_system.ClientControllers.FitnessMilestone;
-import com.software.fitness_system.ClientControllers.Profile;
-import com.software.fitness_system.InstructorControllers.Program;
-import com.software.fitness_system.LoginPage.LoginPageController;
+import com.software.fitness_system.admin_controllers.CustomPlan;
+import com.software.fitness_system.admin_controllers.ProgramEnrollment;
+import com.software.fitness_system.admin_controllers.SubscriptionPlan;
+import com.software.fitness_system.client_controllers.FitnessMilestone;
+import com.software.fitness_system.client_controllers.Profile;
+import com.software.fitness_system.instructor_controllers.Program;
+import com.software.fitness_system.login_page.LoginPageController;
 
 /**
  * Main application class to manage the fitness system, including loading data, handling login, and saving data.

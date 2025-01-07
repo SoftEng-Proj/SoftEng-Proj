@@ -1,7 +1,8 @@
 package com.software.fitness_system;
 import static org.junit.Assert.*;
-import com.software.fitness_system.InstructorControllers.ProgressTrackingInstructorControls;
-import com.software.fitness_system.InstructorPageNavigation.ProgressTrackingInstructorPage;
+
+import com.software.fitness_system.instructor_controllers.ProgressTrackingInstructorControls;
+import com.software.fitness_system.instructor_page_navigation.ProgressTrackingInstructorPage;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

@@ -7,10 +7,10 @@ import java.util.Map;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.software.fitness_system.AdminControllers.CustomPlan;
-import com.software.fitness_system.ClientControllers.FitnessMilestone;
-import com.software.fitness_system.ClientControllers.Profile;
-import com.software.fitness_system.InstructorControllers.Program;
+import com.software.fitness_system.admin_controllers.CustomPlan;
+import com.software.fitness_system.client_controllers.FitnessMilestone;
+import com.software.fitness_system.client_controllers.Profile;
+import com.software.fitness_system.instructor_controllers.Program;
 
 /**
  * Utility class for handling the loading and saving of various entities
