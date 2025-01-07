@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.software.fitness_system.App;
 import com.software.fitness_system.Client;
 import com.software.fitness_system.Instructor;
 import com.software.fitness_system.User;
@@ -221,18 +222,13 @@ public class UserManagementControls {
 	    	System.out.print("\n");
 	        System.out.printf("%-15s %-15s %-25s %-20s %-20s\n", "First Name", "Last Name", "Email", "Username", "Password");
 	        System.out.println("-------------------------------------------------------------------------------------------");
-	        
-	        for (Instructor instructor : pendingInstructors.values()) {
-	            System.out.printf("%-15s %-15s %-25s %-20s %-20s\n", 
-	                instructor.getFirstName(), 
-	                instructor.getLastName(), 
-	                instructor.getEmail(), 
-	                instructor.getUsername(), 
-	                instructor.getPassword());
-	        }
-	        System.out.println("\n");
 	        return true;
 	    }
+	}
+	
+	private void srt() {
+        System.out.println("\n");
+        return;
 	}
 	
 	/**
