@@ -115,8 +115,7 @@ public class ProgressTrackingInstructorControls {
            client.put(namee, null);
             sendRecommendation(namee,msgg);
             return true;
-        
-	}
+        }
         
         public static boolean ReceivedRecommCheck() {
     		

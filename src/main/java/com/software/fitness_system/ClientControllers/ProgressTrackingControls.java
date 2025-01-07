@@ -11,7 +11,7 @@ import com.software.fitness_system.Client;
  * @author Alaa Alawneh
  */
 public class ProgressTrackingControls {
-	 /**
+	/**
 	  * A list to store the fitness milestones
 	  */
 	private static List<FitnessMilestone> milestones = App.getMilestonesList();

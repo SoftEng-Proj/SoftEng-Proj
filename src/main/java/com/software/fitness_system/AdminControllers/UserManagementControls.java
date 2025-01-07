@@ -273,20 +273,26 @@ public class UserManagementControls {
 	        return false;
 	    }
 	    
+	    printApprovedInstructorsHeader();
+	    ApprovedInstructorsMap.values().stream()
+	    .filter(inst -> getInstructorsMap().containsKey(inst.getUsername()))
+	    .forEach(inst -> verifyAndPrintInstructor(inst));
+	    
+	    return true;
+	}
+	
+	private static void printApprovedInstructorsHeader() {
 	    System.out.println("Approved Instructors:");
 	    System.out.printf("%-15s %-15s %-25s %-20s\n", "First Name", "Last Name", "Email", "Username");
 	    System.out.println("-----------------------------------------------------------------------------");
-	    
-	    for (Instructor inst : ApprovedInstructorsMap.values()) {
-	    	if(getInstructorsMap().containsKey(inst.getUsername())) {
-		        System.out.printf("%-15s %-15s %-25s %-20s\n",
-                        inst.getFirstName(),
-                        inst.getLastName(),
-                        inst.getEmail(),
-                        inst.getUsername());
-	    	}
-	    }
-	    return true;
+	}
+	
+	private static void verifyAndPrintInstructor(Instructor inst) {
+	    System.out.printf("%-15s %-15s %-25s %-20s\n",
+	            inst.getFirstName(),
+	            inst.getLastName(),
+	            inst.getEmail(),
+	            inst.getUsername());
 	}
 	
 	/**

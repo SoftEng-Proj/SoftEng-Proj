@@ -12,12 +12,6 @@ import com.software.fitness_system.InstructorControllers.Program;
  */
 public class ProgramExplorationEnrollmentControls {
     private static Map<String, Program> programs = App.getFitnessProgramsMap();
-    
-    /**
-     * Constructor
-     */
-    public ProgramExplorationEnrollmentControls() {
-    }
 
     /**
      * This method filters fitness programs by difficulty level
