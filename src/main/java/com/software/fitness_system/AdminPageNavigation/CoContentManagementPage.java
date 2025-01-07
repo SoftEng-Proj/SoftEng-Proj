@@ -30,30 +30,29 @@ public class CoContentManagementPage {
         String input = scanner.nextLine();
         String[] idsToReview = input.split(",");
         
-        boolean is = false;
+        boolean isA = false;
         for (String id : idsToReview) {
             id = id.trim();
             if (tips.containsKey(id)) {
                 System.out.print("Do you approve or reject Tip ID " + id + "? (approve/reject): ");
                 String decision = scanner.nextLine().trim().toLowerCase();
                 
+                isA = true;
                 if ("approve".equals(decision)) {
                 	isApprovedTip(id, tips);
-                    is = true;
                 } else if ("reject".equals(decision)) {
                 	isRejectedTip(id, tips);
-                    is = true;
                 } else {
                     System.out.println("Invalid choice for Tip ID " + id + ". Skipping...");
-                    is = false;
+                    isA = false;
                 }
             } else {
                 System.out.println("Tip ID '" + id + "' does not exist.");
-                is = true;
+                isA = true;
             }
         }
         
-        return is;
+        return isA;
     }
     
     /**

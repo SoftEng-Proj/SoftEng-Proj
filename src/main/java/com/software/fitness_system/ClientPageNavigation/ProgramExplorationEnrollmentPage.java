@@ -21,8 +21,9 @@ public class ProgramExplorationEnrollmentPage extends BasePage {
 	private ClientPageControllers clientController;
     @SuppressWarnings("unused")
 	private ProgramExplorationEnrollmentControls programExplorationEnrollmentControls;
-    private Scanner scanner;
+    private Scanner localScanner;
     private Client client;
+    
     /**
      * Constructs a ProgramExplorationEnrollmentPage with the given client controller
      * and current client
@@ -33,7 +34,7 @@ public class ProgramExplorationEnrollmentPage extends BasePage {
     public ProgramExplorationEnrollmentPage(ClientPageControllers clientController, Client currentClient) {
         this.clientController = clientController;
         this.programExplorationEnrollmentControls = new ProgramExplorationEnrollmentControls();
-        this.scanner = new Scanner(System.in);
+        this.localScanner = new Scanner(System.in);
     }
     /**
      * Displays the menu options for program exploration and enrollment
@@ -58,12 +59,12 @@ public class ProgramExplorationEnrollmentPage extends BasePage {
         switch (choice) {
             case 1:
                 System.out.print("Enter Difficulty Level (Beginner, Intermediate, Advanced): ");
-                String difficulty = scanner.nextLine();
+                String difficulty = localScanner.nextLine();
                 ProgramExplorationEnrollmentControls.filterProgramsByDifficulty(difficulty);
                 break;
             case 2:
                 System.out.print("Enter Focus Area (e.g., Strength, Cardio, Yoga): ");
-                String focusArea = scanner.nextLine();
+                String focusArea = localScanner.nextLine();
                 ProgramExplorationEnrollmentControls.filterProgramsByFocusArea(focusArea);
                 break;
             case 3:
@@ -83,13 +84,13 @@ public class ProgramExplorationEnrollmentPage extends BasePage {
                 }
 
                 System.out.print("Enter the number of the program you want to enroll in: ");
-                int programNumber = scanner.nextInt();
-                scanner.nextLine();
+                int programNumber = localScanner.nextInt();
+                localScanner.nextLine();
                 ProgramExplorationEnrollmentControls.enrollInProgram(client, programNumber);
                 break;
             case 4:
                 System.out.print("Enter Program Name to View Schedule: ");
-                String ProgramName = scanner.nextLine();
+                String ProgramName = localScanner.nextLine();
                 ProgramExplorationEnrollmentControls.viewProgramSchedule(ProgramName);
                 break;
             case 5:
